@@ -37,9 +37,9 @@ public:
     ~Skill_Obj();
 
     virtual void Skill_Start() PURE;
-    void SetOwner(Player* _pPlayer) { m_pOwner = _pPlayer; }
     void SetSkillTex(JoTexture* const _pSkillTex) { m_pSkillTex = m_pSkillTex; }
 
+	void SetOwner(Player* _pPlayer) { m_pOwner = _pPlayer; }
 protected:
     Vec2 GetOverlappedRectPos(Collider* other) const;
   

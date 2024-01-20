@@ -10,6 +10,9 @@
 #include "QuickSlotUI.h"
 #include "QuickStats.h"
 #include "Skill.h"
+#include "FJ_Obj.h"
+#include "joObject.h"
+#include "SoundMgr.h"
 
 Player::Player()
 	: m_bDownJumping(false)
@@ -180,7 +183,7 @@ void Player::Init_Anim()
 	m_pAnimator->CreateAnimation(L"Prone_L", playerTex, Vec2(640.f, 480.f), Vec2(160.f, 160.f), Vec2::Zero, 1);
 	m_pAnimator->CreateAnimation(L"Prone_R", playerTex, Vec2(800.f, 480.f), Vec2(160.f, 160.f), Vec2::Zero, 1);
 	m_pAnimator->CreateAnimation(L"PhantomBlow_L", playerTex, Vec2(0.0f, 160.0f), Vec2(160.f, 160.f), Vec2::Zero, 8, 0.09f);
-	m_pAnimator->CreateAnimation(L"PhantomBlow_R", playerTex, Vec2(360.f, 800.0f), Vec2(160.f, 160.f), Vec2::Zero, 8, 0.09f);
+	m_pAnimator->CreateAnimation(L"PhantomBlow_R", playerTex, Vec2(360.f, 800.0f), Vec2(160.f, 160.f), Vec2(30.f, 0.f), 8, 0.09f);
 }
 
 void Player::Init_FrameBind()
@@ -500,6 +503,7 @@ void Player::SetState_Channeling(const unsigned char& _cRestriction)
 
 void Player::Jump()
 {
+	SoundMgr::Play(L"Player_Jump");
 	m_pRigidbody->SetVelocityY(m_fJumpVelocity);
 	m_pRigidbody->SetUseGravity(true);
 	m_pRigidbody->SetGround(false);
@@ -507,6 +511,10 @@ void Player::Jump()
 
 void Player::FlashJump()
 {
+	auto fj = Instantiate<FJ_Obj>(eLayerType::LT_EFFECT);
+	fj->SetOwner(this);
+	fj->Skill_Start();
+
 	float fXDir = {};
 	m_bFlashJumping = true;
 

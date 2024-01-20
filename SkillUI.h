@@ -33,8 +33,9 @@ public:
 
     Enrollable* GetPicking() { return m_pPicking; }
 
-    bool KeyCheck() override { return KeyMgr::GetKeyDown(eKeyCode::K); }
-    void OnInActive() override;
+    bool KeyCheck()     override { return KeyMgr::GetKeyDown(eKeyCode::K); }
+    void OnInActive()   override;
+    void OnActive()     override;
 private:
     void Check_Slots();
     void Check_Button();

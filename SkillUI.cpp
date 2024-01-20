@@ -4,6 +4,7 @@
 #include "Enrollable.h"
 #include "Skill.h"
 #include "UIMgr.h"
+#include "SoundMgr.h"
 
 
 SkillUI::SkillUI()
@@ -182,6 +183,13 @@ void SkillUI::OnInActive()
 {
 	if (m_pPicking)
 		m_pPicking = nullptr;
+
+	SoundMgr::Play(L"CloseWindow");
+}
+
+void SkillUI::OnActive()
+{
+	SoundMgr::Play(L"OpenWindow");
 }
 
 void SkillUI::Check_Slots()

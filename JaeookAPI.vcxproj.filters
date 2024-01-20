@@ -163,6 +163,15 @@
     <Filter Include="02. Contents\06. Skill\02. FlashJump">
       <UniqueIdentifier>{2a22a473-a2ac-4959-a82a-3e746e107bce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\04. UI\InvenUI">
+      <UniqueIdentifier>{c28564bd-bbdd-4222-b35b-b42f8d9459be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item">
+      <UniqueIdentifier>{db0392b9-d8bf-479c-b7fa-ee992c48da6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\01. Equipable">
+      <UniqueIdentifier>{fd438243-a538-4ca3-8e3e-bdac3c00158a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -324,6 +333,15 @@
     <ClInclude Include="FJ_Obj.h">
       <Filter>02. Contents\06. Skill\02. FlashJump</Filter>
     </ClInclude>
+    <ClInclude Include="InvenUI.h">
+      <Filter>02. Contents\04. UI\InvenUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>02. Contents\08. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipable.h">
+      <Filter>02. Contents\08. Item\01. Equipable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -460,6 +478,15 @@
     </ClCompile>
     <ClCompile Include="FJ_Obj.cpp">
       <Filter>02. Contents\06. Skill\02. FlashJump</Filter>
+    </ClCompile>
+    <ClCompile Include="InvenUI.cpp">
+      <Filter>02. Contents\04. UI\InvenUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>02. Contents\08. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipable.cpp">
+      <Filter>02. Contents\08. Item\01. Equipable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

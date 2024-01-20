@@ -41,12 +41,14 @@ void Animation::Render()
 {
 	if (m_bEnd) return;
 
+	Sprite sprite = m_SheetVec[m_iIndex];
+
 	GameObject* obj = m_pAnimator->GetOwner();
 	Vec2 pos = obj->GetPos();
 
 	pos = camera::pMainCamera->CalcRenderPos(pos);
+	pos += sprite.offset;
 
-	Sprite sprite = m_SheetVec[m_iIndex];
 	RenderMgr::RenderFrame(sprite.texture,
 		pos.x - sprite.size.x * 0.5f, pos.y - sprite.size.y * 0.5f,
 		pos.x + sprite.size.x * 0.5f, pos.y + sprite.size.y * 0.5f,

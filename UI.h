@@ -25,7 +25,8 @@ public:
 	virtual void Release();
 
 	virtual bool KeyCheck() { return false; };
-	virtual void OnInActive() {};
+	virtual void OnInActive() {}
+	virtual void OnActive() {}
 protected:
 	JoTexture*	m_pMainTex;
 	Vec2		m_vPos;

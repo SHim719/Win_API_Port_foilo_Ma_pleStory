@@ -5,6 +5,7 @@
 class FJ_Obj :
     public Skill_Obj
 {
+public:
     FJ_Obj();
     ~FJ_Obj();
 

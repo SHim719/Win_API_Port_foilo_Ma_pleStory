@@ -80,6 +80,7 @@ void UIMgr::UIkeyCheck()
 	{
 		if ((*it)->KeyCheck())
 		{
+			(*it)->OnActive();
 			activeUI = *it;
 			it = m_inActiveUIList.erase(it);
 			break;

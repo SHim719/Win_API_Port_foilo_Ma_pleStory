@@ -1,6 +1,5 @@
 #include "PB_Obj.h"
 #include "ResourceMgr.h"
-#include "joObject.h"
 #include "HitEffect.h"
 
 

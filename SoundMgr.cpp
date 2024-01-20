@@ -14,7 +14,7 @@ void SoundMgr::Intialize()
 	
 	Audio* phantom_use = ResourceMgr::Load<Audio>(L"PB_Use", L"Resources/Skill/PhantomBlow/Use.mp3");
 	Audio* phantom_hit = ResourceMgr::Load<Audio>(L"PB_Hit", L"Resources/Skill/PhantomBlow/Hit.mp3");
-
+	Audio* flash_use = ResourceMgr::Load<Audio>(L"FJ_Use", L"Resources/Skill/FlashJump/Use.mp3");
 	//GiantRoot->Play();
 }
 

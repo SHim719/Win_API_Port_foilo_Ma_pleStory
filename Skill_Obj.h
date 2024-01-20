@@ -3,6 +3,7 @@
 #include "TimeMgr.h"
 #include "Player.h"
 #include "SoundMgr.h"
+#include "joObject.h"
 
 struct HitTimer
 {

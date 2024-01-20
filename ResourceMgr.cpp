@@ -32,6 +32,8 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"PhantomBlow", L"Resources/Skill/PhantomBlow/phantomblow.png");
 	ResourceMgr::Load<JoTexture>(L"PB_Hit", L"Resources/Skill/PhantomBlow/phantomblow_hit.png");
 
+	ResourceMgr::Load<JoTexture>(L"FlashJump", L"Resources/Skill/FlashJump/FlashJump.png");
+
 	ResourceMgr::Load<JoTexture>(L"Cursor", L"Resources/UI/Cursor.png");
 
 	ResourceMgr::Load<JoTexture>(L"Player", L"Resources/Player/Player.png");

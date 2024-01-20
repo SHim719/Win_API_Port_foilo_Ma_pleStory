@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01. Core">
+      <UniqueIdentifier>{c543a52c-9aa2-4618-8a80-3f4551b86e1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\1. MainGame">
+      <UniqueIdentifier>{f2aa50ec-e488-4908-8a6a-ac50689def50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\2. Header">
+      <UniqueIdentifier>{ce84520b-6bb5-4a82-b7e1-1896b423569f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager">
+      <UniqueIdentifier>{ab67d72d-fe51-4c15-a0ce-09ed88f4eda3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\4. Obj">
+      <UniqueIdentifier>{c954168e-2df5-4fc5-b8df-4173b3ec6801}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\4. Obj\Enitity">
+      <UniqueIdentifier>{2ae9461a-3301-4d57-971f-407a84ff952f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\5. Scene">
+      <UniqueIdentifier>{d45f28b9-2dac-49e1-acf5-a6a95cb9a7bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents">
+      <UniqueIdentifier>{117db0ae-0982-49db-b189-c5bd46bacc77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\6. Layer">
+      <UniqueIdentifier>{2e6728ec-4cf0-4be3-8565-66ad489cea17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\7. Resource">
+      <UniqueIdentifier>{75ffaa91-fa17-44d2-8028-4f2a0bc06cb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\7. Resource\Texture">
+      <UniqueIdentifier>{3fb7f1a7-f72c-4018-88c9-992c5279ec60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\01. KeyMgr">
+      <UniqueIdentifier>{fb38a1c7-fe20-44eb-a69b-02c0b1ce593e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\02. RenderMgr">
+      <UniqueIdentifier>{f4b2ea44-2cc2-4c8b-a999-293326702bb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\03. SceneMgr">
+      <UniqueIdentifier>{c966c9ac-402e-4f19-aa8e-aa4ed6544730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\04. TimeMgr">
+      <UniqueIdentifier>{38e8ebda-7bf6-43ca-b0bd-f4c83543b1d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\05. ResourceMgr">
+      <UniqueIdentifier>{8e3ac504-04b0-4f51-bead-d3e03d0acefe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\7. Resource\Bmp">
+      <UniqueIdentifier>{a5d3eb70-fa19-45b7-8c32-d6298b2fdfec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\06. CollisionMgr">
+      <UniqueIdentifier>{c1f6c3ec-2fcf-4e14-9d50-169f46b56e75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\8. Component">
+      <UniqueIdentifier>{cd2bf303-f269-477f-b4d8-16b8410cdeb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\8. Component\01. Animator">
+      <UniqueIdentifier>{140338f5-6aef-4844-b1f0-3e06402e2620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\8. Component\01. Animator\Animation">
+      <UniqueIdentifier>{925b41cf-4346-4f4e-9564-4b28380e833a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\8. Component\02. Collider">
+      <UniqueIdentifier>{0bc687d2-027a-44c3-9236-92d8d1307f79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\8. Component\03. Rigidbody">
+      <UniqueIdentifier>{1609488e-7c5a-4a7d-8c4f-1480d597c05c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\4. Obj\Camera">
+      <UniqueIdentifier>{8f35dcf3-0de8-410b-8ef3-12bd372043d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\01. Player">
+      <UniqueIdentifier>{e1e72f64-a0ce-423f-993e-4b8dcc2c8e98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene">
+      <UniqueIdentifier>{c03b253f-1e55-4b89-ac8a-fd96fe391938}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI">
+      <UniqueIdentifier>{9fcc1786-32bf-4e3e-91f2-959d2782bac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\8. FMOD">
+      <UniqueIdentifier>{80f26c87-1460-4225-82fc-bf1f46f002c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\07. SoundMgr">
+      <UniqueIdentifier>{e77e928b-0b10-421f-9b7c-818c5e8d819e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\7. Resource\Audio">
+      <UniqueIdentifier>{cc3b2670-e2ea-42e8-8ffe-83de12c0b0fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\01. Scene_Title">
+      <UniqueIdentifier>{9b998e8b-34ea-404c-9624-3104e3998f77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\05. BackGround">
+      <UniqueIdentifier>{c514c0c3-1c29-4afe-867d-dd2eeb88aca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\02. Monster">
+      <UniqueIdentifier>{78e226ef-f894-4156-b1f9-86328c32849d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\05. BackGround\AnimBG">
+      <UniqueIdentifier>{1b5bab25-0617-4b3a-892e-80d85bd90070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy">
+      <UniqueIdentifier>{e97b20b9-33fe-42da-9ead-44758ca180b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\05. BackGround\AnimBG\거대한뿌리">
+      <UniqueIdentifier>{779d3b52-1365-41b9-b217-5fb51624f1a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill">
+      <UniqueIdentifier>{91aee882-d84c-4df7-8a16-39943a10cd8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\08. UIMgr">
+      <UniqueIdentifier>{bba60d2b-5890-409f-8ee8-2fca5bcda617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI\SkillUI">
+      <UniqueIdentifier>{cfced84f-dc6e-452c-bbf1-21eaad14387e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\01. PhantomBlow">
+      <UniqueIdentifier>{57729f06-0a2d-4529-858b-bb8c1ebcd259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\07. AbstractClass">
+      <UniqueIdentifier>{43202cf6-3098-4cf5-9756-a4a06c5d9b9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\01. Player\SkillStats">
+      <UniqueIdentifier>{2f7ad820-eca9-474a-80d7-18a7b07aca9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\01. Player\PlayerStats">
+      <UniqueIdentifier>{da3b056c-afac-4a7e-8b79-581581374f7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\01. PhantomBlow\PB_Obj">
+      <UniqueIdentifier>{060eade3-b590-4ff0-9c4d-14bc2e0b138c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI\HUDUI">
+      <UniqueIdentifier>{1fb51308-0912-4161-8e29-5af8b25b5608}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI\QuickSlotUI">
+      <UniqueIdentifier>{15c858b8-7468-44cc-b640-1d80d8c899dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\01. Player\QuickStats">
+      <UniqueIdentifier>{49a6e8c7-3964-4ebd-929f-35c0cab02f5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\00. HitEffect">
+      <UniqueIdentifier>{e039ccea-88a7-4463-aec8-d6b8bad5cb49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\00. Skill_Obj">
+      <UniqueIdentifier>{c89e4203-e848-45a9-a061-7bf41f03fc2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\02. FlashJump">
+      <UniqueIdentifier>{2a22a473-a2ac-4959-a82a-3e746e107bce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="JaeookAPI.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>01. Core\1. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonInclude.h">
+      <Filter>01. Core\2. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec2.h">
+      <Filter>01. Core\2. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>01. Core\2. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>01. Core\4. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>01. Core\4. Obj\Enitity</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>01. Core\3. Manager\01. KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeMgr.h">
+      <Filter>01. Core\3. Manager\04. TimeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>01. Core\3. Manager\03. SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>01. Core\5. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>01. Core\6. Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderMgr.h">
+      <Filter>01. Core\3. Manager\02. RenderMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="JoResource.h">
+      <Filter>01. Core\7. Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="JoTexture.h">
+      <Filter>01. Core\7. Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceMgr.h">
+      <Filter>01. Core\3. Manager\05. ResourceMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="JoBmp.h">
+      <Filter>01. Core\7. Resource\Bmp</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>01. Core\2. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionMgr.h">
+      <Filter>01. Core\3. Manager\06. CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>01. Core\8. Component\01. Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>01. Core\8. Component\01. Animator\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>01. Core\4. Obj\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>01. Core\8. Component\02. Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>01. Core\8. Component\03. Rigidbody</Filter>
+    </ClInclude>
+    <ClInclude Include="MainCamera.h">
+      <Filter>01. Core\2. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MyFmod.h">
+      <Filter>01. Core\8. FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundMgr.h">
+      <Filter>01. Core\3. Manager\07. SoundMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>01. Core\7. Resource\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Title.h">
+      <Filter>02. Contents\03. Scene\01. Scene_Title</Filter>
+    </ClInclude>
+    <ClInclude Include="joObject.h">
+      <Filter>01. Core\2. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>02. Contents\01. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>02. Contents\05. BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimBG.h">
+      <Filter>02. Contents\05. BackGround\AnimBG</Filter>
+    </ClInclude>
+    <ClInclude Include="GiantRootBG.h">
+      <Filter>02. Contents\05. BackGround\AnimBG\거대한뿌리</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>02. Contents\04. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Enrollable.h">
+      <Filter>02. Contents\07. AbstractClass</Filter>
+    </ClInclude>
+    <ClInclude Include="UIMgr.h">
+      <Filter>01. Core\3. Manager\08. UIMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillUI.h">
+      <Filter>02. Contents\04. UI\SkillUI</Filter>
+    </ClInclude>
+    <ClInclude Include="PhantomBlow.h">
+      <Filter>02. Contents\06. Skill\01. PhantomBlow</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillStats.h">
+      <Filter>02. Contents\01. Player\SkillStats</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStats.h">
+      <Filter>02. Contents\01. Player\PlayerStats</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>02. Contents\06. Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="HudUI.h">
+      <Filter>02. Contents\04. UI\HUDUI</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickSlotUI.h">
+      <Filter>02. Contents\04. UI\QuickSlotUI</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickStats.h">
+      <Filter>02. Contents\01. Player\QuickStats</Filter>
+    </ClInclude>
+    <ClInclude Include="MovableUI.h">
+      <Filter>02. Contents\04. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PB_Obj.h">
+      <Filter>02. Contents\06. Skill\01. PhantomBlow\PB_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="HitEffect.h">
+      <Filter>02. Contents\06. Skill\00. HitEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill_Obj.h">
+      <Filter>02. Contents\06. Skill\00. Skill_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="FJ_Obj.h">
+      <Filter>02. Contents\06. Skill\02. FlashJump</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="JaeookAPI.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>01. Core\1. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec2.cpp">
+      <Filter>01. Core\2. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>01. Core\4. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>01. Core\4. Obj\Enitity</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>01. Core\3. Manager\01. KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeMgr.cpp">
+      <Filter>01. Core\3. Manager\04. TimeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>01. Core\3. Manager\03. SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>01. Core\5. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>01. Core\6. Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderMgr.cpp">
+      <Filter>01. Core\3. Manager\02. RenderMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="JoResource.cpp">
+      <Filter>01. Core\7. Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="JoTexture.cpp">
+      <Filter>01. Core\7. Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceMgr.cpp">
+      <Filter>01. Core\3. Manager\05. ResourceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="JoBmp.cpp">
+      <Filter>01. Core\7. Resource\Bmp</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMgr.cpp">
+      <Filter>01. Core\3. Manager\06. CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>01. Core\8. Component\01. Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>01. Core\8. Component\01. Animator\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>01. Core\4. Obj\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>01. Core\8. Component\02. Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>01. Core\8. Component\03. Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="MainCamera.cpp">
+      <Filter>01. Core\2. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="MyFmod.cpp">
+      <Filter>01. Core\8. FMOD</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundMgr.cpp">
+      <Filter>01. Core\3. Manager\07. SoundMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>01. Core\7. Resource\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Title.cpp">
+      <Filter>02. Contents\03. Scene\01. Scene_Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>02. Contents\01. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>02. Contents\05. BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimBG.cpp">
+      <Filter>02. Contents\05. BackGround\AnimBG</Filter>
+    </ClCompile>
+    <ClCompile Include="GiantRootBG.cpp">
+      <Filter>02. Contents\05. BackGround\AnimBG\거대한뿌리</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>02. Contents\04. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIMgr.cpp">
+      <Filter>01. Core\3. Manager\08. UIMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillUI.cpp">
+      <Filter>02. Contents\04. UI\SkillUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PhantomBlow.cpp">
+      <Filter>02. Contents\06. Skill\01. PhantomBlow</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillStats.cpp">
+      <Filter>02. Contents\01. Player\SkillStats</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStats.cpp">
+      <Filter>02. Contents\01. Player\PlayerStats</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>02. Contents\06. Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="HudUI.cpp">
+      <Filter>02. Contents\04. UI\HUDUI</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickSlotUI.cpp">
+      <Filter>02. Contents\04. UI\QuickSlotUI</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickStats.cpp">
+      <Filter>02. Contents\01. Player\QuickStats</Filter>
+    </ClCompile>
+    <ClCompile Include="MovableUI.cpp">
+      <Filter>02. Contents\04. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PB_Obj.cpp">
+      <Filter>02. Contents\06. Skill\01. PhantomBlow\PB_Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="HitEffect.cpp">
+      <Filter>02. Contents\06. Skill\00. HitEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill_Obj.cpp">
+      <Filter>02. Contents\06. Skill\00. Skill_Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="FJ_Obj.cpp">
+      <Filter>02. Contents\06. Skill\02. FlashJump</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="JaeookAPI.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="JaeookAPI.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

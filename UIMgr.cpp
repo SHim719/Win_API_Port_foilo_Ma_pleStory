@@ -2,6 +2,8 @@
 #include "SkillUI.h"
 #include "HudUI.h"
 #include "QuickSlotUI.h"
+#include "InvenUI.h"
+#include "EquipUI.h"
 
 
 UI* UIMgr::m_arrUIs[] = {};
@@ -24,8 +26,20 @@ void UIMgr::Initialize()
 	pQuickSlotUI->SetSkillUI(pSkillUI);
 	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot] = pQuickSlotUI;
 
+	InvenUI* pInvenUI = new InvenUI;
+	pInvenUI->Initialize();
+	m_arrUIs[(UINT)UI_Enums::UI_Inven] = pInvenUI;
+
+	EquipUI* pEquipUI = new EquipUI;
+	pEquipUI->Initialize();
+	m_arrUIs[(UINT)UI_Enums::UI_Equip] = pEquipUI;
+
+	pInvenUI->SetEquipUI(pEquipUI);
+	pEquipUI->SetInvenUI(pInvenUI);
 
 	m_inActiveUIList.push_back(pSkillUI);
+	m_inActiveUIList.push_back(pInvenUI);
+	m_inActiveUIList.push_back(pEquipUI);
 }
 
 void UIMgr::Update()
@@ -107,7 +121,6 @@ void UIMgr::UIkeyCheck()
 
 	if (activeUI)
 	{
-		// UI Open Sound
 		m_ActiveUIList.push_back(activeUI);
 	}
 		

@@ -12,6 +12,8 @@ enum class Restriction
 class SkillStats;
 class PlayerStats;
 class QuickStats;
+class Inventory;
+class EquipStats;
 
 class Player :
     public GameObject
@@ -89,6 +91,8 @@ private:
 	PlayerStats* m_pPlayerStats;
 	SkillStats* m_pSkillStats;
 	QuickStats* m_pQuickStats;
+	Inventory* m_pInventory;
+	EquipStats* m_pEquipStats;
 
 private:
 	bool m_bDownJumping;

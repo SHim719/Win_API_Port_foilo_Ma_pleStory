@@ -146,6 +146,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="AnimBG.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Bottom.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionMgr.h" />
@@ -154,14 +155,19 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Equipable.h" />
+    <ClInclude Include="EquipStats.h" />
+    <ClInclude Include="EquipUI.h" />
     <ClInclude Include="FJ_Obj.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GiantRootBG.h" />
+    <ClInclude Include="Hat.h" />
     <ClInclude Include="HitEffect.h" />
     <ClInclude Include="HudUI.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="InvenUI.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Item_Obj.h" />
     <ClInclude Include="JaeookAPI.h" />
     <ClInclude Include="JoBmp.h" />
     <ClInclude Include="joObject.h" />
@@ -186,6 +192,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="Scene_Title.h" />
+    <ClInclude Include="Shoes.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="SkillStats.h" />
     <ClInclude Include="SkillUI.h" />
@@ -193,10 +200,12 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="SoundMgr.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeMgr.h" />
+    <ClInclude Include="Top.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="UIMgr.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -204,18 +213,24 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="AnimBG.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="Bottom.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Equipable.cpp" />
+    <ClCompile Include="EquipStats.cpp" />
+    <ClCompile Include="EquipUI.cpp" />
     <ClCompile Include="FJ_Obj.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GiantRootBG.cpp" />
+    <ClCompile Include="Hat.cpp" />
     <ClCompile Include="HitEffect.cpp" />
     <ClCompile Include="HudUI.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="InvenUI.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Item_Obj.cpp" />
     <ClCompile Include="JaeookAPI.cpp" />
     <ClCompile Include="JoBmp.cpp" />
     <ClCompile Include="JoResource.cpp" />
@@ -238,15 +253,18 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="Scene_Title.cpp" />
+    <ClCompile Include="Shoes.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SkillStats.cpp" />
     <ClCompile Include="SkillUI.cpp" />
     <ClCompile Include="Skill_Obj.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
+    <ClCompile Include="Top.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="UIMgr.cpp" />
     <ClCompile Include="Vec2.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="JaeookAPI.rc" />

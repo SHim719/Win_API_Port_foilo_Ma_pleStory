@@ -7,6 +7,8 @@ enum UI_Enums
 	UI_QuickSlot,
 	UI_Exp,
 	UI_Skill,
+	UI_Inven,
+	UI_Equip,
 	UI_End,
 
 };

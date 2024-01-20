@@ -1,5 +1,7 @@
 #pragma once
+
 #include "MovableUI.h"
+#include "Inventory.h"
 
 class EquipUI;
 class Item;
@@ -17,6 +19,7 @@ public:
 	void Release() override;
 
 	void OnInActive() override;
+	void OnActive() override;
 
 	bool KeyCheck() override { return KeyMgr::GetKeyDown(eKeyCode::I); }
 
@@ -24,15 +27,15 @@ public:
 
 	void Set_PickingItem_null();
 
-	void SetEquipUI(EquipUI* ui) { m_equipUI = ui; }
+	void SetEquipUI(EquipUI* ui) { m_pEquipUI = ui; }
 
 	void SetSlotEmpty();
+
+	void SetInventory(Inventory* _pInven) { m_pInventory = _pInven; }
 private:
 	void initialize_InvenTab();
 	void initialize_Slots();
 
-	void check_focused();
-	void check_moveTab();
 	void check_InvenTab();
 	void check_Slots();
 
@@ -40,11 +43,15 @@ private:
 	void render_Slots() const;
 	void render_Picking() const;
 private:
-	JoTexture* m_ButtonTex;
+	Inventory* m_pInventory;
 
-	Item* m_pPickingItem;
+	JoTexture* m_pButtonTex;
 
-	EquipUI* m_equipUI;
+	Item*	m_pPickingItem;
+	UINT	m_iPickItemCount;
+	bool	m_bThisFramePicking;
+
+	EquipUI* m_pEquipUI;
 
 	ItemType m_eFocused;
 
@@ -56,5 +63,7 @@ private:
 	UINT m_iSlotGapX;
 	UINT m_iSlotGapY;
 	UINT m_iPickingIdx;
+
+	
 };
 

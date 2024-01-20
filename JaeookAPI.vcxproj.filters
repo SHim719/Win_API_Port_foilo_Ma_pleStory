@@ -169,8 +169,35 @@
     <Filter Include="02. Contents\08. Item">
       <UniqueIdentifier>{db0392b9-d8bf-479c-b7fa-ee992c48da6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\01. Player\Inventory">
+      <UniqueIdentifier>{c02f91ac-2aa9-463d-8108-81c0557b6775}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI\EquipUI">
+      <UniqueIdentifier>{d15e96f5-bea9-4bfe-b9a5-393e20e18ccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\01. Player\EquipStats">
+      <UniqueIdentifier>{4c7df758-bbfb-4ce5-93f0-3e464478d3f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\00. Item_Obj">
+      <UniqueIdentifier>{7a0688a1-08d1-42cb-a023-131a1454a98c}</UniqueIdentifier>
+    </Filter>
     <Filter Include="02. Contents\08. Item\01. Equipable">
       <UniqueIdentifier>{fd438243-a538-4ca3-8e3e-bdac3c00158a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\01. Equipable\01. Hat">
+      <UniqueIdentifier>{0c96dda4-95db-4860-bdfc-c33848c9f062}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\01. Equipable\02. Top">
+      <UniqueIdentifier>{3e3047a8-bcbd-4149-8233-3ccf481f4d59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\01. Equipable\03. Bottom">
+      <UniqueIdentifier>{eebe15e4-3221-4214-a1bd-652d2df6a5c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\01. Equipable\04. Shoes">
+      <UniqueIdentifier>{b02f52cf-d4c2-4f9b-8b83-db4cf58ec6cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\01. Equipable\05. Weapon">
+      <UniqueIdentifier>{ac58a994-7dbb-48ee-bcc5-8b26201abc96}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -342,6 +369,33 @@
     <ClInclude Include="Equipable.h">
       <Filter>02. Contents\08. Item\01. Equipable</Filter>
     </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>02. Contents\01. Player\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipUI.h">
+      <Filter>02. Contents\04. UI\EquipUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipStats.h">
+      <Filter>02. Contents\01. Player\EquipStats</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Obj.h">
+      <Filter>02. Contents\08. Item\00. Item_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Hat.h">
+      <Filter>02. Contents\08. Item\01. Equipable\01. Hat</Filter>
+    </ClInclude>
+    <ClInclude Include="Top.h">
+      <Filter>02. Contents\08. Item\01. Equipable\02. Top</Filter>
+    </ClInclude>
+    <ClInclude Include="Bottom.h">
+      <Filter>02. Contents\08. Item\01. Equipable\03. Bottom</Filter>
+    </ClInclude>
+    <ClInclude Include="Shoes.h">
+      <Filter>02. Contents\08. Item\01. Equipable\04. Shoes</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>02. Contents\08. Item\01. Equipable\05. Weapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -487,6 +541,33 @@
     </ClCompile>
     <ClCompile Include="Equipable.cpp">
       <Filter>02. Contents\08. Item\01. Equipable</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>02. Contents\01. Player\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipUI.cpp">
+      <Filter>02. Contents\04. UI\EquipUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipStats.cpp">
+      <Filter>02. Contents\01. Player\EquipStats</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Obj.cpp">
+      <Filter>02. Contents\08. Item\00. Item_Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Hat.cpp">
+      <Filter>02. Contents\08. Item\01. Equipable\01. Hat</Filter>
+    </ClCompile>
+    <ClCompile Include="Top.cpp">
+      <Filter>02. Contents\08. Item\01. Equipable\02. Top</Filter>
+    </ClCompile>
+    <ClCompile Include="Bottom.cpp">
+      <Filter>02. Contents\08. Item\01. Equipable\03. Bottom</Filter>
+    </ClCompile>
+    <ClCompile Include="Shoes.cpp">
+      <Filter>02. Contents\08. Item\01. Equipable\04. Shoes</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>02. Contents\08. Item\01. Equipable\05. Weapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

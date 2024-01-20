@@ -13,6 +13,10 @@
 #include "FJ_Obj.h"
 #include "joObject.h"
 #include "SoundMgr.h"
+#include "Inventory.h"
+#include "InvenUI.h"
+#include "EquipStats.h"
+#include "EquipUI.h"
 
 Player::Player()
 	: m_bDownJumping(false)
@@ -31,6 +35,8 @@ Player::Player()
 	, m_bChannelingIdle(false)
 	, m_bChannelingWalk(false)
 	, m_bChannelingAir(false)
+	, m_pInventory(nullptr)
+	, m_pEquipStats(nullptr)
 {
 
 }
@@ -51,7 +57,13 @@ void Player::Initialize()
 
 	m_pQuickStats = new QuickStats;
 	static_cast<QuickSlotUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_QuickSlot))->SetQuickStats(m_pQuickStats);
-	
+
+	m_pInventory = new Inventory;
+	static_cast<InvenUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Inven))->SetInventory(m_pInventory);
+
+	m_pEquipStats = new EquipStats;
+	static_cast<EquipUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Equip))->Setm_pInventory);
+
 	m_pCollider = new Collider;
 	m_pCollider->SetOwner(this);
 	m_pCollider->SetSize(Vec2(20.f, 50.f));
@@ -167,6 +179,8 @@ void Player::Release()
 	Safe_Delete<SkillStats*>(m_pSkillStats);
 	Safe_Delete<PlayerStats*>(m_pPlayerStats);
 	Safe_Delete<QuickStats*>(m_pQuickStats);
+	Safe_Delete<Inventory*>(m_pInventory);
+	Safe_Delete<EquipStats*>(m_pEquipStats);
 }
 
 void Player::Init_Anim()

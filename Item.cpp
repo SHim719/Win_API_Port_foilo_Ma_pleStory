@@ -1,8 +1,8 @@
 #include "Item.h"
 
-Item::Item()
+Item::Item(const ItemType& type)
 	: m_pItemTex(nullptr)
-	, m_eItemType(ItemType::IT_END)
+	, m_eItemType(type)
 { 
 }
 

@@ -8,6 +8,7 @@
 
 struct Slot
 {
+	static Slot empty_Slot;
 	Item* item;
 	UINT iCount;
 
@@ -32,7 +33,13 @@ public:
 	void SetSlotEmpty(const ItemType& tab, const UINT& idx) { m_arrInventory[(UINT)tab][idx].Clear(); }
 	const Slot& GetSlot(const ItemType& type, const UINT& idx) { return m_arrInventory[(UINT)type][idx]; }
 
+	void Add_Meso(const int& _iMeso) { m_iMeso += _iMeso; }
+	const int& Get_Meso() const { return m_iMeso; }
+
+	Slot* Get_Inventory(const UINT& _iType) { return m_arrInventory[_iType]; }
 private:
 	Slot m_arrInventory[(UINT)ItemType::IT_END][INVEN_MAX];
+
+	int m_iMeso;
 };
 

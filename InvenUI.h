@@ -29,9 +29,11 @@ public:
 
 	void SetEquipUI(EquipUI* ui) { m_pEquipUI = ui; }
 
-	void SetSlotEmpty();
+	void Picking_Slot_Empty();
 
 	void SetInventory(Inventory* _pInven) { m_pInventory = _pInven; }
+
+	void Insert_Item(Item* _pItem, UINT _iCount);
 private:
 	void initialize_InvenTab();
 	void initialize_Slots();
@@ -42,6 +44,8 @@ private:
 	void render_InvenTab() const;
 	void render_Slots() const;
 	void render_Picking() const;
+
+	void Check_DoubleClick();
 private:
 	Inventory* m_pInventory;
 
@@ -64,6 +68,8 @@ private:
 	UINT m_iSlotGapY;
 	UINT m_iPickingIdx;
 
-	
+	bool m_bDoubleClickStart;
+	float m_fDoubleClickCheck;
+	bool m_bDoubleClicked;
 };
 

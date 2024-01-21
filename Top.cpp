@@ -3,7 +3,7 @@
 Top::Top()
 	: Equipable(EquipType::ET_TOP)
 {
-	SetName(L"Top");
+	SetName(L"¿¡Å×¸£³Ú ½ÃÇÁ¼ÅÃ÷");
 }
 
 Top::~Top()
@@ -12,7 +12,7 @@ Top::~Top()
 
 void Top::Initialize()
 {
-	m_pItemTex = ResourceMgr::Load<JoTexture>(L"Top", L"Resource/Item/Top.png");
+	m_pItemTex = ResourceMgr::Load<JoTexture>(L"Top", L"Resources/Item/Top.png");
 
 	m_tEquipInfo.iStr = 50;
 	m_tEquipInfo.iDex = 50;

@@ -17,6 +17,9 @@
 #include "InvenUI.h"
 #include "EquipStats.h"
 #include "EquipUI.h"
+#include "ItemDatabase.h"
+#include "StatUI.h"
+#include "ShopUI.h"
 
 Player::Player()
 	: m_bDownJumping(false)
@@ -54,6 +57,7 @@ void Player::Initialize()
 	static_cast<SkillUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Skill))->SetSkillStats(m_pSkillStats);
 
 	m_pPlayerStats = new PlayerStats;
+	static_cast<StatUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Stat))->SetPlayerStats(m_pPlayerStats);
 
 	m_pQuickStats = new QuickStats;
 	static_cast<QuickSlotUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_QuickSlot))->SetQuickStats(m_pQuickStats);
@@ -62,7 +66,10 @@ void Player::Initialize()
 	static_cast<InvenUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Inven))->SetInventory(m_pInventory);
 
 	m_pEquipStats = new EquipStats;
-	static_cast<EquipUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Equip))->Setm_pInventory);
+	static_cast<EquipUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Equip))->SetEquipStats(m_pEquipStats);
+	m_pEquipStats->Set_PlayerStats(m_pPlayerStats);
+
+	static_cast<ShopUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Shop))->Set_Inventory(m_pInventory);
 
 	m_pCollider = new Collider;
 	m_pCollider->SetOwner(this);
@@ -90,8 +97,7 @@ void Player::Initialize()
 
 void Player::Update()
 {
-	if (KeyMgr::GetKeyDown(eKeyCode::N))
-		SetPos({ 300, 200 });
+	debug_check();
 
 	if (m_bDownJumping)
 	{
@@ -667,5 +673,20 @@ void Player::Skill_End()
 	m_cRestriction = 0;
 
 	m_fMoveSpeed = 250.f;
+}
+
+void Player::debug_check()
+{
+	if (KeyMgr::GetKeyDown(eKeyCode::NUMPAD0))
+	{
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Hat"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Top"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Bottom"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Shoes"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Weapon"), 1);
+	}
+
+	if (KeyMgr::GetKeyDown(eKeyCode::N))
+		SetPos({ 300, 200 });
 }
 

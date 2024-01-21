@@ -3,13 +3,19 @@
 #include "EquipStats.h"
 #include "RenderMgr.h"
 #include "UIMgr.h"
+#include "InvenUI.h"
+#include "TimeMgr.h"
 
 EquipUI::EquipUI()
 	: m_pPickingItem(nullptr)
 	, m_pInvenUI(nullptr)
 	, m_pEquipStats(nullptr)
 	, m_bThisFramePicking(false)
+	, m_bDoubleClickStart(false)
+	, m_fDoubleClickCheck(false)
+	, m_bDoubleClicked(false)
 {
+	SetName(L"EquipUI");
 }
 
 EquipUI::~EquipUI()
@@ -27,9 +33,20 @@ void EquipUI::Initialize()
 
 void EquipUI::Update()
 {
-	m_vPrevMousePos = m_vMousePos;
+	if (m_vPrevMousePos != m_vMousePos)
+	{
+		m_vPrevMousePos = m_vMousePos;
+		m_bDoubleClickStart = false;
+	}
+
 	m_vMousePos = KeyMgr::GetMousePos();
 	m_bThisFramePicking = false;
+	m_bDoubleClicked = false;
+
+	if (m_bDoubleClickStart)
+	{
+		m_fDoubleClickCheck += TimeMgr::DeltaTime();
+	}
 
 	if (m_bIsMoving)
 	{
@@ -41,13 +58,19 @@ void EquipUI::Update()
 	{
 		if (UIMgr::IsMouseUsed() == false)
 		{
-			Check_Focused();
+			bool bFocused = Check_Focused();
+			UIMgr::SetMouseUsed(bFocused);
 			if (UIMgr::IsMouseUsed() == true)
 			{
 				Check_moveTab(18.0f);
 				check_Slots();
 			}
+
+			Item* pInvenPicking = m_pInvenUI->GetPickingItem();
+			if (pInvenPicking != nullptr && dynamic_cast<Equipable*>(pInvenPicking))
+				m_pInvenUI->Set_PickingItem_null();
 		}
+		
 	}
 	else if (KeyMgr::GetKeyUp(eKeyCode::LButton))
 	{
@@ -92,6 +115,12 @@ void EquipUI::Set_PickingItem_null()
 		m_pPickingItem = nullptr;
 }
 
+void EquipUI::Equip(Equipable* const pEquip)
+{
+	if (m_pEquipStats)
+		m_pEquipStats->Equip(pEquip);
+}
+
 void EquipUI::UnEquip(const EquipType& type)
 {
 	if (m_pEquipStats)
@@ -100,11 +129,61 @@ void EquipUI::UnEquip(const EquipType& type)
 
 void EquipUI::initialize_SlotPos()
 {
+	m_arrSlotPos[(UINT)EquipType::ET_HEAD] = Vec2(100.0f, 50.0f);
+	m_arrSlotPos[(UINT)EquipType::ET_TOP] = Vec2(100.0f, 175.0f);
+	m_arrSlotPos[(UINT)EquipType::ET_BOTTOM] = Vec2(100.0f, 218.0f);
+	m_arrSlotPos[(UINT)EquipType::ET_SHOES] = Vec2(100.0f, 257.0f);
+	m_arrSlotPos[(UINT)EquipType::ET_WEAPON] = Vec2(59.0f, 177.0f);
 }
 
-void EquipUI::check_Slots()
+void EquipUI::check_Slots() 
 {
+	Vec2 pos = m_vPos;
+
+	for (UINT i = 0; i < (UINT)EquipType::ET_END; ++i)
+	{
+		const Vec2& slotPos = pos + m_arrSlotPos[i];
+
+		if (m_vMousePos.x >= slotPos.x
+			&& m_vMousePos.y >= slotPos.y
+			&& m_vMousePos.x <= slotPos.x + 32.0f
+			&& m_vMousePos.y <= slotPos.y + 32.0f)
+		{
+			Check_DoubleClick();
+
+			Item* pInvenPicking = m_pInvenUI->GetPickingItem();
+
+			if (m_pPickingItem == nullptr)
+			{
+				// 집은 것이 하나도 없다.
+				if (pInvenPicking == nullptr)
+				{
+					SoundMgr::Play(L"Slot_Click");
+					m_pPickingItem = m_pEquipStats->GetEquipItemFromSlot(i);
+					m_bThisFramePicking = true;
+				}
+				else // 인벤토리 UI에 집은 것이 있다.
+				{
+					Equipable* equip = dynamic_cast<Equipable*>(pInvenPicking);
+					if (equip == nullptr || equip->GetEquipType() != (EquipType)i)
+						return;
+					SoundMgr::Play(L"Released_Picked");
+					m_pEquipStats->Equip(equip);
+					m_pInvenUI->Picking_Slot_Empty();
+				}
+			}
+			else if (m_bDoubleClicked)
+			{
+				SoundMgr::Play(L"Released_Picked");
+				Item* equipItem = m_pEquipStats->GetEquipItemFromSlot(i);
+				m_pInvenUI->Insert_Item(equipItem, 1);
+				m_pEquipStats->UnEquip((EquipType)i);
+				Set_PickingItem_null();
+			}
+		}
+	}
 }
+
 
 void EquipUI::render_Slots() const
 {
@@ -140,4 +219,26 @@ void EquipUI::render_Picking() const
 		, m_vMousePos.y + 32.f
 		, 0.5f);
 }
+
+void EquipUI::Check_DoubleClick()
+{
+	if (!m_bDoubleClickStart)
+	{
+		m_bDoubleClickStart = true;
+		return;
+	}
+
+
+	if (m_fDoubleClickCheck <= 1.f)
+	{
+		m_fDoubleClickCheck = 0.f;
+		m_bDoubleClicked = true;
+		m_bDoubleClickStart = false;
+	}
+	else
+	{
+		m_fDoubleClickCheck = 0.f;
+		m_bDoubleClickStart = false;
+	}
 }
+

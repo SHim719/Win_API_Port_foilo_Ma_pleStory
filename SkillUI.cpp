@@ -212,8 +212,10 @@ void SkillUI::Check_Slots()
 				return;
 
 			// Picking Sound Play
+			SoundMgr::Play(L"Slot_Click");
 			m_pPicking = vecSkills[i];
 			m_bThisFramePicking = true;
+			return;
 		}
 		
 	}
@@ -236,13 +238,14 @@ void SkillUI::Check_Button()
 			&& m_vMousePos.x <= vLeftTop.x + 14.f
 			&& m_vMousePos.y <= vLeftTop.y + 12.f)
 		{
-			// StatsUp Sound Play
-			m_pSkillStats->AddPoint(-1);
 			if (!vecSkills[i]->IsMaxPoint())
 			{
+				// StatsUp Sound Play
+				SoundMgr::Play(L"Bt_Click");
+				m_pSkillStats->AddPoint(-1);
 				vecSkills[i]->AddPoint();
-				return;
 			}
+			return;
 		}
 
 	}

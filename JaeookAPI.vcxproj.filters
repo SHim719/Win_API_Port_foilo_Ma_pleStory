@@ -133,9 +133,6 @@
     <Filter Include="02. Contents\06. Skill\01. PhantomBlow">
       <UniqueIdentifier>{57729f06-0a2d-4529-858b-bb8c1ebcd259}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Contents\07. AbstractClass">
-      <UniqueIdentifier>{43202cf6-3098-4cf5-9756-a4a06c5d9b9e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. Contents\01. Player\SkillStats">
       <UniqueIdentifier>{2f7ad820-eca9-474a-80d7-18a7b07aca9d}</UniqueIdentifier>
     </Filter>
@@ -198,6 +195,30 @@
     </Filter>
     <Filter Include="02. Contents\08. Item\01. Equipable\05. Weapon">
       <UniqueIdentifier>{ac58a994-7dbb-48ee-bcc5-8b26201abc96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\09. ItemDatabase">
+      <UniqueIdentifier>{0202ffa4-8522-47e4-ae7f-75f4f02e9f29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI\StatUI">
+      <UniqueIdentifier>{a22f0d49-9978-41f3-9942-17ec7ed9720a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\00. AbstractClass">
+      <UniqueIdentifier>{43202cf6-3098-4cf5-9756-a4a06c5d9b9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\07. Npc">
+      <UniqueIdentifier>{b6cf6c75-8b69-452e-a479-aa6cbaef0a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\07. Npc\01. Girl">
+      <UniqueIdentifier>{bc2082a7-65aa-40fa-af46-f7761dff6e41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\07. Npc\02. ShopBoy">
+      <UniqueIdentifier>{992038fc-bd0b-46d7-969a-588061c26ef3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI\ShopUI">
+      <UniqueIdentifier>{244694e0-7def-4b50-9c37-13d1f3fde4c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\09. Shop">
+      <UniqueIdentifier>{11190446-5f64-4732-a025-8de901b7d604}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -316,7 +337,7 @@
       <Filter>02. Contents\04. UI</Filter>
     </ClInclude>
     <ClInclude Include="Enrollable.h">
-      <Filter>02. Contents\07. AbstractClass</Filter>
+      <Filter>02. Contents\00. AbstractClass</Filter>
     </ClInclude>
     <ClInclude Include="UIMgr.h">
       <Filter>01. Core\3. Manager\08. UIMgr</Filter>
@@ -395,6 +416,21 @@
     </ClInclude>
     <ClInclude Include="Weapon.h">
       <Filter>02. Contents\08. Item\01. Equipable\05. Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDatabase.h">
+      <Filter>01. Core\3. Manager\09. ItemDatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="StatUI.h">
+      <Filter>02. Contents\04. UI\StatUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Girl.h">
+      <Filter>02. Contents\07. Npc\01. Girl</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopBoy.h">
+      <Filter>02. Contents\07. Npc\02. ShopBoy</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopUI.h">
+      <Filter>02. Contents\04. UI\ShopUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -568,6 +604,21 @@
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>02. Contents\08. Item\01. Equipable\05. Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemDatabase.cpp">
+      <Filter>01. Core\3. Manager\09. ItemDatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="StatUI.cpp">
+      <Filter>02. Contents\04. UI\StatUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Girl.cpp">
+      <Filter>02. Contents\07. Npc\01. Girl</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopBoy.cpp">
+      <Filter>02. Contents\07. Npc\02. ShopBoy</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopUI.cpp">
+      <Filter>02. Contents\04. UI\ShopUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

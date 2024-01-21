@@ -10,8 +10,7 @@ unordered_map<UINT64, bool> CollisionMgr::m_mapCollision{};
 
 void CollisionMgr::Initialize()
 {
-	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_PLATFORM, true);
-	SetCollisionEnabled(eLayerType::LT_MONSTER, eLayerType::LT_EFFECT, true);
+	//SetCollisionEnabled(eLayerType::LT_MONSTER, eLayerType::LT_EFFECT, true);
 }
 
 void CollisionMgr::Update()

@@ -4,6 +4,7 @@
 #include "UIMgr.h"
 #include "Equipable.h"
 #include "EquipUI.h"
+#include "TimeMgr.h"
 
 InvenUI::InvenUI()
 	: m_pButtonTex(nullptr)
@@ -18,6 +19,9 @@ InvenUI::InvenUI()
 	, m_bThisFramePicking(false)
 	, m_pInventory(nullptr)
 	, m_iPickItemCount(0)
+	, m_bDoubleClickStart(false)
+	, m_fDoubleClickCheck(0.f)
+	, m_bDoubleClicked(false)
 {
 	SetName(L"InvenUI");
 }
@@ -40,9 +44,20 @@ void InvenUI::Initialize()
 
 void InvenUI::Update()
 {
-	m_vPrevMousePos = m_vMousePos;
+	if (m_vPrevMousePos != m_vMousePos)
+	{
+		m_vPrevMousePos = m_vMousePos;
+		m_bDoubleClickStart = false;
+	}
+		
 	m_vMousePos = KeyMgr::GetMousePos();
 	m_bThisFramePicking = false;
+	m_bDoubleClicked = false;
+
+	if (m_bDoubleClickStart)
+	{
+		m_fDoubleClickCheck += TimeMgr::DeltaTime();
+	}
 
 	if (m_bIsMoving)
 	{
@@ -104,8 +119,15 @@ void InvenUI::Set_PickingItem_null()
 		m_pPickingItem = nullptr;
 }
 
-void InvenUI::SetSlotEmpty()
+void InvenUI::Picking_Slot_Empty()
 {
+	m_pInventory->SetSlotEmpty(m_eFocused, m_iPickingIdx);
+}
+
+void InvenUI::Insert_Item(Item* _pItem, UINT _iCount)
+{
+	if (m_pInventory)
+		m_pInventory->Insert_Item(_pItem, _iCount);
 }
 
 void InvenUI::initialize_InvenTab()
@@ -167,6 +189,8 @@ void InvenUI::check_Slots()
 			&& m_vMousePos.x <= slotPos.x + 32.0f
 			&& m_vMousePos.y <= slotPos.y + 32.0f)
 		{
+			Check_DoubleClick();
+
 			Item* pEquipPicking = m_pEquipUI->GetPickingItem();
 			if (m_pPickingItem == nullptr)
 			{
@@ -191,7 +215,7 @@ void InvenUI::check_Slots()
 						return;
 
 					Slot prevSlot = m_pInventory->Insert_ItemToIdx(pEquipPicking, i, 1);
-					const EquipType& type = static_cast<Equipable*>(prevSlot.item)->GetEquipType();
+					const EquipType& type = static_cast<Equipable*>(pEquipPicking)->GetEquipType();
 					m_pEquipUI->UnEquip(type);
 
 					if (prevSlot.item != nullptr)
@@ -204,23 +228,20 @@ void InvenUI::check_Slots()
 					else
 					{
 						SoundMgr::Play(L"Released_Picked");
+						m_pEquipUI->Set_PickingItem_null();
 					}
 				}
 			}
-			else
-			{
-				m_pInventory->Swap_Slot(m_eFocused, m_iPickingIdx, i);
-				Set_PickingItem_null();
-			}
-			/*else if (InputMgr::IsDoubleClicked())
+			// 더블클릭 했을경우 장착
+			else if (m_bDoubleClicked)
 			{
 				switch (m_pPickingItem->GetItemType())
 				{
 				case ItemType::IT_EQUIPABLE:
 				{
 					Equipable* equip = static_cast<Equipable*>(m_pPickingItem);
-					EquipMgr::Equip((UINT)equip->GetEquipType(), m_pPickingItem);
-					InventoryMgr::SetSlotEmpty(m_eFocused, i);
+					m_pEquipUI->Equip(equip);
+					m_pInventory->SetSlotEmpty(m_eFocused, i);
 					Set_PickingItem_null();
 					break;
 				}
@@ -229,7 +250,14 @@ void InvenUI::check_Slots()
 				default:
 					break;
 				}
-			}*/
+				SoundMgr::Play(L"Released_Picked");
+			}
+			else
+			{
+				SoundMgr::Play(L"Released_Picked");
+				m_pInventory->Swap_Slot(m_eFocused, m_iPickingIdx, i);
+				Set_PickingItem_null();
+			}
 			return;
 		}
 	}
@@ -304,4 +332,27 @@ void InvenUI::render_Picking() const
 		, m_vMousePos.x + 32
 		, m_vMousePos.y + 32
 		, 0.5f);
+}
+
+void InvenUI::Check_DoubleClick()
+{
+	if (!m_bDoubleClickStart)
+	{
+		m_bDoubleClickStart = true;
+		return;
+	}
+		
+
+	if (m_fDoubleClickCheck <= 1.f)
+	{
+		m_fDoubleClickCheck = 0.f;
+		m_bDoubleClicked = true;
+		m_bDoubleClickStart = false;
+	}
+	else
+	{
+		m_fDoubleClickCheck = 0.f;
+		m_bDoubleClickStart = false;
+	}
+
 }

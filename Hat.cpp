@@ -3,7 +3,7 @@
 Hat::Hat()
 	: Equipable(EquipType::ET_HEAD)
 {
-	SetName(L"Hat");
+	SetName(L"에테르넬 시프반다나");
 }
 
 Hat::~Hat()
@@ -12,7 +12,7 @@ Hat::~Hat()
 
 void Hat::Initialize()
 {
-	m_pItemTex = ResourceMgr::Load<JoTexture>(L"Hat", L"Resource/Item/Hat.png");
+	m_pItemTex = ResourceMgr::Load<JoTexture>(L"Hat", L"Resources/Item/Hat.png");
 
 	m_tEquipInfo.iStr = 50;
 	m_tEquipInfo.iDex = 50;

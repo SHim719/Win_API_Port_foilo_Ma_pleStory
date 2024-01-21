@@ -8,6 +8,7 @@
 #include "CollisionMgr.h"
 #include "MyFmod.h"
 #include "UIMgr.h"
+#include "ItemDatabase.h"
 
 MainGame::MainGame()
 	: m_hwnd(nullptr)
@@ -51,6 +52,7 @@ void MainGame::Initialize(HWND _hwnd, UINT _width, UINT _height)
 	SceneMgr::Initialize();
 	SoundMgr::Intialize();
 	CollisionMgr::Initialize();
+	ItemDatabase::Initialize();
 
 	m_pCursorTex = ResourceMgr::Find<JoTexture>(L"Cursor");
 }

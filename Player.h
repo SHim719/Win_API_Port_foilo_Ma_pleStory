@@ -87,6 +87,8 @@ private:
 	void CheckYellowGround();
 
 	void Skill_End();
+
+	void debug_check();
 private:
 	PlayerStats* m_pPlayerStats;
 	SkillStats* m_pSkillStats;

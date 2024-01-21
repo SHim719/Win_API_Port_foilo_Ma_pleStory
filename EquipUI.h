@@ -20,7 +20,7 @@ public:
 	void OnActive()		override;
 	void OnInActive()	override;
 
-	bool KeyCheck() const { return KeyMgr::GetKeyDown(eKeyCode::E); }
+	bool KeyCheck() override { return KeyMgr::GetKeyDown(eKeyCode::E); }
 
 	Item* GetPickingItem() const { return m_pPickingItem; };
 	void Set_PickingItem_null();
@@ -28,6 +28,7 @@ public:
 	void SetInvenUI(InvenUI* _pInvenUI) { m_pInvenUI = _pInvenUI; }
 	void SetEquipStats(EquipStats* _pEquipStats) { m_pEquipStats = _pEquipStats; }
 
+	void Equip(Equipable* const pEquip);
 	void UnEquip(const EquipType& type);
 private:
 	void initialize_SlotPos();
@@ -36,11 +37,16 @@ private:
 
 	void render_Slots() const;
 	void render_Picking() const;
+
+	void Check_DoubleClick();
 private:
 	EquipStats* m_pEquipStats;
 	Item* m_pPickingItem;
 	InvenUI* m_pInvenUI;
 	Vec2 m_arrSlotPos[(UINT)EquipType::ET_END];
-	bool m_bThisFramePicking
+	bool m_bThisFramePicking;
+	bool m_bDoubleClickStart;
+	float m_fDoubleClickCheck;
+	bool m_bDoubleClicked;
 };
 

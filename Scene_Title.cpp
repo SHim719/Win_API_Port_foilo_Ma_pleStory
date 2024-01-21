@@ -4,6 +4,8 @@
 #include "GiantRootBG.h"
 #include "ResourceMgr.h"
 #include "Player.h"
+#include "Girl.h"
+#include "ShopBoy.h"
 
 
 Scene_Title::Scene_Title()
@@ -40,9 +42,8 @@ void Scene_Title::Initialize()
 	m_pixelDC = ResourceMgr::Find<JoBmp>(L"GiantRoot_Pixel")->Get_BmpDC();
 	pPlayer->SetPixelDC(m_pixelDC);
 
-
-	// minx 233
-	// maxx 2283
+	Girl* pGirl = Instantiate<Girl>(eLayerType::LT_NPC);
+	ShopBoy* pShopBoy = Instantiate<ShopBoy>(eLayerType::LT_NPC);
 }
 
 

@@ -28,13 +28,18 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"BG_GiantRoot4", L"Resources/Map/Rootabyss/GiantRoot/GiantRoot4.png");
 	ResourceMgr::Load<JoBmp>(L"GiantRoot_Pixel", L"Resources/Map/Rootabyss/GiantRoot/GiantRoot_Pixel.bmp");
 
+	ResourceMgr::Load<JoTexture>(L"의문의 소녀", L"Resources/Npc/소녀.png");
+	ResourceMgr::Load<JoTexture>(L"오코", L"Resources/Npc/오코.png");
 
 	ResourceMgr::Load<JoTexture>(L"PhantomBlow", L"Resources/Skill/PhantomBlow/phantomblow.png");
 	ResourceMgr::Load<JoTexture>(L"PB_Hit", L"Resources/Skill/PhantomBlow/phantomblow_hit.png");
-
 	ResourceMgr::Load<JoTexture>(L"FlashJump", L"Resources/Skill/FlashJump/FlashJump.png");
 
 	ResourceMgr::Load<JoTexture>(L"Cursor", L"Resources/UI/Cursor.png");
+	ResourceMgr::Load<JoTexture>(L"ShopUI", L"Resources/UI/Shop/ShopUI.png");
+	ResourceMgr::Load<JoTexture>(L"플레이어_선택", L"Resources/UI/Shop/Shop_Selected.png");
+	ResourceMgr::Load<JoTexture>(L"상인_선택", L"Resources/UI/Shop/Shop_Selected_상인.png");
+	ResourceMgr::Load<JoTexture>(L"Shop_Tab", L"Resources/UI/Shop/Shop_Tab.png");
 
 	ResourceMgr::Load<JoTexture>(L"Player", L"Resources/Player/Player.png");
 }

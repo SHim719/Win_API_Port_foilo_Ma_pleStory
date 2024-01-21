@@ -26,8 +26,12 @@ public:
 	void SetItemTex(JoTexture* tex) { m_pItemTex = tex; }
 	JoTexture* GetItemTex() const { return m_pItemTex; }
 
+	const UINT& GetMaxCount() const { return m_iMaxCount; }
+
 protected:
-    JoTexture* m_pItemTex;
-	ItemType  m_eItemType;
+    JoTexture*	 m_pItemTex;
+	ItemType	 m_eItemType;
+	UINT		 m_iMaxCount;
+	UINT	     m_iSellPrice;
 };
 

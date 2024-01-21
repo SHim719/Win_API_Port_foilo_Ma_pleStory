@@ -9,6 +9,8 @@ enum UI_Enums
 	UI_Skill,
 	UI_Inven,
 	UI_Equip,
+	UI_Stat,
+	UI_Shop,
 	UI_End,
 
 };
@@ -26,7 +28,7 @@ public:
 	virtual void Render();
 	virtual void Release();
 
-	virtual bool KeyCheck() { return false; };
+	virtual bool KeyCheck() { return false; }
 	virtual void OnInActive() {}
 	virtual void OnActive() {}
 protected:

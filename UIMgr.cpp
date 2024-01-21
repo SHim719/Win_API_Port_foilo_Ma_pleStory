@@ -4,6 +4,8 @@
 #include "QuickSlotUI.h"
 #include "InvenUI.h"
 #include "EquipUI.h"
+#include "StatUI.h"
+#include "ShopUI.h"
 
 
 UI* UIMgr::m_arrUIs[] = {};
@@ -37,9 +39,18 @@ void UIMgr::Initialize()
 	pInvenUI->SetEquipUI(pEquipUI);
 	pEquipUI->SetInvenUI(pInvenUI);
 
+	StatUI* pStatUI = new StatUI;
+	pStatUI->Initialize();
+	m_arrUIs[(UINT)UI_Enums::UI_Stat] = pStatUI;
+
+	ShopUI* pShopUI = new ShopUI;
+	pShopUI->Initialize();
+	m_arrUIs[(UINT)UI_Enums::UI_Shop] = pShopUI;
+
 	m_inActiveUIList.push_back(pSkillUI);
 	m_inActiveUIList.push_back(pInvenUI);
 	m_inActiveUIList.push_back(pEquipUI);
+	m_inActiveUIList.push_back(pStatUI);
 }
 
 void UIMgr::Update()
@@ -66,6 +77,7 @@ void UIMgr::Update()
 
 	//m_arrUIs[(UINT)UI_Enums::UI_HUD]->Update();
 	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot]->Update();
+	m_arrUIs[(UINT)UI_Enums::UI_Shop]->Update();
 
 	m_bMouseUsed = false;
 }
@@ -74,6 +86,7 @@ void UIMgr::Render()
 {
 	m_arrUIs[(UINT)UI_Enums::UI_HUD]->Render();
 	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot]->Render();
+	m_arrUIs[(UINT)UI_Enums::UI_Shop]->Render();
 
 	for (UI* ui : m_ActiveUIList)
 		ui->Render();

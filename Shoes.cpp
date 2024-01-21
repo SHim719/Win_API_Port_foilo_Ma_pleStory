@@ -4,7 +4,7 @@
 Shoes::Shoes()
 	: Equipable(EquipType::ET_SHOES)
 {
-	SetName(L"Shoes");
+	SetName(L"아케인셰이드 시프슈즈");
 }
 
 Shoes::~Shoes()
@@ -13,7 +13,7 @@ Shoes::~Shoes()
 
 void Shoes::Initialize()
 {
-	m_pItemTex = ResourceMgr::Load<JoTexture>(L"Shoes", L"Resource/Item/Shoes.png");
+	m_pItemTex = ResourceMgr::Load<JoTexture>(L"Shoes", L"Resources/Item/Shoes.png");
 
 	m_tEquipInfo.iStr = 50;
 	m_tEquipInfo.iDex = 50;

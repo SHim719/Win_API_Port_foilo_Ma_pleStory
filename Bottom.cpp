@@ -4,7 +4,7 @@
 Bottom::Bottom()
 	: Equipable(EquipType::ET_BOTTOM)
 {
-	SetName(L"Bottom");
+	SetName(L"¿¡Å×¸£³Ú ½ÃÇÁÆÒÃ÷");
 }
 
 Bottom::~Bottom()
@@ -13,7 +13,7 @@ Bottom::~Bottom()
 
 void Bottom::Initialize()
 {
-	m_pItemTex = ResourceMgr::Load<JoTexture>(L"Bottom", L"Resource/Item/Bottom.png");
+	m_pItemTex = ResourceMgr::Load<JoTexture>(L"Bottom", L"Resources/Item/Bottom.png");
 
 	m_tEquipInfo.iStr = 50;
 	m_tEquipInfo.iDex = 50;

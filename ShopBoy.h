@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameObject.h"
+#include "ShopUI.h"
 
 class JoTexture;
 
@@ -15,7 +16,13 @@ public:
 	void LateUpdate()  override;
 	void Render()	   override;
 	void Release()	   override;
+	
+private:
+	bool Check_Rect();
+
 private:
 	JoTexture* m_pTexture;
+	RECT m_tRect;
+	vector<SellItem> m_vecSellItems;
 };
 

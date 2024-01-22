@@ -6,6 +6,7 @@
 #include "EquipUI.h"
 #include "StatUI.h"
 #include "ShopUI.h"
+#include "MyDialogBox.h"
 
 
 UI* UIMgr::m_arrUIs[] = {};
@@ -23,14 +24,15 @@ void UIMgr::Initialize()
 	hud->Initialize();
 	m_arrUIs[(UINT)UI_Enums::UI_HUD] = hud;
 
-	QuickSlotUI* pQuickSlotUI = new QuickSlotUI;
-	pQuickSlotUI->Initialize();
-	pQuickSlotUI->SetSkillUI(pSkillUI);
-	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot] = pQuickSlotUI;
-
 	InvenUI* pInvenUI = new InvenUI;
 	pInvenUI->Initialize();
 	m_arrUIs[(UINT)UI_Enums::UI_Inven] = pInvenUI;
+
+	QuickSlotUI* pQuickSlotUI = new QuickSlotUI;
+	pQuickSlotUI->Initialize();
+	pQuickSlotUI->SetSkillUI(pSkillUI);
+	pQuickSlotUI->SetInvenUI(pInvenUI);
+	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot] = pQuickSlotUI;
 
 	EquipUI* pEquipUI = new EquipUI;
 	pEquipUI->Initialize();
@@ -46,6 +48,10 @@ void UIMgr::Initialize()
 	ShopUI* pShopUI = new ShopUI;
 	pShopUI->Initialize();
 	m_arrUIs[(UINT)UI_Enums::UI_Shop] = pShopUI;
+
+	MyDialogBox* pDialBox = new MyDialogBox;
+	pDialBox->Initialize();
+	m_arrUIs[(UINT)UI_Enums::UI_Dialog] = pDialBox;
 
 	m_inActiveUIList.push_back(pSkillUI);
 	m_inActiveUIList.push_back(pInvenUI);
@@ -75,9 +81,11 @@ void UIMgr::Update()
 		m_ActiveUIList.push_back(focusUI);
 	}
 
-	//m_arrUIs[(UINT)UI_Enums::UI_HUD]->Update();
+	
 	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot]->Update();
 	m_arrUIs[(UINT)UI_Enums::UI_Shop]->Update();
+	//m_arrUIs[(UINT)UI_Enums::UI_HUD]->Update();
+	m_arrUIs[(UINT)UI_Enums::UI_Dialog]->Update();
 
 	m_bMouseUsed = false;
 }
@@ -87,6 +95,7 @@ void UIMgr::Render()
 	m_arrUIs[(UINT)UI_Enums::UI_HUD]->Render();
 	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot]->Render();
 	m_arrUIs[(UINT)UI_Enums::UI_Shop]->Render();
+	m_arrUIs[(UINT)UI_Enums::UI_Dialog]->Render();
 
 	for (UI* ui : m_ActiveUIList)
 		ui->Render();
@@ -97,6 +106,13 @@ void UIMgr::Release()
 	for (auto& ui : m_arrUIs)
 		Safe_Delete<UI*>(ui);
 
+}
+
+bool UIMgr::IsActiveUIs()
+{
+	return	!m_ActiveUIList.empty() 
+		|| static_cast<ShopUI*>(m_arrUIs[(UINT)UI_Enums::UI_Shop])->IsActive()
+		|| static_cast<ShopUI*>(m_arrUIs[(UINT)UI_Enums::UI_Dialog])->IsActive();
 }
 
 void UIMgr::UIkeyCheck()

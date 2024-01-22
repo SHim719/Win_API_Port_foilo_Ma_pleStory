@@ -45,14 +45,15 @@ void MainGame::Initialize(HWND _hwnd, UINT _width, UINT _height)
 
 	MyFmod::Initialize();
 	KeyMgr::Initialize();
-	TimeMgr::Initialize();
 	RenderMgr::Initialize();
 	ResourceMgr::Initialize();
 	UIMgr::Initialize();
+	ItemDatabase::Initialize();
 	SceneMgr::Initialize();
 	SoundMgr::Intialize();
 	CollisionMgr::Initialize();
-	ItemDatabase::Initialize();
+	TimeMgr::Initialize();
+	
 
 	m_pCursorTex = ResourceMgr::Find<JoTexture>(L"Cursor");
 }

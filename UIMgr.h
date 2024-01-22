@@ -13,7 +13,10 @@ public:
 	static void SetMouseUsed(const bool& b) { m_bMouseUsed = b; }
 	static const bool& IsMouseUsed() { return m_bMouseUsed; }
 
-	static UI* Get_UI_Instance(const UI_Enums& UI_Num) { return m_arrUIs[(UINT)UI_Num]; }
+	static bool IsActiveUIs();
+
+	template<typename T>
+	static T* Get_UI_Instance(const UI_Enums& UI_Num) { return static_cast<T*>(m_arrUIs[(UINT)UI_Num]); }
 private:
 	static void UIkeyCheck();
 

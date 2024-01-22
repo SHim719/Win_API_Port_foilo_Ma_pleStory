@@ -3,6 +3,8 @@
 PlayerStats::PlayerStats()
 	: m_iHp(3000)
 	, m_iMp(3000)
+	, m_iMaxHp(3000)
+	, m_iMaxMp(3000)
 	, m_iStr(4)
 	, m_iDex(4)
 	, m_iInt(4)
@@ -43,4 +45,16 @@ void PlayerStats::Sub_EquipAbility(const EquipInfo& _info)
 	m_iAttack -= _info.iAttack;
 	m_iHp -= _info.iHp;
 	m_iMp -= _info.iMp;
+}
+
+void PlayerStats::Add_HP(const int& _iHp)
+{
+	m_iHp += _iHp;
+	m_iHp = clamp(m_iHp, 0, m_iMaxHp);
+}
+
+void PlayerStats::Add_MP(const int& _iMp)
+{
+	m_iMp += _iMp;
+	m_iMp = clamp(m_iMp, 0, m_iMaxMp);
 }

@@ -1,6 +1,7 @@
 #include "QuickStats.h"
 #include "KeyMgr.h"
 #include "Enrollable.h"
+#include "Inventory.h"
 
 eKeyCode ArrSlotKey[] = 
 { eKeyCode::A, eKeyCode::S, eKeyCode::D, eKeyCode::F, eKeyCode::G, eKeyCode::H,
@@ -26,6 +27,16 @@ void QuickStats::Key_Check()
 	{
 		if (m_vecEnrollState[i])
 		{
+			Slot* pSlot = m_vecEnrollState[i]->GetRefSlot();
+			if (pSlot != nullptr)
+			{
+				if (pSlot->iCount == 0 || pSlot->item == nullptr)
+				{
+					m_vecEnrollState[i] = nullptr;
+					continue;
+				}
+					
+			}
 			m_vecEnrollState[i]->Key_Check(ArrSlotKey[i]);
 		}
 		

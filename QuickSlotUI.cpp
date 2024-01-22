@@ -5,6 +5,11 @@
 #include "UIMgr.h"
 #include "SkillUI.h"
 #include "Enrollable.h"
+#include "InvenUI.h"
+#include "Item.h"
+#include "Inventory.h"
+#include "Consumable.h"
+#include "SoundMgr.h"
 
 QuickSlotUI::QuickSlotUI()
 	: m_vecRenderPos{}
@@ -14,6 +19,7 @@ QuickSlotUI::QuickSlotUI()
 	, m_pPicking(nullptr)
 	, m_bThisFramePicking(false)
 	, m_iNowPickingIdx(-1)
+	, m_pInvenUI(nullptr)
 {
 }
 
@@ -60,10 +66,10 @@ void QuickSlotUI::Update()
 		if (!UIMgr::IsMouseUsed())
 		{
 			Check_Slots();
+			Set_Picking_null();
+			m_pSkillUI->Set_Picking_null();
+			m_pInvenUI->Set_PickingItem_null();
 		}
-		Set_Picking_null();
-		m_pSkillUI->Set_Picking_null();
-		// TODO: 소비아이템 피킹 null
 	}
 }
 
@@ -123,17 +129,29 @@ void QuickSlotUI::Check_Slots()
 			&& vMousePos.y <= vRightBottom.y)
 		{
 			Enrollable* pEnroll = m_pSkillUI->GetPicking();
-			// TODO: 소비아이템 picking 가져오기
 			if (pEnroll)
 			{
 				m_pQuickStats->Set_Enroll(i, pEnroll);
 				return;
 			}
+			Slot* pPickingSlot =  m_pInvenUI->GetPickingSlot();
+			if (pPickingSlot)
+			{
+				Consumable* pConsume = dynamic_cast<Consumable*>(pPickingSlot->item);
+				if (pConsume == nullptr)
+					return;
+				pEnroll = static_cast<Enrollable*>(pConsume);
+				pEnroll->SetRefSlot(pPickingSlot);
+				m_pQuickStats->Set_Enroll(i, pConsume);
+				return;
+			}
+
 			
 			// Picking이 없고, 퀵슬롯에 무언가 있을경우.
 			if (m_pQuickStats->GetEnrollState()[i] != nullptr && m_pPicking == nullptr)
 			{
 				// play select sound
+				SoundMgr::Play(L"Slot_Click");
 				m_pPicking = m_pQuickStats->GetEnrollState()[i];
 				m_iNowPickingIdx = (int)i;
 				m_bThisFramePicking = true;

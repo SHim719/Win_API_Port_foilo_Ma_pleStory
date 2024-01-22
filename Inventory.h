@@ -12,6 +12,13 @@ struct Slot
 	Item* item;
 	UINT iCount;
 
+	void Add_Count(UINT _iCnt)
+	{
+		iCount += _iCnt;
+		if (iCount == 0)
+			Clear();
+	}
+
 	void Clear()
 	{
 		item = nullptr;
@@ -32,6 +39,7 @@ public:
 
 	void SetSlotEmpty(const ItemType& tab, const UINT& idx) { m_arrInventory[(UINT)tab][idx].Clear(); }
 	const Slot& GetSlot(const ItemType& type, const UINT& idx) { return m_arrInventory[(UINT)type][idx]; }
+	Slot* GetSlotPtr(const ItemType & type, const UINT & idx)  { return &(m_arrInventory[(UINT)type][idx]); }
 
 	void Add_Meso(const int& _iMeso) { m_iMeso += _iMeso; }
 	const int& Get_Meso() const { return m_iMeso; }

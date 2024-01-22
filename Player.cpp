@@ -20,6 +20,7 @@
 #include "ItemDatabase.h"
 #include "StatUI.h"
 #include "ShopUI.h"
+#include "Consumable.h"
 
 Player::Player()
 	: m_bDownJumping(false)
@@ -54,22 +55,23 @@ void Player::Initialize()
 	Skill::SetOwner(this);
 
 	m_pSkillStats = new SkillStats;
-	static_cast<SkillUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Skill))->SetSkillStats(m_pSkillStats);
+	UIMgr::Get_UI_Instance<SkillUI>(UI_Enums::UI_Skill)->SetSkillStats(m_pSkillStats);
 
 	m_pPlayerStats = new PlayerStats;
-	static_cast<StatUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Stat))->SetPlayerStats(m_pPlayerStats);
+	UIMgr::Get_UI_Instance<StatUI>(UI_Enums::UI_Stat)->SetPlayerStats(m_pPlayerStats);
 
 	m_pQuickStats = new QuickStats;
-	static_cast<QuickSlotUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_QuickSlot))->SetQuickStats(m_pQuickStats);
+	UIMgr::Get_UI_Instance<QuickSlotUI>(UI_Enums::UI_QuickSlot)->SetQuickStats(m_pQuickStats);
 
 	m_pInventory = new Inventory;
-	static_cast<InvenUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Inven))->SetInventory(m_pInventory);
+	UIMgr::Get_UI_Instance<InvenUI>(UI_Enums::UI_Inven)->SetInventory(m_pInventory);
 
 	m_pEquipStats = new EquipStats;
-	static_cast<EquipUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Equip))->SetEquipStats(m_pEquipStats);
+	UIMgr::Get_UI_Instance<EquipUI>(UI_Enums::UI_Equip)->SetEquipStats(m_pEquipStats);
 	m_pEquipStats->Set_PlayerStats(m_pPlayerStats);
 
-	static_cast<ShopUI*>(UIMgr::Get_UI_Instance(UI_Enums::UI_Shop))->Set_Inventory(m_pInventory);
+	UIMgr::Get_UI_Instance<ShopUI>(UI_Enums::UI_Shop)->Set_Inventory(m_pInventory);
+	Consumable::SetPlayerStats(m_pPlayerStats);
 
 	m_pCollider = new Collider;
 	m_pCollider->SetOwner(this);
@@ -81,7 +83,6 @@ void Player::Initialize()
 
 	m_pAnimator = new Animator;
 	m_pAnimator->SetOwner(this);
-
 
 	m_ArrKeyAction[(UINT)eActionKey::Right] = eKeyCode::Right;
 	m_ArrKeyAction[(UINT)eActionKey::Left] = eKeyCode::Left;
@@ -679,11 +680,12 @@ void Player::debug_check()
 {
 	if (KeyMgr::GetKeyDown(eKeyCode::NUMPAD0))
 	{
-		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Hat"), 1);
-		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Top"), 1);
-		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Bottom"), 1);
-		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Shoes"), 1);
-		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"Weapon"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"¿¡Å×¸£³Ú ½ÃÇÁ¹Ý´Ù³ª"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"¿¡Å×¸£³Ú ½ÃÇÁ¼ÅÃ÷"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"¿¡Å×¸£³Ú ½ÃÇÁÆÒÃ÷"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"¾ÆÄÉÀÎ¼ÎÀÌµå ½ÃÇÁ½´Áî"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"¸®¹ö½º Æä½ºÄ«Áî"), 1);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"ÆÄ¿ö ¿¤¸¯¼­"), 10);
 	}
 
 	if (KeyMgr::GetKeyDown(eKeyCode::N))

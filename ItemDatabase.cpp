@@ -5,6 +5,7 @@
 #include "Bottom.h"
 #include "Shoes.h"
 #include "Weapon.h"
+#include "PowerEllixer.h"
 
 unordered_map<wstring, Item*> ItemDatabase::m_mapItemData{};
 
@@ -13,28 +14,27 @@ void ItemDatabase::Initialize()
 
 	Hat* hat = new Hat;
 	hat->Initialize();
-	m_mapItemData.insert({ L"Hat", hat });
+	m_mapItemData.insert({ hat->GetName(), hat});
 
 	Top* top = new Top;
 	top->Initialize();
-	m_mapItemData.insert({ L"Top", top });
+	m_mapItemData.insert({ top->GetName(), top });
 
 	Bottom* bottom = new Bottom;
 	bottom->Initialize();
-	m_mapItemData.insert({ L"Bottom", bottom });
+	m_mapItemData.insert({ bottom->GetName(), bottom });
 
 	Shoes* shoes = new Shoes;
 	shoes->Initialize();
-	m_mapItemData.insert({ L"Shoes", shoes });
+	m_mapItemData.insert({ shoes->GetName(), shoes });
 
 	Weapon* weapon = new Weapon;
 	weapon->Initialize();
-	m_mapItemData.insert({ L"Weapon", weapon });
+	m_mapItemData.insert({ weapon->GetName(), weapon });
 
-
-	//PowerEllixer* powerEllixer = new PowerEllixer;
-	//powerEllixer->Initialize();
-	//m_mapItemData.insert({ L"PowerEllixer", powerEllixer });
+	PowerEllixer* powerEllixer = new PowerEllixer;
+	powerEllixer->Initialize();
+	m_mapItemData.insert({ powerEllixer->GetName(), powerEllixer});
 
 	
 }

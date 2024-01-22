@@ -217,8 +217,14 @@
     <Filter Include="02. Contents\04. UI\ShopUI">
       <UniqueIdentifier>{244694e0-7def-4b50-9c37-13d1f3fde4c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Contents\09. Shop">
-      <UniqueIdentifier>{11190446-5f64-4732-a025-8de901b7d604}</UniqueIdentifier>
+    <Filter Include="02. Contents\08. Item\02. Consumable">
+      <UniqueIdentifier>{f6860c2c-19ee-461b-bbe6-ebade4174482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\02. Consumable\01. PowerEllixer">
+      <UniqueIdentifier>{cc91b571-51db-4766-b8b2-1f68de8551bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI\DialogBox">
+      <UniqueIdentifier>{573836b6-38f2-4f4e-b72c-2102ad447069}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -432,6 +438,15 @@
     <ClInclude Include="ShopUI.h">
       <Filter>02. Contents\04. UI\ShopUI</Filter>
     </ClInclude>
+    <ClInclude Include="Consumable.h">
+      <Filter>02. Contents\08. Item\02. Consumable</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerEllixer.h">
+      <Filter>02. Contents\08. Item\02. Consumable\01. PowerEllixer</Filter>
+    </ClInclude>
+    <ClInclude Include="MyDialogBox.h">
+      <Filter>02. Contents\04. UI\DialogBox</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -619,6 +634,15 @@
     </ClCompile>
     <ClCompile Include="ShopUI.cpp">
       <Filter>02. Contents\04. UI\ShopUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Consumable.cpp">
+      <Filter>02. Contents\08. Item\02. Consumable</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerEllixer.cpp">
+      <Filter>02. Contents\08. Item\02. Consumable\01. PowerEllixer</Filter>
+    </ClCompile>
+    <ClCompile Include="MyDialogBox.cpp">
+      <Filter>02. Contents\04. UI\DialogBox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

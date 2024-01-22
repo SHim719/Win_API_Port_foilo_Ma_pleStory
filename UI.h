@@ -11,8 +11,8 @@ enum UI_Enums
 	UI_Equip,
 	UI_Stat,
 	UI_Shop,
+	UI_Dialog,
 	UI_End,
-
 };
 
 

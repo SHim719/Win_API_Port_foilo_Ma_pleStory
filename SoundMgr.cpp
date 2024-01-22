@@ -22,6 +22,8 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"Released_Picked", L"Resources/UI/Sound/Release_Picked.MP3");
 	ResourceMgr::Load<Audio>(L"Tab_Click", L"Resources/UI/Sound/InvenTab.mp3");
 	ResourceMgr::Load<Audio>(L"Bt_Click", L"Resources/UI/Sound/BtMouseClick.wav");
+	ResourceMgr::Load<Audio>(L"esc", L"Resources/UI/Sound/esc.MP3");
+	ResourceMgr::Load<Audio>(L"Use_Potion", L"Resources/UI/Sound/Use_Potion.mp3");
 	ResourceMgr::Load<Audio>(L"Player_Jump", L"Resources/Player/Jump.mp3");
 
 

@@ -19,6 +19,7 @@ enum class eKeyCode
 	Space, LButton, RButton,
 	LCtrl, LShift, NUMPAD0,
 	One, Two, Three, Four,
+	Enter,
 	End,
 };
 

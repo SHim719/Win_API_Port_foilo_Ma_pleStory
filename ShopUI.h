@@ -25,7 +25,7 @@ public:
 
    void Set_Inventory(Inventory* _pInven) { m_pInventory = _pInven; }
 
-    void Set_SellItems(const vector<SellItem>& _vecSellItems) { m_vecSellItems = _vecSellItems; }
+    void Set_SellItems(vector<SellItem>* const _vecSellItems) { m_vecSellItems = _vecSellItems; }
 
     const bool& IsActive() const { return m_bActive; }
     void SetActive(const bool& _b) { m_bActive = _b; }
@@ -35,15 +35,20 @@ private:
     void Check_Tab();
     void Check_PlayerSlot();
     void Check_SellerSlot();
+    void Check_ExitButton();
+
+    void Buy(const UINT& _iSlotIdx);
+    void Sell(const UINT& _iSlotIdx);
 
 private:
     Inventory* m_pInventory;
-    vector<SellItem> m_vecSellItems;
-    vector<Slot&> m_vecNowTabInven;
+    vector<SellItem>* m_vecSellItems;
+    vector<Slot*> m_vecNowTabInven;
 
     JoTexture* m_pPlayerSelTex;
     JoTexture* m_pSellerSelTex;
     JoTexture* m_pShopTabTex;
+    JoTexture* m_pItemNumTex; 
 
     UINT m_iFocusedTab;
     int m_iBuyIdx;

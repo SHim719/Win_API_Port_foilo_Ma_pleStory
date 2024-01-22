@@ -10,6 +10,7 @@
 #include <functional>
 #include <bitset>
 #include <unordered_map>
+#include <format>
 
 
 template<typename T>
@@ -42,6 +43,8 @@ using std::swap;
 using std::to_string;
 using std::to_wstring;
 using std::bind;
+using std::format;
+using std::pair;
 
 #include "Vec2.h"
 #include "Enums.h"

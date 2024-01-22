@@ -11,6 +11,8 @@ IWICImagingFactory* RenderMgr::m_pImageFactory = nullptr;
 ID2D1Bitmap* RenderMgr::m_pBitmap = nullptr;
 ID2D1SolidColorBrush* RenderMgr::m_pBrush = nullptr;
 IDWriteTextFormat* RenderMgr::m_pTextFormat = nullptr;
+IDWriteTextFormat* RenderMgr::m_pRTextFormat = nullptr;
+IDWriteTextFormat* RenderMgr::m_pLTextFormat = nullptr;
 
 void RenderMgr::Initialize()
 {
@@ -44,16 +46,42 @@ void RenderMgr::Initialize()
 
 	// 텍스트 포맷 생성
 	m_pWriteFactory->CreateTextFormat(
-		L"굴림",
+		L"HYGothic 중간",
+		NULL,
+		DWRITE_FONT_WEIGHT_SEMI_BOLD,
+		DWRITE_FONT_STYLE_NORMAL,
+		DWRITE_FONT_STRETCH_NORMAL,
+		12.f,
+		L"ko",
+		&m_pRTextFormat);
+	m_pRTextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_TRAILING);
+	m_pRTextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
+
+	m_pWriteFactory->CreateTextFormat(
+		L"HYGothic 중간",
+		NULL,
+		DWRITE_FONT_WEIGHT_SEMI_BOLD,
+		DWRITE_FONT_STYLE_NORMAL,
+		DWRITE_FONT_STRETCH_NORMAL,
+		12.f,
+		L"ko",
+		&m_pTextFormat);
+	m_pTextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_LEADING);
+	m_pTextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
+
+
+	m_pWriteFactory->CreateTextFormat(
+		L"메이플스토리",
 		NULL,
 		DWRITE_FONT_WEIGHT_NORMAL,
 		DWRITE_FONT_STYLE_NORMAL,
 		DWRITE_FONT_STRETCH_NORMAL,
-		10.f,
+		25.f,
 		L"ko",
-		&m_pTextFormat);
-	m_pTextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
-	m_pTextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
+		&m_pLTextFormat);
+	m_pLTextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_LEADING);
+	m_pLTextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_NEAR);
+	
 
 	// 브러쉬 생성
 	m_pRenderTarget->CreateSolidColorBrush(D2D1::ColorF(0.f, 0.f, 0.f), &m_pBrush);
@@ -102,6 +130,30 @@ void RenderMgr::RenderText(wstring str, float dstX, float dstY, float dstW, floa
 	m_pRenderTarget->DrawTextW(str.c_str(), (UINT)str.size(), m_pTextFormat,
 		D2D1::RectF(dstX, dstY, dstW, dstH), m_pBrush);
 }
+
+void RenderMgr::RenderText_L(const wstring& str, float dstX, float dstY, float dstW, float dstH, float fontSize, COLORREF color)
+{
+	int red = color & 0xFF;
+	int green = (color >> 8) & 0xFF;
+	int blue = (color >> 16) & 0xFF;
+
+	m_pBrush->SetColor(D2D1::ColorF(red / 255.f, green / 255.0f, blue / 255.0f, 1.f));
+	m_pRenderTarget->DrawTextW(str.c_str(), (UINT)str.size(), m_pLTextFormat,
+		D2D1::RectF(dstX, dstY, dstW, dstH), m_pBrush);
+}
+
+void RenderMgr::RenderText_R(wstring str, float dstX, float dstY, float dstW, float dstH, float fontSize, COLORREF color)
+{
+	int red = color & 0xFF;
+	int green = (color >> 8) & 0xFF;
+	int blue = (color >> 16) & 0xFF;
+
+	m_pBrush->SetColor(D2D1::ColorF(red / 255.f, green / 255.0f, blue / 255.0f, 1.f));
+	m_pRenderTarget->DrawTextW(str.c_str(), (UINT)str.size(), m_pRTextFormat,
+		D2D1::RectF(dstX, dstY, dstW, dstH), m_pBrush);
+}
+
+
 
 void RenderMgr::RenderText(wstring str, const WCHAR* font, float dstX, float dstY, float dstW, float dstH, float fontSize, COLORREF color)
 {

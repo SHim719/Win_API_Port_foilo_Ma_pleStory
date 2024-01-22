@@ -4,6 +4,7 @@
 #include "KeyMgr.h"
 
 class JoTexture;
+struct Slot;
 
 class Enrollable abstract 
 {
@@ -15,7 +16,10 @@ public:
 	void SetIconTex(JoTexture* const _pIconTex) { m_pIconTex = _pIconTex; }
 	JoTexture* GetIconTex() const { return m_pIconTex; }
 	
+	void SetRefSlot(Slot* _pSlot) { m_pRefSlot = _pSlot; }
+	Slot* GetRefSlot() { return m_pRefSlot; }
 protected:
 	JoTexture* m_pIconTex = nullptr;
+	Slot* m_pRefSlot = nullptr;
 };
 

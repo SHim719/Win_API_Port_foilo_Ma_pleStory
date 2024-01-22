@@ -151,6 +151,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="CommonInclude.h" />
+    <ClInclude Include="MyDialogBox.h" />
     <ClInclude Include="Enrollable.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Enums.h" />
@@ -185,6 +186,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="PhantomBlow.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStats.h" />
+    <ClInclude Include="PowerEllixer.h" />
     <ClInclude Include="QuickSlotUI.h" />
     <ClInclude Include="QuickStats.h" />
     <ClInclude Include="RenderMgr.h" />
@@ -209,6 +211,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Transform.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="UIMgr.h" />
+    <ClInclude Include="Consumable.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
@@ -222,6 +225,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
+    <ClCompile Include="MyDialogBox.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Equipable.cpp" />
     <ClCompile Include="EquipStats.cpp" />
@@ -252,6 +256,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="PhantomBlow.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStats.cpp" />
+    <ClCompile Include="PowerEllixer.cpp" />
     <ClCompile Include="QuickSlotUI.cpp" />
     <ClCompile Include="QuickStats.cpp" />
     <ClCompile Include="RenderMgr.cpp" />
@@ -273,6 +278,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Top.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="UIMgr.cpp" />
+    <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>

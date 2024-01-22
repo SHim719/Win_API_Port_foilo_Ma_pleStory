@@ -15,7 +15,7 @@ int ASCII[(UINT)eKeyCode::End] =
 	VK_LEFT, VK_RIGHT, VK_DOWN, VK_UP,
 	VK_SPACE, VK_LBUTTON, VK_RBUTTON,
 	VK_LCONTROL, VK_LSHIFT, VK_NUMPAD0,
-	'1', '2', '3' ,'4',
+	'1', '2', '3' ,'4', VK_RETURN
 };
 
 void KeyMgr::Initialize()

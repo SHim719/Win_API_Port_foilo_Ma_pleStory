@@ -29,6 +29,8 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoBmp>(L"GiantRoot_Pixel", L"Resources/Map/Rootabyss/GiantRoot/GiantRoot_Pixel.bmp");
 
 	ResourceMgr::Load<JoTexture>(L"의문의 소녀", L"Resources/Npc/소녀.png");
+	ResourceMgr::Load<JoTexture>(L"의문의 소녀_이름", L"Resources/UI/Dialog/DialogName_Girl.png");
+	ResourceMgr::Load<JoTexture>(L"의문의 소녀_대화", L"Resources/UI/Dialog/Dialog_Girl.png");
 	ResourceMgr::Load<JoTexture>(L"오코", L"Resources/Npc/오코.png");
 
 	ResourceMgr::Load<JoTexture>(L"PhantomBlow", L"Resources/Skill/PhantomBlow/phantomblow.png");
@@ -40,6 +42,7 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"플레이어_선택", L"Resources/UI/Shop/Shop_Selected.png");
 	ResourceMgr::Load<JoTexture>(L"상인_선택", L"Resources/UI/Shop/Shop_Selected_상인.png");
 	ResourceMgr::Load<JoTexture>(L"Shop_Tab", L"Resources/UI/Shop/Shop_Tab.png");
+	ResourceMgr::Load<JoTexture>(L"Item_Number", L"Resources/UI/Item_Num.png");
 
 	ResourceMgr::Load<JoTexture>(L"Player", L"Resources/Player/Player.png");
 }

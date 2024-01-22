@@ -28,9 +28,15 @@ public:
 	const int& Get_Extra_Int() { return m_iExtra_Int; }
 	const int& Get_Extra_Luk() { return m_iExtra_Luk; }
 
+	void Set_FullHP() { m_iHp = m_iMaxHp; }
+	void Set_FullMP() { m_iHp = m_iMaxHp; }
+	void Add_HP(const int& _iHp);
+	void Add_MP(const int& _iMp);
 private:
 	int m_iHp;
 	int m_iMp;
+	int m_iMaxHp;
+	int m_iMaxMp;
 	int m_iStr;
 	int m_iDex;
 	int m_iInt;

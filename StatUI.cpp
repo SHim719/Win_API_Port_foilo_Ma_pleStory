@@ -78,17 +78,17 @@ void StatUI::Render()
 	RenderMgr::RenderImage(m_pMainTex, m_vPos.x, m_vPos.y,
 		m_vPos.x + m_pMainTex->GetWidth(), m_vPos.y + m_pMainTex->GetHeight());
 
-	wstring wsStr = to_wstring(m_pPlayerStats->Get_Str());
+	wstring wsStr = to_wstring(m_pPlayerStats->Get_Str() + m_pPlayerStats->Get_Extra_Str());
 	if (m_pPlayerStats->Get_Extra_Str() > 0)
 		wsStr += L" (" + wsStr + L"+ " + to_wstring(m_pPlayerStats->Get_Extra_Str()) + L")";
-	wstring wsDex = to_wstring(m_pPlayerStats->Get_Dex());
+	wstring wsDex = to_wstring(m_pPlayerStats->Get_Dex() + m_pPlayerStats->Get_Extra_Dex());
 	if (m_pPlayerStats->Get_Extra_Dex() > 0)
 		wsDex += L" (" + wsDex + L"+ " + to_wstring(m_pPlayerStats->Get_Extra_Dex()) + L")";
-	wstring wsInt = to_wstring(m_pPlayerStats->Get_Int());
+	wstring wsInt = to_wstring(m_pPlayerStats->Get_Int() + m_pPlayerStats->Get_Extra_Int());
 	if (m_pPlayerStats->Get_Extra_Int() > 0)
 		wsInt += L" (" + wsInt + L"+ " + to_wstring(m_pPlayerStats->Get_Extra_Int()) + L")";
-	wstring wsLuk = to_wstring(m_pPlayerStats->Get_Luk());
-	if (m_pPlayerStats->Get_Extra_Int() > 0)
+	wstring wsLuk = to_wstring(m_pPlayerStats->Get_Luk() + m_pPlayerStats->Get_Extra_Luk());
+	if (m_pPlayerStats->Get_Extra_Luk() > 0)
 		wsLuk += L" (" + wsLuk + L"+ " + to_wstring(m_pPlayerStats->Get_Extra_Luk()) + L")";
 
 	// Info Render
@@ -131,7 +131,7 @@ void StatUI::Release()
 
 void StatUI::OnInActive()
 {
-	SoundMgr::Play(L"CloseWindow");
+	SoundMgr::Play(L"CloseWindow"); 
 }
 
 void StatUI::OnActive()

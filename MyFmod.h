@@ -22,7 +22,7 @@ public:
 	static void SoundPlay(FMOD::Sound* sound, FMOD::Channel** channel);
 	static void Set3DListenerAttributes(const Vec2& pos);
 	static void Release();
-
+	
 private:
 	static FMOD::Studio::System* mSystem;
 	static FMOD::System* mCoreSystem;

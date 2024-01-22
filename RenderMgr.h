@@ -21,7 +21,10 @@ public:
 		float srcX, float srcY, float srcW, float srcH, float alpha = 1.f);
 
 	static void RenderText(wstring str, float dstX, float dstY, float dstW, float dstH, float fontSize = 12.f, COLORREF color = RGB(0, 0, 0));
+	static void RenderText_L(const wstring& str, float dstX, float dstY, float dstW, float dstH, float fontSize = 12.f, COLORREF color = RGB(0, 0, 0));
+	static void RenderText_R(wstring str, float dstX, float dstY, float dstW, float dstH, float fontSize = 12.f, COLORREF color = RGB(0, 0, 0));
 	static void RenderText(wstring str, const WCHAR* font, float dstX, float dstY, float dstW, float dstH, float fontSize = 12.f, COLORREF color = RGB(0, 0, 0));
+	
 	static void RenderRectangle(float dstX, float dstY, float dstW, float dstH, COLORREF color = RGB(0, 0, 0), float strokeWidth = 1.f);
 	static void RenderFillRectangle(float dstX, float dstY, float dstW, float dstH, COLORREF color = RGB(0, 0, 0), float alpha = 1.f);
 	static void RenderEllipse(float dstX, float dstY, float dstW, float dstH, COLORREF color = RGB(0, 0, 0), float strokeWidth = 1.f);
@@ -41,6 +44,8 @@ private:
 	static ID2D1Bitmap* m_pBitmap;
 	static ID2D1SolidColorBrush* m_pBrush;
 	static IDWriteTextFormat* m_pTextFormat;
+	static IDWriteTextFormat* m_pRTextFormat;
+	static IDWriteTextFormat* m_pLTextFormat;
 
 };
 

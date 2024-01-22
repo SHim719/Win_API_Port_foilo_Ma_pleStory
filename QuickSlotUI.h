@@ -4,6 +4,7 @@
 
 class QuickStats;
 class SkillUI;
+class InvenUI;
 
 class QuickSlotUI :
     public UI
@@ -20,6 +21,7 @@ public:
 
 	void SetQuickStats(QuickStats* const pQuickStats) { m_pQuickStats = pQuickStats; }
 	void SetSkillUI(SkillUI* const pSkillUI) { m_pSkillUI = pSkillUI; }
+	void SetInvenUI(InvenUI* const _pInvenUI) { m_pInvenUI = _pInvenUI; }
 	void Set_Picking_null() { 
 		if (!m_bThisFramePicking)
 			m_pPicking = nullptr; 
@@ -34,6 +36,7 @@ private:
 	vector<JoTexture*> m_vecKeyTex;
 
 	SkillUI* m_pSkillUI;
+	InvenUI* m_pInvenUI;
 
 	Enrollable* m_pPicking;
 	int m_iNowPickingIdx;

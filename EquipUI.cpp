@@ -158,8 +158,11 @@ void EquipUI::check_Slots()
 				// 집은 것이 하나도 없다.
 				if (pInvenPicking == nullptr)
 				{
-					SoundMgr::Play(L"Slot_Click");
 					m_pPickingItem = m_pEquipStats->GetEquipItemFromSlot(i);
+					if (m_pPickingItem == nullptr)
+						return;
+
+					SoundMgr::Play(L"Slot_Click");
 					m_bThisFramePicking = true;
 				}
 				else // 인벤토리 UI에 집은 것이 있다.

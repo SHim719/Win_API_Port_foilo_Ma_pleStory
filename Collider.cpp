@@ -1,7 +1,7 @@
 #include "Collider.h"
 #include "GameObject.h"
 #include "RenderMgr.h"
-#include "MainCamera.h"
+#include "Camera.h"
 
 
 UINT32 Collider::s_CollisionID = 0;
@@ -35,7 +35,7 @@ void Collider::Render()
 {
 	Vec2 pos = GetOwner()->GetPos();
 	pos += GetOffset();
-	pos = camera::pMainCamera->CalcRenderPos(pos);
+	pos = Camera::CalcRenderPos(pos);
 
 	Vec2 vLeftTop = {};
 	vLeftTop.x = pos.x - GetSize().x * 0.5f;
@@ -50,22 +50,22 @@ void Collider::Render()
 		, vLeftTop.y
 		, vRightBottom.x
 		, vRightBottom.y
-		, RGB(0, 255, 0), 1.0f);
+		, m_renderColor, 1.0f);
 }
 
 void Collider::OnCollisionEnter(Collider* other)
 {
 	m_renderColor = RGB(255, 0, 0);
-	other->GetOwner()->OnCollisionEnter(this);
+	GetOwner()->OnCollisionEnter(other);
 }
 
 void Collider::OnCollisionStay(Collider* other)
 {
-	other->GetOwner()->OnCollisionStay(this);
+	GetOwner()->OnCollisionStay(other);
 }
 
 void Collider::OnCollisionExit(Collider* other)
 {
 	m_renderColor = RGB(0, 255, 0);
-	other->GetOwner()->OnCollisionExit(this);
+	GetOwner()->OnCollisionExit(other);
 }

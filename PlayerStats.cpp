@@ -31,8 +31,8 @@ void PlayerStats::Add_EquipAbility(const EquipInfo& _info)
 	m_iExtra_Luk += _info.iLuk;
 
 	m_iAttack += _info.iAttack;
-	m_iHp += _info.iHp;
-	m_iMp += _info.iMp;
+	m_iMaxHp += _info.iHp;
+	m_iMaxMp += _info.iMp;
 }
 
 void PlayerStats::Sub_EquipAbility(const EquipInfo& _info)
@@ -43,8 +43,10 @@ void PlayerStats::Sub_EquipAbility(const EquipInfo& _info)
 	m_iExtra_Luk -= _info.iLuk;
 
 	m_iAttack -= _info.iAttack;
-	m_iHp -= _info.iHp;
-	m_iMp -= _info.iMp;
+	m_iMaxHp -= _info.iHp;
+	m_iMaxMp -= _info.iMp;
+	m_iHp = min(m_iHp, m_iMaxHp);
+	m_iMp = min(m_iMp, m_iMaxMp);
 }
 
 void PlayerStats::Add_HP(const int& _iHp)

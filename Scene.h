@@ -32,6 +32,7 @@ public:
 	const Vec2& GetMinCameraPos() const { return m_vMinCameraPos; }
 	const Vec2& GetMaxCameraPos() const { return m_vMaxCameraPos; }
 
+	static void Delete_DonDestroy();
 private:
 	void createLayer();
 
@@ -42,5 +43,9 @@ protected:
 	Vec2 m_vMaxCameraPos;
 
 	Vec2 m_vLimitPosX;
+
+	HDC m_pixelDC = nullptr;
+
+	static Player* s_pMainPlayer;
 };
 

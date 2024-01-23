@@ -1,12 +1,12 @@
 #include "Scene_Title.h"
-#include "Camera.h"
-#include "BackGround.h"
-#include "GiantRootBG.h"
 #include "ResourceMgr.h"
+#include "SoundMgr.h"
+#include "BackGround.h"
 #include "Player.h"
-#include "Girl.h"
-#include "ShopBoy.h"
-
+#include "UIMgr.h"
+#include "joObject.h"
+#include "Title_Button.h"
+#include "Camera.h"
 
 Scene_Title::Scene_Title()
 {
@@ -18,34 +18,26 @@ Scene_Title::~Scene_Title()
 
 void Scene_Title::Initialize()
 {
-	m_vLimitPosX.x = 233.f;
-	m_vLimitPosX.y = 2283.f;
+	UIMgr::SetCanUseUI(false);
+	BackGround* m_pTitleScreen = Instantiate<BackGround>(eLayerType::LT_BACKGROUND);
+	JoTexture* pBGTex = ResourceMgr::Find<JoTexture>(L"TitleScreen");
+	m_pTitleScreen->SetBgTex(pBGTex);
 
-	Camera* pCamera = Instantiate<Camera>(eLayerType::LT_CAMERA);
-	camera::pMainCamera = pCamera;
-
-	GiantRootBG* pBg = Instantiate<GiantRootBG>(eLayerType::LT_BACKGROUND);
-	JoTexture* bgTex = ResourceMgr::Find<JoTexture>(L"BG_GiantRoot1");
-
-	float texWidth = (float)bgTex->GetWidth();
-	float texHeight = (float)bgTex->GetHeight();
+	float texWidth = (float)pBGTex->GetWidth();
+	float texHeight = (float)pBGTex->GetHeight();
 	CalcAndSetCameraArea(texWidth, texHeight, Vec2::Zero);
-	pCamera->SetMinCameraPos(m_vMinCameraPos);
-	pCamera->SetMaxCameraPos(m_vMaxCameraPos);
+	Camera::SetMinCameraPos(m_vMinCameraPos);
+	Camera::SetMaxCameraPos(m_vMaxCameraPos);
 
-	Player* pPlayer = Instantiate<Player>(eLayerType::LT_PLAYER);
-	pPlayer->SetPos({300.f, 200.f});
-	pPlayer->SetLimitPosX(m_vLimitPosX);
+	Player* m_pPlayer = new Player;
+	m_pPlayer->Initialize();
+	s_pMainPlayer = m_pPlayer;
+	m_pPlayer->SetPos({ 1141.f, 851.f });
 
-	pCamera->SetTarget(pPlayer);
+	Instantiate<Title_Button>(eLayerType::LT_UI)->SetPos({ 500.f, 450.f });
 
-	m_pixelDC = ResourceMgr::Find<JoBmp>(L"GiantRoot_Pixel")->Get_BmpDC();
-	pPlayer->SetPixelDC(m_pixelDC);
-
-	Girl* pGirl = Instantiate<Girl>(eLayerType::LT_NPC);
-	ShopBoy* pShopBoy = Instantiate<ShopBoy>(eLayerType::LT_NPC);
+	SoundMgr::Play(L"TitleBGM");
 }
-
 
 void Scene_Title::OnEnter()
 {
@@ -53,4 +45,6 @@ void Scene_Title::OnEnter()
 
 void Scene_Title::OnExit()
 {
+	Release();
+	SoundMgr::Stop(L"TitleBGM");
 }

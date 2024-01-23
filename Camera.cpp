@@ -3,20 +3,13 @@
 
 extern MainGame g_MainGame;
 
-Camera::Camera()
-	: m_vLookAt{}
-	, m_vSize{}
-	, m_vDistance{}
-	, m_pTarget(nullptr)
-	, m_vMinPos{}
-	, m_vMaxPos{}
-{
-	SetName(L"Camera");
-}
-
-Camera::~Camera()
-{
-}
+Vec2 Camera::m_vLookAt{};
+Vec2 Camera::m_vSize{};
+Vec2 Camera::m_vDistance{};
+Vec2 Camera::m_vMinPos{};
+Vec2 Camera::m_vMaxPos{};
+Vec2 Camera::m_vPos{};
+GameObject* Camera::m_pTarget = nullptr;
 
 void Camera::Initialize()
 {
@@ -34,12 +27,12 @@ void Camera::Update()
 	}
 	else
 	{
-		m_vLookAt = GetPos();
+		m_vLookAt = m_vPos;
 	}
 
 	m_vLookAt.x = clamp(m_vLookAt.x, m_vMinPos.x, m_vMaxPos.x);
 	m_vLookAt.y = clamp(m_vLookAt.y, m_vMinPos.y, m_vMaxPos.y);
-	SetPos(m_vLookAt);
+	m_vPos = m_vLookAt;
 
 	m_vDistance = m_vLookAt - (m_vSize / 2.0f);
 }

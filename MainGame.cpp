@@ -9,6 +9,7 @@
 #include "MyFmod.h"
 #include "UIMgr.h"
 #include "ItemDatabase.h"
+#include "Camera.h"
 
 MainGame::MainGame()
 	: m_hwnd(nullptr)
@@ -25,10 +26,10 @@ MainGame::~MainGame()
 
 void MainGame::Run()
 {
-
 	Update();
 	LateUpdate();
 	Render();
+	SceneMgr::ChangeScene();
 	SceneMgr::Destroy();
 }
 
@@ -49,9 +50,10 @@ void MainGame::Initialize(HWND _hwnd, UINT _width, UINT _height)
 	ResourceMgr::Initialize();
 	UIMgr::Initialize();
 	ItemDatabase::Initialize();
-	SceneMgr::Initialize();
 	SoundMgr::Intialize();
+	SceneMgr::Initialize();
 	CollisionMgr::Initialize();
+	Camera::Initialize();
 	TimeMgr::Initialize();
 	
 
@@ -63,6 +65,7 @@ void MainGame::Update()
 	TimeMgr::Update();
 	KeyMgr::Update();
 	SceneMgr::Update();
+	Camera::Update();
 	CollisionMgr::Update();
 	UIMgr::Update();
 }

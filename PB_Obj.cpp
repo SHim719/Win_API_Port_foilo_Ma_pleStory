@@ -1,6 +1,8 @@
 #include "PB_Obj.h"
 #include "ResourceMgr.h"
 #include "HitEffect.h"
+#include "Enemy.h"
+#include "SoundMgr.h"
 
 
 PB_Obj::PB_Obj()
@@ -43,35 +45,51 @@ void PB_Obj::Initialize()
 	pbEvents_R->frameEvents[8] = bind(&Collider::SetCollisionInactive, m_pCollider);
 	pbEvents_R->frameEvents[7] = ownerNull;
 
+	/*m_vecAudio.push_back(ResourceMgr::Find<Audio>(L"PB_Hit_SFX"));
+	m_vecAudio.push_back(ResourceMgr::Find<Audio>(L"PB_Hit_SFX1"));
+	m_vecAudio.push_back(ResourceMgr::Find<Audio>(L"PB_Hit_SFX2"));
+	m_vecAudio.push_back(ResourceMgr::Find<Audio>(L"PB_Hit_SFX3"));
+	m_vecAudio.push_back(ResourceMgr::Find<Audio>(L"PB_Hit_SFX4"));
+	m_vecAudio.push_back(ResourceMgr::Find<Audio>(L"PB_Hit_SFX5"));
+	m_vecAudio.push_back(ResourceMgr::Find<Audio>(L"PB_Hit_SFX6"));
+	m_vecAudio.push_back(ResourceMgr::Find<Audio>(L"PB_Hit_SFX7"));*/
+
 }
 
 void PB_Obj::Update()
 {
-	if (m_pAnimator->IsEndAnim() && m_vecHitInfo.empty())
+	if (m_pAnimator->IsEndAnim() && m_vecAttInfo.empty())
 	{
 		Destroy(this);
 		return;
 	}
 
-	for (auto it = m_vecHitInfo.begin(); it != m_vecHitInfo.end();)
+	for (auto it = m_vecAttInfo.begin(); it != m_vecAttInfo.end();)
 	{
-		HitInfo& info = *it;
-		info.tTimer.fNowTime += TimeMgr::DeltaTime();
-		if (info.tTimer.Time_Elapsed(0.07f))
+		AttackInfo& attInfo = *it;
+		attInfo.fNowTime += TimeMgr::DeltaTime();
+		if (attInfo.fNowTime >= 0.07f)
 		{
-			if (info.iHitCount >= m_iMaxHitCount)
+			attInfo.fNowTime = 0.f;
+			if (attInfo.iHitCount >= m_iMaxHitCount)
 			{
-				it = m_vecHitInfo.erase(it);
+				it = m_vecAttInfo.erase(it);
 				continue;
 			}
+			
+			HitInfo hitInfo = { 142, attInfo.iHitCount, false };
+			attInfo.pHitObj->Hit(hitInfo);
 
-			/*Hit_Status hitInfo = { 500235, ah.iHitCount, false, GetOwner() };
-			static_cast<Boss*>(ah.pObj)->Hit(hitInfo);*/
-
-			Vec2 effectPos = info.m_vecEffectPos[info.iHitCount];
-			HitEffect* pEffect = Instantiate<HitEffect>(eLayerType::LT_EFFECT);
+			SoundMgr::Play(L"PB_Hit_SFX");
+			Vec2 effectPos = attInfo.vecEffectPos[attInfo.iHitCount];
+			HitEffect* pEffect = Instantiate_NoInit<HitEffect>(eLayerType::LT_EFFECT);
 			pEffect->SetPos(effectPos);
-			info.iHitCount++;
+			pEffect->Set_EffectTex(m_pHitEffect);
+			pEffect->SetSize(Vec2(252.f, 192.f));
+			pEffect->Set_SpriteLength(8);
+			pEffect->SetDuration(0.05f);
+			pEffect->Initialize();
+			attInfo.iHitCount++;
 		}
 		++it;
 	}
@@ -112,17 +130,17 @@ void PB_Obj::Skill_Start()
 
 void PB_Obj::OnCollisionEnter(Collider* other)
 {
-	if (m_vecHitInfo.size() >= m_iMaxEnemyCount) return;
+	if (m_vecAttInfo.size() >= m_iMaxEnemyCount) return;
 
-	HitInfo info{};
-	info.pObj = other->GetOwner();
+	AttackInfo info{};
+	info.pHitObj = static_cast<Enemy*>(other->GetOwner());
+
 	for (int i = 0; i < m_iMaxHitCount; ++i)
-	{
-		info.m_vecEffectPos.push_back(GetOverlappedRectPos(other));
-	}
+		info.vecEffectPos.push_back(GetOverlappedRectPos(other));
+
 	info.iHitCount = 0;
 
-	m_vecHitInfo.push_back(info);
+	m_vecAttInfo.push_back(info);
 }
 
 void PB_Obj::OnCollisionStay(Collider* other)

@@ -45,6 +45,8 @@ using std::to_wstring;
 using std::bind;
 using std::format;
 using std::pair;
+using std::abs;
+using std::fabs;
 
 #include "Vec2.h"
 #include "Enums.h"

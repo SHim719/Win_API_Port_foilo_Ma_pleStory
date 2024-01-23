@@ -3,7 +3,7 @@
 #include "TimeMgr.h"
 #include "GameObject.h"
 #include "Animator.h"
-#include "MainCamera.h"
+#include "Camera.h"
 
 Animation::Animation()
 	: m_pAnimator(nullptr)
@@ -46,7 +46,7 @@ void Animation::Render()
 	GameObject* obj = m_pAnimator->GetOwner();
 	Vec2 pos = obj->GetPos();
 
-	pos = camera::pMainCamera->CalcRenderPos(pos);
+	pos = Camera::CalcRenderPos(pos);
 	pos += sprite.offset;
 
 	RenderMgr::RenderFrame(sprite.texture,

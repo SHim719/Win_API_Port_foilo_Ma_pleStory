@@ -11,9 +11,13 @@ void SoundMgr::Intialize()
 
 	Audio* GiantRoot = ResourceMgr::Load<Audio>(L"GiantRoot", L"Resources/BGM/YggdrasilPrayer.mp3");
 	GiantRoot->SetLoop(true);
+
+	Audio* AbyssCave = ResourceMgr::Load<Audio>(L"AbyssCave", L"Resources/BGM/AbyssCave.mp3");
+	AbyssCave->SetLoop(true);
 	
 	ResourceMgr::Load<Audio>(L"PB_Use", L"Resources/Skill/PhantomBlow/Use.mp3");
-	ResourceMgr::Load<Audio>(L"PB_Hit", L"Resources/Skill/PhantomBlow/Hit.mp3");
+	ResourceMgr::Load<Audio>(L"PB_Hit_SFX", L"Resources/Skill/PhantomBlow/Hit.mp3");
+
 	ResourceMgr::Load<Audio>(L"FJ_Use", L"Resources/Skill/FlashJump/Use.mp3");
 
 	ResourceMgr::Load<Audio>(L"OpenWindow", L"Resources/UI/Sound/OpenWindow.mp3");
@@ -24,10 +28,9 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"Bt_Click", L"Resources/UI/Sound/BtMouseClick.wav");
 	ResourceMgr::Load<Audio>(L"esc", L"Resources/UI/Sound/esc.MP3");
 	ResourceMgr::Load<Audio>(L"Use_Potion", L"Resources/UI/Sound/Use_Potion.mp3");
+	ResourceMgr::Load<Audio>(L"Portal_SFX", L"Resources/SFX/Portal.MP3");
 	ResourceMgr::Load<Audio>(L"Player_Jump", L"Resources/Player/Jump.mp3");
 
-
-	//GiantRoot->Play();
 }
 
 void SoundMgr::Play(const wstring& _sName)

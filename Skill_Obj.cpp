@@ -7,7 +7,7 @@ Skill_Obj::Skill_Obj()
 	, m_vOffset{}
 	, m_iMaxEnemyCount(0)
 	, m_iMaxHitCount(0)
-	, m_vecHitInfo{}
+	, m_vecAttInfo{}
 {
 }
 

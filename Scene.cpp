@@ -2,6 +2,9 @@
 #include "Layer.h"
 #include "MainGame.h"
 #include "CollisionMgr.h"
+#include "Player.h"
+
+Player* Scene::s_pMainPlayer = nullptr;
 
 extern MainGame g_MainGame;
 
@@ -43,7 +46,7 @@ void Scene::Render()
 void Scene::Release()
 {
 	for (Layer* layer : m_vLayers)
-		layer->Destroy();
+		layer->Release();
 }
 
 void Scene::OnEnter()
@@ -74,6 +77,12 @@ void Scene::CalcAndSetCameraArea(const float& fTexWidth, const float& fTexHeight
 	m_vMinCameraPos.y = min(fHalfHeight, fTexHeight - fHalfHeight);
 	m_vMaxCameraPos.x = max(fHalfWidth, fTexWidth - fHalfWidth);
 	m_vMaxCameraPos.y = max(fHalfHeight, fTexHeight - fHalfHeight);
+}
+
+void Scene::Delete_DonDestroy()
+{
+	delete s_pMainPlayer;
+	s_pMainPlayer = nullptr;
 }
 
 void Scene::createLayer()

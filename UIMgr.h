@@ -1,6 +1,6 @@
 #pragma once
 
-class UI;
+#include "UI.h"
 
 class UIMgr
 {
@@ -12,6 +12,7 @@ public:
 
 	static void SetMouseUsed(const bool& b) { m_bMouseUsed = b; }
 	static const bool& IsMouseUsed() { return m_bMouseUsed; }
+	static void SetCanUseUI(const bool& _b) { m_bCanUseUI = _b; }
 
 	static bool IsActiveUIs();
 
@@ -25,6 +26,7 @@ private:
 	static list<UI*> m_ActiveUIList;
 	static list<UI*> m_inActiveUIList;
 	static bool m_bMouseUsed;
+	static bool m_bCanUseUI;
 
 };
 

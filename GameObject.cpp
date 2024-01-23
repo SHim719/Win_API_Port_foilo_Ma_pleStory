@@ -7,6 +7,7 @@ GameObject::GameObject()
 	, m_pCollider(nullptr)
 	, m_pAnimator(nullptr)
 	, m_pRigidbody(nullptr)
+	, m_bDonDestroy(false)
 {	  
 }
 

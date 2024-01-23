@@ -1,6 +1,6 @@
 #include "BackGround.h"
 #include "RenderMgr.h"
-#include "MainCamera.h"
+#include "Camera.h"
 #include "MainGame.h"
 
 BackGround::BackGround()
@@ -26,10 +26,10 @@ void BackGround::LateUpdate()
 
 void BackGround::Render()
 {
-	float fWidth = camera::pMainCamera->GetCameraSize().x;
-	float fHeight = camera::pMainCamera->GetCameraSize().y;
+	float fWidth = Camera::GetCameraSize().x;
+	float fHeight = Camera::GetCameraSize().y;
 
-	Vec2 vLookAt = camera::pMainCamera->GetLookAt();
+	Vec2 vLookAt = Camera::GetLookAt();
 
 	Vec2 vLeftTop = {};
 	vLeftTop.x = vLookAt.x - fWidth * 0.5f;

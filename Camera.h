@@ -1,38 +1,36 @@
 #pragma once
 #include "GameObject.h"
 
-class Camera :
-    public GameObject
+class Camera 
 {
 public:
-    Camera();
-    ~Camera();
+    static void Initialize();
+    static void Update();
+    static void LateUpdate();
+    static void Render();
 
-    void Initialize()   override;
-    void Update()       override;
-    void LateUpdate()   override;
-    void Render()       override;
+    static void SetTarget(GameObject* target) 
+    {
+        m_pTarget = target; 
+    }
 
-    void SetTarget(GameObject* target) { m_pTarget = target; }
+    static Vec2 CalcRenderPos(Vec2& pos) { return pos - m_vDistance;}
+    
+    static const Vec2& GetCameraSize()  { return m_vSize; }
 
-    Vec2 CalcRenderPos(Vec2& pos) { return pos - m_vDistance;}
+    static void SetLookAt(const Vec2& _vLookAt) { m_vLookAt = _vLookAt; }
+    static const Vec2& GetLookAt() { return m_vLookAt; }
+    static const Vec2& GetDistance()  { return m_vDistance; }
 
-    const Vec2& GetCameraSize() const { return m_vSize; }
-
-    void SetLookAt(const Vec2& _vLookAt) { m_vLookAt = _vLookAt; }
-    const Vec2& GetLookAt() const { return m_vLookAt; }
-
-    const Vec2& GetDistance() const { return m_vDistance; }
-
-    void SetMinCameraPos(const Vec2& _vArea) { m_vMinPos = _vArea; }
-    void SetMaxCameraPos(const Vec2& _vArea) { m_vMaxPos = _vArea; }
+    static void SetMinCameraPos(const Vec2& _vArea) { m_vMinPos = _vArea; }
+    static void SetMaxCameraPos(const Vec2& _vArea) { m_vMaxPos = _vArea; }
 private:
-    Vec2 m_vLookAt;
-    Vec2 m_vSize;
-    Vec2 m_vDistance;
-    Vec2 m_vMinPos;
-    Vec2 m_vMaxPos;
-
-    GameObject* m_pTarget;
+    static  Vec2 m_vPos;
+    static  Vec2 m_vLookAt;
+    static  Vec2 m_vSize;
+    static  Vec2 m_vDistance;;
+    static  Vec2 m_vMinPos;
+    static  Vec2 m_vMaxPos;
+    static  GameObject* m_pTarget;
 };
 

@@ -1,7 +1,7 @@
 #include "AnimBG.h"
 #include "ResourceMgr.h"
 #include "TimeMgr.h"
-#include "MainCamera.h"
+#include "Camera.h"
 #include "RenderMgr.h"
 
 AnimBG::AnimBG()
@@ -53,10 +53,10 @@ void AnimBG::LateUpdate()
 
 void AnimBG::Render()
 {
-	float fWidth = camera::pMainCamera->GetCameraSize().x;
-	float fHeight = camera::pMainCamera->GetCameraSize().y;
+	float fWidth = Camera::GetCameraSize().x;
+	float fHeight = Camera::GetCameraSize().y;
 
-	Vec2 vLookAt = camera::pMainCamera->GetLookAt();
+	Vec2 vLookAt = Camera::GetLookAt();
 
 	Vec2 vLeftTop = {};
 	vLeftTop.x = vLookAt.x - fWidth * 0.5f;

@@ -4,30 +4,8 @@
 #include "Player.h"
 #include "SoundMgr.h"
 #include "joObject.h"
+#include "HitInterface.h"
 
-struct HitTimer
-{
-	float fPrevTime = 0.f;
-	float fNowTime = 0.f;
-
-	bool Time_Elapsed(float _fGap)
-	{
-		if (fNowTime - fPrevTime >= _fGap)
-		{
-			fPrevTime = fNowTime;
-			return true;
-		}
-		return false;
-	}
-};
-
-struct HitInfo
-{
-	GameObject* pObj = nullptr;
-	vector<Vec2> m_vecEffectPos = {};
-	HitTimer tTimer{};
-	int iHitCount = 0;
-};
 
 class Skill_Obj :
     public GameObject
@@ -53,6 +31,6 @@ protected:
     int m_iMaxEnemyCount;
     int m_iMaxHitCount;
 
-	vector<HitInfo> m_vecHitInfo;
+	vector<AttackInfo> m_vecAttInfo;
 };
 

@@ -103,14 +103,8 @@
     <Filter Include="01. Core\7. Resource\Audio">
       <UniqueIdentifier>{cc3b2670-e2ea-42e8-8ffe-83de12c0b0fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Contents\03. Scene\01. Scene_Title">
-      <UniqueIdentifier>{9b998e8b-34ea-404c-9624-3104e3998f77}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. Contents\05. BackGround">
       <UniqueIdentifier>{c514c0c3-1c29-4afe-867d-dd2eeb88aca6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. Contents\03. Scene\02. Monster">
-      <UniqueIdentifier>{78e226ef-f894-4156-b1f9-86328c32849d}</UniqueIdentifier>
     </Filter>
     <Filter Include="02. Contents\05. BackGround\AnimBG">
       <UniqueIdentifier>{1b5bab25-0617-4b3a-892e-80d85bd90070}</UniqueIdentifier>
@@ -226,6 +220,39 @@
     <Filter Include="02. Contents\04. UI\DialogBox">
       <UniqueIdentifier>{573836b6-38f2-4f4e-b72c-2102ad447069}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\03. Scene\01. Scene_Title">
+      <UniqueIdentifier>{94581295-d1f8-4088-9c85-766487d1f184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\02. Scene_Rutabyss">
+      <UniqueIdentifier>{9b998e8b-34ea-404c-9624-3104e3998f77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI\Button">
+      <UniqueIdentifier>{936ca481-a79f-44f1-b6bc-9ec28786d32f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\09. Button">
+      <UniqueIdentifier>{f3ffd930-e8fa-4b90-8ded-2d246f14dbc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\09. Button\01. Title_Button">
+      <UniqueIdentifier>{870b4100-4eef-43f0-b964-f4b3d6ed30e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\03. Scene_Boss">
+      <UniqueIdentifier>{4e2e4411-b960-4326-b51f-211df7934a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\05. BackGround\AnimBG\심연의동굴">
+      <UniqueIdentifier>{b8e0aee2-802d-4728-8ff2-460af473a1ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\10. Portal">
+      <UniqueIdentifier>{8a93043d-955e-4778-890d-2aa4fdaffda8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy\01. Vellum">
+      <UniqueIdentifier>{67b79232-8704-47e4-99a6-55fd78b2f392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI">
+      <UniqueIdentifier>{03c72019-ef9a-493f-852a-f1621f167f89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI\01. DamageNum">
+      <UniqueIdentifier>{d76c9f6d-ac5c-4cd0-8d5e-b7300d99cbe1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -309,9 +336,6 @@
     <ClInclude Include="Rigidbody.h">
       <Filter>01. Core\8. Component\03. Rigidbody</Filter>
     </ClInclude>
-    <ClInclude Include="MainCamera.h">
-      <Filter>01. Core\2. Header</Filter>
-    </ClInclude>
     <ClInclude Include="MyFmod.h">
       <Filter>01. Core\8. FMOD</Filter>
     </ClInclude>
@@ -321,8 +345,8 @@
     <ClInclude Include="Audio.h">
       <Filter>01. Core\7. Resource\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_Title.h">
-      <Filter>02. Contents\03. Scene\01. Scene_Title</Filter>
+    <ClInclude Include="Scene_Rutabyss.h">
+      <Filter>02. Contents\03. Scene\02. Scene_Rutabyss</Filter>
     </ClInclude>
     <ClInclude Include="joObject.h">
       <Filter>01. Core\2. Header</Filter>
@@ -338,9 +362,6 @@
     </ClInclude>
     <ClInclude Include="GiantRootBG.h">
       <Filter>02. Contents\05. BackGround\AnimBG\거대한뿌리</Filter>
-    </ClInclude>
-    <ClInclude Include="UI.h">
-      <Filter>02. Contents\04. UI</Filter>
     </ClInclude>
     <ClInclude Include="Enrollable.h">
       <Filter>02. Contents\00. AbstractClass</Filter>
@@ -447,6 +468,39 @@
     <ClInclude Include="MyDialogBox.h">
       <Filter>02. Contents\04. UI\DialogBox</Filter>
     </ClInclude>
+    <ClInclude Include="Scene_Title.h">
+      <Filter>02. Contents\03. Scene\01. Scene_Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>02. Contents\04. UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Title_Button.h">
+      <Filter>02. Contents\09. Button\01. Title_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="AbyssCaveBG.h">
+      <Filter>02. Contents\05. BackGround\AnimBG\심연의동굴</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Boss.h">
+      <Filter>02. Contents\03. Scene\03. Scene_Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
+      <Filter>02. Contents\10. Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>02. Contents\04. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Vellum.h">
+      <Filter>02. Contents\02. Enemy\01. Vellum</Filter>
+    </ClInclude>
+    <ClInclude Include="HitInterface.h">
+      <Filter>02. Contents\00. AbstractClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>02. Contents\02. Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageNum.h">
+      <Filter>02. Contents\11. OBJ_UI\01. DamageNum</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -512,9 +566,6 @@
     <ClCompile Include="Rigidbody.cpp">
       <Filter>01. Core\8. Component\03. Rigidbody</Filter>
     </ClCompile>
-    <ClCompile Include="MainCamera.cpp">
-      <Filter>01. Core\2. Header</Filter>
-    </ClCompile>
     <ClCompile Include="MyFmod.cpp">
       <Filter>01. Core\8. FMOD</Filter>
     </ClCompile>
@@ -524,8 +575,8 @@
     <ClCompile Include="Audio.cpp">
       <Filter>01. Core\7. Resource\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Title.cpp">
-      <Filter>02. Contents\03. Scene\01. Scene_Title</Filter>
+    <ClCompile Include="Scene_Rutabyss.cpp">
+      <Filter>02. Contents\03. Scene\02. Scene_Rutabyss</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>02. Contents\01. Player</Filter>
@@ -538,9 +589,6 @@
     </ClCompile>
     <ClCompile Include="GiantRootBG.cpp">
       <Filter>02. Contents\05. BackGround\AnimBG\거대한뿌리</Filter>
-    </ClCompile>
-    <ClCompile Include="UI.cpp">
-      <Filter>02. Contents\04. UI</Filter>
     </ClCompile>
     <ClCompile Include="UIMgr.cpp">
       <Filter>01. Core\3. Manager\08. UIMgr</Filter>
@@ -643,6 +691,36 @@
     </ClCompile>
     <ClCompile Include="MyDialogBox.cpp">
       <Filter>02. Contents\04. UI\DialogBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Title.cpp">
+      <Filter>02. Contents\03. Scene\01. Scene_Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>02. Contents\04. UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="Title_Button.cpp">
+      <Filter>02. Contents\09. Button\01. Title_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="AbyssCaveBG.cpp">
+      <Filter>02. Contents\05. BackGround\AnimBG\심연의동굴</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Boss.cpp">
+      <Filter>02. Contents\03. Scene\03. Scene_Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <Filter>02. Contents\10. Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>02. Contents\04. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Vellum.cpp">
+      <Filter>02. Contents\02. Enemy\01. Vellum</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>02. Contents\02. Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageNum.cpp">
+      <Filter>02. Contents\11. OBJ_UI\01. DamageNum</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

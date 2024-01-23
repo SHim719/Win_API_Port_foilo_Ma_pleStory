@@ -51,6 +51,16 @@ void Layer::Render()
 	}
 }
 
+void Layer::Release()
+{
+	for (auto it = m_ObjList.begin(); it != m_ObjList.end();)
+	{
+		if (!(*it)->IsDontDestroy())
+			Safe_Delete<GameObject*>(*it);
+		it = m_ObjList.erase(it);
+	}
+}
+
 void Layer::Destroy()
 {
 	for (auto it = m_ObjList.begin(); it != m_ObjList.end();)

@@ -5,13 +5,13 @@ enum class eLayerType
 {
 	LT_NONE,
 	LT_BACKGROUND,
+	LT_OBJECT,
 	LT_NPC,
 	LT_MONSTER,
 	LT_PLAYER,
 	LT_EFFECT,
 
 	LT_UI = 8,
-	LT_CAMERA = 9,
 	LT_END = 10
 };
 

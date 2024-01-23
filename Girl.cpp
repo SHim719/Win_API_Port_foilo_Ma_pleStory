@@ -10,6 +10,7 @@ Girl::Girl()
 	, m_pDialNameTex(nullptr)
 	, m_pDialTex(nullptr)
 	, m_vecDials{}
+	, m_tRect{}
 { 
 }
 

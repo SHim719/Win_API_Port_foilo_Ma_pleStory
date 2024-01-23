@@ -24,7 +24,7 @@ HRESULT JoBmp::Load(const wstring& path)
 
 	m_BmpDC = CreateCompatibleDC(hDC);
 
-	ReleaseDC(g_MainGame.GetHwnd(), hDC);
+	//ReleaseDC(g_MainGame.GetHwnd(), hDC);
 
 	m_hBitmap = (HBITMAP)LoadImage(NULL,			// 프로그램 인스턴스 핸들(우리는 파일로부터 읽어오기 때문에 NULL값을 전달)
 		path.c_str(),		// 파일의 경로

@@ -13,6 +13,7 @@ UI* UIMgr::m_arrUIs[] = {};
 list<UI*> UIMgr::m_ActiveUIList = {};
 list<UI*> UIMgr::m_inActiveUIList = {};
 bool UIMgr::m_bMouseUsed = false;
+bool UIMgr::m_bCanUseUI = false;
 
 void UIMgr::Initialize()
 {
@@ -61,6 +62,9 @@ void UIMgr::Initialize()
 
 void UIMgr::Update()
 {
+	if (!m_bCanUseUI)
+		return;
+
 	UIkeyCheck();
 
 	auto focusUiIter = m_ActiveUIList.rend();
@@ -84,7 +88,7 @@ void UIMgr::Update()
 	
 	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot]->Update();
 	m_arrUIs[(UINT)UI_Enums::UI_Shop]->Update();
-	//m_arrUIs[(UINT)UI_Enums::UI_HUD]->Update();
+	m_arrUIs[(UINT)UI_Enums::UI_HUD]->Update();
 	m_arrUIs[(UINT)UI_Enums::UI_Dialog]->Update();
 
 	m_bMouseUsed = false;
@@ -92,6 +96,9 @@ void UIMgr::Update()
 
 void UIMgr::Render()
 {
+	if (!m_bCanUseUI)
+		return;
+
 	m_arrUIs[(UINT)UI_Enums::UI_HUD]->Render();
 	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot]->Render();
 	m_arrUIs[(UINT)UI_Enums::UI_Shop]->Render();
@@ -105,14 +112,13 @@ void UIMgr::Release()
 {
 	for (auto& ui : m_arrUIs)
 		Safe_Delete<UI*>(ui);
-
 }
 
 bool UIMgr::IsActiveUIs()
 {
 	return	!m_ActiveUIList.empty() 
 		|| static_cast<ShopUI*>(m_arrUIs[(UINT)UI_Enums::UI_Shop])->IsActive()
-		|| static_cast<ShopUI*>(m_arrUIs[(UINT)UI_Enums::UI_Dialog])->IsActive();
+		|| static_cast<MyDialogBox*>(m_arrUIs[(UINT)UI_Enums::UI_Dialog])->IsActive();
 }
 
 void UIMgr::UIkeyCheck()

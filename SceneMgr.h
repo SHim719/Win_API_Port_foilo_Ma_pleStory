@@ -23,10 +23,15 @@ public:
 	static void LateUpdate();
 	static void Render();
 	static void Destroy();
+	static void Release();
+
+	static void Reservation_ChangeScene(const wstring& _wsName);
+	static void ChangeScene();
 
 private:
 	static map<const wstring, Scene*> m_mScenes;
 	static Scene* m_ActiveScene;
+	static Scene* m_pNextScene;
 
 };
 

@@ -41,6 +41,7 @@ public:
 
 	bool IsDeath() const { return m_eLifeCycle == eLifeCycle::Dead; }
 	bool IsActive() const { return m_eLifeCycle == eLifeCycle::Active; }
+	bool IsDontDestroy() const { return m_bDonDestroy; }
 
 	void SetPos(const Vec2& _vPos) { m_tTransform.vPos = _vPos; }
 	const Vec2& GetPos() const { return m_tTransform.vPos; }
@@ -60,5 +61,6 @@ protected:
 	Animator*	m_pAnimator;
 	Rigidbody*	m_pRigidbody;
 
+	bool		m_bDonDestroy;
 };
 

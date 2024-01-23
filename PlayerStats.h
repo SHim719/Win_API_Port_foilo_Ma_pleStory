@@ -19,19 +19,24 @@ public:
 	void Add_Int(const int& _iPoint) { m_iInt += _iPoint; }
 	void Add_Luk(const int& _iPoint) { m_iLuk += _iPoint; }
 
-	const int& Get_Str() { return m_iStr; }
-	const int& Get_Dex() { return m_iDex; }
-	const int& Get_Int() { return m_iInt; }
-	const int& Get_Luk() { return m_iLuk; }
-	const int& Get_Extra_Str() { return m_iExtra_Str; }
-	const int& Get_Extra_Dex() { return m_iExtra_Dex; }
-	const int& Get_Extra_Int() { return m_iExtra_Int; }
-	const int& Get_Extra_Luk() { return m_iExtra_Luk; }
+	const int& Get_Str() const { return m_iStr; }
+	const int& Get_Dex() const { return m_iDex; }
+	const int& Get_Int() const { return m_iInt; }
+	const int& Get_Luk() const { return m_iLuk; }
+	const int& Get_Extra_Str() const { return m_iExtra_Str; }
+	const int& Get_Extra_Dex() const { return m_iExtra_Dex; }
+	const int& Get_Extra_Int() const { return m_iExtra_Int; }
+	const int& Get_Extra_Luk() const { return m_iExtra_Luk; }
 
 	void Set_FullHP() { m_iHp = m_iMaxHp; }
-	void Set_FullMP() { m_iHp = m_iMaxHp; }
+	void Set_FullMP() { m_iMp = m_iMaxMp; }
 	void Add_HP(const int& _iHp);
 	void Add_MP(const int& _iMp);
+
+	const int& Get_MaxHp() const { return m_iMaxHp; }
+	const int& Get_MaxMp() const { return m_iMaxMp; }
+	const int& Get_Hp() const { return m_iHp; }
+	const int& Get_Mp() const { return m_iMp; }
 private:
 	int m_iHp;
 	int m_iMp;

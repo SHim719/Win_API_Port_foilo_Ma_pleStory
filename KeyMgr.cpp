@@ -1,6 +1,7 @@
 #include "KeyMgr.h"
 #include "MainGame.h"
-#include "MainCamera.h"
+#include "Camera.h"
+
 
 extern MainGame g_MainGame;
 
@@ -30,7 +31,7 @@ void KeyMgr::Update()
 
 Vec2 KeyMgr::GetWorldMousePos()
 {
-	Vec2 vDistance = camera::pMainCamera->GetDistance();
+	Vec2 vDistance = Camera::GetDistance();
 	return vDistance + vMousePos;
 }
 

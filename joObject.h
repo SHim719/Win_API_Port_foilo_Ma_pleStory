@@ -15,6 +15,16 @@ static T* Instantiate(const eLayerType& type)
 
 	return obj;
 }
+
+template<typename T>
+static T* Instantiate_NoInit(const eLayerType& type)
+{
+	T* obj = new T();
+	Scene* activeScene = SceneMgr::GetActiveScene();
+	activeScene->AddObj(obj, type);
+
+	return obj;
+}
 static void Destroy(GameObject* obj)
 {
 	obj->SetDeath();

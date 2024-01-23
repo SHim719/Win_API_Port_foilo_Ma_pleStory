@@ -35,6 +35,8 @@ public:
 
 	void SetOwner(GameObject* _pOwner) { m_pOwner = _pOwner; }
 	GameObject* GetOwner() const { return m_pOwner; }
+
+	void SetRenderColor(COLORREF _color) { m_renderColor = _color; }
 private:
 	static UINT32 s_CollisionID;
 	UINT32 m_iID;

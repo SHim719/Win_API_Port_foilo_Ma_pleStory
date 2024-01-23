@@ -1,6 +1,5 @@
 #include "Player.h"
 #include "RenderMgr.h"
-#include "MainCamera.h"
 #include "TimeMgr.h"
 #include "ResourceMgr.h"
 #include "SkillStats.h"
@@ -21,6 +20,7 @@
 #include "StatUI.h"
 #include "ShopUI.h"
 #include "Consumable.h"
+#include "HudUI.h"
 
 Player::Player()
 	: m_bDownJumping(false)
@@ -42,7 +42,7 @@ Player::Player()
 	, m_pInventory(nullptr)
 	, m_pEquipStats(nullptr)
 {
-
+	SetName(L"Player");
 }
 
 Player::~Player()  
@@ -52,6 +52,7 @@ Player::~Player()
 
 void Player::Initialize()
 {
+	m_bDonDestroy = true;
 	Skill::SetOwner(this);
 
 	m_pSkillStats = new SkillStats;
@@ -72,6 +73,9 @@ void Player::Initialize()
 
 	UIMgr::Get_UI_Instance<ShopUI>(UI_Enums::UI_Shop)->Set_Inventory(m_pInventory);
 	Consumable::SetPlayerStats(m_pPlayerStats);
+
+	UIMgr::Get_UI_Instance<HudUI>(UI_Enums::UI_HUD)->SetPlayerStats(m_pPlayerStats);
+	
 
 	m_pCollider = new Collider;
 	m_pCollider->SetOwner(this);
@@ -687,6 +691,13 @@ void Player::debug_check()
 		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"리버스 페스카즈"), 1);
 		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"파워 엘릭서"), 10);
 	}
+
+	if (KeyMgr::GetKeyDown(eKeyCode::B))
+	{
+		m_pPlayerStats->Add_HP(-1000);
+		m_pPlayerStats->Add_MP(-1000);
+	}
+		
 
 	if (KeyMgr::GetKeyDown(eKeyCode::N))
 		SetPos({ 300, 200 });

@@ -133,7 +133,10 @@ void PB_Obj::OnCollisionEnter(Collider* other)
 	if (m_vecAttInfo.size() >= m_iMaxEnemyCount) return;
 
 	AttackInfo info{};
-	info.pHitObj = static_cast<Enemy*>(other->GetOwner());
+	info.pHitObj = dynamic_cast<Enemy*>(other->GetOwner());
+
+	if (info.pHitObj == nullptr)
+		return;
 
 	for (int i = 0; i < m_iMaxHitCount; ++i)
 		info.vecEffectPos.push_back(GetOverlappedRectPos(other));

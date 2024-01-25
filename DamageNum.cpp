@@ -56,7 +56,7 @@ void DamageNum::Render()
 	float fWidth = (float)pDamageTex->GetWidth() / 10.f;
 	float fHeight = (float)pDamageTex->GetHeight();
 
-	UINT iSize = (UINT)m_vecRenderNum.size();
+ 	UINT iSize = (UINT)m_vecRenderNum.size();
 
 	float fXSize = fWidth * (float)iSize;
 

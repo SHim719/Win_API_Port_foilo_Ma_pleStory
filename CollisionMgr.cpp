@@ -71,6 +71,7 @@ void CollisionMgr::CheckLayer(Scene* curScene, const eLayerType& left, const eLa
 			if (rightCol == nullptr) continue;
 
 			CheckCollision(leftCol, rightCol);
+
 		}
 
 		/*for (int i = 0; i < rightLayer.size(); ++i)
@@ -101,6 +102,12 @@ void CollisionMgr::CheckCollision(Collider* left, Collider* right)
 	{
 		m_mapCollision.insert({ id.id, false });
 		it = m_mapCollision.find(id.id);
+	}
+		
+	if (left->IsCollisionOn() == false || right->IsCollisionOn() == false)
+	{
+		it->second = false;
+		return;
 	}
 
 	if (Intersect(left, right))

@@ -3,6 +3,7 @@
 #include "Enemy.h"
 
 class VellumAttackCollider;
+class DeepBreath;
 
 enum class Vellum_State
 {
@@ -45,6 +46,8 @@ public:
 private:
 	void debug_key();
 
+	void Play_Breath_Loop();
+
 	void Init_Anim();
 	void Init_AnimKey();
 	void Init_AnimBind();
@@ -54,6 +57,7 @@ private:
 	void Attack2_Attack();
 	void Attack3_Attack();
 	void Attack4_Attack();
+	void Breath_Attack();
 	void AttackCollisionOff();
 	
 	void End_State();
@@ -66,6 +70,7 @@ private:
 	
 	void Move();
 	void Breath();
+	void Attack_Tail();
 private:
 	Vellum_State m_eVellumState;
 
@@ -73,17 +78,23 @@ private:
 
 	bool m_bTimerOn = false;
 	bool m_bRight = false;
-	bool m_bHiding = false;
 
 	float m_fMoveTime = 0.f;
 
 	int m_iMaxShotCount = 0;
 	int m_iShotCount = 0;
+
+	int m_iMaxTailCount = 3;
 	int m_iTailCount = 0;
+	float m_fTailTimeGap = 0.f;
 
 	float m_fBreath_LeftX = 175.f;
 	float m_fBreath_RightX = 2880.f;
 
 	VellumAttackCollider* m_pAttackCollider = nullptr;
+	vector<DeepBreath*> m_vecBreath = {};
+	Vec2 m_vBreathLeftStartPos = { 1347.f, 338.f }; // +340
+	Vec2 m_vBreathRightStartPos = { 1708.f, 338.f }; // -340
+
 };
 

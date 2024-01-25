@@ -32,8 +32,8 @@ void VellumTrigger::Update()
 			&& vMousePos.y < GetPos().y + m_pCollider->GetSize().y * 0.5f)
 		{
 			m_pVellum->SetActive(true);
-			//m_pVellum->SetState_Attack1();
-			m_pVellum->SetState_Move();
+			m_pVellum->SetState_Attack1();
+			//m_pVellum->SetState_Move();
 			Destroy(this);
 		}
 	}

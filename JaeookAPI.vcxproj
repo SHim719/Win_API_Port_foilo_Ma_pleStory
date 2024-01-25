@@ -156,6 +156,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="DamageNum.h" />
+    <ClInclude Include="DeepBreath.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="HitInterface.h" />
     <ClInclude Include="MyDialogBox.h" />
@@ -214,6 +215,8 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Skill_Obj.h" />
     <ClInclude Include="SoundMgr.h" />
     <ClInclude Include="StatUI.h" />
+    <ClInclude Include="StoneSpawner.h" />
+    <ClInclude Include="Tail.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="Title_Button.h" />
@@ -225,6 +228,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vellum.h" />
     <ClInclude Include="VellumAttackCollider.h" />
+    <ClInclude Include="VellumStone.h" />
     <ClInclude Include="VellumTrigger.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
@@ -243,6 +247,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="DamageNum.cpp" />
+    <ClCompile Include="DeepBreath.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="MyDialogBox.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -295,6 +300,8 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Skill_Obj.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
     <ClCompile Include="StatUI.cpp" />
+    <ClCompile Include="StoneSpawner.cpp" />
+    <ClCompile Include="Tail.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="Title_Button.cpp" />
     <ClCompile Include="Top.cpp" />
@@ -304,6 +311,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="Vellum.cpp" />
     <ClCompile Include="VellumAttackCollider.cpp" />
+    <ClCompile Include="VellumStone.cpp" />
     <ClCompile Include="VellumTrigger.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>

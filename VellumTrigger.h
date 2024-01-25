@@ -17,7 +17,5 @@ public:
     void Set_Vellum(Vellum* const _pVellum) { m_pVellum = _pVellum; }
 private:
     Vellum* m_pVellum;
-
-
 };
 

@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "TimeMgr.h"
 #include "VellumAttackCollider.h"
+#include "DeepBreath.h"
+#include "Tail.h"
 
 
 Vellum::Vellum()
@@ -34,6 +36,13 @@ void Vellum::Initialize()
 
 	m_pAttackCollider = Instantiate<VellumAttackCollider>(eLayerType::LT_MONSTER);
 
+	m_vecBreath.reserve(6);
+	for (int i = 0; i < 6; ++i)
+	{
+		DeepBreath* pdb = Instantiate<DeepBreath>(eLayerType::LT_MONSTER);
+		m_vecBreath.push_back(pdb);
+	}
+
 	Init_Anim();
 	Init_AnimKey();
 	Init_AnimBind();
@@ -42,6 +51,8 @@ void Vellum::Initialize()
 void Vellum::Update()
 {
 	debug_key();
+
+	Attack_Tail();
 
 	switch (m_eVellumState)
 	{
@@ -95,9 +106,33 @@ void Vellum::debug_key()
 	if (KeyMgr::GetKeyDown(eKeyCode::W))
 	{
 		//SetState_Move();
-		SetState_Appear();
+		//SetState_Appear();
 		//SetState_Attack1();
 		//SetState_LowNeck();
+		SetState_Breath();
+	}
+}
+
+void Vellum::Play_Breath_Loop()
+{
+	SoundMgr::Play(L"Vellum_Attack10");
+
+	if (m_bRight)
+		m_pAnimator->PlayAnimation(L"Vellum_Breath_Loop_R");
+	else
+		m_pAnimator->PlayAnimation(L"Vellum_Breath_Loop_L");
+	m_bTimerOn = true;
+
+	for (size_t i = 0; i < 6; ++i)
+	{
+		m_vecBreath[i]->SetActive(true);
+		Vec2 vPos = Vec2::Zero;
+		if (m_bRight)
+			vPos = m_vBreathLeftStartPos + Vec2(340.f * float(i), 0.f);
+		else
+			vPos = m_vBreathRightStartPos - Vec2(340.f * float(i), 0.f);
+		m_vecBreath[i]->SetPos(vPos);
+		m_vecBreath[i]->Play_BreathAnim(m_bRight);
 	}
 }
 
@@ -225,17 +260,13 @@ void Vellum::Init_AnimBind()
 
 	Events* pEvent_Breath_Start_L = m_pAnimator->GetEvents(L"Vellum_Breath_Start_L");
 	Events* pEvent_Breath_Start_R = m_pAnimator->GetEvents(L"Vellum_Breath_Start_R");
-	function<void()> playBreathLoop= [&]() ->void
-		{
-			SoundMgr::Play(L"Vellum_Attack10");
-			if (GetPos().x > 2000.f)
-				m_pAnimator->PlayAnimation(L"Vellum_Breath_Loop_L");
-			else
-				m_pAnimator->PlayAnimation(L"Vellum_Breath_Loop_R");
-			m_bTimerOn = true;
-		};
-	pEvent_Breath_Start_L->EndEvent = playBreathLoop;
-	pEvent_Breath_Start_R->EndEvent = playBreathLoop;
+	pEvent_Breath_Start_L->EndEvent = std::bind(&Vellum::Play_Breath_Loop, this);
+	pEvent_Breath_Start_R->EndEvent = std::bind(&Vellum::Play_Breath_Loop, this);
+
+	Events* pEvent_Breath_Loop_L = m_pAnimator->GetEvents(L"Vellum_Breath_Loop_L");
+	Events* pEvent_Breath_Loop_R = m_pAnimator->GetEvents(L"Vellum_Breath_Loop_R");
+	pEvent_Breath_Loop_L->frameEvents[0] = std::bind(&Vellum::Breath_Attack, this);
+	pEvent_Breath_Loop_R->frameEvents[0] = std::bind(&Vellum::Breath_Attack, this);
 
 	Events* pEvent_Breath_Loop_End_L = m_pAnimator->GetEvents(L"Vellum_Breath_Loop_End_L");
 	Events* pEvent_Breath_Loop_End_R = m_pAnimator->GetEvents(L"Vellum_Breath_Loop_End_R");
@@ -375,6 +406,20 @@ void Vellum::Attack4_Attack()
 	}
 }
 
+void Vellum::Breath_Attack()
+{
+	if (m_pAttackCollider)
+	{
+		float fXOffset = 750.f;
+		if (!m_bRight)
+			fXOffset = -fXOffset;
+		m_pAttackCollider->SetPos(GetPos());
+		m_pAttackCollider->SetCollisionSize({ 341.f, 810.f });
+		m_pAttackCollider->SetCollisionOffset({ fXOffset, 0.f });
+		m_pAttackCollider->SetCollisionOnOff(true);
+	}
+}
+
 void Vellum::AttackCollisionOff()
 {
 	if (m_pAttackCollider)
@@ -420,13 +465,13 @@ void Vellum::End_State()
 
 void Vellum::EndState_Move()
 {
-	float fRand = float(rand() % 10);
+	float fRand = float(rand() % 15);
 
-	if (fRand < 3.f)
+	if (fRand < 5.f)
 		SetState_Appear();
-	else if (fRand < 6.f)
+	else if (fRand < 11.f)
 		SetState_Attack1();
-	else if (fRand < 8.f)
+	else if (fRand < 15.f)
 		SetState_LowNeck();
 }
 
@@ -486,15 +531,17 @@ void Vellum::EndState_Attack4()
 
 void Vellum::EndState_Dig()
 {
- 	int iRand = rand() % 10;
-	if (iRand < 3)
+ 	int iRand = rand() % 20;
+	if (iRand < 6)
 		SetState_Move();
-	else if (iRand < 7)
+	else if (iRand < 12)
 		SetState_Move_NoAnim();
-	else if (iRand < 9)
+	else if (iRand < 17)
 		SetState_Attack4();
 	else if (m_iHp < m_iMaxHp * 0.4f)
 		SetState_Breath();
+	else
+		SetState_Move_NoAnim();
 }
 
 
@@ -537,7 +584,34 @@ void Vellum::Breath()
 			else
 				m_pAnimator->PlayAnimation(L"Vellum_Breath_Loop_End_L", false);
 			SoundMgr::Play(L"Vellum_Attack11");
+
+			for (size_t i = 0; i < m_vecBreath.size(); ++i)
+				m_vecBreath[i]->Play_EndAnim(m_bRight);
+			AttackCollisionOff();
 		}
+	}
+}
+
+void Vellum::Attack_Tail()
+{
+	static float s_fNowTime = 0.f;
+
+	if (m_iTailCount == 0)
+		return;
+
+	s_fNowTime += TimeMgr::DeltaTime();
+	if (s_fNowTime >= m_fTailTimeGap)
+	{
+		s_fNowTime = 0.f;
+
+		Tail* pTail = Instantiate<Tail>(eLayerType::LT_MONSTER);
+		pTail->SetPos({ m_pTarget->GetPos().x, 410.f });
+		pTail->SetOwner(this);
+		pTail->PlayAnim(m_bRight);
+
+		m_fTailTimeGap = float(rand() % 3 + 1);
+		m_iTailCount--;
+		m_iTailCount = max(m_iTailCount, 0);
 	}
 }
 
@@ -575,6 +649,9 @@ void Vellum::SetState_Appear()
 		m_pAnimator->PlayAnimation(L"Vellum_Appear_R", false);
 	}
 	m_eVellumState = Vellum_State::Appear;
+
+	m_iTailCount = min(m_iTailCount + rand() % 4, m_iMaxTailCount);
+
 }
 
 void Vellum::SetState_Attack1()
@@ -591,6 +668,8 @@ void Vellum::SetState_Attack1()
 		m_bRight = false;
 	}
 	m_eVellumState = Vellum_State::Attack1;
+
+	m_iTailCount = min(m_iTailCount + rand() % 4, m_iMaxTailCount);
 }
 
 void Vellum::SetState_Attack2()
@@ -603,6 +682,8 @@ void Vellum::SetState_Attack2()
 		m_pAnimator->PlayAnimation(L"Vellum_Attack2_L", false);
 
 	m_eVellumState = Vellum_State::Attack2;
+
+	m_iTailCount = min(m_iTailCount + 1, m_iMaxTailCount);
 }
 
 void Vellum::SetState_Attack3()
@@ -615,6 +696,8 @@ void Vellum::SetState_Attack3()
 		m_pAnimator->PlayAnimation(L"Vellum_Attack3_L", false);
 
 	m_eVellumState = Vellum_State::Attack3;
+
+	m_iTailCount = min(m_iTailCount + 1, m_iMaxTailCount);
 }
 
 void Vellum::SetState_Attack4()
@@ -631,8 +714,9 @@ void Vellum::SetState_Attack4()
 		m_pAnimator->PlayAnimation(L"Vellum_Attack4_L", false);
 	}
 		
-
 	m_eVellumState = Vellum_State::Attack4;
+
+	m_iTailCount = min(m_iTailCount + 1, m_iMaxTailCount);
 }
 
 void Vellum::SetState_LowNeck()
@@ -650,6 +734,8 @@ void Vellum::SetState_LowNeck()
 	}
 
 	m_eVellumState = Vellum_State::LowNeck;
+
+	m_iTailCount = min(m_iTailCount + 1, m_iMaxTailCount);
 }
 
 void Vellum::SetState_Breath()
@@ -686,4 +772,6 @@ void Vellum::SetState_Dig()
 		m_pAnimator->PlayAnimation(L"Vellum_Dig_L", false);
 	
 	m_eVellumState = Vellum_State::Dig;
+
+	m_iTailCount = min(m_iTailCount + 1, m_iMaxTailCount);
 }

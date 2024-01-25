@@ -256,8 +256,20 @@
     <Filter Include="02. Contents\03. Scene\03. Scene_Boss\VellumTrigger">
       <UniqueIdentifier>{4dd286bc-6d25-4834-b45c-5bb551f12d9f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Contents\02. Enemy\01. Vellum\VellumAttackCollider">
+    <Filter Include="02. Contents\02. Enemy\01. Vellum\01. DeepBreath">
+      <UniqueIdentifier>{2884a7ed-3cee-4be8-b172-c375bc2052a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy\01. Vellum\02. StoneSpawner">
+      <UniqueIdentifier>{f73a788b-532e-4e19-896e-fcd04f2d7271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy\01. Vellum\03. VellumAttackCollider">
       <UniqueIdentifier>{fa236d81-5c92-431f-bbb9-9e0f95df63e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy\01. Vellum\04. VellumStone">
+      <UniqueIdentifier>{0bbbd883-754b-4822-9783-44ac8c296463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy\01. Vellum\05. Tail">
+      <UniqueIdentifier>{3eece652-90f0-477b-8811-010dfda7e4e4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -517,7 +529,19 @@
       <Filter>02. Contents\03. Scene\03. Scene_Boss\VellumTrigger</Filter>
     </ClInclude>
     <ClInclude Include="VellumAttackCollider.h">
-      <Filter>02. Contents\02. Enemy\01. Vellum\VellumAttackCollider</Filter>
+      <Filter>02. Contents\02. Enemy\01. Vellum\03. VellumAttackCollider</Filter>
+    </ClInclude>
+    <ClInclude Include="VellumStone.h">
+      <Filter>02. Contents\02. Enemy\01. Vellum\04. VellumStone</Filter>
+    </ClInclude>
+    <ClInclude Include="StoneSpawner.h">
+      <Filter>02. Contents\02. Enemy\01. Vellum\02. StoneSpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="DeepBreath.h">
+      <Filter>02. Contents\02. Enemy\01. Vellum\01. DeepBreath</Filter>
+    </ClInclude>
+    <ClInclude Include="Tail.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -750,7 +774,19 @@
       <Filter>02. Contents\03. Scene\03. Scene_Boss\VellumTrigger</Filter>
     </ClCompile>
     <ClCompile Include="VellumAttackCollider.cpp">
-      <Filter>02. Contents\02. Enemy\01. Vellum\VellumAttackCollider</Filter>
+      <Filter>02. Contents\02. Enemy\01. Vellum\03. VellumAttackCollider</Filter>
+    </ClCompile>
+    <ClCompile Include="VellumStone.cpp">
+      <Filter>02. Contents\02. Enemy\01. Vellum\04. VellumStone</Filter>
+    </ClCompile>
+    <ClCompile Include="StoneSpawner.cpp">
+      <Filter>02. Contents\02. Enemy\01. Vellum\02. StoneSpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="DeepBreath.cpp">
+      <Filter>02. Contents\02. Enemy\01. Vellum\01. DeepBreath</Filter>
+    </ClCompile>
+    <ClCompile Include="Tail.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

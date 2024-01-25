@@ -8,6 +8,8 @@
 DamageNum::DamageNum()
 	: m_pDamageTex(nullptr)
 	, m_pCriticalTex(nullptr)
+	, m_pPlayerDamageTex(nullptr)
+	, m_bPlayerHit(false)
 	, m_bCritical(false)
 	, m_fNowTime(0.f)
 	, m_fSpeed(0.f)
@@ -24,6 +26,7 @@ void DamageNum::Initialize()
 {
 	m_pDamageTex = ResourceMgr::Find<JoTexture>(L"Damage_Num");
 	m_pCriticalTex = ResourceMgr::Find<JoTexture>(L"Damage_Num_Critical");
+	m_pPlayerDamageTex = ResourceMgr::Find<JoTexture>(L"Damaged_Num");
 
 	m_fSpeed = 30.f;
 	m_fAlpha = 1.f;
@@ -48,11 +51,7 @@ void DamageNum::Render()
 	Vec2 vRenderPos = GetPos();
 	vRenderPos = Camera::CalcRenderPos(vRenderPos);
 
-	JoTexture* pDamageTex = nullptr;
-	if (IsCritical())
-		pDamageTex = m_pDamageTex;
-	else
-		pDamageTex = m_pCriticalTex;
+	JoTexture* pDamageTex = GetDamageTex();
 
 	float fWidth = (float)pDamageTex->GetWidth() / 10.f;
 	float fHeight = (float)pDamageTex->GetHeight();

@@ -19,9 +19,11 @@ Vec2 Skill_Obj::GetOverlappedRectPos(Collider* other) const
 {
 	Vec2 vSize = m_pCollider->GetSize();
 	Vec2 vPos = GetPos();
+	vPos += m_pCollider->GetOffset();
 
 	Vec2 vOtherSize = other->GetSize();
 	Vec2 vOtherPos = other->GetOwner()->GetPos();
+	vOtherPos += other->GetOffset();
 
 	float fLeftPos = vPos.x - vSize.x * 0.5f;
 	float fRightPos = vPos.x + vSize.x * 0.5f;

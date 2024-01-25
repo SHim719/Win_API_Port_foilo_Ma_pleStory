@@ -31,6 +31,17 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"Portal_SFX", L"Resources/SFX/Portal.MP3");
 	ResourceMgr::Load<Audio>(L"Player_Jump", L"Resources/Player/Jump.mp3");
 
+	ResourceMgr::Load<Audio>(L"Vellum_Attack1", L"Resources/Enemy/Vellum/Sound/Attack1.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Attack2", L"Resources/Enemy/Vellum/Sound/Attack2.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Attack4", L"Resources/Enemy/Vellum/Sound/Attack4.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Attack5", L"Resources/Enemy/Vellum/Sound/Attack5.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Attack6", L"Resources/Enemy/Vellum/Sound/Attack6.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Attack7", L"Resources/Enemy/Vellum/Sound/Attack7.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Attack8", L"Resources/Enemy/Vellum/Sound/Attack8.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Attack9", L"Resources/Enemy/Vellum/Sound/Attack9.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Attack10", L"Resources/Enemy/Vellum/Sound/Attack10.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Attack11", L"Resources/Enemy/Vellum/Sound/Attack11.mp3");
+
 }
 
 void SoundMgr::Play(const wstring& _sName)
@@ -51,6 +62,16 @@ void SoundMgr::Stop(const wstring& _sName)
 		return;
 
 	pAudio->Stop();
+}
+
+void SoundMgr::SetVolume(const wstring& _sName , const float& _fVolume)
+{
+	Audio* pAudio = ResourceMgr::Find<Audio>(_sName);
+
+	if (pAudio == nullptr)
+		return;
+
+	pAudio->SetVolume(_fVolume);
 }
 
 

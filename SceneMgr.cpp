@@ -26,7 +26,7 @@ void SceneMgr::Initialize()
 	SceneMgr::CreateScene<Scene_Boss>(L"Scene_Boss");
 	
 
-	SceneMgr::LoadScene(L"Scene_Title");
+	SceneMgr::LoadScene(L"Scene_Boss");
 }
 
 void SceneMgr::Update()

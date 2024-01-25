@@ -145,6 +145,8 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
     <ClInclude Include="AnimBG.h" />
+    <ClInclude Include="animtest.h" />
+    <ClInclude Include="animtest2.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Bottom.h" />
@@ -222,6 +224,8 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Consumable.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vellum.h" />
+    <ClInclude Include="VellumAttackCollider.h" />
+    <ClInclude Include="VellumTrigger.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +233,8 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AnimBG.cpp" />
+    <ClCompile Include="animtest.cpp" />
+    <ClCompile Include="animtest2.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Bottom.cpp" />
@@ -297,6 +303,8 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="Vellum.cpp" />
+    <ClCompile Include="VellumAttackCollider.cpp" />
+    <ClCompile Include="VellumTrigger.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>

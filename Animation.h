@@ -61,6 +61,8 @@ public:
 	const float& GetAlpha() const { return m_fAlpha; }
 	void SetAlpha(const float& alpha) { m_fAlpha = alpha; }
 
+	void Set_AnimDuration(const UINT& _idx, const float& _fDuration) { m_SheetVec[_idx].duration = _fDuration; }
+
 private:
 	Animator* m_pAnimator;
 

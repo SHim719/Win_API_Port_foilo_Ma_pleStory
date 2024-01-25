@@ -12,6 +12,7 @@ void CollisionMgr::Initialize()
 {
 	SetCollisionEnabled(eLayerType::LT_MONSTER, eLayerType::LT_EFFECT, true);
 	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_OBJECT, true);
+	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_MONSTER, true);
 }
 
 void CollisionMgr::Update()
@@ -61,7 +62,6 @@ void CollisionMgr::CheckLayer(Scene* curScene, const eLayerType& left, const eLa
 
 		Collider* leftCol = leftObj->GetCollider();
 		if (leftCol == nullptr) continue;
-		if (!leftCol->IsCollisionOn()) continue;
 
 		for (GameObject* rightObj : rightLayer)
 		{
@@ -69,7 +69,6 @@ void CollisionMgr::CheckLayer(Scene* curScene, const eLayerType& left, const eLa
 
 			Collider* rightCol = rightObj->GetCollider();
 			if (rightCol == nullptr) continue;
-			if (!rightCol->IsCollisionOn()) continue;
 
 			CheckCollision(leftCol, rightCol);
 		}

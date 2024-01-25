@@ -37,6 +37,8 @@ void Animator::Update()
 		{
 			if (m_bLoop)
 				m_activeAnim->Reset();
+
+			m_pActiveEvents->EndEvent();
 		}
 	}
 }
@@ -133,8 +135,8 @@ void Animator::PlayAnimation(const wstring& name, bool loop)
 	if (anim == nullptr)
 		return;
 
-	if (m_activeAnim == anim)
-		return;
+	/*if (m_activeAnim == anim)
+		return;*/
 
 	m_activeAnim = anim;
 	m_activeAnim->Reset();

@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "KeyMgr.h"
+#include "HitInterface.h"
 
 enum class Restriction
 {
@@ -16,7 +17,7 @@ class Inventory;
 class EquipStats;
 
 class Player :
-    public GameObject
+    public GameObject, public HitInterface
 {
 	enum class eActionKey
 	{
@@ -62,6 +63,8 @@ public:
 	void SetState_Channeling(const unsigned char& _cRestriction);
 
 	const bool& isRight() const { return m_bRight; }
+
+	void Hit(const HitInfo& _hitInfo) override;
 private:
 	void Init_Anim();
 	void Init_FrameBind();

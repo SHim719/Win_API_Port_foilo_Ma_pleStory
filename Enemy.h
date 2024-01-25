@@ -3,6 +3,7 @@
 #include "HitInterface.h"
 
 class JoTexture;
+class Player;
 
 class Enemy :
     public GameObject, public HitInterface
@@ -13,8 +14,11 @@ public:
 
     void Hit(const HitInfo& _hitInfo) {}
 
+    static void SetTarget(Player* const _pPlayer) { m_pTarget = _pPlayer; }
 protected:
     int m_iHp;
-
+    int m_iMaxHp;
+    
+    static Player* m_pTarget;
 };
 

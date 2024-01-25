@@ -9,6 +9,7 @@ public:
 	static void Intialize();
 	static void Play(const wstring& _sName);
 	static void Stop(const wstring& _sName);
+	static void SetVolume(const wstring& _sName, const float& _fVolume);
 
 };
 

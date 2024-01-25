@@ -37,3 +37,8 @@ void Audio::Stop()
 {
 	m_pChannel->stop();
 }
+
+void Audio::SetVolume(const float& _fVolume)
+{
+	m_pChannel->setVolume(_fVolume);
+}

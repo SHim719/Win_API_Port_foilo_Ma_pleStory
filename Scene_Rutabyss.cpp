@@ -31,7 +31,6 @@ void Scene_Rutabyss::Initialize()
 	float texHeight = (float)bgTex->GetHeight();
 	CalcAndSetCameraArea(texWidth, texHeight, Vec2::Zero);
 
-
 	m_pixelDC = ResourceMgr::Find<JoBmp>(L"GiantRoot_Pixel")->Get_BmpDC();
 
 	Girl* pGirl = Instantiate<Girl>(eLayerType::LT_NPC);
@@ -51,8 +50,11 @@ void Scene_Rutabyss::Initialize()
 
 void Scene_Rutabyss::OnEnter()
 {
+	SoundMgr::Play(L"GiantRoot");
+
 	Camera::SetMinCameraPos(m_vMinCameraPos);
 	Camera::SetMaxCameraPos(m_vMaxCameraPos);
+
 	AddObj(s_pMainPlayer, eLayerType::LT_PLAYER);
 	Camera::SetTarget(s_pMainPlayer);
 	s_pMainPlayer->SetLimitPosX(m_vLimitPosX);

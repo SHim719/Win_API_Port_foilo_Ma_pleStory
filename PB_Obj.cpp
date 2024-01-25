@@ -31,9 +31,9 @@ void PB_Obj::Initialize()
 	m_pAnimator = new Animator;
 	m_pAnimator->SetOwner(this);
 	m_pAnimator->CreateAnimation(L"PhantomBlow_L", m_pSkillTex, Vec2(0.0f, 0.0f), Vec2(600.f, 400.f), Vec2::Zero,
-		12, 0.06f);
+		12, 0.07f);
 	m_pAnimator->CreateAnimation(L"PhantomBlow_R", m_pSkillTex, Vec2(0.0f, 400.0f), Vec2(600.f, 400.f), Vec2::Zero,
-		12, 0.06f);
+		12, 0.07f);
 
 	function<void()> ownerNull = [&]() ->void { m_pOwner = nullptr; };
 
@@ -77,7 +77,7 @@ void PB_Obj::Update()
 				continue;
 			}
 			
-			HitInfo hitInfo = { 142, attInfo.iHitCount, false };
+			HitInfo hitInfo = { 9999999, attInfo.iHitCount, false };
 			attInfo.pHitObj->Hit(hitInfo);
 
 			SoundMgr::Play(L"PB_Hit_SFX");

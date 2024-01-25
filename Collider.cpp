@@ -33,6 +33,8 @@ void Collider::LateUpdate()
 }
 void Collider::Render()
 {
+	if (!m_bActiveColl)
+		return;
 	Vec2 pos = GetOwner()->GetPos();
 	pos += GetOffset();
 	pos = Camera::CalcRenderPos(pos);
@@ -55,17 +57,23 @@ void Collider::Render()
 
 void Collider::OnCollisionEnter(Collider* other)
 {
+	if (!m_bActiveColl)
+		return;
 	m_renderColor = RGB(255, 0, 0);
 	GetOwner()->OnCollisionEnter(other);
 }
 
 void Collider::OnCollisionStay(Collider* other)
 {
+	if (!m_bActiveColl)
+		return;
 	GetOwner()->OnCollisionStay(other);
 }
 
 void Collider::OnCollisionExit(Collider* other)
 {
+	if (!m_bActiveColl)
+		return;
 	m_renderColor = RGB(0, 255, 0);
 	GetOwner()->OnCollisionExit(other);
 }

@@ -14,6 +14,7 @@ public:
     HRESULT Load(const wstring& path) override;
     void Play();
     void Stop();
+    void SetVolume(const float& _fVolume);
     void SetLoop(const bool& _bLoop) { m_bLoop = _bLoop; }
 private:
     FMOD::Sound* m_pSound;

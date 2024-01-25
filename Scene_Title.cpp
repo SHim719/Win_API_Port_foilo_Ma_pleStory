@@ -7,6 +7,7 @@
 #include "joObject.h"
 #include "Title_Button.h"
 #include "Camera.h"
+#include "Enemy.h"
 
 Scene_Title::Scene_Title()
 {
@@ -29,18 +30,18 @@ void Scene_Title::Initialize()
 	Camera::SetMinCameraPos(m_vMinCameraPos);
 	Camera::SetMaxCameraPos(m_vMaxCameraPos);
 
-	Player* m_pPlayer = new Player;
-	m_pPlayer->Initialize();
-	s_pMainPlayer = m_pPlayer;
-	m_pPlayer->SetPos({ 1141.f, 851.f });
+	Player* pPlayer = new Player;
+	pPlayer->Initialize();
+	s_pMainPlayer = pPlayer;
+	pPlayer->SetPos({ 1141.f, 851.f });
+	Enemy::SetTarget(pPlayer);
 
 	Instantiate<Title_Button>(eLayerType::LT_UI)->SetPos({ 500.f, 450.f });
-
-	SoundMgr::Play(L"TitleBGM");
 }
 
 void Scene_Title::OnEnter()
 {
+	SoundMgr::Play(L"TitleBGM");
 }
 
 void Scene_Title::OnExit()

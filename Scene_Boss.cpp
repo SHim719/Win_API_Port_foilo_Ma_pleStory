@@ -6,6 +6,9 @@
 #include "Camera.h"
 #include "SoundMgr.h"
 #include "Vellum.h"
+#include "VellumTrigger.h"
+//#include "animtest.h"
+//#include "animtest2.h"
 
 Scene_Boss::Scene_Boss()
 {
@@ -25,7 +28,14 @@ void Scene_Boss::Initialize()
 	CalcAndSetCameraArea(texWidth, texHeight, Vec2::Zero);
 
 	Vellum* pVellum = Instantiate<Vellum>(eLayerType::LT_MONSTER);
-	pVellum->SetPos({ 1642.f, 370.f });
+	pVellum->SetPos({ 1642.f, 370.f }); // ¿ø·¡À§Ä¡
+
+	VellumTrigger* pVellumTrigger = Instantiate<VellumTrigger>(eLayerType::LT_NONE);
+	pVellumTrigger->SetPos(Vec2(1642.f, 370.f));
+	pVellumTrigger->Set_Vellum(pVellum);
+
+	//animtest2* pAnimTest2 = Instantiate<animtest2>(eLayerType::LT_EFFECT);
+	//pAnimTest2->SetPos({ 1710.f, 338.f });// º§·ë ±í¼û ºê·¹½º  À§Ä¡
 
 	m_vLimitPosX.x = 15.f;
 	m_vLimitPosX.y = texWidth - 15.f;
@@ -44,6 +54,8 @@ void Scene_Boss::OnEnter()
 	Camera::SetTarget(s_pMainPlayer);
 	s_pMainPlayer->SetLimitPosX(m_vLimitPosX);
 	s_pMainPlayer->SetPixelDC(m_pixelDC);
+
+	s_pMainPlayer->SetPos({ 1642.f, 400.f } );
 }
 
 void Scene_Boss::OnExit()

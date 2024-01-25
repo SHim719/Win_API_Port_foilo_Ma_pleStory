@@ -3,8 +3,8 @@
 
 enum class eLayerType
 {
-	LT_NONE,
 	LT_BACKGROUND,
+	LT_NONE,
 	LT_OBJECT,
 	LT_NPC,
 	LT_MONSTER,

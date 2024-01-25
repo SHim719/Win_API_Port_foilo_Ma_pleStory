@@ -27,6 +27,7 @@ struct Events
 	Events(size_t _frameCount) : frameCount(_frameCount) { frameEvents.resize(frameCount); }
 
 	vector<Event> frameEvents = {};
+	Event EndEvent;
 	size_t frameCount = 0;
 };
 
@@ -73,6 +74,7 @@ public:
 	GameObject* GetOwner() const { return m_pOwner; }
 
 	Events* GetEvents(const wstring& name);
+
 private:
 	map<wstring, Animation*> m_animations;
 	Animation* m_activeAnim;

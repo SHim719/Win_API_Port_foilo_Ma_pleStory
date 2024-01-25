@@ -6,6 +6,7 @@
 #include <crtdbg.h>
 #include "MainGame.h"
 #include "SceneMgr.h"
+#include "ResourceMgr.h"
 #include <time.h>
 
 #pragma comment(lib, "D2D1.lib")
@@ -75,6 +76,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     SceneMgr::Release();
+    ResourceMgr::Release();
 
     return (int) msg.wParam;
 }

@@ -98,6 +98,8 @@ void Animation::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec
 	}
 }
 
+
+
 void Animation::Reset()
 {
 	m_fTime = 0.0f;

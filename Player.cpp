@@ -21,6 +21,7 @@
 #include "ShopUI.h"
 #include "Consumable.h"
 #include "HudUI.h"
+#include "DamageNum.h"
 
 Player::Player()
 	: m_bDownJumping(false)
@@ -192,6 +193,21 @@ void Player::Release()
 	Safe_Delete<QuickStats*>(m_pQuickStats);
 	Safe_Delete<Inventory*>(m_pInventory);
 	Safe_Delete<EquipStats*>(m_pEquipStats);
+}
+
+void Player::Hit(const HitInfo& _hitInfo)
+{
+	DamageNum* pDNum = Instantiate<DamageNum>(eLayerType::LT_UI);
+	pDNum->Init_Number(std::to_string(_hitInfo.iDamage));
+	pDNum->SetPlayerHit(true);
+
+	Vec2 vDamagePos = GetPos();
+	JoTexture* pDamageTex = pDNum->GetDamageTex();
+	
+	vDamagePos.y -= 50.f;
+	vDamagePos.y -= float(pDamageTex->GetHeight()) * 0.5f * _hitInfo.iHitCount;
+
+	pDNum->SetPos(vDamagePos);
 }
 
 void Player::Init_Anim()

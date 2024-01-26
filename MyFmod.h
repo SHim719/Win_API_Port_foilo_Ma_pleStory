@@ -20,6 +20,7 @@ public:
 	static void Initialize();
 	static bool CreateSound(const std::string& path, FMOD::Sound** sound);
 	static void SoundPlay(FMOD::Sound* sound, FMOD::Channel** channel);
+	static void SoundPlaybyChannel(FMOD::Sound* sound, const int& iChannel);
 	static void Set3DListenerAttributes(const Vec2& pos);
 	static void Release();
 	

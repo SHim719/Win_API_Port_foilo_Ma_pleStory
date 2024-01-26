@@ -2,6 +2,7 @@
 #include "ResourceMgr.h"
 #include "Player.h"
 #include "joObject.h"
+#include "Vellum.h"
 
 Tail::Tail()
 	: m_pOwner(nullptr)
@@ -26,8 +27,8 @@ void Tail::Initialize()
 	JoTexture* m_pTailTex_L = ResourceMgr::Find<JoTexture>(L"Vellum_Tail_L");
 	JoTexture* m_pTailTex_R = ResourceMgr::Find<JoTexture>(L"Vellum_Tail_R");
 
-	m_pAnimator->CreateAnimation(L"Tail_L", m_pTailTex_L, Vec2::Zero, Vec2(923.f, 717.f), Vec2::Zero, 41, 9, 0.1f);
-	m_pAnimator->CreateAnimation(L"Tail_R", m_pTailTex_R, Vec2::Zero, Vec2(923.f, 717.f), Vec2::Zero, 41, 9, 0.1f);
+	m_pAnimator->CreateAnimation(L"Tail_L", m_pTailTex_L, Vec2::Zero, Vec2(923.f, 717.f), Vec2::Zero, 41, 9, 0.09f);
+	m_pAnimator->CreateAnimation(L"Tail_R", m_pTailTex_R, Vec2::Zero, Vec2(923.f, 717.f), Vec2::Zero, 41, 9, 0.09f);
 	
 	Events* pEvent_Tail_L = m_pAnimator->GetEvents(L"Tail_L");
 	Events* pEvent_Tail_R = m_pAnimator->GetEvents(L"Tail_R");
@@ -47,18 +48,32 @@ void Tail::Update()
 void Tail::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	if (m_pCollider->IsCollisionOn())
+		m_pCollider->Render();
 }
 
 void Tail::Hit(const HitInfo& _hitInfo)
 {
 	// º§·ëÀÇ ÇÇ¸¦ ±ð´Â´Ù.
+	//m_pOwner->AddHp(-_hitInfo.iDamage);
+	DamageNum* pDNum = Instantiate<DamageNum>(eLayerType::LT_UI);
+	pDNum->Init_Number(std::to_string(_hitInfo.iDamage));
+	pDNum->SetCritical(_hitInfo.bCritical);
+
+	Vec2 vRenderPos = GetPos();
+	JoTexture* pDamageTex = pDNum->GetDamageTex();
+	vRenderPos.y -= float(pDamageTex->GetHeight()) * 0.5f * _hitInfo.iHitCount;
+
+	pDNum->SetPos(vRenderPos);
 }
 
 void Tail::OnCollisionEnter(Collider* _pOther)
 {
-	HitInfo hitInfo = { 23, 1 };
-	static_cast<Player*>(_pOther->GetOwner())->Hit(hitInfo);
+	HitInfo hitInfo = { 2000, 1 };
+	
+	Player* pPlayer = dynamic_cast<Player*>(_pOther->GetOwner());
+	if (pPlayer)
+		pPlayer->Hit(hitInfo);
 }
 
 void Tail::PlayAnim(const bool& _bRight)

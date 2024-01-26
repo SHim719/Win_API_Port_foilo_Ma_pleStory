@@ -26,7 +26,14 @@ bool MyFmod::CreateSound(const std::string& path, FMOD::Sound** sound)
 void MyFmod::SoundPlay(FMOD::Sound* sound, FMOD::Channel** channel)
 {
 	mCoreSystem->playSound(sound, 0, false, channel);
+}
 
+void MyFmod::SoundPlaybyChannel(FMOD::Sound* sound, const int& iChannel)
+{
+	FMOD::Channel** channel = nullptr;
+	mCoreSystem->getChannel(iChannel, channel);
+
+	mCoreSystem->playSound(sound, 0, false, channel);
 }
 
 void MyFmod::Set3DListenerAttributes(const Vec2& pos)

@@ -271,6 +271,18 @@
     <Filter Include="02. Contents\02. Enemy\01. Vellum\05. Tail">
       <UniqueIdentifier>{3eece652-90f0-477b-8811-010dfda7e4e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\12. OBJ_ETC">
+      <UniqueIdentifier>{03b6c8b1-c74e-49dc-9105-592fae3d4225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\12. OBJ_ETC\00. StunObj">
+      <UniqueIdentifier>{bf2ae126-97cf-4108-ab6a-f4bf66c10bac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\04. UI\DeathUI">
+      <UniqueIdentifier>{d36e66fa-36f8-4d64-922f-bac126568c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\12. OBJ_ETC\01. Tomb">
+      <UniqueIdentifier>{f016719d-7ab8-4df7-b2f8-bef0f7183730}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -541,7 +553,16 @@
       <Filter>02. Contents\02. Enemy\01. Vellum\01. DeepBreath</Filter>
     </ClInclude>
     <ClInclude Include="Tail.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>02. Contents\02. Enemy\01. Vellum\05. Tail</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathUI.h">
+      <Filter>02. Contents\04. UI\DeathUI</Filter>
+    </ClInclude>
+    <ClInclude Include="StunEffect.h">
+      <Filter>02. Contents\12. OBJ_ETC\00. StunObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Tomb.h">
+      <Filter>02. Contents\12. OBJ_ETC\01. Tomb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -786,7 +807,16 @@
       <Filter>02. Contents\02. Enemy\01. Vellum\01. DeepBreath</Filter>
     </ClCompile>
     <ClCompile Include="Tail.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>02. Contents\02. Enemy\01. Vellum\05. Tail</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathUI.cpp">
+      <Filter>02. Contents\04. UI\DeathUI</Filter>
+    </ClCompile>
+    <ClCompile Include="StunEffect.cpp">
+      <Filter>02. Contents\12. OBJ_ETC\00. StunObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Tomb.cpp">
+      <Filter>02. Contents\12. OBJ_ETC\01. Tomb</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

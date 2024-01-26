@@ -1,8 +1,9 @@
-#include "StoneSpawner.h".
+#include "StoneSpawner.h"
 #include "VellumStone.h"
 #include "joObject.h"
 #include "TimeMgr.h"
 #include "Player.h"
+#include "Vellum.h"
 
 
 void StoneSpawner::Initialize()
@@ -10,7 +11,7 @@ void StoneSpawner::Initialize()
 	m_vecStones.reserve(m_iSpawnCount);
 	for (int i = 0; i < m_iSpawnCount; ++i)
 	{
-		m_vecStones.push_back(Instantiate<VellumStone>(eLayerType::LT_MONSTER));
+		m_vecStones.push_back(Instantiate<VellumStone>(eLayerType::LT_MONSTER_EFFECT));
 		m_vecStones[i]->SetActive(false);
 	}
 	
@@ -18,6 +19,8 @@ void StoneSpawner::Initialize()
 
 void StoneSpawner::Update()
 {
+	if (m_pVellum->IsDeadState())
+		Destroy(this);
 	m_fNowTime += TimeMgr::DeltaTime();
 
 	if (m_fNowTime >= m_fSpawnTime)
@@ -32,7 +35,7 @@ void StoneSpawner::Update()
 			if (m_fNowSpawnPosX > 3055.f)
 				return;
 
-			if (abs(m_fNowSpawnPosX - fTargetPosX) < 150.f)
+			if (abs(m_fNowSpawnPosX - fTargetPosX) < 100.f)
 			{
 				m_fNowSpawnPosX += m_fSpawnGap;
 				continue;

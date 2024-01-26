@@ -29,7 +29,9 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"esc", L"Resources/UI/Sound/esc.MP3");
 	ResourceMgr::Load<Audio>(L"Use_Potion", L"Resources/UI/Sound/Use_Potion.mp3");
 	ResourceMgr::Load<Audio>(L"Portal_SFX", L"Resources/SFX/Portal.MP3");
+
 	ResourceMgr::Load<Audio>(L"Player_Jump", L"Resources/Player/Jump.mp3");
+	ResourceMgr::Load<Audio>(L"Player_Dead", L"Resources/SFX/Dead.MP3");
 
 	ResourceMgr::Load<Audio>(L"Vellum_Attack1", L"Resources/Enemy/Vellum/Sound/Attack1.mp3");
 	ResourceMgr::Load<Audio>(L"Vellum_Attack2", L"Resources/Enemy/Vellum/Sound/Attack2.mp3");
@@ -41,6 +43,7 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"Vellum_Attack9", L"Resources/Enemy/Vellum/Sound/Attack9.mp3");
 	ResourceMgr::Load<Audio>(L"Vellum_Attack10", L"Resources/Enemy/Vellum/Sound/Attack10.mp3");
 	ResourceMgr::Load<Audio>(L"Vellum_Attack11", L"Resources/Enemy/Vellum/Sound/Attack11.mp3");
+	ResourceMgr::Load<Audio>(L"Vellum_Die", L"Resources/Enemy/Vellum/Sound/Die.mp3");
 
 }
 

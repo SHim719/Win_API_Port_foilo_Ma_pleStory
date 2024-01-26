@@ -1,6 +1,7 @@
 #include "VellumStone.h"
 #include "ResourceMgr.h"
 #include "joObject.h"
+#include "Player.h"
 
 VellumStone::VellumStone()
 {
@@ -51,7 +52,12 @@ void VellumStone::Update()
 void VellumStone::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
+}
+
+void VellumStone::OnCollisionEnter(Collider* _pOther)
+{
+	static_cast<Player*>(_pOther->GetOwner())->SetState_Stun();
 }
 
 void VellumStone::Play_Anim() const

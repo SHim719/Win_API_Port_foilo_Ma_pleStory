@@ -13,6 +13,7 @@ void CollisionMgr::Initialize()
 	SetCollisionEnabled(eLayerType::LT_MONSTER, eLayerType::LT_EFFECT, true);
 	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_OBJECT, true);
 	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_MONSTER, true);
+	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_MONSTER_EFFECT, true);
 }
 
 void CollisionMgr::Update()
@@ -58,15 +59,11 @@ void CollisionMgr::CheckLayer(Scene* curScene, const eLayerType& left, const eLa
 
 	for (GameObject* leftObj : leftLayer)
 	{
-		if (leftObj->IsActive() == false) continue;
-
 		Collider* leftCol = leftObj->GetCollider();
 		if (leftCol == nullptr) continue;
 
 		for (GameObject* rightObj : rightLayer)
 		{
-			if (rightObj->IsActive() == false) continue;
-
 			Collider* rightCol = rightObj->GetCollider();
 			if (rightCol == nullptr) continue;
 
@@ -100,11 +97,16 @@ void CollisionMgr::CheckCollision(Collider* left, Collider* right)
 	auto it = m_mapCollision.find(id.id);
 	if (it == m_mapCollision.end())
 	{
+		if (left->IsCollisionOn() == false || right->IsCollisionOn() == false
+			|| left->GetOwner()->IsActive() == false || right->GetOwner()->IsActive() == false)
+			return;
+
 		m_mapCollision.insert({ id.id, false });
 		it = m_mapCollision.find(id.id);
 	}
 		
-	if (left->IsCollisionOn() == false || right->IsCollisionOn() == false)
+	if (left->IsCollisionOn() == false || right->IsCollisionOn() == false
+		|| left->GetOwner()->IsActive() == false || right->GetOwner()->IsActive() == false)
 	{
 		it->second = false;
 		return;

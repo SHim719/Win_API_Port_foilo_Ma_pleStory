@@ -33,6 +33,12 @@ void Audio::Play()
 	MyFmod::SoundPlay(m_pSound, &m_pChannel);
 }
 
+void Audio::PlayByChannels()
+{
+	MyFmod::SoundPlaybyChannel(m_pSound, m_iChannel);
+	m_iChannel = (m_iChannel + 1) % 16;
+}
+
 void Audio::Stop()
 {
 	m_pChannel->stop();

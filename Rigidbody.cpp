@@ -6,6 +6,7 @@ Rigidbody::Rigidbody()
 	: m_pOwner(nullptr)
 	, m_bIsGround(false)
 	, m_bUseGravity(true)
+	, m_bActive(true)
 	, m_fMass(1.0f)
 	, m_fFriction(0.f)
 	, m_vGravity{ 0.f, 200.f } 
@@ -24,6 +25,9 @@ Rigidbody::~Rigidbody()
 
 void Rigidbody::Update()
 {
+	if (!m_bActive)
+		return;
+
 	m_vAccel = m_vForce / m_fMass;
 
 	m_vVelocity += m_vAccel;

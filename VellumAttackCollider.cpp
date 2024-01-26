@@ -16,7 +16,7 @@ void VellumAttackCollider::Render()
 
 void VellumAttackCollider::OnCollisionEnter(Collider* other)
 {
-	HitInfo tHitInfo = { iDamage, 1 };
+	HitInfo tHitInfo = { 20000, 1 };
 	static_cast<Player*>(other->GetOwner())->Hit(tHitInfo);
 }
 

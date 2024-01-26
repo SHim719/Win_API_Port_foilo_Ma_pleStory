@@ -12,3 +12,10 @@ Enemy::Enemy()
 Enemy::~Enemy()
 {
 }
+
+void Enemy::AddHp(int _iHp)
+{
+	m_iHp = max(m_iHp + _iHp, 0);
+	if (m_iHp == 0)
+		SetState_Dead();
+}

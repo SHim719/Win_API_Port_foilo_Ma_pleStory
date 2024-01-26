@@ -156,6 +156,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="DamageNum.h" />
+    <ClInclude Include="DeathUI.h" />
     <ClInclude Include="DeepBreath.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="HitInterface.h" />
@@ -216,10 +217,12 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="SoundMgr.h" />
     <ClInclude Include="StatUI.h" />
     <ClInclude Include="StoneSpawner.h" />
+    <ClInclude Include="StunEffect.h" />
     <ClInclude Include="Tail.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="Title_Button.h" />
+    <ClInclude Include="Tomb.h" />
     <ClInclude Include="Top.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="UI.h" />
@@ -247,6 +250,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="DamageNum.cpp" />
+    <ClCompile Include="DeathUI.cpp" />
     <ClCompile Include="DeepBreath.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="MyDialogBox.cpp" />
@@ -301,9 +305,11 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="SoundMgr.cpp" />
     <ClCompile Include="StatUI.cpp" />
     <ClCompile Include="StoneSpawner.cpp" />
+    <ClCompile Include="StunEffect.cpp" />
     <ClCompile Include="Tail.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="Title_Button.cpp" />
+    <ClCompile Include="Tomb.cpp" />
     <ClCompile Include="Top.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="UIMgr.cpp" />

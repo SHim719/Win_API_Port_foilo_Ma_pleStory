@@ -34,7 +34,10 @@ public:
 
 	void SetOwner(GameObject* _pOwner) { m_pOwner = _pOwner; }
 	GameObject* GetOwner() const { return m_pOwner; }
+
+	void SetActive(const bool& _b) { m_bActive = _b; }
 private:
+	bool m_bActive;
 	bool m_bIsGround;
 	bool m_bUseGravity;
 

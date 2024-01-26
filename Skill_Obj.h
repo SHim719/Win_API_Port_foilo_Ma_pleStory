@@ -30,6 +30,7 @@ protected:
 
     int m_iMaxEnemyCount;
     int m_iMaxHitCount;
+    int m_iPerHitCount;
 
 	vector<AttackInfo> m_vecAttInfo;
 };

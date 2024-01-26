@@ -31,12 +31,15 @@ void Scene_Boss::Initialize()
 	Vellum* pVellum = Instantiate<Vellum>(eLayerType::LT_MONSTER);
 	pVellum->SetPos({ 1642.f, 370.f }); // 원래위치
 
+	StoneSpawner* pStoneSpawner = Instantiate<StoneSpawner>(eLayerType::LT_NONE);
+	pStoneSpawner->SetPlayer(s_pMainPlayer);
+	pStoneSpawner->SetActive(false);
+	pStoneSpawner->SetVellum(pVellum);
+
 	VellumTrigger* pVellumTrigger = Instantiate<VellumTrigger>(eLayerType::LT_NONE);
 	pVellumTrigger->SetPos(Vec2(1642.f, 370.f));
 	pVellumTrigger->Set_Vellum(pVellum);
-
-	StoneSpawner* pStoneSpawner = Instantiate<StoneSpawner>(eLayerType::LT_NONE);
-	pStoneSpawner->SetPlayer(s_pMainPlayer);
+	pVellumTrigger->Set_Spawnwer(pStoneSpawner);
 
 	m_vLimitPosX.x = 15.f;
 	m_vLimitPosX.y = texWidth - 15.f;
@@ -56,7 +59,7 @@ void Scene_Boss::OnEnter()
 	s_pMainPlayer->SetLimitPosX(m_vLimitPosX);
 	s_pMainPlayer->SetPixelDC(m_pixelDC);
 
-	s_pMainPlayer->SetPos({ 1642.f, 400.f } );
+	//s_pMainPlayer->SetPos({ 1642.f, 400.f } );
 }
 
 void Scene_Boss::OnExit()

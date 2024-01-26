@@ -22,6 +22,10 @@
 #include "Consumable.h"
 #include "HudUI.h"
 #include "DamageNum.h"
+#include "StunEffect.h"
+#include "DeathUI.h"
+#include "Tomb.h"
+#include "Camera.h"
 
 Player::Player()
 	: m_bDownJumping(false)
@@ -42,6 +46,9 @@ Player::Player()
 	, m_bChannelingAir(false)
 	, m_pInventory(nullptr)
 	, m_pEquipStats(nullptr)
+	, m_bInvincible(false)
+	, m_vOriginPos{}
+	, m_fInvincibleTime(0.f)
 {
 	SetName(L"Player");
 }
@@ -76,8 +83,9 @@ void Player::Initialize()
 	Consumable::SetPlayerStats(m_pPlayerStats);
 
 	UIMgr::Get_UI_Instance<HudUI>(UI_Enums::UI_HUD)->SetPlayerStats(m_pPlayerStats);
-	
 
+	UIMgr::Get_UI_Instance<DeathUI>(UI_Enums::UI_Death)->SetPlayer(this);
+	
 	m_pCollider = new Collider;
 	m_pCollider->SetOwner(this);
 	m_pCollider->SetSize(Vec2(20.f, 50.f));
@@ -136,6 +144,12 @@ void Player::Update()
 		break;
 	case Player::PlayerState::Channeling:
 		Channeling_State();
+		break;
+	case Player::PlayerState::Stun:
+		Stun_State();
+		break;
+	case Player::PlayerState::Dead:
+		Dead_State();
 		break;
 	default:
 		break;
@@ -197,6 +211,13 @@ void Player::Release()
 
 void Player::Hit(const HitInfo& _hitInfo)
 {
+	if (m_bInvincible)
+		return;
+	
+	m_pPlayerStats->Add_HP(-_hitInfo.iDamage);
+	if (m_pPlayerStats->Get_Hp() == 0)
+		SetState_Dead();
+
 	DamageNum* pDNum = Instantiate<DamageNum>(eLayerType::LT_UI);
 	pDNum->Init_Number(std::to_string(_hitInfo.iDamage));
 	pDNum->SetPlayerHit(true);
@@ -208,6 +229,16 @@ void Player::Hit(const HitInfo& _hitInfo)
 	vDamagePos.y -= float(pDamageTex->GetHeight()) * 0.5f * _hitInfo.iHitCount;
 
 	pDNum->SetPos(vDamagePos);
+}
+
+void Player::Revive()
+{
+	m_pRigidbody->SetActive(true);
+	m_pCollider->SetCollisionActive();
+	SetPos(m_vOriginPos);
+	UIMgr::Get_UI_Instance<DeathUI>(UI_Enums::UI_Death)->SetActive(false);
+	SetState_Idle();
+	Camera::SetTarget(this);
 }
 
 void Player::Init_Anim()
@@ -223,6 +254,10 @@ void Player::Init_Anim()
 	m_pAnimator->CreateAnimation(L"Rope_Loop", playerTex, Vec2(1280.f, 0.f), Vec2(160.f, 160.f), Vec2::Zero, 2, 0.3f);
 	m_pAnimator->CreateAnimation(L"Prone_L", playerTex, Vec2(640.f, 480.f), Vec2(160.f, 160.f), Vec2::Zero, 1);
 	m_pAnimator->CreateAnimation(L"Prone_R", playerTex, Vec2(800.f, 480.f), Vec2(160.f, 160.f), Vec2::Zero, 1);
+	m_pAnimator->CreateAnimation(L"Alert_L", playerTex, Vec2(0.f, 480.f), Vec2(160.f, 160.f), Vec2::Zero, 2, 0.7f);
+	m_pAnimator->CreateAnimation(L"Alert_R", playerTex, Vec2(1280.f, 640.f), Vec2(160.f, 160.f), Vec2::Zero, 2, 0.7f);
+	m_pAnimator->CreateAnimation(L"Dead_L", playerTex, Vec2(320.f, 480.f), Vec2(160.f, 160.f), Vec2(0.f, -20.f), 1);
+	m_pAnimator->CreateAnimation(L"Dead_R", playerTex, Vec2(0.f, 800.f), Vec2(160.f, 160.f), Vec2(0.f, -20.f), 1);
 	m_pAnimator->CreateAnimation(L"PhantomBlow_L", playerTex, Vec2(0.0f, 160.0f), Vec2(160.f, 160.f), Vec2::Zero, 8, 0.09f);
 	m_pAnimator->CreateAnimation(L"PhantomBlow_R", playerTex, Vec2(360.f, 800.0f), Vec2(160.f, 160.f), Vec2(30.f, 0.f), 8, 0.09f);
 }
@@ -327,8 +362,6 @@ void Player::Air_State()
 		m_pRigidbody->SetVelocity(vVelocity);
 	}
 	
-
-
 	if (KeyMgr::GetKey(m_ArrKeyAction[(UINT)eActionKey::Up]))
 	{
 		if (CheckRope(true))
@@ -469,6 +502,35 @@ void Player::Channeling_State()
 
 }
 
+void Player::Stun_State()
+{
+	static float fStunTime = 2.5f;
+	static float fNowTime = 0.f;
+
+	fNowTime += TimeMgr::DeltaTime();
+	if (fNowTime >= fStunTime)
+	{
+		fNowTime = 0.f;
+
+		SetState_Idle();
+	}
+}
+
+void Player::Dead_State()
+{
+	static float fTheta = 0.f;
+
+	float fRadian = fTheta * 3.141592f / 180.f;
+
+	Vec2 vDir = Vec2(cosf(fRadian), sinf(fRadian)) * 10.f;
+
+	m_tTransform.vPos = m_vOriginPos + vDir;
+
+	fTheta += 180.f * TimeMgr::DeltaTime();
+	if (fTheta >= 360.f)
+		fTheta = 0.f;
+}
+
 void Player::SetState_Idle()
 {
 	if (m_bRight)
@@ -478,6 +540,7 @@ void Player::SetState_Idle()
 	
 
 	m_pRigidbody->SetVelocity(Vec2::Zero);
+	m_pRigidbody->SetActive(true);
 	m_eState = PlayerState::Idle;
 }
 
@@ -534,12 +597,49 @@ void Player::SetState_Prone()
 	m_eState = PlayerState::Prone;
 }
 
+void Player::SetState_Dead()
+{
+	if (m_bRight)
+		m_pAnimator->PlayAnimation(L"Dead_R");
+	else
+		m_pAnimator->PlayAnimation(L"Dead_L");
+
+	Tomb* pTomb = Instantiate<Tomb>(eLayerType::LT_OBJECT);
+	pTomb->SetPos(GetPos());
+	pTomb->SetPlayer(this);
+	m_pRigidbody->SetActive(false);
+	m_pCollider->SetCollisionInactive();
+	m_vOriginPos = GetPos();
+	Camera::SetTarget(nullptr);
+
+	SoundMgr::Play(L"Player_Dead");
+
+	UIMgr::Get_UI_Instance<DeathUI>(UI_Enums::UI_Death)->SetActive(true);
+
+	m_eState = PlayerState::Dead;
+}
+
 void Player::SetState_Channeling(const unsigned char& _cRestriction)
 {
 	m_cRestriction = _cRestriction;
 
 	m_bChannelingIdle = true;
 	m_eState = PlayerState::Channeling;
+}
+
+void Player::SetState_Stun()
+{
+	if (m_eState == PlayerState::Stun)
+		return;
+
+	Instantiate<StunEffect>(eLayerType::LT_EFFECT)->SetOwner(this);
+
+	if (m_bRight)
+		m_pAnimator->PlayAnimation(L"Alert_R");
+	else
+		m_pAnimator->PlayAnimation(L"Alert_L");
+	m_pRigidbody->SetVelocityX(0.f);
+	m_eState = PlayerState::Stun;
 }
 
 void Player::Jump()
@@ -597,6 +697,9 @@ bool Player::CheckRope(const bool& _bCheckUp)
 
 void Player::CheckGround()
 {
+	if (m_eState == PlayerState::Dead)
+		return;
+
 	if (m_ColorGround == GetPixel(m_pixelDC, (int)GetPos().x, int(GetPos().y + m_pCollider->GetSize().y * 0.5f + 1.f)))
 	{
 		if (m_pRigidbody->IsGround() || m_bDownJumping || m_pRigidbody->GetVelocity().y < 0.f)
@@ -610,7 +713,8 @@ void Player::CheckGround()
 		}
 		m_bFlashJumping = false;
 
-		if (m_eState != PlayerState::Channeling)
+		if (m_eState != PlayerState::Channeling 
+			&& m_eState != PlayerState::Stun)
 			SetState_Idle();
 	}
 	else
@@ -621,7 +725,11 @@ void Player::CheckGround()
 
 void Player::CheckYellowGround()
 {
-	if (m_bMagenta) return;
+	if (m_eState == PlayerState::Dead)
+		return;
+	if (m_bMagenta)
+		return;
+	
 
 	if (m_eState == PlayerState::Walk || m_bChannelingWalk)
 	{
@@ -656,15 +764,23 @@ void Player::CheckYellowGround()
 			m_tTransform.vPos.y -= 1.f;
 		}
 		m_bFlashJumping = false;
-		if (m_eState != PlayerState::Channeling)
+		if (m_eState != PlayerState::Channeling
+			&& m_eState != PlayerState::Stun
+			&& m_eState != PlayerState::Dead)
 			SetState_Idle();
 	}
 	else if (!m_bMagenta)
 	{
 		m_pRigidbody->SetGround(false);
-		if (m_eState != PlayerState::Channeling)
+		if (m_eState != PlayerState::Channeling
+			&& m_eState != PlayerState::Stun
+			&& m_eState != PlayerState::Dead)
 			SetState_Air();
 	}
+}
+
+void Player::Invincible()
+{
 }
 
 void Player::Skill_End()
@@ -710,8 +826,7 @@ void Player::debug_check()
 
 	if (KeyMgr::GetKeyDown(eKeyCode::B))
 	{
-		m_pPlayerStats->Add_HP(-1000);
-		m_pPlayerStats->Add_MP(-1000);
+		SetState_Dead();
 	}
 		
 

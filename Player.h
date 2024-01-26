@@ -38,6 +38,8 @@ public:
 		Prone,
 		Rope,
 		Channeling,
+		Stun,
+		Dead,
 		End,
 	};
 
@@ -61,10 +63,15 @@ public:
 	SkillStats* GetSkillStats() const { return m_pSkillStats; }
 
 	void SetState_Channeling(const unsigned char& _cRestriction);
+	void SetState_Stun();
 
 	const bool& isRight() const { return m_bRight; }
+	bool isStunning() const { return m_eState == PlayerState::Stun; }
+	bool isDeadState() const { return m_eState == PlayerState::Dead; }
 
 	void Hit(const HitInfo& _hitInfo) override;
+
+	void Revive();
 private:
 	void Init_Anim();
 	void Init_FrameBind();
@@ -75,12 +82,15 @@ private:
 	void Rope_State();
 	void Prone_State();
 	void Channeling_State();
+	void Stun_State();
+	void Dead_State();
 
 	void SetState_Idle();
 	void SetState_Walk();
 	void SetState_Air();
 	void SetState_Rope();
 	void SetState_Prone();
+	void SetState_Dead();
 
 	void Jump();
 	void FlashJump();
@@ -88,6 +98,8 @@ private:
 	bool CheckRope(const bool& _bCheckUp);
 	void CheckGround();
 	void CheckYellowGround();
+	
+	void Invincible();
 
 	void Skill_End();
 
@@ -117,6 +129,9 @@ private:
 	bool m_bChannelingWalk;
 	bool m_bChannelingAir;
 
+	bool m_bInvincible;
+	float m_fInvincibleTime;
+
 	PlayerState m_eState;
 	unsigned char m_cRestriction;
 	HDC m_pixelDC;
@@ -126,5 +141,7 @@ private:
 	COLORREF m_ColorGround = RGB(255, 0, 255);
 	COLORREF m_ColorRope = RGB(255, 0, 0);
 	COLORREF m_ColorYellow = RGB(255, 255, 0);
+
+	Vec2 m_vOriginPos;
 };
 

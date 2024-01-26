@@ -1,6 +1,7 @@
 #include "VellumTrigger.h"
 #include "KeyMgr.h"
 #include "Vellum.h"
+#include "StoneSpawner.h"
 #include "joObject.h"
 
 VellumTrigger::VellumTrigger()
@@ -33,6 +34,7 @@ void VellumTrigger::Update()
 		{
 			m_pVellum->SetActive(true);
 			m_pVellum->SetState_Attack1();
+			m_pSpawner->SetActive(true);
 			//m_pVellum->SetState_Move();
 			Destroy(this);
 		}

@@ -7,6 +7,7 @@
 #include "StatUI.h"
 #include "ShopUI.h"
 #include "MyDialogBox.h"
+#include "DeathUI.h"
 
 
 UI* UIMgr::m_arrUIs[] = {};
@@ -54,6 +55,10 @@ void UIMgr::Initialize()
 	pDialBox->Initialize();
 	m_arrUIs[(UINT)UI_Enums::UI_Dialog] = pDialBox;
 
+	DeathUI* pDeathUI = new DeathUI;
+	pDeathUI->Initialize();
+	m_arrUIs[(UINT)UI_Enums::UI_Death] = pDeathUI;
+
 	m_inActiveUIList.push_back(pSkillUI);
 	m_inActiveUIList.push_back(pInvenUI);
 	m_inActiveUIList.push_back(pEquipUI);
@@ -90,6 +95,7 @@ void UIMgr::Update()
 	m_arrUIs[(UINT)UI_Enums::UI_Shop]->Update();
 	m_arrUIs[(UINT)UI_Enums::UI_HUD]->Update();
 	m_arrUIs[(UINT)UI_Enums::UI_Dialog]->Update();
+	m_arrUIs[(UINT)UI_Enums::UI_Death]->Update();
 
 	m_bMouseUsed = false;
 }
@@ -103,6 +109,7 @@ void UIMgr::Render()
 	m_arrUIs[(UINT)UI_Enums::UI_QuickSlot]->Render();
 	m_arrUIs[(UINT)UI_Enums::UI_Shop]->Render();
 	m_arrUIs[(UINT)UI_Enums::UI_Dialog]->Render();
+	m_arrUIs[(UINT)UI_Enums::UI_Death]->Render();
 
 	for (UI* ui : m_ActiveUIList)
 		ui->Render();

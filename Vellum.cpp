@@ -22,26 +22,31 @@ Vellum::~Vellum()
 void Vellum::Initialize()
 {
 	m_iMaxHp = 5000000;
-	m_iHp = 2;
+	m_iHp = m_iMaxHp;
 
 	m_pCollider = new Collider;
 	m_pCollider->SetOwner(this);
-	m_pCollider->SetSize(Vec2(200.f, 400.f));
-	m_pCollider->SetOffset(Vec2(30.f, 100.f));
+	m_pCollider->SetCollisionInactive();
+	/*m_pCollider->SetSize(Vec2(200.f, 400.f));
+	m_pCollider->SetOffset(Vec2(30.f, 100.f));*/
 
 	m_pAnimator = new Animator;
 	m_pAnimator->SetOwner(this);
 
-	m_fSpeed = 200.f;
+	m_fSpeed = 250.f;
 
-	m_pAttackCollider = Instantiate<VellumAttackCollider>(eLayerType::LT_MONSTER);
+	m_pAttackCollider = Instantiate<VellumAttackCollider>(eLayerType::LT_MONSTER_EFFECT);
 
 	m_vecBreath.reserve(6);
 	for (int i = 0; i < 6; ++i)
 	{
-		DeepBreath* pdb = Instantiate<DeepBreath>(eLayerType::LT_MONSTER);
+		DeepBreath* pdb = Instantiate<DeepBreath>(eLayerType::LT_MONSTER_EFFECT);
 		m_vecBreath.push_back(pdb);
 	}
+
+	m_vStandDamageOffset = { 260.f,  -130.f };
+	m_vLowNeckDamageOffset = { 300.f,  100.f };
+	m_vAttack4DamageOffset = { 0.f, 200.f };
 
 	Init_Anim();
 	Init_AnimKey();
@@ -70,6 +75,9 @@ void Vellum::Update()
 	case Vellum_State::Breath:
 		Breath();
 		break;
+	case Vellum_State::Dead:
+		State_Dead();
+		break;
 	default:
 		break;
 	}
@@ -89,16 +97,16 @@ void Vellum::Render()
 
 void Vellum::Hit(const HitInfo& _hitInfo)
 {
+	AddHp(-_hitInfo.iDamage);
 	DamageNum* pDNum = Instantiate<DamageNum>(eLayerType::LT_UI);
 	pDNum->Init_Number(std::to_string(_hitInfo.iDamage));
 	pDNum->SetCritical(_hitInfo.bCritical);
 
-	Vec2 vDamagePos = GetPos();
+	Vec2 vRenderPos = m_vDamagePos;
 	JoTexture* pDamageTex = pDNum->GetDamageTex();
-	vDamagePos.x -= 250.f;
-	vDamagePos.y -= float(pDamageTex->GetHeight()) * 0.5f * _hitInfo.iHitCount;
+	vRenderPos.y -= float(pDamageTex->GetHeight()) * 0.5f * _hitInfo.iHitCount;
 
-	pDNum->SetPos(vDamagePos);
+	pDNum->SetPos(vRenderPos);
 }
 
 void Vellum::debug_key()
@@ -107,9 +115,14 @@ void Vellum::debug_key()
 	{
 		//SetState_Move();
 		//SetState_Appear();
-		//SetState_Attack1();
+		 SetState_Attack1();
 		//SetState_LowNeck();
-		SetState_Breath();
+		//SetState_Breath();
+		//SetState_Attack4();
+	}
+	else if (KeyMgr::GetKeyDown(eKeyCode::R))
+	{
+		SetState_Attack4();
 	}
 }
 
@@ -238,6 +251,9 @@ void Vellum::Init_AnimKey()
 	pAnim = m_pAnimator->FindAnimation(L"Vellum_Appear_R");
 	pAnim->Set_AnimDuration(20, 0.5f);
 
+	pAnim = m_pAnimator->FindAnimation(L"Vellum_Die_L");
+	pAnim = m_pAnimator->FindAnimation(L"Vellum_Die_R");
+
 }
 
 void Vellum::Init_AnimBind()
@@ -288,8 +304,10 @@ void Vellum::Init_AnimBind()
 	pEvent_LowNeck_R->EndEvent = std::bind(&Vellum::End_State, this);
 	pEvent_LowNeck_L->frameEvents[13] = std::bind(&Vellum::LowNeck_Attack, this);
 	pEvent_LowNeck_L->frameEvents[19] = std::bind(&Vellum::AttackCollisionOff, this);
+	pEvent_LowNeck_L->frameEvents[25] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
 	pEvent_LowNeck_R->frameEvents[13] = std::bind(&Vellum::LowNeck_Attack, this);
 	pEvent_LowNeck_R->frameEvents[19] = std::bind(&Vellum::AttackCollisionOff, this);
+	pEvent_LowNeck_R->frameEvents[25] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
 
 	Events* pEvent_Vellum_Attack1_L = m_pAnimator->GetEvents(L"Vellum_Attack1_L");
 	Events* pEvent_Vellum_Attack1_R = m_pAnimator->GetEvents(L"Vellum_Attack1_R");
@@ -297,8 +315,10 @@ void Vellum::Init_AnimBind()
 	pEvent_Vellum_Attack1_R->EndEvent = std::bind(&Vellum::End_State, this);
 	pEvent_Vellum_Attack1_L->frameEvents[13] = std::bind(&Vellum::Appear_Attack, this);
 	pEvent_Vellum_Attack1_L->frameEvents[19] = std::bind(&Vellum::AttackCollisionOff, this);
+	pEvent_Vellum_Attack1_L->frameEvents[25] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
 	pEvent_Vellum_Attack1_R->frameEvents[13] = std::bind(&Vellum::Appear_Attack, this);
 	pEvent_Vellum_Attack1_R->frameEvents[19] = std::bind(&Vellum::AttackCollisionOff, this);
+	pEvent_Vellum_Attack1_R->frameEvents[25] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
 
 	Events* pEvent_Vellum_Attack2_L = m_pAnimator->GetEvents(L"Vellum_Attack2_L"); 
 	Events* pEvent_Vellum_Attack2_R = m_pAnimator->GetEvents(L"Vellum_Attack2_R"); 
@@ -322,19 +342,28 @@ void Vellum::Init_AnimBind()
 	Events* pEvent_Vellum_Attack4_R = m_pAnimator->GetEvents(L"Vellum_Attack4_R");
 	pEvent_Vellum_Attack4_L->EndEvent = std::bind(&Vellum::End_State, this);
 	pEvent_Vellum_Attack4_R->EndEvent = std::bind(&Vellum::End_State, this);
+	
 	pEvent_Vellum_Attack4_L->frameEvents[20] = std::bind(&Vellum::Attack4_Attack, this);
+	pEvent_Vellum_Attack4_L->frameEvents[23] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
 	pEvent_Vellum_Attack4_L->frameEvents[27] = std::bind(&Vellum::AttackCollisionOff, this);
+
 	pEvent_Vellum_Attack4_R->frameEvents[20]= std::bind(&Vellum::Attack4_Attack, this);
+	pEvent_Vellum_Attack4_R->frameEvents[23] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
 	pEvent_Vellum_Attack4_R->frameEvents[27] = std::bind(&Vellum::AttackCollisionOff, this);
 
 	Events* pEvent_Vellum_Dig_L = m_pAnimator->GetEvents(L"Vellum_Dig_L");
 	Events* pEvent_Vellum_Dig_R = m_pAnimator->GetEvents(L"Vellum_Dig_R");
+	pEvent_Vellum_Dig_L->frameEvents[5] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
+	pEvent_Vellum_Dig_R->frameEvents[5] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
 	pEvent_Vellum_Dig_L->EndEvent = std::bind(&Vellum::End_State, this);
 	pEvent_Vellum_Dig_R->EndEvent = std::bind(&Vellum::End_State, this);
 }
 
 void Vellum::Appear_Attack()
 {
+	m_pCollider->SetCollisionActive();
+	m_pCollider->SetSize(Vec2(300.f, 400.f));
+	
 	if (m_pAttackCollider)
 	{
 		float fXOffset = 20.f;
@@ -346,6 +375,11 @@ void Vellum::Appear_Attack()
 		m_pAttackCollider->SetCollisionSize(vSize);
 		m_pAttackCollider->SetCollisionOffset({ fXOffset, 150.f });
 		m_pAttackCollider->SetCollisionOnOff(true);
+
+		fXOffset = -25.f;
+		if (!m_bRight)
+			fXOffset = -fXOffset;
+		m_pCollider->SetOffset(Vec2(fXOffset, 100.f));
 	}
 }
 
@@ -358,9 +392,16 @@ void Vellum::LowNeck_Attack()
 			fXOffset = -fXOffset;
 
 		m_pAttackCollider->SetPos(GetPos());
-		m_pAttackCollider->SetCollisionSize({ 367.f, 369.f});
+		m_pAttackCollider->SetCollisionSize({ 467.f, 369.f});
 		m_pAttackCollider->SetCollisionOffset({ fXOffset, 150.f });
 		m_pAttackCollider->SetCollisionOnOff(true);
+
+		fXOffset = 40.f;
+		if (!m_bRight)
+			fXOffset = -fXOffset;
+		m_pCollider->SetCollisionActive();
+		m_pCollider->SetSize({ 257.f, 369.f });
+		m_pCollider->SetOffset({ fXOffset, 150.f });
 	}
 }
 
@@ -375,6 +416,9 @@ void Vellum::Attack2_Attack()
 		m_pAttackCollider->SetCollisionSize({ 436.f, 379.f });
 		m_pAttackCollider->SetCollisionOffset({ fXOffset, 150.f });
 		m_pAttackCollider->SetCollisionOnOff(true);
+
+		m_pCollider->SetCollisionActive();
+		m_pCollider->SetSize(Vec2(200.f, 400.f));
 	}
 }
 
@@ -403,6 +447,13 @@ void Vellum::Attack4_Attack()
 		m_pAttackCollider->SetCollisionSize({ 972.f, 379.f });
 		m_pAttackCollider->SetCollisionOffset({ fXOffset, 150.f });
 		m_pAttackCollider->SetCollisionOnOff(true);
+
+		fXOffset = 50.f;
+		if (!m_bRight)
+			fXOffset = -fXOffset;
+		m_pCollider->SetCollisionActive();
+		m_pCollider->SetSize(Vec2(253.f, 253.f));
+		m_pCollider->SetOffset({ fXOffset, 220.f });
 	}
 }
 
@@ -484,10 +535,9 @@ void Vellum::EndState_Appear()
 		return;
 	}
 
-	int iRand = rand() % 2;
 	m_iMaxShotCount = (rand() % 3) + 1;
 
-	if (iRand <= 0.f)
+	if (fabs(GetPos().x - m_pTarget->GetPos().x) > 400.f)
 		SetState_Attack2();
 	else
 		SetState_Attack3();
@@ -592,6 +642,14 @@ void Vellum::Breath()
 	}
 }
 
+void Vellum::State_Dead()
+{
+	if (m_pAnimator->IsEndAnim())
+	{
+		// ÅÛµå·Ó, destroy;
+	}
+}
+
 void Vellum::Attack_Tail()
 {
 	static float s_fNowTime = 0.f;
@@ -652,6 +710,9 @@ void Vellum::SetState_Appear()
 
 	m_iTailCount = min(m_iTailCount + rand() % 4, m_iMaxTailCount);
 
+	m_vDamagePos = GetPos();
+	m_vDamagePos.x = m_bRight == true ? m_vDamagePos.x + m_vStandDamageOffset.x + 60.f : m_vDamagePos.x - m_vStandDamageOffset.x;
+	m_vDamagePos.y += m_vStandDamageOffset.y;
 }
 
 void Vellum::SetState_Attack1()
@@ -670,6 +731,10 @@ void Vellum::SetState_Attack1()
 	m_eVellumState = Vellum_State::Attack1;
 
 	m_iTailCount = min(m_iTailCount + rand() % 4, m_iMaxTailCount);
+
+	m_vDamagePos = GetPos();
+	m_vDamagePos.x = m_bRight == true ? m_vDamagePos.x + m_vStandDamageOffset.x + 60.f : m_vDamagePos.x - m_vStandDamageOffset.x;
+	m_vDamagePos.y += m_vStandDamageOffset.y;
 }
 
 void Vellum::SetState_Attack2()
@@ -717,6 +782,9 @@ void Vellum::SetState_Attack4()
 	m_eVellumState = Vellum_State::Attack4;
 
 	m_iTailCount = min(m_iTailCount + 1, m_iMaxTailCount);
+
+	m_vDamagePos = GetPos();
+	m_vDamagePos += m_vAttack4DamageOffset;
 }
 
 void Vellum::SetState_LowNeck()
@@ -736,6 +804,10 @@ void Vellum::SetState_LowNeck()
 	m_eVellumState = Vellum_State::LowNeck;
 
 	m_iTailCount = min(m_iTailCount + 1, m_iMaxTailCount);
+	
+	m_vDamagePos = GetPos();
+	m_vDamagePos.x = m_bRight == true ? m_vDamagePos.x + m_vLowNeckDamageOffset.x + 60.f : m_vDamagePos.x - m_vLowNeckDamageOffset.x;
+	m_vDamagePos.y += m_vLowNeckDamageOffset.y;
 }
 
 void Vellum::SetState_Breath()
@@ -761,6 +833,10 @@ void Vellum::SetState_Breath()
 	}
 
 	m_eVellumState = Vellum_State::Breath;
+
+	m_vDamagePos = GetPos();
+	m_vDamagePos.x = m_bRight == true ? m_vDamagePos.x + m_vStandDamageOffset.x + 60.f : m_vDamagePos.x - m_vStandDamageOffset.x;
+	m_vDamagePos.y += m_vStandDamageOffset.y;
 }
 
 void Vellum::SetState_Dig()
@@ -774,4 +850,15 @@ void Vellum::SetState_Dig()
 	m_eVellumState = Vellum_State::Dig;
 
 	m_iTailCount = min(m_iTailCount + 1, m_iMaxTailCount);
+}
+
+void Vellum::SetState_Dead()
+{
+	m_pCollider->SetCollisionInactive();
+	if (m_bRight)
+		m_pAnimator->PlayAnimation(L"Vellum_Die_L", false);
+	else
+		m_pAnimator->PlayAnimation(L"Vellum_Die_R", false);
+
+	m_eVellumState = Vellum_State::Dead;
 }

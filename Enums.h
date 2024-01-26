@@ -8,6 +8,7 @@ enum class eLayerType
 	LT_OBJECT,
 	LT_NPC,
 	LT_MONSTER,
+	LT_MONSTER_EFFECT,
 	LT_PLAYER,
 	LT_EFFECT,
 

@@ -58,7 +58,10 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"Damage_Num_Critical", L"Resources/UI/DamageNum/damage_num_critical.png");
 	ResourceMgr::Load<JoTexture>(L"Damaged_Num", L"Resources/UI/DamageNum/damaged_num.png");
 
+	ResourceMgr::Load<JoTexture>(L"StunEffect", L"Resources/Effect/StunEffect.png");
 	ResourceMgr::Load<JoTexture>(L"Player", L"Resources/Player/Player.png");
+
+	ResourceMgr::Load<JoTexture>(L"Tomb", L"Resources/Obj/Tomb.png");
 
 	ResourceMgr::Load<JoTexture>(L"Vellum_Appear_L", L"Resources/Enemy/Vellum/Vellum_Appear.png");
 	ResourceMgr::Load<JoTexture>(L"Vellum_Appear_R", L"Resources/Enemy/Vellum/Vellum_Appear_R.png");

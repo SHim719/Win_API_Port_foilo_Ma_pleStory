@@ -16,6 +16,7 @@ enum class Vellum_State
 	Attack4,
 	Breath,
 	Dig,
+	Dead,
 	End
 };
 
@@ -42,7 +43,9 @@ public:
 	void SetState_Attack4();
 	void SetState_Breath();
 	void SetState_Dig();
+	void SetState_Dead();
 
+	bool IsDeadState() { return m_eVellumState == Vellum_State::Dead; }
 private:
 	void debug_key();
 
@@ -70,6 +73,7 @@ private:
 	
 	void Move();
 	void Breath();
+	void State_Dead();
 	void Attack_Tail();
 private:
 	Vellum_State m_eVellumState;
@@ -95,6 +99,10 @@ private:
 	vector<DeepBreath*> m_vecBreath = {};
 	Vec2 m_vBreathLeftStartPos = { 1347.f, 338.f }; // +340
 	Vec2 m_vBreathRightStartPos = { 1708.f, 338.f }; // -340
-
+	
+	Vec2 m_vDamagePos = {};
+	Vec2 m_vStandDamageOffset = {};
+	Vec2 m_vLowNeckDamageOffset = {};
+	Vec2 m_vAttack4DamageOffset = {};
 };
 

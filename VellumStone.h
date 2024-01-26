@@ -13,6 +13,8 @@ public:
     void Update() override;
     void Render() override;
 
+    void OnCollisionEnter(Collider* _pOther) override;
+
     void Play_Anim() const;
 };
 

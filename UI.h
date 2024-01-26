@@ -12,6 +12,7 @@ enum UI_Enums
 	UI_Stat,
 	UI_Shop,
 	UI_Dialog,
+	UI_Death,
 	UI_End,
 };
 
@@ -28,9 +29,10 @@ public:
 	virtual void Render();
 	virtual void Release();
 
-	virtual bool KeyCheck() { return false; }
+	
 	virtual void OnInActive() {}
 	virtual void OnActive() {}
+	virtual bool KeyCheck() { return false; }
 protected:
 	JoTexture*	m_pMainTex;
 	Vec2		m_vPos;

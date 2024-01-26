@@ -9,6 +9,7 @@
 #include "VellumTrigger.h"
 #include "StoneSpawner.h"
 #include "DeepBreath.h"
+#include "Vellum_HpBar.h"
 
 
 Scene_Boss::Scene_Boss()
@@ -36,10 +37,14 @@ void Scene_Boss::Initialize()
 	pStoneSpawner->SetActive(false);
 	pStoneSpawner->SetVellum(pVellum);
 
+	Vellum_HpBar* pHpBar = Instantiate<Vellum_HpBar>(eLayerType::LT_UI);
+	pHpBar->SetVellum(pVellum);
+
 	VellumTrigger* pVellumTrigger = Instantiate<VellumTrigger>(eLayerType::LT_NONE);
 	pVellumTrigger->SetPos(Vec2(1642.f, 370.f));
 	pVellumTrigger->Set_Vellum(pVellum);
 	pVellumTrigger->Set_Spawnwer(pStoneSpawner);
+	pVellumTrigger->Set_HpBar(pHpBar);
 
 	m_vLimitPosX.x = 15.f;
 	m_vLimitPosX.y = texWidth - 15.f;

@@ -21,7 +21,7 @@ Vellum::~Vellum()
 
 void Vellum::Initialize()
 {
-	m_iMaxHp = 5000000;
+	m_iMaxHp = 20000000;
 	m_iHp = m_iMaxHp;
 
 	m_pCollider = new Collider;

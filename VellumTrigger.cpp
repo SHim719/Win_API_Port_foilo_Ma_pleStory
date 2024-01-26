@@ -6,6 +6,8 @@
 
 VellumTrigger::VellumTrigger()
 	: m_pVellum(nullptr)
+	, m_pSpawner(nullptr)
+	, m_pHpBar(nullptr)
 {
 }
 
@@ -35,7 +37,6 @@ void VellumTrigger::Update()
 			m_pVellum->SetActive(true);
 			m_pVellum->SetState_Attack1();
 			m_pSpawner->SetActive(true);
-			//m_pVellum->SetState_Move();
 			Destroy(this);
 		}
 	}

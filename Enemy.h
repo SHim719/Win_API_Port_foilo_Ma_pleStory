@@ -17,6 +17,8 @@ public:
     static void SetTarget(Player* const _pPlayer) { m_pTarget = _pPlayer; }
 
     void AddHp(int _iHp);
+    int GetHp() { return m_iHp; }
+    int GetMaxHp() { return m_iMaxHp; }
 protected:
     int m_iHp;
     int m_iMaxHp;

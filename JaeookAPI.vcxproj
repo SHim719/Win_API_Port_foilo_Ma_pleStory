@@ -160,6 +160,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="DeepBreath.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="HitInterface.h" />
+    <ClInclude Include="MiniMap.h" />
     <ClInclude Include="MyDialogBox.h" />
     <ClInclude Include="Enrollable.h" />
     <ClInclude Include="Entity.h" />
@@ -233,6 +234,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="VellumAttackCollider.h" />
     <ClInclude Include="VellumStone.h" />
     <ClInclude Include="VellumTrigger.h" />
+    <ClInclude Include="Vellum_HpBar.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +255,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="DeathUI.cpp" />
     <ClCompile Include="DeepBreath.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="MiniMap.cpp" />
     <ClCompile Include="MyDialogBox.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Equipable.cpp" />
@@ -319,6 +322,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="VellumAttackCollider.cpp" />
     <ClCompile Include="VellumStone.cpp" />
     <ClCompile Include="VellumTrigger.cpp" />
+    <ClCompile Include="Vellum_HpBar.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -283,6 +283,12 @@
     <Filter Include="02. Contents\12. OBJ_ETC\01. Tomb">
       <UniqueIdentifier>{f016719d-7ab8-4df7-b2f8-bef0f7183730}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI\02. VellumHpBar">
+      <UniqueIdentifier>{4399bb40-1b32-4f89-a5c2-b551c41c4182}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI\03. MiniMap">
+      <UniqueIdentifier>{62aa7e40-8b81-4938-807e-a2be9e30f767}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -564,6 +570,12 @@
     <ClInclude Include="Tomb.h">
       <Filter>02. Contents\12. OBJ_ETC\01. Tomb</Filter>
     </ClInclude>
+    <ClInclude Include="Vellum_HpBar.h">
+      <Filter>02. Contents\11. OBJ_UI\02. VellumHpBar</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniMap.h">
+      <Filter>02. Contents\11. OBJ_UI\03. MiniMap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -817,6 +829,12 @@
     </ClCompile>
     <ClCompile Include="Tomb.cpp">
       <Filter>02. Contents\12. OBJ_ETC\01. Tomb</Filter>
+    </ClCompile>
+    <ClCompile Include="Vellum_HpBar.cpp">
+      <Filter>02. Contents\11. OBJ_UI\02. VellumHpBar</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniMap.cpp">
+      <Filter>02. Contents\11. OBJ_UI\03. MiniMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

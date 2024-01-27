@@ -75,6 +75,8 @@ private:
 	void Breath();
 	void State_Dead();
 	void Attack_Tail();
+
+	void RenderText_Breath();
 private:
 	Vellum_State m_eVellumState;
 
@@ -92,6 +94,8 @@ private:
 	int m_iTailCount = 0;
 	float m_fTailTimeGap = 0.f;
 
+
+	bool m_bRenderBreath;
 	float m_fBreath_LeftX = 175.f;
 	float m_fBreath_RightX = 2880.f;
 
@@ -104,5 +108,7 @@ private:
 	Vec2 m_vStandDamageOffset = {};
 	Vec2 m_vLowNeckDamageOffset = {};
 	Vec2 m_vAttack4DamageOffset = {};
+
+	JoTexture* m_pBreathText;
 };
 

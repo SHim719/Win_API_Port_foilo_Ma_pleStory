@@ -1,6 +1,5 @@
 #include "Skill.h"
 
-
 Player* Skill::m_pOwner = nullptr;
 
 Skill::Skill()

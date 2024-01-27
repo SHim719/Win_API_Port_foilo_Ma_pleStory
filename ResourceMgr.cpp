@@ -32,6 +32,7 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"BG_AbyssCave2", L"Resources/Map/AbyssCave/½É¿¬ÀÇµ¿±¼2.png");
 	ResourceMgr::Load<JoTexture>(L"BG_AbyssCave3", L"Resources/Map/AbyssCave/½É¿¬ÀÇµ¿±¼3.png");
 	ResourceMgr::Load<JoTexture>(L"BG_AbyssCave4", L"Resources/Map/AbyssCave/½É¿¬ÀÇµ¿±¼4.png");
+	ResourceMgr::Load<JoTexture>(L"AbyssCave_Minimap", L"Resources/Map/AbyssCave/AbyssCave_Minimap.png");
 	ResourceMgr::Load<JoBmp>(L"AbyssCave_Pixel", L"Resources/Map/AbyssCave/AbyssCave_Pixel.bmp");
 
 	ResourceMgr::Load<JoTexture>(L"ÀÇ¹®ÀÇ ¼Ò³à", L"Resources/Npc/¼Ò³à.png");
@@ -41,6 +42,18 @@ void ResourceMgr::Initialize()
 
 	ResourceMgr::Load<JoTexture>(L"PhantomBlow", L"Resources/Skill/PhantomBlow/phantomblow.png");
 	ResourceMgr::Load<JoTexture>(L"PB_Hit", L"Resources/Skill/PhantomBlow/phantomblow_hit.png");
+	ResourceMgr::Load<JoTexture>(L"KarmaFury", L"Resources/Skill/KarmaFury/karma_fury.png");
+	ResourceMgr::Load<JoTexture>(L"KF_Hit", L"Resources/Skill/KarmaFury/kf_hit.png");
+	ResourceMgr::Load<JoTexture>(L"BladeTornado_Create", L"Resources/Skill/BladeTornado/bladeTornado_create.png");
+	ResourceMgr::Load<JoTexture>(L"BladeTornado_Loop", L"Resources/Skill/BladeTornado/bladeTornado_loop.png");
+	ResourceMgr::Load<JoTexture>(L"BT_Hit", L"Resources/Skill/BladeTornado/BT_Hit.png");
+	ResourceMgr::Load<JoTexture>(L"BladeStorm_L", L"Resources/Skill/BladeStorm/BladeStorm_L.png");
+	ResourceMgr::Load<JoTexture>(L"BladeStorm_R", L"Resources/Skill/BladeStorm/BladeStorm_R.png");
+	ResourceMgr::Load<JoTexture>(L"BS_Hit", L"Resources/Skill/BladeStorm/BS_Hit.png");
+	ResourceMgr::Load<JoTexture>(L"Asura_Loop", L"Resources/Skill/Asura/Asura.png");
+	ResourceMgr::Load<JoTexture>(L"Asura_Bottom", L"Resources/Skill/Asura/AS_Bottom.png");
+	ResourceMgr::Load<JoTexture>(L"AS_Hit", L"Resources/Skill/Asura/AS_Hit.png");
+
 	ResourceMgr::Load<JoTexture>(L"FlashJump", L"Resources/Skill/FlashJump/FlashJump.png");
 
 	ResourceMgr::Load<JoTexture>(L"Cursor", L"Resources/UI/Cursor.png");
@@ -52,6 +65,7 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"TitleScreen", L"Resources/TitleScreen.png");
 	ResourceMgr::Load<JoTexture>(L"Title_Button", L"Resources/Title_Button.png");
 	ResourceMgr::Load<JoTexture>(L"Title_Button_On", L"Resources/Title_Button_On.png");
+	ResourceMgr::Load<JoTexture>(L"MiniMap_Player", L"Resources/UI/MiniMap_Player.png");
 	ResourceMgr::Load<JoTexture>(L"Portal", L"Resources/Map/Portal/Portal.png");
 
 	ResourceMgr::Load<JoTexture>(L"Damage_Num", L"Resources/UI/DamageNum/damage_num.png");
@@ -98,6 +112,7 @@ void ResourceMgr::Initialize()
 
 	ResourceMgr::Load<JoTexture>(L"Vellum_HpBar", L"Resources/UI/Boss/Vellum_HpBar.png");
 	ResourceMgr::Load<JoTexture>(L"Boss_Hp", L"Resources/UI/Boss/bossHP.png");
+	ResourceMgr::Load<JoTexture>(L"Breath_Text", L"Resources/UI/Boss/Breath_Text.png");
 }
 
 void ResourceMgr::Release()

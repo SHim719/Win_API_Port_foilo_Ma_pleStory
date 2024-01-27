@@ -67,8 +67,13 @@ void PB_Obj::Update()
 	for (auto it = m_vecAttInfo.begin(); it != m_vecAttInfo.end();)
 	{
 		AttackInfo& attInfo = *it;
+		if (static_cast<Enemy*>(attInfo.pHitObj)->IsActive() == false)
+		{
+			it = m_vecAttInfo.erase(it);
+			continue;
+		}
 		attInfo.fNowTime += TimeMgr::DeltaTime();
-		if (attInfo.fNowTime >= 0.15f)
+		if (attInfo.fNowTime >= 0.13f)
 		{
 			attInfo.fNowTime = 0.f;
 			if (attInfo.iHitCount >= m_iMaxHitCount)
@@ -133,7 +138,8 @@ void PB_Obj::Skill_Start()
 
 void PB_Obj::OnCollisionEnter(Collider* other)
 {
-	if (m_vecAttInfo.size() >= m_iMaxEnemyCount) return;
+	push_AttackInfo(other);
+	/*if (m_vecAttInfo.size() >= m_iMaxEnemyCount) return;
 
 	AttackInfo info{};
 	info.pHitObj = dynamic_cast<Enemy*>(other->GetOwner());
@@ -148,7 +154,7 @@ void PB_Obj::OnCollisionEnter(Collider* other)
 	info.iHitCount = 0;
 	info.fNowTime = 100.f;
 
-	m_vecAttInfo.push_back(info);
+	m_vecAttInfo.push_back(info);*/
 }
 
 void PB_Obj::OnCollisionStay(Collider* other)

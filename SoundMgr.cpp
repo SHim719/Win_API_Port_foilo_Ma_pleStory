@@ -17,8 +17,16 @@ void SoundMgr::Intialize()
 	
 	ResourceMgr::Load<Audio>(L"PB_Use", L"Resources/Skill/PhantomBlow/Use.mp3");
 	ResourceMgr::Load<Audio>(L"PB_Hit_SFX", L"Resources/Skill/PhantomBlow/Hit.mp3");
-
 	ResourceMgr::Load<Audio>(L"FJ_Use", L"Resources/Skill/FlashJump/Use.mp3");
+	ResourceMgr::Load<Audio>(L"KF_Use", L"Resources/Skill/KarmaFury/Use.mp3");
+	ResourceMgr::Load<Audio>(L"KF_Hit_SFX", L"Resources/Skill/KarmaFury/Hit.mp3");
+	ResourceMgr::Load<Audio>(L"BT_Use", L"Resources/Skill/BladeTornado/Use.mp3");
+	ResourceMgr::Load<Audio>(L"BT_Loop", L"Resources/Skill/BladeTornado/Loop.mp3");
+	ResourceMgr::Load<Audio>(L"BT_Hit_SFX", L"Resources/Skill/BladeTornado/Hit.mp3");
+	ResourceMgr::Load<Audio>(L"BS_Loop", L"Resources/Skill/BladeStorm/Loop.mp3")->SetLoop(true);
+	ResourceMgr::Load<Audio>(L"BS_Hit_SFX", L"Resources/Skill/BladeStorm/Hit.mp3");
+	ResourceMgr::Load<Audio>(L"AS_Loop", L"Resources/Skill/Asura/Loop.mp3")->SetLoop(true);
+	ResourceMgr::Load<Audio>(L"AS_Hit_SFX", L"Resources/Skill/Asura/Hit.mp3");
 
 	ResourceMgr::Load<Audio>(L"OpenWindow", L"Resources/UI/Sound/OpenWindow.mp3");
 	ResourceMgr::Load<Audio>(L"CloseWindow", L"Resources/UI/Sound/CloseWindow.mp3");

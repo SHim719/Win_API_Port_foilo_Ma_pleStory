@@ -28,7 +28,10 @@ void Vellum_HpBar::Initialize()
 
 void Vellum_HpBar::Render()
 {
-	float fRatio = m_pVellum->GetHp() / m_pVellum->GetMaxHp();
+	if (!m_bActive)
+		return;
+
+	float fRatio = (float)m_pVellum->GetHp() / (float)m_pVellum->GetMaxHp();
 
 	Vec2 vRenderPos = GetPos();
 	RenderMgr::RenderImage(m_pMainTex,

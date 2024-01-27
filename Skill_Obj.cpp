@@ -1,4 +1,5 @@
 #include "Skill_Obj.h"
+#include "Enemy.h"
 
 Skill_Obj::Skill_Obj()
 	: m_pOwner{}
@@ -48,4 +49,26 @@ Vec2 Skill_Obj::GetOverlappedRectPos(Collider* other) const
 	Vec2 vOffset = { float(rand() % 100 - 50), float(rand() % 100 - 50) };
 
 	return vMidPos + vOffset;
+}
+
+void Skill_Obj::push_AttackInfo(Collider* _pOther)
+{
+	if (m_vecAttInfo.size() >= m_iMaxEnemyCount) return;
+	if (false == _pOther->GetOwner()->IsActive())
+		return;
+
+	AttackInfo info{};
+	info.pHitObj = dynamic_cast<Enemy*>(_pOther->GetOwner());
+
+	if (info.pHitObj == nullptr)
+		return;
+
+	int iHitCount = m_iMaxHitCount / m_iPerHitCount;
+	for (int i = 0; i < iHitCount; ++i)
+		info.vecEffectPos.push_back(GetOverlappedRectPos(_pOther));
+
+	info.iHitCount = 0;
+	info.fNowTime = 100.f;
+
+	m_vecAttInfo.push_back(info);
 }

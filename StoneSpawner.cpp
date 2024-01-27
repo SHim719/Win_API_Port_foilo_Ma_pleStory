@@ -35,7 +35,7 @@ void StoneSpawner::Update()
 			if (m_fNowSpawnPosX > 3055.f)
 				return;
 
-			if (abs(m_fNowSpawnPosX - fTargetPosX) < 100.f)
+			if (abs(m_fNowSpawnPosX - fTargetPosX) < 200.f)
 			{
 				m_fNowSpawnPosX += m_fSpawnGap;
 				continue;

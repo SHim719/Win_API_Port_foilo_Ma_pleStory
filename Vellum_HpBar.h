@@ -14,6 +14,7 @@ public:
    void Render()         override;
 
    void SetVellum(Vellum* const _pVellum) { m_pVellum = _pVellum; }
+   void SetActive(const bool& _b) { m_bActive = _b; }
 private:
     JoTexture* m_pMainTex;
     JoTexture* m_pHpBarTex;

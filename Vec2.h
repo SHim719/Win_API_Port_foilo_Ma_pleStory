@@ -58,6 +58,11 @@ struct Vec2
 		return Vec2(x * v.x, y * v.y);
 	}
 
+	Vec2 operator / (const Vec2& v)
+	{
+		return Vec2(x / v.x, y / v.y);
+	}
+
 	Vec2 operator * (const float& f)
 	{
 		return Vec2(x * f, y * f);

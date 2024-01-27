@@ -4,6 +4,7 @@
 #include "MyDialogBox.h"
 #include "KeyMgr.h"
 #include "SoundMgr.h"
+#include "RenderMgr.h"
 
 Girl::Girl()
 	: m_pTexture(nullptr)

@@ -10,6 +10,7 @@
 #include "StoneSpawner.h"
 #include "DeepBreath.h"
 #include "Vellum_HpBar.h"
+#include "MiniMap.h"
 
 
 Scene_Boss::Scene_Boss()
@@ -28,6 +29,13 @@ void Scene_Boss::Initialize()
 	float texWidth = (float)bgTex->GetWidth();
 	float texHeight = (float)bgTex->GetHeight();
 	CalcAndSetCameraArea(texWidth, texHeight, Vec2::Zero);
+
+	MiniMap* pMiniMap = Instantiate<MiniMap>(eLayerType::LT_UI);
+	JoTexture* pMiniMapTex = ResourceMgr::Find<JoTexture>(L"AbyssCave_Minimap");
+	pMiniMap->Set_MiniMapTex(pMiniMapTex);
+	pMiniMap->SetSize({ 238.f, 76.f });
+	pMiniMap->SetLeftTop({ 9.f, 76.f });
+	pMiniMap->SetRealMapSize({ texWidth, texHeight });
 
 	Vellum* pVellum = Instantiate<Vellum>(eLayerType::LT_MONSTER);
 	pVellum->SetPos({ 1642.f, 370.f }); // 원래위치

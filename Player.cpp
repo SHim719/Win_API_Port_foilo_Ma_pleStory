@@ -258,8 +258,16 @@ void Player::Init_Anim()
 	m_pAnimator->CreateAnimation(L"Alert_R", playerTex, Vec2(1280.f, 640.f), Vec2(160.f, 160.f), Vec2::Zero, 2, 0.7f);
 	m_pAnimator->CreateAnimation(L"Dead_L", playerTex, Vec2(320.f, 480.f), Vec2(160.f, 160.f), Vec2(0.f, -20.f), 1);
 	m_pAnimator->CreateAnimation(L"Dead_R", playerTex, Vec2(0.f, 800.f), Vec2(160.f, 160.f), Vec2(0.f, -20.f), 1);
-	m_pAnimator->CreateAnimation(L"PhantomBlow_L", playerTex, Vec2(0.0f, 160.0f), Vec2(160.f, 160.f), Vec2::Zero, 8, 0.09f);
-	m_pAnimator->CreateAnimation(L"PhantomBlow_R", playerTex, Vec2(360.f, 800.0f), Vec2(160.f, 160.f), Vec2(30.f, 0.f), 8, 0.09f);
+	m_pAnimator->CreateAnimation(L"PhantomBlow_L", playerTex, Vec2(0.0f, 160.0f), Vec2(160.f, 160.f), Vec2::Zero, 8, 0.08f);
+	m_pAnimator->CreateAnimation(L"PhantomBlow_R", playerTex, Vec2(360.f, 800.0f), Vec2(160.f, 160.f), Vec2(30.f, 0.f), 8, 0.08f);
+	m_pAnimator->CreateAnimation(L"KarmaFury_L", playerTex, Vec2(0.0f, 480.0f), Vec2(160.f, 160.f), Vec2::Zero, 1, 0.7f);
+	m_pAnimator->CreateAnimation(L"KarmaFury_R", playerTex, Vec2(160.0f * 9.f, 640.0f), Vec2(160.f, 160.f), Vec2::Zero, 1, 0.7f);
+	m_pAnimator->CreateAnimation(L"BladeTornado_L", playerTex, Vec2(0.0f, 480.0f), Vec2(160.f, 160.f), Vec2::Zero, 1, 0.8f);
+	m_pAnimator->CreateAnimation(L"BladeTornado_R", playerTex, Vec2(160.0f * 9.f, 640.0f), Vec2(160.f, 160.f), Vec2::Zero, 1, 0.8f);
+	m_pAnimator->CreateAnimation(L"BladeStorm_L", playerTex, Vec2(0.f, 320.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.06f);
+	m_pAnimator->CreateAnimation(L"BladeStorm_R", playerTex, Vec2(0.f, 960.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.06f);
+	m_pAnimator->CreateAnimation(L"Asura_L", playerTex, Vec2(0.f, 320.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.07f);
+	m_pAnimator->CreateAnimation(L"Asura_R", playerTex, Vec2(0.f, 960.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.07f);
 }
 
 void Player::Init_FrameBind()
@@ -267,6 +275,10 @@ void Player::Init_FrameBind()
 	function<void()> skillEnd = bind(&Player::Skill_End, this);
 	m_pAnimator->GetEvents(L"PhantomBlow_L")->frameEvents[7] = skillEnd;
 	m_pAnimator->GetEvents(L"PhantomBlow_R")->frameEvents[7] = skillEnd;
+	m_pAnimator->GetEvents(L"KarmaFury_L")->EndEvent = skillEnd;
+	m_pAnimator->GetEvents(L"KarmaFury_R")->EndEvent = skillEnd;
+	m_pAnimator->GetEvents(L"BladeTornado_L")->EndEvent = skillEnd;
+	m_pAnimator->GetEvents(L"BladeTornado_R")->EndEvent = skillEnd;
 }
 
 void Player::Idle_State()
@@ -785,6 +797,9 @@ void Player::Invincible()
 
 void Player::Skill_End()
 {
+	if (m_eState != PlayerState::Channeling)
+		return;
+
 	if (m_pRigidbody->IsGround())
 	{
 		if (KeyMgr::GetKey(m_ArrKeyAction[(UINT)eActionKey::Left]))

@@ -36,8 +36,10 @@ void Animator::Update()
 		if (m_activeAnim->IsEnd())
 		{
 			if (m_bLoop)
+			{
 				m_activeAnim->Reset();
-
+				return;
+			}
 			m_pActiveEvents->EndEvent();
 		}
 	}

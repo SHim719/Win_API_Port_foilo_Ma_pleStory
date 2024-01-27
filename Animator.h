@@ -28,6 +28,7 @@ struct Events
 
 	vector<Event> frameEvents = {};
 	Event EndEvent;
+	Event StartEvent;
 	size_t frameCount = 0;
 };
 
@@ -74,6 +75,17 @@ public:
 	GameObject* GetOwner() const { return m_pOwner; }
 
 	Events* GetEvents(const wstring& name);
+
+	void AddAlpha(const float& _alpha)
+	{
+		if (m_activeAnim)
+		{
+			float fAlpha = m_activeAnim->GetAlpha() + _alpha;
+			fAlpha = max(fAlpha, 0.0f);
+			m_activeAnim->SetAlpha(fAlpha);
+		}
+	}
+	const float& GetAlpha() { return m_activeAnim->GetAlpha(); }
 
 private:
 	map<wstring, Animation*> m_animations;

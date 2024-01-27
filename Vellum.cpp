@@ -8,10 +8,13 @@
 #include "VellumAttackCollider.h"
 #include "DeepBreath.h"
 #include "Tail.h"
+#include "RenderMgr.h"
 
 
 Vellum::Vellum()
 	: m_eVellumState(Vellum_State::Attack1)
+	, m_bRenderBreath(false)
+	, m_pBreathText(nullptr)
 {
 }
 
@@ -33,7 +36,7 @@ void Vellum::Initialize()
 	m_pAnimator = new Animator;
 	m_pAnimator->SetOwner(this);
 
-	m_fSpeed = 250.f;
+	m_fSpeed = 200.f;
 
 	m_pAttackCollider = Instantiate<VellumAttackCollider>(eLayerType::LT_MONSTER_EFFECT);
 
@@ -47,6 +50,8 @@ void Vellum::Initialize()
 	m_vStandDamageOffset = { 260.f,  -130.f };
 	m_vLowNeckDamageOffset = { 300.f,  100.f };
 	m_vAttack4DamageOffset = { 0.f, 200.f };
+
+	m_pBreathText = ResourceMgr::Find<JoTexture>(L"Breath_Text");
 
 	Init_Anim();
 	Init_AnimKey();
@@ -93,6 +98,8 @@ void Vellum::Render()
 {
 	m_pAnimator->Render();
 	//m_pCollider->Render();
+
+	RenderText_Breath();
 }
 
 void Vellum::Hit(const HitInfo& _hitInfo)
@@ -115,9 +122,9 @@ void Vellum::debug_key()
 	{
 		//SetState_Move();
 		//SetState_Appear();
-		 SetState_Attack1();
+		// SetState_Attack1();
 		//SetState_LowNeck();
-		//SetState_Breath();
+		SetState_Breath();
 		//SetState_Attack4();
 	}
 	else if (KeyMgr::GetKeyDown(eKeyCode::R))
@@ -646,7 +653,7 @@ void Vellum::State_Dead()
 {
 	if (m_pAnimator->IsEndAnim())
 	{
-		// 템드롭, destroy;
+		// 템드롭, destroy 화이트 페이드 아웃인
 	}
 }
 
@@ -671,6 +678,28 @@ void Vellum::Attack_Tail()
 		m_iTailCount--;
 		m_iTailCount = max(m_iTailCount, 0);
 	}
+}
+
+void Vellum::RenderText_Breath()
+{
+	static float fNowTime = 0.f;
+
+	if (m_bRenderBreath)
+	{
+		fNowTime += TimeMgr::DeltaTime();
+		if (fNowTime >= 3.f)
+		{
+			m_bRenderBreath = false;
+			fNowTime = 0.f;
+			return;
+		}
+		Vec2 vLeftTop = { 300.f, 180.f };
+		RenderMgr::RenderImage(m_pBreathText
+			, vLeftTop.x, vLeftTop.y
+			, vLeftTop.x + m_pBreathText->GetWidth(), vLeftTop.y + m_pBreathText->GetHeight());
+
+	}
+	
 }
 
 void Vellum::SetState_Move()
@@ -818,6 +847,8 @@ void Vellum::SetState_Breath()
 
 	float fMinGap = fabs(m_pTarget->GetPos().x - m_fBreath_LeftX);
 	float fMaxGap = fabs(m_pTarget->GetPos().x - m_fBreath_RightX);
+
+	m_bRenderBreath = true;
 
 	if (fMinGap < fMaxGap)
 	{

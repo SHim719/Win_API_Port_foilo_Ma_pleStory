@@ -151,9 +151,6 @@
     <Filter Include="02. Contents\06. Skill\00. Skill_Obj">
       <UniqueIdentifier>{c89e4203-e848-45a9-a061-7bf41f03fc2b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Contents\06. Skill\02. FlashJump">
-      <UniqueIdentifier>{2a22a473-a2ac-4959-a82a-3e746e107bce}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. Contents\04. UI\InvenUI">
       <UniqueIdentifier>{c28564bd-bbdd-4222-b35b-b42f8d9459be}</UniqueIdentifier>
     </Filter>
@@ -288,6 +285,33 @@
     </Filter>
     <Filter Include="02. Contents\11. OBJ_UI\03. MiniMap">
       <UniqueIdentifier>{62aa7e40-8b81-4938-807e-a2be9e30f767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\00. FlashJump">
+      <UniqueIdentifier>{2a22a473-a2ac-4959-a82a-3e746e107bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\02. KarmaFury">
+      <UniqueIdentifier>{f9e54431-0c7d-47ce-bf7f-05d926c793a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\02. KarmaFury\KF_Obj">
+      <UniqueIdentifier>{86ef83e7-3ded-4f07-8dd1-5c13db908a5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\04. BladeStorm">
+      <UniqueIdentifier>{0510ff69-b093-481c-abe2-a6ba4261c7d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\03. BladeTornado">
+      <UniqueIdentifier>{a2b281da-6e9e-422d-a698-1478035a7ba2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\03. BladeTornado\BT_Obj">
+      <UniqueIdentifier>{77c34bd8-ba47-4194-8bce-a91fe2841f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\04. BladeStorm\BS_Obj">
+      <UniqueIdentifier>{e37f1ab0-d0c8-49bc-877c-188ab9df329e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\05. Asura">
+      <UniqueIdentifier>{f5a64b16-a05e-4df8-a15e-2b1dec1792a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\05. Asura\AS_Obj">
+      <UniqueIdentifier>{14556f80-4098-4ccf-b692-30307f2272e9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -442,7 +466,7 @@
       <Filter>02. Contents\06. Skill\00. Skill_Obj</Filter>
     </ClInclude>
     <ClInclude Include="FJ_Obj.h">
-      <Filter>02. Contents\06. Skill\02. FlashJump</Filter>
+      <Filter>02. Contents\06. Skill\00. FlashJump</Filter>
     </ClInclude>
     <ClInclude Include="InvenUI.h">
       <Filter>02. Contents\04. UI\InvenUI</Filter>
@@ -576,6 +600,30 @@
     <ClInclude Include="MiniMap.h">
       <Filter>02. Contents\11. OBJ_UI\03. MiniMap</Filter>
     </ClInclude>
+    <ClInclude Include="KarmaFury.h">
+      <Filter>02. Contents\06. Skill\02. KarmaFury</Filter>
+    </ClInclude>
+    <ClInclude Include="KF_Obj.h">
+      <Filter>02. Contents\06. Skill\02. KarmaFury\KF_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="BladeStorm.h">
+      <Filter>02. Contents\06. Skill\04. BladeStorm</Filter>
+    </ClInclude>
+    <ClInclude Include="BladeTornado.h">
+      <Filter>02. Contents\06. Skill\03. BladeTornado</Filter>
+    </ClInclude>
+    <ClInclude Include="BT_Obj.h">
+      <Filter>02. Contents\06. Skill\03. BladeTornado\BT_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="BS_Obj.h">
+      <Filter>02. Contents\06. Skill\04. BladeStorm\BS_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Asura.h">
+      <Filter>02. Contents\06. Skill\05. Asura</Filter>
+    </ClInclude>
+    <ClInclude Include="AS_Obj.h">
+      <Filter>02. Contents\06. Skill\05. Asura\AS_Obj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -705,7 +753,7 @@
       <Filter>02. Contents\06. Skill\00. Skill_Obj</Filter>
     </ClCompile>
     <ClCompile Include="FJ_Obj.cpp">
-      <Filter>02. Contents\06. Skill\02. FlashJump</Filter>
+      <Filter>02. Contents\06. Skill\00. FlashJump</Filter>
     </ClCompile>
     <ClCompile Include="InvenUI.cpp">
       <Filter>02. Contents\04. UI\InvenUI</Filter>
@@ -835,6 +883,30 @@
     </ClCompile>
     <ClCompile Include="MiniMap.cpp">
       <Filter>02. Contents\11. OBJ_UI\03. MiniMap</Filter>
+    </ClCompile>
+    <ClCompile Include="KarmaFury.cpp">
+      <Filter>02. Contents\06. Skill\02. KarmaFury</Filter>
+    </ClCompile>
+    <ClCompile Include="KF_Obj.cpp">
+      <Filter>02. Contents\06. Skill\02. KarmaFury\KF_Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="BladeStorm.cpp">
+      <Filter>02. Contents\06. Skill\04. BladeStorm</Filter>
+    </ClCompile>
+    <ClCompile Include="BladeTornado.cpp">
+      <Filter>02. Contents\06. Skill\03. BladeTornado</Filter>
+    </ClCompile>
+    <ClCompile Include="BT_Obj.cpp">
+      <Filter>02. Contents\06. Skill\03. BladeTornado\BT_Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="BS_Obj.cpp">
+      <Filter>02. Contents\06. Skill\04. BladeStorm\BS_Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Asura.cpp">
+      <Filter>02. Contents\06. Skill\05. Asura</Filter>
+    </ClCompile>
+    <ClCompile Include="AS_Obj.cpp">
+      <Filter>02. Contents\06. Skill\05. Asura\AS_Obj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

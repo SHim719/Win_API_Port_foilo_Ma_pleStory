@@ -21,6 +21,7 @@ public:
 protected:
     Vec2 GetOverlappedRectPos(Collider* other) const;
   
+    void push_AttackInfo(Collider* _pOther);
 protected:
     Player* m_pOwner;
     JoTexture* m_pSkillTex;

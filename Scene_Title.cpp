@@ -8,6 +8,8 @@
 #include "Title_Button.h"
 #include "Camera.h"
 #include "Enemy.h"
+#include "Title_Button.h"
+#include "MiniMap.h"
 
 Scene_Title::Scene_Title()
 {
@@ -35,6 +37,10 @@ void Scene_Title::Initialize()
 	s_pMainPlayer = pPlayer;
 	pPlayer->SetPos({ 1141.f, 851.f });
 	Enemy::SetTarget(pPlayer);
+
+	JoTexture* pPlayerIconTex = ResourceMgr::Find<JoTexture>(L"MiniMap_Player");
+	MiniMap::Set_PlayerIconTex(pPlayerIconTex);
+	MiniMap::SetTarget(s_pMainPlayer);
 
 	Instantiate<Title_Button>(eLayerType::LT_UI)->SetPos({ 500.f, 450.f });
 }

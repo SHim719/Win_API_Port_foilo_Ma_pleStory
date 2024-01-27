@@ -64,10 +64,12 @@ public:
 
 	void SetState_Channeling(const unsigned char& _cRestriction);
 	void SetState_Stun();
+	void Skill_End();
 
 	const bool& isRight() const { return m_bRight; }
 	bool isStunning() const { return m_eState == PlayerState::Stun; }
 	bool isDeadState() const { return m_eState == PlayerState::Dead; }
+	bool isChanneling() const { return m_eState == PlayerState::Channeling;}
 
 	void Hit(const HitInfo& _hitInfo) override;
 
@@ -100,8 +102,6 @@ private:
 	void CheckYellowGround();
 	
 	void Invincible();
-
-	void Skill_End();
 
 	void debug_check();
 private:

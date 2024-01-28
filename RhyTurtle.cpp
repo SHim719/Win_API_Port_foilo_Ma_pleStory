@@ -26,7 +26,7 @@ RhyTurtle::~RhyTurtle()
 
 void RhyTurtle::Initialize()
 {
-	m_iMaxHp = 2000000;
+	m_iMaxHp = 500000;
 	m_iHp = m_iMaxHp;
 
 	m_pCollider = new Collider;
@@ -259,8 +259,9 @@ void RhyTurtle::SetState_Respawn()
 }
 void RhyTurtle::Check_RightLeft()
 {
+	int iOffset = m_bRight ? 5 : -5;
 	Vec2 vPos = GetPos();
-	COLORREF color = GetPixel(m_Pixel, (int)vPos.x, (int)vPos.y);
+	COLORREF color = GetPixel(m_Pixel, (int)vPos.x + iOffset, (int)vPos.y);
 
 	if (color == RGB(255, 125, 0))
 	{
@@ -278,5 +279,6 @@ void RhyTurtle::Check_RightLeft()
 			m_pRigidbody->SetVelocity(Vec2(m_fSpeed, 0.f));
 			m_pAttackColl->SetCollisionOffset(m_vAttackCollOffset);
 		}
+		m_fStateTime += 1.f;
 	}
 }

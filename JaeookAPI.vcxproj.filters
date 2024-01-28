@@ -331,6 +331,9 @@
     <Filter Include="02. Contents\02. Enemy\03. CT_RhyTurtle">
       <UniqueIdentifier>{9906e7d4-a400-4310-bcfb-47eab2b47203}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\10. Portal\YellowPortal">
+      <UniqueIdentifier>{3f4fe88f-173c-44dc-a9c7-8d80e479ae01}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -660,6 +663,9 @@
     <ClInclude Include="CT_RhyTurtle.h">
       <Filter>02. Contents\02. Enemy\03. CT_RhyTurtle</Filter>
     </ClInclude>
+    <ClInclude Include="YellowPortal.h">
+      <Filter>02. Contents\10. Portal\YellowPortal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -961,6 +967,9 @@
     </ClCompile>
     <ClCompile Include="CT_RhyTurtle.cpp">
       <Filter>02. Contents\02. Enemy\03. CT_RhyTurtle</Filter>
+    </ClCompile>
+    <ClCompile Include="YellowPortal.cpp">
+      <Filter>02. Contents\10. Portal\YellowPortal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

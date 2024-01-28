@@ -9,7 +9,6 @@ public:
     ~Scene_Grandis();
 
     void Initialize() override;
-
     void OnEnter()    override;
     void OnExit()     override;
 

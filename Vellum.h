@@ -77,6 +77,8 @@ private:
 	void Attack_Tail();
 
 	void RenderText_Breath();
+	
+	void First_Appear();
 private:
 	Vellum_State m_eVellumState;
 

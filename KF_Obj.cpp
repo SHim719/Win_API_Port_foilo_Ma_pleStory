@@ -3,6 +3,7 @@
 #include "HitEffect.h"
 #include "Enemy.h"
 #include "SoundMgr.h"
+#include "Camera.h"
 
 KF_Obj::KF_Obj()
 {
@@ -18,7 +19,7 @@ void KF_Obj::Initialize()
 	m_vOffset = { 30.f , -200.f };
 
 	m_iMaxEnemyCount = 10;
-	m_iMaxHitCount = 14;
+	m_iMaxHitCount = 16;
 	m_iPerHitCount = 2;
 
 	m_pCollider = new Collider;
@@ -35,6 +36,7 @@ void KF_Obj::Initialize()
 		24, 4, 0.07f);
 
 	Events* pKarmaFury_Event = m_pAnimator->GetEvents(L"KarmaFury");
+	pKarmaFury_Event->frameEvents[11] = bind(&KF_Obj::Camera_Shake, this);
 	pKarmaFury_Event->frameEvents[10] = bind(&Collider::SetCollisionActive, m_pCollider);
 	pKarmaFury_Event->frameEvents[13] = bind(&Collider::SetCollisionInactive, m_pCollider);
 }
@@ -57,7 +59,7 @@ void KF_Obj::Update()
 		}
 
 		attInfo.fNowTime += TimeMgr::DeltaTime();
-		if (attInfo.fNowTime >= 0.08f)
+		if (attInfo.fNowTime >= 0.09f)
 		{
 			attInfo.fNowTime = 0.f;
 			if (attInfo.iHitCount >= m_iMaxHitCount)
@@ -68,7 +70,7 @@ void KF_Obj::Update()
 
 			for (int i = 0; i < m_iPerHitCount; ++i)
 			{
-				HitInfo hitInfo = { 50000, attInfo.iHitCount, false };
+				HitInfo hitInfo = { 500000, attInfo.iHitCount, true };
 				attInfo.pHitObj->Hit(hitInfo);
 				attInfo.iHitCount++;
 			}
@@ -138,4 +140,9 @@ void KF_Obj::OnCollisionStay(Collider* other)
 
 void KF_Obj::OnCollisionExit(Collider* other)
 {
+}
+
+void KF_Obj::Camera_Shake()
+{
+	Camera::Set_Shaking(0.1f, 20.f);
 }

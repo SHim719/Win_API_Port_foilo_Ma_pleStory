@@ -25,7 +25,7 @@ void SceneMgr::Initialize()
 	SceneMgr::CreateScene<Scene_Title>(L"Scene_Title");
 	SceneMgr::CreateScene<Scene_Rutabyss>(L"Scene_Rutabyss");
 	SceneMgr::CreateScene<Scene_Grandis>(L"Scene_Grandis");
-	//SceneMgr::CreateScene<Scene_Boss>(L"Scene_Boss");
+	SceneMgr::CreateScene<Scene_Boss>(L"Scene_Boss");
 	
 
 	SceneMgr::LoadScene(L"Scene_Title");

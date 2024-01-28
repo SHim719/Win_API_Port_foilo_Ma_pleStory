@@ -34,7 +34,7 @@ Player::Player()
 	, m_bRight(true)
 	, m_ArrKeyAction{}
 	, m_fMoveSpeed(250.f)
-	, m_fJumpVelocity(-420.f)
+	, m_fJumpVelocity(-430.f)
 	, m_bFlashJumping(false)
 	, m_vLimitPosX{}
 	, m_pSkillStats(nullptr)
@@ -939,7 +939,7 @@ void Player::debug_check()
 
 	if (KeyMgr::GetKeyDown(eKeyCode::B))
 	{
-		SetState_Dead();
+		Camera::Set_Shaking(3.f, 10.f);
 	}
 		
 

@@ -26,12 +26,12 @@ CT_RhyTurtle::~CT_RhyTurtle()
 
 void CT_RhyTurtle::Initialize()
 {
-	m_iMaxHp = 2000000;
+	m_iMaxHp = 500000;
 	m_iHp = m_iMaxHp;
 
 	m_pCollider = new Collider;
 	m_pCollider->SetOwner(this);
-	m_pCollider->SetSize(Vec2(150.f, 82.f));
+	m_pCollider->SetSize(Vec2(150.f, 87.f));
 
 	m_pAnimator = new Animator;
 	m_pAnimator->SetOwner(this);
@@ -50,17 +50,17 @@ void CT_RhyTurtle::Initialize()
 
 	m_fSpeed = 120.f;
 
-	JoTexture* pLeftTex = ResourceMgr::Find<JoTexture>(L"RhyTurtle_L");
-	JoTexture* pRightTex = ResourceMgr::Find<JoTexture>(L"RhyTurtle_R");
+	JoTexture* pLeftTex = ResourceMgr::Find<JoTexture>(L"CT_RhyTurtle_L");
+	JoTexture* pRightTex = ResourceMgr::Find<JoTexture>(L"CT_RhyTurtle_R");
 
-	m_pAnimator->CreateAnimation(L"Turtle_Idle_L", pLeftTex, Vec2(0.f, 0.f), Vec2(148.f, 82.f), Vec2::Zero, 6, 0.2f);
-	m_pAnimator->CreateAnimation(L"Turtle_Idle_R", pRightTex, Vec2(0.f, 0.f), Vec2(148.f, 82.f), Vec2::Zero, 6, 0.2f);
-	m_pAnimator->CreateAnimation(L"Turtle_Move_L", pLeftTex, Vec2(148.f * 6.f, 0.f), Vec2(148.f, 82.f), Vec2::Zero, 6, 0.2f);
-	m_pAnimator->CreateAnimation(L"Turtle_Move_R", pRightTex, Vec2(148.f * 6.f, 0.f), Vec2(148.f, 82.f), Vec2::Zero, 6, 0.2f);
-	m_pAnimator->CreateAnimation(L"Turtle_Attack_L", pLeftTex, Vec2(0.f, 82.f), Vec2(268.f, 137.f), Vec2(-28.f, -24.f), 11, 0.15f);
-	m_pAnimator->CreateAnimation(L"Turtle_Attack_R", pRightTex, Vec2(0.f, 82.f), Vec2(268.f, 137.f), Vec2(28.f, -24.f), 11, 0.15f);
-	m_pAnimator->CreateAnimation(L"Turtle_Dead_L", pLeftTex, Vec2(0.f, 219.f), Vec2(272.f, 234.f), Vec2(38.f, -22.f), 15, 0.1f);
-	m_pAnimator->CreateAnimation(L"Turtle_Dead_R", pRightTex, Vec2(0.f, 219.f), Vec2(272.f, 234.f), Vec2(-38.f, -22.f), 15, 0.1f);
+	m_pAnimator->CreateAnimation(L"Turtle_Idle_L", pLeftTex, Vec2(0.f, 0.f), Vec2(148.f, 87.f), Vec2::Zero, 6, 0.2f);
+	m_pAnimator->CreateAnimation(L"Turtle_Idle_R", pRightTex, Vec2(0.f, 0.f), Vec2(148.f, 87.f), Vec2::Zero, 6, 0.2f);
+	m_pAnimator->CreateAnimation(L"Turtle_Move_L", pLeftTex, Vec2(148.f * 6.f, 0.f), Vec2(148.f, 87.f), Vec2::Zero, 6, 0.2f);
+	m_pAnimator->CreateAnimation(L"Turtle_Move_R", pRightTex, Vec2(148.f * 6.f, 0.f), Vec2(148.f, 87.f), Vec2::Zero, 6, 0.2f);
+	m_pAnimator->CreateAnimation(L"Turtle_Attack_L", pLeftTex, Vec2(0.f, 88.f), Vec2(268.f, 105.f), Vec2(-28.f, -4.f), 11, 0.15f);
+	m_pAnimator->CreateAnimation(L"Turtle_Attack_R", pRightTex, Vec2(0.f, 88.f), Vec2(268.f, 105.f), Vec2(28.f, -4.f), 11, 0.15f);
+	m_pAnimator->CreateAnimation(L"Turtle_Dead_L", pLeftTex, Vec2(0.f, 192.f), Vec2(272.f, 234.f), Vec2(38.f, -22.f), 15, 0.1f);
+	m_pAnimator->CreateAnimation(L"Turtle_Dead_R", pRightTex, Vec2(0.f, 192.f), Vec2(272.f, 234.f), Vec2(-38.f, -22.f), 15, 0.1f);
 
 	Events* pEvent_Attack_L = m_pAnimator->GetEvents(L"Turtle_Attack_L");
 	pEvent_Attack_L->frameEvents[6] = bind(&AttackCollider::SetHitOn, m_pAttackColl);
@@ -259,13 +259,15 @@ void CT_RhyTurtle::SetState_Respawn()
 }
 void CT_RhyTurtle::Check_RightLeft()
 {
+	int iOffset = m_bRight ? 5 : -5;
 	Vec2 vPos = GetPos();
-	COLORREF color = GetPixel(m_Pixel, (int)vPos.x, (int)vPos.y);
+	COLORREF color = GetPixel(m_Pixel, (int)vPos.x + iOffset, (int)vPos.y);
 
 	if (color == RGB(255, 125, 0))
 	{
 		if (m_bRight)
 		{
+			SetPos(vPos);
 			m_bRight = false;
 			m_pAnimator->PlayAnimation(L"Turtle_Move_L", true);
 			m_pRigidbody->SetVelocity(Vec2(-m_fSpeed, 0.f));
@@ -273,10 +275,13 @@ void CT_RhyTurtle::Check_RightLeft()
 		}
 		else
 		{
+			SetPos(vPos);
 			m_bRight = true;
 			m_pAnimator->PlayAnimation(L"Turtle_Move_R", true);
 			m_pRigidbody->SetVelocity(Vec2(m_fSpeed, 0.f));
 			m_pAttackColl->SetCollisionOffset(m_vAttackCollOffset);
 		}
+
+		m_fStateTime += 1.f;
 	}
 }

@@ -9,6 +9,7 @@
 #include "ShopBoy.h"
 #include "UIMgr.h"
 #include "Portal.h"
+#include "MiniMap.h"
 
 
 Scene_Rutabyss::Scene_Rutabyss()
@@ -33,14 +34,20 @@ void Scene_Rutabyss::Initialize()
 
 	m_pixelDC = ResourceMgr::Find<JoBmp>(L"GiantRoot_Pixel")->Get_BmpDC();
 
+	MiniMap* pMiniMap = Instantiate<MiniMap>(eLayerType::LT_UI);
+	JoTexture* pMiniMapTex = ResourceMgr::Find<JoTexture>(L"GiantRoot_Minimap");
+	pMiniMap->Set_MiniMapTex(pMiniMapTex);
+	pMiniMap->SetSize({ 151.f, 65.f });
+	pMiniMap->SetLeftTop({ 31.f, 61.f });
+	pMiniMap->SetRealMapSize({ texWidth, texHeight });
+
 	Girl* pGirl = Instantiate<Girl>(eLayerType::LT_NPC);
 	ShopBoy* pShopBoy = Instantiate<ShopBoy>(eLayerType::LT_NPC);
 
-	/*Portal* pPortal1 = Instantiate<Portal>(eLayerType::LT_OBJECT);
-	pPortal1->SetPos(Vec2(1980.f, 830.f));
-	pPortal1->Set_MovePos({ 86.f, 687.f });
-	pPortal1->Set_SceneName(L"Scene_Boss");*/
-
+	//Portal* pPortal1 = Instantiate<Portal>(eLayerType::LT_OBJECT);
+	//pPortal1->SetPos(Vec2(1980.f, 830.f));
+	//pPortal1->Set_MovePos({ 86.f, 687.f });
+	//pPortal1->Set_SceneName(L"Scene_Boss");
 
 	Portal* pPortal2 = Instantiate<Portal>(eLayerType::LT_OBJECT);
 	pPortal2->SetPos(Vec2(500.f, 830.f));

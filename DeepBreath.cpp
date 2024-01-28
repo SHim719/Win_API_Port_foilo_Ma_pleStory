@@ -71,9 +71,9 @@ void DeepBreath::Play_BreathAnim(const bool& _bRight)
 void DeepBreath::Play_EndAnim(const bool& _bRight)
 {
 	if (_bRight)
-		m_pAnimator->PlayAnimation(L"Breath_End_R");
+		m_pAnimator->PlayAnimation(L"Breath_End_R", false);
 	else
-		m_pAnimator->PlayAnimation(L"Breath_End_L");
+		m_pAnimator->PlayAnimation(L"Breath_End_L", false);
 
 	if (m_pCollider)
 		m_pCollider->SetCollisionInactive();

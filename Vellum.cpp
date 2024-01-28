@@ -9,6 +9,7 @@
 #include "DeepBreath.h"
 #include "Tail.h"
 #include "RenderMgr.h"
+#include "Camera.h"
 
 
 Vellum::Vellum()
@@ -24,7 +25,7 @@ Vellum::~Vellum()
 
 void Vellum::Initialize()
 {
-	m_iMaxHp = 20000000;
+	m_iMaxHp = 40000000;
 	m_iHp = m_iMaxHp;
 
 	m_pCollider = new Collider;
@@ -321,9 +322,11 @@ void Vellum::Init_AnimBind()
 	pEvent_Vellum_Attack1_L->EndEvent = std::bind(&Vellum::End_State, this);
 	pEvent_Vellum_Attack1_R->EndEvent = std::bind(&Vellum::End_State, this);
 	pEvent_Vellum_Attack1_L->frameEvents[13] = std::bind(&Vellum::Appear_Attack, this);
+	pEvent_Vellum_Attack1_L->frameEvents[14] = std::bind(&Vellum::First_Appear, this);
 	pEvent_Vellum_Attack1_L->frameEvents[19] = std::bind(&Vellum::AttackCollisionOff, this);
 	pEvent_Vellum_Attack1_L->frameEvents[25] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
 	pEvent_Vellum_Attack1_R->frameEvents[13] = std::bind(&Vellum::Appear_Attack, this);
+	pEvent_Vellum_Attack1_L->frameEvents[14] = std::bind(&Vellum::First_Appear, this);
 	pEvent_Vellum_Attack1_R->frameEvents[19] = std::bind(&Vellum::AttackCollisionOff, this);
 	pEvent_Vellum_Attack1_R->frameEvents[25] = std::bind(&Collider::SetCollisionInactive, m_pCollider);
 
@@ -544,7 +547,7 @@ void Vellum::EndState_Appear()
 
 	m_iMaxShotCount = (rand() % 3) + 1;
 
-	if (fabs(GetPos().x - m_pTarget->GetPos().x) > 400.f)
+	if (fabs(GetPos().x - m_pTarget->GetPos().x) < 400.f)
 		SetState_Attack2();
 	else
 		SetState_Attack3();
@@ -588,6 +591,14 @@ void Vellum::EndState_Attack4()
 
 void Vellum::EndState_Dig()
 {
+	static bool bFirstBreath = true;
+	if (m_iHp < m_iMaxHp * 0.5f && bFirstBreath)
+	{
+		SetState_Breath();
+		bFirstBreath = false;
+		return;
+	}
+		
  	int iRand = rand() % 20;
 	if (iRand < 6)
 		SetState_Move();
@@ -631,6 +642,15 @@ void Vellum::Breath()
 	if (m_bTimerOn)
 	{
 		s_fNowTime += TimeMgr::DeltaTime();
+
+		Rigidbody* pTargetRigid = m_pTarget->GetRigidbody();
+		if (pTargetRigid->GetVelocity().x == 0.f)
+		{
+			if (m_bRight)
+				pTargetRigid->SetVelocityX(500.f);
+			else
+				pTargetRigid->SetVelocityX(-500.f);
+		}
 
 		if (s_fNowTime >= 5.f)
 		{
@@ -700,6 +720,16 @@ void Vellum::RenderText_Breath()
 
 	}
 	
+}
+
+void Vellum::First_Appear()
+{
+	Camera::Set_Shaking(0.2f, 20.f);
+
+	Events* pEvent_Vellum_Attack1_L = m_pAnimator->GetEvents(L"Vellum_Attack1_L");
+	Events* pEvent_Vellum_Attack1_R = m_pAnimator->GetEvents(L"Vellum_Attack1_R");
+	pEvent_Vellum_Attack1_L->frameEvents[14] = nullptr;
+	pEvent_Vellum_Attack1_R->frameEvents[14] = nullptr;
 }
 
 void Vellum::SetState_Move()
@@ -887,9 +917,13 @@ void Vellum::SetState_Dead()
 {
 	m_pCollider->SetCollisionInactive();
 	if (m_bRight)
-		m_pAnimator->PlayAnimation(L"Vellum_Die_L", false);
-	else
 		m_pAnimator->PlayAnimation(L"Vellum_Die_R", false);
+	else
+		m_pAnimator->PlayAnimation(L"Vellum_Die_L", false);
+
+	for (size_t i = 0; i < m_vecBreath.size(); ++i)
+		m_vecBreath[i]->SetActive(false);
+	AttackCollisionOff();
 
 	m_eVellumState = Vellum_State::Dead;
 }

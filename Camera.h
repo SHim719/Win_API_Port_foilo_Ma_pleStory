@@ -1,6 +1,12 @@
 #pragma once
 #include "GameObject.h"
 
+enum class CameraState
+{
+    Normal,
+    Shaking,
+};
+
 class Camera 
 {
 public:
@@ -24,13 +30,22 @@ public:
 
     static void SetMinCameraPos(const Vec2& _vArea) { m_vMinPos = _vArea; }
     static void SetMaxCameraPos(const Vec2& _vArea) { m_vMaxPos = _vArea; }
+
+    static void Set_Shaking(const float& _fTime, const float& _fIntensity);
+private:
+    static void Normal_State();
+    static void Shaking();
 private:
     static  Vec2 m_vPos;
     static  Vec2 m_vLookAt;
     static  Vec2 m_vSize;
-    static  Vec2 m_vDistance;;
+    static  Vec2 m_vDistance;
     static  Vec2 m_vMinPos;
     static  Vec2 m_vMaxPos;
     static  GameObject* m_pTarget;
+    static  CameraState m_eState;
+
+    static float m_fShakingTime;
+    static float m_fIntensity;
 };
 

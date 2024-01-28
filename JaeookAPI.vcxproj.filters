@@ -112,9 +112,6 @@
     <Filter Include="02. Contents\02. Enemy">
       <UniqueIdentifier>{e97b20b9-33fe-42da-9ead-44758ca180b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Contents\05. BackGround\AnimBG\거대한뿌리">
-      <UniqueIdentifier>{779d3b52-1365-41b9-b217-5fb51624f1a7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. Contents\06. Skill">
       <UniqueIdentifier>{91aee882-d84c-4df7-8a16-39943a10cd8d}</UniqueIdentifier>
     </Filter>
@@ -312,6 +309,27 @@
     </Filter>
     <Filter Include="02. Contents\06. Skill\05. Asura\AS_Obj">
       <UniqueIdentifier>{14556f80-4098-4ccf-b692-30307f2272e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\04. Scene_Grandis">
+      <UniqueIdentifier>{4fed57a3-ef80-4bb0-97e3-a571f7fa8bb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\05. BackGround\AnimBG\격류지대">
+      <UniqueIdentifier>{dbca3c88-141a-4ed3-be57-804fa5800f07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\05. BackGround\AnimBG\거대한뿌리">
+      <UniqueIdentifier>{779d3b52-1365-41b9-b217-5fb51624f1a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\12. OBJ_ETC\02. RapidStream">
+      <UniqueIdentifier>{1cba547f-782d-40e6-98ad-149f2ba94490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy\02. RhyTurtle">
+      <UniqueIdentifier>{41f49e38-e8a1-48a1-96f2-5374bb042909}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy\00. AttackCollider">
+      <UniqueIdentifier>{9f935bb4-e5dd-426e-9a0d-b550bc30160e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy\03. CT_RhyTurtle">
+      <UniqueIdentifier>{9906e7d4-a400-4310-bcfb-47eab2b47203}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -624,6 +642,24 @@
     <ClInclude Include="AS_Obj.h">
       <Filter>02. Contents\06. Skill\05. Asura\AS_Obj</Filter>
     </ClInclude>
+    <ClInclude Include="Scene_Grandis.h">
+      <Filter>02. Contents\03. Scene\04. Scene_Grandis</Filter>
+    </ClInclude>
+    <ClInclude Include="ChewBG.h">
+      <Filter>02. Contents\05. BackGround\AnimBG\격류지대</Filter>
+    </ClInclude>
+    <ClInclude Include="RapidStream.h">
+      <Filter>02. Contents\12. OBJ_ETC\02. RapidStream</Filter>
+    </ClInclude>
+    <ClInclude Include="RhyTurtle.h">
+      <Filter>02. Contents\02. Enemy\02. RhyTurtle</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackCollider.h">
+      <Filter>02. Contents\02. Enemy\00. AttackCollider</Filter>
+    </ClInclude>
+    <ClInclude Include="CT_RhyTurtle.h">
+      <Filter>02. Contents\02. Enemy\03. CT_RhyTurtle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -907,6 +943,24 @@
     </ClCompile>
     <ClCompile Include="AS_Obj.cpp">
       <Filter>02. Contents\06. Skill\05. Asura\AS_Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Grandis.cpp">
+      <Filter>02. Contents\03. Scene\04. Scene_Grandis</Filter>
+    </ClCompile>
+    <ClCompile Include="ChewBG.cpp">
+      <Filter>02. Contents\05. BackGround\AnimBG\격류지대</Filter>
+    </ClCompile>
+    <ClCompile Include="RapidStream.cpp">
+      <Filter>02. Contents\12. OBJ_ETC\02. RapidStream</Filter>
+    </ClCompile>
+    <ClCompile Include="RhyTurtle.cpp">
+      <Filter>02. Contents\02. Enemy\02. RhyTurtle</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackCollider.cpp">
+      <Filter>02. Contents\02. Enemy\00. AttackCollider</Filter>
+    </ClCompile>
+    <ClCompile Include="CT_RhyTurtle.cpp">
+      <Filter>02. Contents\02. Enemy\03. CT_RhyTurtle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

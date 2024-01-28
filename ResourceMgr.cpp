@@ -5,15 +5,7 @@ map<wstring, JoResource*> ResourceMgr::m_resources{};
 
 void ResourceMgr::Initialize()
 {
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew1", L"Resources/Map/Chew/Chew1.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew2", L"Resources/Map/Chew/Chew2.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew3", L"Resources/Map/Chew/Chew3.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew4", L"Resources/Map/Chew/Chew4.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew5", L"Resources/Map/Chew/Chew5.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew6", L"Resources/Map/Chew/Chew6.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew7", L"Resources/Map/Chew/Chew7.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew8", L"Resources/Map/Chew/Chew8.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew9", L"Resources/Map/Chew/Chew9.png");
+
 	//ResourceMgr::Load<JoTexture>(L"BG_Chew10", L"Resources/Map/Chew/Chew10.png");
 	//ResourceMgr::Load<JoTexture>(L"BG_Chew11", L"Resources/Map/Chew/Chew11.png");
 	//ResourceMgr::Load<JoTexture>(L"BG_Chew12", L"Resources/Map/Chew/Chew12.png");
@@ -34,6 +26,19 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"BG_AbyssCave4", L"Resources/Map/AbyssCave/Ω…ø¨¿«µø±º4.png");
 	ResourceMgr::Load<JoTexture>(L"AbyssCave_Minimap", L"Resources/Map/AbyssCave/AbyssCave_Minimap.png");
 	ResourceMgr::Load<JoBmp>(L"AbyssCave_Pixel", L"Resources/Map/AbyssCave/AbyssCave_Pixel.bmp");
+
+	ResourceMgr::Load<JoTexture>(L"BG_Chew1", L"Resources/Map/Chew/Chew1.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Chew2", L"Resources/Map/Chew/Chew2.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Chew3", L"Resources/Map/Chew/Chew3.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Chew4", L"Resources/Map/Chew/Chew4.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Chew5", L"Resources/Map/Chew/Chew5.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Chew6", L"Resources/Map/Chew/Chew6.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Chew7", L"Resources/Map/Chew/Chew7.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Chew8", L"Resources/Map/Chew/Chew8.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Chew9", L"Resources/Map/Chew/Chew9.png");
+	//ResourceMgr::Load<JoTexture>(L"AbyssCave_Minimap", L"Resources/Map/AbyssCave/AbyssCave_Minimap.png");
+	ResourceMgr::Load<JoBmp>(L"Chew_Pixel", L"Resources/Map/Chew/Chew_Pixel.bmp");
+	
 
 	ResourceMgr::Load<JoTexture>(L"¿«πÆ¿« º“≥‡", L"Resources/Npc/º“≥‡.png");
 	ResourceMgr::Load<JoTexture>(L"¿«πÆ¿« º“≥‡_¿Ã∏ß", L"Resources/UI/Dialog/DialogName_Girl.png");
@@ -74,10 +79,14 @@ void ResourceMgr::Initialize()
 
 	ResourceMgr::Load<JoTexture>(L"StunEffect", L"Resources/Effect/StunEffect.png");
 	ResourceMgr::Load<JoTexture>(L"Player", L"Resources/Player/Player.png");
+	ResourceMgr::Load<JoTexture>(L"Player_Swim", L"Resources/Player/Player_Swim.png");
 
 	ResourceMgr::Load<JoTexture>(L"Tomb", L"Resources/Obj/Tomb.png");
 
-	ResourceMgr::Load<JoTexture>(L"Vellum_Appear_L", L"Resources/Enemy/Vellum/Vellum_Appear.png");
+	ResourceMgr::Load<JoTexture>(L"RhyTurtle_L", L"Resources/Enemy/RhyTurtle/Turtle_L.png");
+	ResourceMgr::Load<JoTexture>(L"RhyTurtle_R", L"Resources/Enemy/RhyTurtle/Turtle_R.png");
+
+	/*ResourceMgr::Load<JoTexture>(L"Vellum_Appear_L", L"Resources/Enemy/Vellum/Vellum_Appear.png");
 	ResourceMgr::Load<JoTexture>(L"Vellum_Appear_R", L"Resources/Enemy/Vellum/Vellum_Appear_R.png");
 	ResourceMgr::Load<JoTexture>(L"Vellum_Attack1_L", L"Resources/Enemy/Vellum/Vellum_Attack1.png");
 	ResourceMgr::Load<JoTexture>(L"Vellum_Attack1_R", L"Resources/Enemy/Vellum/Vellum_Attack1_R.png");
@@ -108,7 +117,7 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_End_L", L"Resources/Enemy/Vellum/Breath_End_L.png");
 	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_End_R", L"Resources/Enemy/Vellum/Breath_End_R.png");
 	ResourceMgr::Load<JoTexture>(L"Vellum_Tail_L", L"Resources/Enemy/Vellum/Vellum_Tail_L.png");
-	ResourceMgr::Load<JoTexture>(L"Vellum_Tail_R", L"Resources/Enemy/Vellum/Vellum_Tail_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Tail_R", L"Resources/Enemy/Vellum/Vellum_Tail_R.png");*/
 
 	ResourceMgr::Load<JoTexture>(L"Vellum_HpBar", L"Resources/UI/Boss/Vellum_HpBar.png");
 	ResourceMgr::Load<JoTexture>(L"Boss_Hp", L"Resources/UI/Boss/bossHP.png");

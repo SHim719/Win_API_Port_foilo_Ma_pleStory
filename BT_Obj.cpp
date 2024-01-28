@@ -47,7 +47,7 @@ void BT_Obj::Initialize()
 	m_pAnimator = new Animator;
 	m_pAnimator->SetOwner(this);
 	m_pAnimator->CreateAnimation(L"BladeTornado_Create", m_pSkillTex, Vec2(0.0f, 0.0f), Vec2(592.f, 616.f), Vec2::Zero,
-		20, 7, 0.07f);
+		20, 7, 0.05f);
 	m_pAnimator->CreateAnimation(L"BladeTornado_Loop", m_pLoopTex, Vec2(0.0f, 0.0f), Vec2(424.f, 522.f), Vec2::Zero,
 		12, 0.07f);
 

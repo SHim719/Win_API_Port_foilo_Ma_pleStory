@@ -13,7 +13,7 @@ Rigidbody::Rigidbody()
 	, m_vForce{}
 	, m_vAccel{}
 	, m_vVelocity{}
-	, m_vLimitedVelocity{ 5000.f, 600.f }
+	, m_vLimitedVelocity{ 5000.f, 1000.f }
 {
 	SetName(L"Rigidbody");
 }

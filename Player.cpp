@@ -49,6 +49,9 @@ Player::Player()
 	, m_bInvincible(false)
 	, m_vOriginPos{}
 	, m_fInvincibleTime(0.f)
+	, m_bStreamRight(false)
+	, m_bFirstDive(true)
+	, m_bInputJumping(false)
 {
 	SetName(L"Player");
 }
@@ -113,6 +116,8 @@ void Player::Update()
 {
 	debug_check();
 
+	Invincible();
+
 	if (m_bDownJumping)
 	{
 		m_tDownJumpTimer.m_fNowTime += TimeMgr::DeltaTime();
@@ -150,6 +155,9 @@ void Player::Update()
 		break;
 	case Player::PlayerState::Dead:
 		Dead_State();
+		break;
+	case Player::PlayerState::Swim:
+		Swim_State();
 		break;
 	default:
 		break;
@@ -229,6 +237,8 @@ void Player::Hit(const HitInfo& _hitInfo)
 	vDamagePos.y -= float(pDamageTex->GetHeight()) * 0.5f * _hitInfo.iHitCount;
 
 	pDNum->SetPos(vDamagePos);
+
+	m_bInvincible = true;
 }
 
 void Player::Revive()
@@ -239,11 +249,13 @@ void Player::Revive()
 	UIMgr::Get_UI_Instance<DeathUI>(UI_Enums::UI_Death)->SetActive(false);
 	SetState_Idle();
 	Camera::SetTarget(this);
+	m_bInvincible = true;
 }
 
 void Player::Init_Anim()
 {
 	JoTexture* playerTex = ResourceMgr::Find<JoTexture>(L"Player");
+	JoTexture* pSwimTex = ResourceMgr::Find<JoTexture>(L"Player_Swim");
 	m_pAnimator->CreateAnimation(L"Idle_L", playerTex, Vec2(0.0f, 0.0f), Vec2(160.f, 160.f), Vec2::Zero, 4, 0.5f);
 	m_pAnimator->CreateAnimation(L"Idle_R", playerTex, Vec2(0.0f, 640.0f), Vec2(160.f, 160.f), Vec2::Zero, 4, 0.5f);
 	m_pAnimator->CreateAnimation(L"Walk_L", playerTex, Vec2(640.0f, 0.0f), Vec2(160.f, 160.f), Vec2::Zero, 3, 0.3f);
@@ -268,6 +280,8 @@ void Player::Init_Anim()
 	m_pAnimator->CreateAnimation(L"BladeStorm_R", playerTex, Vec2(0.f, 960.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.06f);
 	m_pAnimator->CreateAnimation(L"Asura_L", playerTex, Vec2(0.f, 320.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.07f);
 	m_pAnimator->CreateAnimation(L"Asura_R", playerTex, Vec2(0.f, 960.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.07f);
+	m_pAnimator->CreateAnimation(L"Swim_L", pSwimTex, Vec2(0.f, 0.f), Vec2(200.f, 160.f), Vec2::Zero, 6, 0.2f);
+	m_pAnimator->CreateAnimation(L"Swim_R", pSwimTex, Vec2(0.f, 160.f), Vec2(200.f, 160.f), Vec2::Zero, 6, 0.2f);
 }
 
 void Player::Init_FrameBind()
@@ -358,6 +372,7 @@ void Player::Walk_State()
 
 void Player::Air_State()
 {
+
 	if (!m_bFlashJumping)
 	{
 		Vec2 vVelocity = m_pRigidbody->GetVelocity();
@@ -543,6 +558,57 @@ void Player::Dead_State()
 		fTheta = 0.f;
 }
 
+void Player::Swim_State()
+{
+	if (m_bFirstDive)
+	{
+		m_pRigidbody->AddVelocity({ 0.f,  -3000.f * TimeMgr::DeltaTime() });
+		if (m_pRigidbody->GetVelocity().y <= 0.f)
+		{
+			m_pRigidbody->SetVelocityY(0.f);
+			m_bFirstDive = false;
+		}
+	}
+	else
+	{
+
+		if (KeyMgr::GetKeyNone(m_ArrKeyAction[(UINT)eActionKey::Up])
+			&& KeyMgr::GetKeyNone(m_ArrKeyAction[(UINT)eActionKey::Down]))
+			m_pRigidbody->SetVelocityY(0.f);
+
+		if (KeyMgr::GetKey(m_ArrKeyAction[(UINT)eActionKey::Up]))
+			m_pRigidbody->SetVelocityY(-200.f);
+		if (KeyMgr::GetKey(m_ArrKeyAction[(UINT)eActionKey::Down]))
+			m_pRigidbody->SetVelocityY(200.f);
+		
+
+		if (KeyMgr::GetKeyDown(m_ArrKeyAction[(UINT)eActionKey::Jump]))
+			m_bInputJumping = true;
+		else if (KeyMgr::GetKeyNone(m_ArrKeyAction[(UINT)eActionKey::Jump]))
+			m_bInputJumping = false;
+	}
+
+	if (KeyMgr::GetKeyNone(m_ArrKeyAction[(UINT)eActionKey::Right])
+		&& KeyMgr::GetKeyNone(m_ArrKeyAction[(UINT)eActionKey::Left]))
+		m_pRigidbody->SetVelocityX(300.f);
+	
+	if (KeyMgr::GetKeyDown(m_ArrKeyAction[(UINT)eActionKey::Right]))
+	{
+		m_bRight = true;
+		m_pAnimator->PlayAnimation(L"Swim_R");
+	}
+	else if (KeyMgr::GetKeyDown(m_ArrKeyAction[(UINT)eActionKey::Left]))
+	{
+		m_pAnimator->PlayAnimation(L"Swim_L");
+		m_bRight = false;
+	}
+	
+	if (KeyMgr::GetKey(m_ArrKeyAction[(UINT)eActionKey::Right]))
+		m_pRigidbody->SetVelocityX(750.f);
+	if (KeyMgr::GetKey(m_ArrKeyAction[(UINT)eActionKey::Left]))
+		m_pRigidbody->SetVelocityX(-300.f);
+}
+
 void Player::SetState_Idle()
 {
 	if (m_bRight)
@@ -585,6 +651,7 @@ void Player::SetState_Air()
 		m_pAnimator->PlayAnimation(L"Air_L");
 	}
 	
+	m_pRigidbody->SetUseGravity(true);
 	m_bFlashJumping = false;
 	m_eState = PlayerState::Air;
 } 
@@ -629,6 +696,24 @@ void Player::SetState_Dead()
 	UIMgr::Get_UI_Instance<DeathUI>(UI_Enums::UI_Death)->SetActive(true);
 
 	m_eState = PlayerState::Dead;
+}
+
+void Player::SetState_Swim(bool bStreamRight)
+{
+	if (m_eState == PlayerState::Swim)
+		return;
+
+	if (m_bRight)
+		m_pAnimator->PlayAnimation(L"Swim_R");
+	else
+		m_pAnimator->PlayAnimation(L"Swim_L");
+
+	m_bStreamRight = bStreamRight;
+		
+	m_bFirstDive = true;
+	m_pRigidbody->SetUseGravity(false);
+
+	m_eState = PlayerState::Swim;
 }
 
 void Player::SetState_Channeling(const unsigned char& _cRestriction)
@@ -709,7 +794,8 @@ bool Player::CheckRope(const bool& _bCheckUp)
 
 void Player::CheckGround()
 {
-	if (m_eState == PlayerState::Dead)
+	if (m_eState == PlayerState::Dead
+		|| m_eState == PlayerState::Swim)
 		return;
 
 	if (m_ColorGround == GetPixel(m_pixelDC, (int)GetPos().x, int(GetPos().y + m_pCollider->GetSize().y * 0.5f + 1.f)))
@@ -737,7 +823,8 @@ void Player::CheckGround()
 
 void Player::CheckYellowGround()
 {
-	if (m_eState == PlayerState::Dead)
+	if (m_eState == PlayerState::Dead
+		|| m_eState == PlayerState::Swim)
 		return;
 	if (m_bMagenta)
 		return;
@@ -793,6 +880,17 @@ void Player::CheckYellowGround()
 
 void Player::Invincible()
 {
+	static float fNowTime = 0.f;
+	if (!m_bInvincible)
+		return;
+
+	fNowTime += TimeMgr::DeltaTime();
+	if (fNowTime >= 1.5f)
+	{
+		fNowTime = 0.f;
+		m_bInvincible = false;
+	}
+
 }
 
 void Player::Skill_End()

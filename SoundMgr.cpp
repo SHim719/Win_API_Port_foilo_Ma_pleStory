@@ -14,6 +14,7 @@ void SoundMgr::Intialize()
 
 	Audio* AbyssCave = ResourceMgr::Load<Audio>(L"AbyssCave", L"Resources/BGM/AbyssCave.mp3");
 	AbyssCave->SetLoop(true);
+	ResourceMgr::Load<Audio>(L"ChewChew", L"Resources/BGM/ChewChew WildWorld.mp3")->SetLoop(true);
 	
 	ResourceMgr::Load<Audio>(L"PB_Use", L"Resources/Skill/PhantomBlow/Use.mp3");
 	ResourceMgr::Load<Audio>(L"PB_Hit_SFX", L"Resources/Skill/PhantomBlow/Hit.mp3");
@@ -52,7 +53,9 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"Vellum_Attack10", L"Resources/Enemy/Vellum/Sound/Attack10.mp3");
 	ResourceMgr::Load<Audio>(L"Vellum_Attack11", L"Resources/Enemy/Vellum/Sound/Attack11.mp3");
 	ResourceMgr::Load<Audio>(L"Vellum_Die", L"Resources/Enemy/Vellum/Sound/Die.mp3");
-
+	ResourceMgr::Load<Audio>(L"Rhyno_Attack", L"Resources/Enemy/RhyTurtle/Attack.mp3");
+	ResourceMgr::Load<Audio>(L"Rhyno_Die", L"Resources/Enemy/RhyTurtle/Die.mp3");
+		
 }
 
 void SoundMgr::Play(const wstring& _sName)

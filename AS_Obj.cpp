@@ -87,7 +87,7 @@ void AS_Obj::Update()
 			}
 
 			SoundMgr::Play(L"AS_Hit_SFX");
-			Vec2 effectPos = attInfo.vecEffectPos[m_iMaxHitCount / m_iPerHitCount - 1] + Vec2(float(rand() % 50 - 100), float(rand() % 50 - 100));
+			Vec2 effectPos = attInfo.vecEffectPos[m_iMaxHitCount / m_iPerHitCount - 1] + Vec2(float(rand() % 30 - 60), float(rand() % 30 - 60));
 			HitEffect* pEffect = Instantiate_NoInit<HitEffect>(eLayerType::LT_EFFECT);
 			pEffect->SetPos(effectPos);
 			pEffect->Set_EffectTex(m_pHitEffect);

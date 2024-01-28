@@ -40,6 +40,7 @@ public:
 		Channeling,
 		Stun,
 		Dead,
+		Swim,
 		End,
 	};
 
@@ -62,8 +63,15 @@ public:
 	PlayerStats* GetPlayerStats() const { return m_pPlayerStats; }
 	SkillStats* GetSkillStats() const { return m_pSkillStats; }
 
+	void SetState_Idle();
+	void SetState_Walk();
+	void SetState_Air();
+	void SetState_Rope();
+	void SetState_Prone();
+	void SetState_Dead();
 	void SetState_Channeling(const unsigned char& _cRestriction);
 	void SetState_Stun();
+	void SetState_Swim(bool bStreamRight);
 	void Skill_End();
 
 	const bool& isRight() const { return m_bRight; }
@@ -74,6 +82,8 @@ public:
 	void Hit(const HitInfo& _hitInfo) override;
 
 	void Revive();
+
+	bool IsInputJumping() const { return m_bInputJumping; }
 private:
 	void Init_Anim();
 	void Init_FrameBind();
@@ -86,13 +96,7 @@ private:
 	void Channeling_State();
 	void Stun_State();
 	void Dead_State();
-
-	void SetState_Idle();
-	void SetState_Walk();
-	void SetState_Air();
-	void SetState_Rope();
-	void SetState_Prone();
-	void SetState_Dead();
+	void Swim_State();
 
 	void Jump();
 	void FlashJump();
@@ -128,6 +132,10 @@ private:
 	bool m_bChannelingIdle;
 	bool m_bChannelingWalk;
 	bool m_bChannelingAir;
+
+	bool m_bStreamRight;
+	bool m_bFirstDive;
+	bool m_bInputJumping;
 
 	bool m_bInvincible;
 	float m_fInvincibleTime;

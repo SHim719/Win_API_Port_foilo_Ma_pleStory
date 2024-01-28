@@ -2,8 +2,10 @@
 #include "GameObject.h"
 #include "HitInterface.h"
 
+
 class JoTexture;
 class Player;
+class AttackCollider;
 
 class Enemy :
     public GameObject, public HitInterface
@@ -19,10 +21,15 @@ public:
     void AddHp(int _iHp);
     int GetHp() { return m_iHp; }
     int GetMaxHp() { return m_iMaxHp; }
+
+    virtual void SetState_Attack() {};
 protected:
     int m_iHp;
     int m_iMaxHp;
-    
+
+    AttackCollider* m_pAttackColl;
+    Vec2 m_vAttackCollOffset;
+
     static Player* m_pTarget;
 
     virtual void SetState_Dead() {}

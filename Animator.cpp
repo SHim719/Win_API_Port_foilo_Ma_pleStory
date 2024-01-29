@@ -69,7 +69,7 @@ void Animator::Release()
 	m_events.clear();
 }
 
-void Animator::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2 leftTop, Vec2 size, Vec2 offset, UINT spriteLength, float duration)
+void Animator::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2 leftTop, Vec2 size, Vec2 offset, UINT spriteLength, float duration, bool _bNoScale)
 {
 	Animation* anim = nullptr;
 	anim = FindAnimation(name);
@@ -84,7 +84,8 @@ void Animator::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2
 		size,
 		offset,
 		spriteLength,
-		duration);
+		duration,
+		_bNoScale);
 
 	anim->SetAnimator(this);
 	anim->SetName(name);
@@ -95,7 +96,7 @@ void Animator::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2
 	m_animations.insert({ name, anim });
 }
 
-void Animator::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2 leftTop, Vec2 size, Vec2 offset, UINT spriteLength, UINT colCount, float duration)
+void Animator::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2 leftTop, Vec2 size, Vec2 offset, UINT spriteLength, UINT colCount, float duration, bool _bNoScale)
 {
 	Animation* anim = nullptr;
 	anim = FindAnimation(name);
@@ -111,7 +112,8 @@ void Animator::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2
 		offset,
 		spriteLength,
 		colCount,
-		duration);
+		duration,
+		_bNoScale);
 
 	anim->SetAnimator(this);
 	anim->SetName(name);

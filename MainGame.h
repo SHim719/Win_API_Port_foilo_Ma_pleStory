@@ -21,6 +21,7 @@ public:
 	const UINT& GetWidth() const { return m_width; }
 	const UINT& GetHeight() const { return m_height; }
 
+	void SetCursorRender(bool _b) { m_bCursorRender = _b; }
 private:
 	void adjustWindowRect();
 	void render_cursor();
@@ -33,5 +34,6 @@ private:
 	UINT	m_height;
 
 	JoTexture* m_pCursorTex;
+	bool m_bCursorRender = true;
 };
 

@@ -14,7 +14,7 @@ public:
     Enemy();
     ~Enemy();
 
-    void Hit(const HitInfo& _hitInfo) {}
+    virtual void Hit(const HitInfo& _hitInfo) {}
 
     static void SetTarget(Player* const _pPlayer) { m_pTarget = _pPlayer; }
 

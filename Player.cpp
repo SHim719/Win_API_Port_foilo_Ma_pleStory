@@ -372,7 +372,6 @@ void Player::Walk_State()
 
 void Player::Air_State()
 {
-
 	if (!m_bFlashJumping)
 	{
 		Vec2 vVelocity = m_pRigidbody->GetVelocity();
@@ -650,7 +649,6 @@ void Player::SetState_Air()
 	{
 		m_pAnimator->PlayAnimation(L"Air_L");
 	}
-	
 	m_pRigidbody->SetUseGravity(true);
 	m_bFlashJumping = false;
 	m_eState = PlayerState::Air;
@@ -828,7 +826,7 @@ void Player::CheckYellowGround()
 		return;
 	if (m_bMagenta)
 		return;
-	
+
 
 	if (m_eState == PlayerState::Walk || m_bChannelingWalk)
 	{
@@ -929,12 +927,13 @@ void Player::debug_check()
 {
 	if (KeyMgr::GetKeyDown(eKeyCode::NUMPAD0))
 	{
-		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"에테르넬 시프반다나"), 1);
+		/*m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"에테르넬 시프반다나"), 1);
 		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"에테르넬 시프셔츠"), 1);
 		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"에테르넬 시프팬츠"), 1);
 		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"아케인셰이드 시프슈즈"), 1);
-		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"리버스 페스카즈"), 1);
-		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"파워 엘릭서"), 10);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"리버스 페스카즈"), 1);*/
+		m_pInventory->Add_Meso(99999999);
+		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"파워 엘릭서"), 99);
 	}
 
 	if (KeyMgr::GetKeyDown(eKeyCode::B))

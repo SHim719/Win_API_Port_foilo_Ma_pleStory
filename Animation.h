@@ -42,7 +42,8 @@ public:
 		, Vec2 size
 		, Vec2 offset
 		, UINT spriteLength
-		, float duration);
+		, float duration
+		, bool _bNoScale);
 
 	void CreateAnimation(const wstring& name,
 		JoTexture* spriteSheet
@@ -51,7 +52,8 @@ public:
 		, Vec2 offset
 		, UINT spriteLength
 		, UINT colCount
-		, float duration);
+		, float duration
+		, bool _bNoScale);
 
 	bool IsEnd() { return m_bEnd; }
 	void SetAnimator(Animator* animator) { m_pAnimator = animator; }
@@ -70,6 +72,7 @@ private:
 	UINT m_iIndex;
 	float m_fTime;
 	bool m_bEnd;
+	bool m_bNoTimeScale;
 
 	float m_fAlpha = 1.0f;
 };

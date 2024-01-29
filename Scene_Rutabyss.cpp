@@ -44,10 +44,10 @@ void Scene_Rutabyss::Initialize()
 	Girl* pGirl = Instantiate<Girl>(eLayerType::LT_NPC);
 	ShopBoy* pShopBoy = Instantiate<ShopBoy>(eLayerType::LT_NPC);
 
-	//Portal* pPortal1 = Instantiate<Portal>(eLayerType::LT_OBJECT);
-	//pPortal1->SetPos(Vec2(1980.f, 830.f));
-	//pPortal1->Set_MovePos({ 86.f, 687.f });
-	//pPortal1->Set_SceneName(L"Scene_Boss");
+	Portal* pPortal1 = Instantiate<Portal>(eLayerType::LT_OBJECT);
+	pPortal1->SetPos(Vec2(1980.f, 830.f));
+	pPortal1->Set_MovePos({ 86.f, 687.f });
+	pPortal1->Set_SceneName(L"Scene_Boss");
 
 	Portal* pPortal2 = Instantiate<Portal>(eLayerType::LT_OBJECT);
 	pPortal2->SetPos(Vec2(500.f, 830.f));
@@ -55,7 +55,8 @@ void Scene_Rutabyss::Initialize()
 	pPortal2->Set_SceneName(L"Scene_Grandis");
 
 	/*Portal* pPortal3 = Instantiate<Portal>(eLayerType::LT_OBJECT);
-	Portal* pPortal4 = Instantiate<Portal>(eLayerType::LT_OBJECT);*/
+	Portal* pPortal4 = Instantiate<Portal>(eLayerType::LT_OBJECT);
+	*/
 }
 
 

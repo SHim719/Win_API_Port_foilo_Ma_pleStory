@@ -32,11 +32,13 @@ public:
     static void SetMaxCameraPos(const Vec2& _vArea) { m_vMaxPos = _vArea; }
 
     static void Set_Shaking(const float& _fTime, const float& _fIntensity);
+
+    static void Set_NoLimit(bool _b) { m_bNoLimit = _b; }
 private:
     static void Normal_State();
     static void Shaking();
 private:
-    static  Vec2 m_vPos;
+    static  Vec2 m_vOriginPos;
     static  Vec2 m_vLookAt;
     static  Vec2 m_vSize;
     static  Vec2 m_vDistance;
@@ -47,5 +49,7 @@ private:
 
     static float m_fShakingTime;
     static float m_fIntensity;
+
+    static bool m_bNoLimit;
 };
 

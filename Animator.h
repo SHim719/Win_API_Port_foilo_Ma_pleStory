@@ -50,7 +50,8 @@ public:
 		, Vec2 size
 		, Vec2 offset
 		, UINT spriteLength
-		, float duration = 6000.0f);
+		, float duration = 6000.0f
+		, bool _bNoScale = false);
 
 	void CreateAnimation(const wstring& name,
 		JoTexture* spriteSheet
@@ -59,7 +60,8 @@ public:
 		, Vec2 offset
 		, UINT spriteLength
 		, UINT colCount
-		, float duration = 6000.0f);
+		, float duration = 6000.0f
+		, bool _bNoScale = false);
 
 	Animation* FindAnimation(const wstring& name);
 	void PlayAnimation(const wstring& name, bool loop = true);

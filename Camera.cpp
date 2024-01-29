@@ -9,10 +9,11 @@ Vec2 Camera::m_vSize{};
 Vec2 Camera::m_vDistance{};
 Vec2 Camera::m_vMinPos{};
 Vec2 Camera::m_vMaxPos{};
-Vec2 Camera::m_vPos{};
+Vec2 Camera::m_vOriginPos{};
 CameraState Camera::m_eState = CameraState::Normal;
 float Camera::m_fShakingTime = 0.f;
 float Camera::m_fIntensity = 0.f;
+bool Camera::m_bNoLimit = false;
 GameObject* Camera::m_pTarget = nullptr;
 
 void Camera::Initialize()
@@ -37,10 +38,11 @@ void Camera::Update()
 		break;
 	}
 
-	m_vLookAt.x = clamp(m_vLookAt.x, m_vMinPos.x, m_vMaxPos.x);
-	m_vLookAt.y = clamp(m_vLookAt.y, m_vMinPos.y, m_vMaxPos.y);
-	m_vPos = m_vLookAt;
-
+	if (m_bNoLimit == false)
+	{
+		m_vLookAt.x = clamp(m_vLookAt.x, m_vMinPos.x, m_vMaxPos.x);
+		m_vLookAt.y = clamp(m_vLookAt.y, m_vMinPos.y, m_vMaxPos.y);
+	}
 	m_vDistance = m_vLookAt - (m_vSize / 2.0f);
 }
 
@@ -56,6 +58,7 @@ void Camera::Set_Shaking(const float& _fTime, const float& _fIntensity)
 {
 	m_fShakingTime = _fTime;
 	m_fIntensity = _fIntensity;
+	m_vOriginPos = m_vLookAt;
 	m_eState = CameraState::Shaking;
 }
 
@@ -64,10 +67,6 @@ void Camera::Normal_State()
 	if (m_pTarget != nullptr)
 	{
 		m_vLookAt = m_pTarget->GetPos();
-	}
-	else
-	{
-		m_vLookAt = m_vPos;
 	}
 }
 
@@ -79,17 +78,17 @@ void Camera::Shaking()
 	{
 		m_vLookAt = m_pTarget->GetPos();
 	}
-	else
-	{
-		m_vLookAt = m_vPos;
-	}
 
-	fNowTime += TimeMgr::DeltaTime();
+	fNowTime += TimeMgr::DeltaTime_NoScale();
 
 	if (fNowTime >= m_fShakingTime)
 	{
 		fNowTime = 0.f;
 		m_eState = CameraState::Normal;
+		if (m_pTarget == nullptr)
+		{
+			m_vLookAt = m_vOriginPos;
+		}
 		return;
 	}
 

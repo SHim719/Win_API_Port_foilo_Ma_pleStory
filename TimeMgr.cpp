@@ -8,6 +8,7 @@ LARGE_INTEGER TimeMgr::prevFrequency{};
 LARGE_INTEGER TimeMgr::currentFrequency{};
 float TimeMgr::fDeltaTime = 0.0f;
 float TimeMgr::fps = 0.0f;
+float TimeMgr::fTimeScale = 1.f;
 
 extern MainGame g_MainGame;
 

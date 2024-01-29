@@ -55,6 +55,8 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"Vellum_Die", L"Resources/Enemy/Vellum/Sound/Die.mp3");
 	ResourceMgr::Load<Audio>(L"Rhyno_Attack", L"Resources/Enemy/RhyTurtle/Attack.mp3");
 	ResourceMgr::Load<Audio>(L"Rhyno_Die", L"Resources/Enemy/RhyTurtle/Die.mp3");
+	
+	ResourceMgr::Load<Audio>(L"Aim_Shot", L"Resources/SFX/Shot.mp3");
 		
 }
 

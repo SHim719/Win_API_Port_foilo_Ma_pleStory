@@ -10,6 +10,7 @@
 #include "CT_RhyTurtle.h"
 #include "YellowPortal.h"
 #include "MiniMap.h"
+#include "Portal.h"
 
 Scene_Grandis::Scene_Grandis()
 {
@@ -50,6 +51,11 @@ void Scene_Grandis::Initialize()
 	YellowPortal* pYellowPortal = Instantiate<YellowPortal>(eLayerType::LT_OBJECT);
 	pYellowPortal->SetPos({ 5400.f, 840.f });
 	pYellowPortal->Set_MovePos({ 430.f, 852.f });
+
+	Portal* pPortal = Instantiate<Portal>(eLayerType::LT_OBJECT);
+	pPortal->SetPos(Vec2(120.f, 830.f));
+	pPortal->Set_MovePos( {500.f, 830.f });
+	pPortal->Set_SceneName(L"Scene_Rutabyss");
 
 
 	Init_Monster();

@@ -334,6 +334,51 @@
     <Filter Include="02. Contents\10. Portal\YellowPortal">
       <UniqueIdentifier>{3f4fe88f-173c-44dc-a9c7-8d80e479ae01}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\03. Scene\05. Scene_Eagle">
+      <UniqueIdentifier>{22d5fd38-c372-41ab-a1bd-54a181f0f765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\05. Scene_Eagle\01. Eagles">
+      <UniqueIdentifier>{0ea04aa1-41db-4887-a1a7-d74d87951ef9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\05. Scene_Eagle\01. Eagles\Eagle">
+      <UniqueIdentifier>{5e370fef-cd22-414b-97bf-77aca57f96ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI\04. Aim">
+      <UniqueIdentifier>{dac911fd-d485-4cd9-9abc-4621a4246196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\05. Scene_Eagle\01. Eagles\Bald_Eagle">
+      <UniqueIdentifier>{eb9d23dc-5526-4b26-b092-30d0fe289b0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI\05. TimerUI">
+      <UniqueIdentifier>{c9713317-0f1e-4a99-b1cf-e90fec4fcdd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\05. Scene_Eagle\00. GameMgr">
+      <UniqueIdentifier>{00a86b9e-d49a-4db1-9262-1527fb49d1cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI\06. Counting">
+      <UniqueIdentifier>{314b0fc1-2970-4569-8286-b5e507e0c9a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI\07. Success">
+      <UniqueIdentifier>{e0f904ff-ed3c-4ced-9110-18cbe175ec06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI\08. Fail">
+      <UniqueIdentifier>{29eceee9-2cc7-4979-b041-92dfcdb7fcb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem">
+      <UniqueIdentifier>{91689fb3-c947-4af4-a688-1b60f8125042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\01. Totem">
+      <UniqueIdentifier>{070a9b4a-a942-4cc6-86c5-dca3ae9cf7cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\11. OBJ_UI\09. TotemBar">
+      <UniqueIdentifier>{b5f21970-8fb0-40d6-818f-33606b3b567d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\02. Player">
+      <UniqueIdentifier>{18792a7d-6c91-48d3-bc59-cbd4a0402ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\03. TS_GameMgr">
+      <UniqueIdentifier>{6f0ca4f6-a8c3-4afd-9878-a6b1b550a2ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -666,6 +711,48 @@
     <ClInclude Include="YellowPortal.h">
       <Filter>02. Contents\10. Portal\YellowPortal</Filter>
     </ClInclude>
+    <ClInclude Include="Scene_Eagle.h">
+      <Filter>02. Contents\03. Scene\05. Scene_Eagle</Filter>
+    </ClInclude>
+    <ClInclude Include="Eagle.h">
+      <Filter>02. Contents\03. Scene\05. Scene_Eagle\01. Eagles\Eagle</Filter>
+    </ClInclude>
+    <ClInclude Include="Aim.h">
+      <Filter>02. Contents\11. OBJ_UI\04. Aim</Filter>
+    </ClInclude>
+    <ClInclude Include="BaldEagle.h">
+      <Filter>02. Contents\03. Scene\05. Scene_Eagle\01. Eagles\Bald_Eagle</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerUI.h">
+      <Filter>02. Contents\11. OBJ_UI\05. TimerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EG_GameMgr.h">
+      <Filter>02. Contents\03. Scene\05. Scene_Eagle\00. GameMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Counting.h">
+      <Filter>02. Contents\11. OBJ_UI\06. Counting</Filter>
+    </ClInclude>
+    <ClInclude Include="Success.h">
+      <Filter>02. Contents\11. OBJ_UI\07. Success</Filter>
+    </ClInclude>
+    <ClInclude Include="Fail.h">
+      <Filter>02. Contents\11. OBJ_UI\08. Fail</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Totem.h">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem</Filter>
+    </ClInclude>
+    <ClInclude Include="Totem.h">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\01. Totem</Filter>
+    </ClInclude>
+    <ClInclude Include="TotemBar.h">
+      <Filter>02. Contents\11. OBJ_UI\09. TotemBar</Filter>
+    </ClInclude>
+    <ClInclude Include="Totem_Player.h">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\02. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="TS_GameMgr.h">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\03. TS_GameMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -970,6 +1057,48 @@
     </ClCompile>
     <ClCompile Include="YellowPortal.cpp">
       <Filter>02. Contents\10. Portal\YellowPortal</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Eagle.cpp">
+      <Filter>02. Contents\03. Scene\05. Scene_Eagle</Filter>
+    </ClCompile>
+    <ClCompile Include="Eagle.cpp">
+      <Filter>02. Contents\03. Scene\05. Scene_Eagle\01. Eagles\Eagle</Filter>
+    </ClCompile>
+    <ClCompile Include="Aim.cpp">
+      <Filter>02. Contents\11. OBJ_UI\04. Aim</Filter>
+    </ClCompile>
+    <ClCompile Include="BaldEagle.cpp">
+      <Filter>02. Contents\03. Scene\05. Scene_Eagle\01. Eagles\Bald_Eagle</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerUI.cpp">
+      <Filter>02. Contents\11. OBJ_UI\05. TimerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EG_GameMgr.cpp">
+      <Filter>02. Contents\03. Scene\05. Scene_Eagle\00. GameMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Counting.cpp">
+      <Filter>02. Contents\11. OBJ_UI\06. Counting</Filter>
+    </ClCompile>
+    <ClCompile Include="Success.cpp">
+      <Filter>02. Contents\11. OBJ_UI\07. Success</Filter>
+    </ClCompile>
+    <ClCompile Include="Fail.cpp">
+      <Filter>02. Contents\11. OBJ_UI\08. Fail</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Totem.cpp">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem</Filter>
+    </ClCompile>
+    <ClCompile Include="Totem.cpp">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\01. Totem</Filter>
+    </ClCompile>
+    <ClCompile Include="TotemBar.cpp">
+      <Filter>02. Contents\11. OBJ_UI\09. TotemBar</Filter>
+    </ClCompile>
+    <ClCompile Include="Totem_Player.cpp">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\02. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="TS_GameMgr.cpp">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\03. TS_GameMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,7 @@ Animation::Animation()
 	, m_iIndex(0)
 	, m_fTime(0.f)
 	, m_bEnd(false)
+	, m_bNoTimeScale(false)
 {
 }
 
@@ -23,8 +24,13 @@ void Animation::Update()
 {
 	if (m_bEnd)
 		return;
-
-	m_fTime += TimeMgr::DeltaTime();
+	
+	if (m_bNoTimeScale)
+		m_fTime += TimeMgr::DeltaTime_NoScale();
+	else
+		m_fTime += TimeMgr::DeltaTime();
+		
+		
 
 	if (m_SheetVec[m_iIndex].duration <= m_fTime)
 	{
@@ -61,7 +67,7 @@ void Animation::Release()
 }
 
 
-void Animation::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2 leftTop, Vec2 size, Vec2 offset, UINT spriteLength, float duration)
+void Animation::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2 leftTop, Vec2 size, Vec2 offset, UINT spriteLength, float duration, bool _bNoScale = false)
 {
 	for (UINT i = 0; i < spriteLength; ++i)
 	{
@@ -75,9 +81,11 @@ void Animation::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec
 
 		m_SheetVec.push_back(sprite);
 	}
+
+	m_bNoTimeScale = _bNoScale;
 }
 
-void Animation::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2 leftTop, Vec2 size, Vec2 offset, UINT spriteLength, UINT colCount, float duration)
+void Animation::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec2 leftTop, Vec2 size, Vec2 offset, UINT spriteLength, UINT colCount, float duration, bool _bNoScale = false)
 {
 	UINT rowCount = spriteLength / colCount;
 
@@ -96,6 +104,8 @@ void Animation::CreateAnimation(const wstring& name, JoTexture* spriteSheet, Vec
 
 		m_SheetVec.push_back(sprite);
 	}
+
+	m_bNoTimeScale = _bNoScale;
 }
 
 

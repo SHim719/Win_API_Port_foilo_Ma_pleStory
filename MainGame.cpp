@@ -82,7 +82,6 @@ void MainGame::Render()
 	UIMgr::Render();
 	render_cursor();
 	RenderMgr::GetRenderTarget()->EndDraw();
-
 	TimeMgr::Render();
 }
 
@@ -96,6 +95,9 @@ void MainGame::adjustWindowRect()
 
 void MainGame::render_cursor()
 {
+	if (!m_bCursorRender)
+		return;
+	
 	Vec2 vMousePos = KeyMgr::GetMousePos();
 	RenderMgr::RenderImage(m_pCursorTex
 		, vMousePos.x

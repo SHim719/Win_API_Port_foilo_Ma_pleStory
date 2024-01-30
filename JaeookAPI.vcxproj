@@ -173,9 +173,12 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="EG_GameMgr.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Fail.h" />
+    <ClInclude Include="GoodEffect.h" />
+    <ClInclude Include="GreatEffect.h" />
     <ClInclude Include="HitInterface.h" />
     <ClInclude Include="KarmaFury.h" />
     <ClInclude Include="KF_Obj.h" />
+    <ClInclude Include="KillEffect.h" />
     <ClInclude Include="MiniMap.h" />
     <ClInclude Include="Aim.h" />
     <ClInclude Include="MyDialogBox.h" />
@@ -209,11 +212,13 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="MovableUI.h" />
     <ClInclude Include="MyFmod.h" />
     <ClInclude Include="PB_Obj.h" />
+    <ClInclude Include="PerfectEffect.h" />
     <ClInclude Include="PhantomBlow.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStats.h" />
     <ClInclude Include="Portal.h" />
     <ClInclude Include="PowerEllixer.h" />
+    <ClInclude Include="QuestMgr.h" />
     <ClInclude Include="QuickSlotUI.h" />
     <ClInclude Include="QuickStats.h" />
     <ClInclude Include="RapidStream.h" />
@@ -237,6 +242,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="SkillStats.h" />
     <ClInclude Include="SkillUI.h" />
     <ClInclude Include="Skill_Obj.h" />
+    <ClInclude Include="SlashEffect.h" />
     <ClInclude Include="SoundMgr.h" />
     <ClInclude Include="StatUI.h" />
     <ClInclude Include="StoneSpawner.h" />
@@ -264,6 +270,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="VellumTrigger.h" />
     <ClInclude Include="Vellum_HpBar.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WhiteBuffer.h" />
     <ClInclude Include="YellowPortal.h" />
   </ItemGroup>
   <ItemGroup>
@@ -298,8 +305,11 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="EG_GameMgr.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Fail.cpp" />
+    <ClCompile Include="GoodEffect.cpp" />
+    <ClCompile Include="GreatEffect.cpp" />
     <ClCompile Include="KarmaFury.cpp" />
     <ClCompile Include="KF_Obj.cpp" />
+    <ClCompile Include="KillEffect.cpp" />
     <ClCompile Include="MiniMap.cpp" />
     <ClCompile Include="Aim.cpp" />
     <ClCompile Include="MyDialogBox.cpp" />
@@ -329,11 +339,13 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="MovableUI.cpp" />
     <ClCompile Include="MyFmod.cpp" />
     <ClCompile Include="PB_Obj.cpp" />
+    <ClCompile Include="PerfectEffect.cpp" />
     <ClCompile Include="PhantomBlow.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStats.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="PowerEllixer.cpp" />
+    <ClCompile Include="QuestMgr.cpp" />
     <ClCompile Include="QuickSlotUI.cpp" />
     <ClCompile Include="QuickStats.cpp" />
     <ClCompile Include="RapidStream.cpp" />
@@ -356,6 +368,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="SkillStats.cpp" />
     <ClCompile Include="SkillUI.cpp" />
     <ClCompile Include="Skill_Obj.cpp" />
+    <ClCompile Include="SlashEffect.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
     <ClCompile Include="StatUI.cpp" />
     <ClCompile Include="StoneSpawner.cpp" />
@@ -381,6 +394,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="VellumTrigger.cpp" />
     <ClCompile Include="Vellum_HpBar.cpp" />
     <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WhiteBuffer.cpp" />
     <ClCompile Include="YellowPortal.cpp" />
   </ItemGroup>
   <ItemGroup>

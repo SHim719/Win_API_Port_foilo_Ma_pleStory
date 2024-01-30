@@ -6,6 +6,8 @@ Skill::Skill()
 	: m_pSkillIconTex(nullptr)
 	, m_pSkillIconDisabledTex(nullptr)
 	, m_fCooltime(0.f)
+	, m_fNowTime(0.f)
+	, m_bUsingSkill(false)
 {
 }
 

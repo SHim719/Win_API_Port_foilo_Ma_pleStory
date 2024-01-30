@@ -56,6 +56,5 @@ void Portal::OnCollisionStay(Collider* other)
 void Portal::MoveTo(GameObject* _pObj)
 {
 	SoundMgr::Play(L"Portal_SFX");
-	SceneMgr::Reservation_ChangeScene(m_wsSceneName);
-	_pObj->SetPos(m_vMovePos);
+	SceneMgr::Reservation_ChangeScene(m_wsSceneName, m_vMovePos);
 }

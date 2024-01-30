@@ -69,6 +69,7 @@ void Scene_Rutabyss::OnEnter()
 
 	AddObj(s_pMainPlayer, eLayerType::LT_PLAYER);
 	Camera::SetTarget(s_pMainPlayer);
+	Camera::SetLookAt(s_pMainPlayer->GetPos());
 	s_pMainPlayer->SetLimitPosX(m_vLimitPosX);
 	s_pMainPlayer->SetPixelDC(m_pixelDC);
 

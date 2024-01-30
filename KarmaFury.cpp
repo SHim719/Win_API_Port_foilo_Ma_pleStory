@@ -17,12 +17,14 @@ void KarmaFury::Initialize()
 	m_pSkillIconTex = ResourceMgr::Load<JoTexture>(L"KarmaFury_Icon", L"Resources/UI/Skill/KarmaFury/icon.png");
 	m_pSkillIconDisabledTex = ResourceMgr::Load<JoTexture>(L"KarmaFury_Icon_Disabled", L"Resources/UI/Skill/KarmaFury/iconDisabled.png");
 	m_pIconTex = m_pSkillIconDisabledTex;
+
+	m_fCooltime = 10.f;
 }
 
 void KarmaFury::Render(const Vec2& vLeftTop)
 {
 	JoTexture* pRenderTex = nullptr;
-	if (m_fCooltime == 0.f)
+	if (m_fNowTime == 0.f)
 		pRenderTex = m_pSkillIconTex;
 	else
 		pRenderTex = m_pSkillIconDisabledTex;
@@ -36,10 +38,17 @@ void KarmaFury::Render(const Vec2& vLeftTop)
 
 void KarmaFury::Key_Check(const eKeyCode& _key)
 {
-	if (KeyMgr::GetKeyDown(_key))
+	if (m_fNowTime > 0.f)
 	{
-		Execution();
+		m_fNowTime -= TimeMgr::DeltaTime_NoScale();
+		if (m_fNowTime <= 0.f)
+			m_fNowTime = 0.f;
+		return;
 	}
+
+	if (KeyMgr::GetKeyDown(_key))
+		Execution();
+	
 }
 
 void KarmaFury::Execution()
@@ -50,6 +59,8 @@ void KarmaFury::Execution()
 		&& Player::PlayerState::Walk != m_pOwner->GetPlayerState()
 		&& Player::PlayerState::Air != m_pOwner->GetPlayerState())
 		return;
+
+	m_fNowTime = m_fCooltime;
 
 	unsigned char restriction = 1 | (1 << 1); // NoMove, NoJump
 	m_pOwner->SetState_Channeling(restriction);

@@ -2,6 +2,7 @@
 #include "ResourceMgr.h"
 #include "RenderMgr.h"
 #include "PB_Obj.h"
+#include "TimeMgr.h"
 
 
 PhantomBlow::PhantomBlow()
@@ -23,7 +24,7 @@ void PhantomBlow::Initialize()
 void PhantomBlow::Render(const Vec2& vLeftTop)
 {
 	JoTexture* pRenderTex = nullptr;
-	if (m_fCooltime == 0.f)
+	if (m_fNowTime == 0.f)
 		pRenderTex = m_pSkillIconTex;
 	else
 		pRenderTex = m_pSkillIconDisabledTex;

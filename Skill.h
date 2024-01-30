@@ -20,7 +20,6 @@ struct SkillInfo
 {
 	UINT iPoint = 0;
 	UINT iMaxPoint = 5;
-	float fCooltime = 0.f;
 };
 
 class JoTexture;
@@ -47,7 +46,9 @@ public:
 protected:
 	static Player* m_pOwner;
 	SkillInfo m_tInfo;
+	float m_fNowTime;
 	float m_fCooltime;
+	bool m_bUsingSkill;
 
 	JoTexture* m_pSkillIconTex;
 	JoTexture* m_pSkillIconDisabledTex;

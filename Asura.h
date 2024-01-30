@@ -18,6 +18,7 @@ private:
 	void Execution_End();
 
 	bool m_bPrevRight;
-
+	float m_fMaxDuration;
+	float m_fNowDuration;
 };
 

@@ -25,7 +25,7 @@ void EG_GameMgr::Initialize()
 	m_bSuccess = false;
 	m_bFail = false;
 
-	TimeMgr::SetTimeScale(0.f);
+	//TimeMgr::SetTimeScale(0.f);
 
 	Instantiate<Counting>(eLayerType::LT_UI)->SetPos({ 500.f, 400.f } );
 }

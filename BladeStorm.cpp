@@ -6,6 +6,8 @@
 
 BladeStorm::BladeStorm()
 	: m_bPrevRight(false)
+	, m_fMaxDuration(0.f)
+	, m_fNowDuration(0.f)
 {
 	SetName(L"블레이드 스톰");
 }
@@ -20,12 +22,14 @@ void BladeStorm::Initialize()
 	m_pSkillIconDisabledTex = ResourceMgr::Load<JoTexture>(L"BladeStorm_Icon_Disabled", L"Resources/UI/Skill/BladeStorm/iconDisabled.png");
 	m_pIconTex = m_pSkillIconDisabledTex;
 
+	m_fMaxDuration = 5.f;
+	m_fCooltime = 20.f;
 }
 
 void BladeStorm::Render(const Vec2& vLeftTop)
 {
 	JoTexture* pRenderTex = nullptr;
-	if (m_fCooltime == 0.f)
+	if (m_fNowTime == 0.f)
 		pRenderTex = m_pSkillIconTex;
 	else
 		pRenderTex = m_pSkillIconDisabledTex;
@@ -39,6 +43,17 @@ void BladeStorm::Render(const Vec2& vLeftTop)
 
 void BladeStorm::Key_Check(const eKeyCode& _key)
 {
+	if (!m_bUsingSkill)
+	{
+		if (m_fNowTime > 0.f)
+		{
+			m_fNowTime -= TimeMgr::DeltaTime_NoScale();
+			if (m_fNowTime <= 0.f)
+				m_fNowTime = 0.f;
+			return;
+		}
+	}
+	
 	if (KeyMgr::GetKeyDown(_key))
 		Execution();
 	else if (KeyMgr::GetKey(_key))
@@ -55,13 +70,17 @@ void BladeStorm::Execution()
 		&& Player::PlayerState::Walk != m_pOwner->GetPlayerState())
 		return;
 
+	m_fNowTime = m_fCooltime;
+	m_fNowDuration = 0.f;
+	m_bUsingSkill = true;
+
 	unsigned char restriction = 1 << 1;
 	m_pOwner->SetState_Channeling(restriction);
 
 	BS_Obj* pObj = Instantiate<BS_Obj>(eLayerType::LT_EFFECT);
 	pObj->SetOwner(m_pOwner);
 	pObj->Skill_Start();
-
+	pObj->SetDuration(m_fMaxDuration);
 
 	if (!m_pOwner->isRight())
 	{
@@ -80,6 +99,13 @@ void BladeStorm::Execution_Loop()
 	if (!m_pOwner->isChanneling())
 		return;
 
+	m_fNowDuration += TimeMgr::DeltaTime();
+	if (m_fNowDuration >= m_fMaxDuration)
+	{
+		Execution_End();
+		return;
+	}
+		
 	if (!m_pOwner->isRight() && m_bPrevRight)
 	{
 		m_pOwner->GetAnimator()->PlayAnimation(L"BladeStorm_L", true);
@@ -94,5 +120,9 @@ void BladeStorm::Execution_Loop()
 
 void BladeStorm::Execution_End()
 {
-	m_pOwner->Skill_End();
+	if (m_bUsingSkill)
+	{
+		m_pOwner->Skill_End();
+		m_bUsingSkill = false;
+	}
 }

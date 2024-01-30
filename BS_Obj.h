@@ -21,10 +21,12 @@ public:
     void OnCollisionExit(Collider* other)   override;
 
     void SetDir(const Vec2& _vDir) { m_vDir = _vDir; }
-
+    void SetDuration(const float& _fDuration) { m_fDuration = _fDuration; }
 private:
     Vec2 m_vDir;
     float m_fGap;
     float m_fXOffset;
+    float m_fDuration;
+    float m_fNowTime;
 };
 

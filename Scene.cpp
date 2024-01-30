@@ -85,6 +85,11 @@ void Scene::Delete_DonDestroy()
 	s_pMainPlayer = nullptr;
 }
 
+void Scene::Set_PlayerPos(const Vec2& _vPos)
+{
+	s_pMainPlayer->SetPos(_vPos);
+}
+
 void Scene::createLayer()
 {
 	m_vLayers.resize((UINT)eLayerType::LT_END);

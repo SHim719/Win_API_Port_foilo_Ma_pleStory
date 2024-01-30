@@ -8,6 +8,7 @@ BS_Obj::BS_Obj()
 	: m_vDir{}
 	, m_fGap(0.f)
 	, m_fXOffset(0.f)
+	, m_fNowTime(0.f)
 {
 }
 
@@ -45,7 +46,10 @@ void BS_Obj::Initialize()
 
 void BS_Obj::Update()
 {
-	if (m_pOwner->isChanneling() == false)
+	m_fNowTime += TimeMgr::DeltaTime();
+
+	if (m_pOwner->isChanneling() == false
+		|| m_fNowTime >= m_fDuration)
 	{
 		SoundMgr::Stop(L"BS_Loop");
 		Destroy(this);

@@ -25,13 +25,16 @@ public:
 	static void Destroy();
 	static void Release();
 
-	static void Reservation_ChangeScene(const wstring& _wsName);
-	static void ChangeScene();
+	static void Reservation_ChangeScene(const wstring& _wsName, const Vec2& _vMovePos);
+	static bool ChangeScene();
 
+	static bool IsChangingScene() { return m_pNextScene != nullptr; }
 private:
 	static map<const wstring, Scene*> m_mScenes;
 	static Scene* m_ActiveScene;
 	static Scene* m_pNextScene;
+
+	static Vec2 m_vMovePos;
 
 };
 

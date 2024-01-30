@@ -57,7 +57,6 @@ void Scene_Grandis::Initialize()
 	pPortal->Set_MovePos( {500.f, 830.f });
 	pPortal->Set_SceneName(L"Scene_Rutabyss");
 
-
 	Init_Monster();
 }
 
@@ -70,6 +69,7 @@ void Scene_Grandis::OnEnter()
 
 	AddObj(s_pMainPlayer, eLayerType::LT_PLAYER);
 	Camera::SetTarget(s_pMainPlayer);
+	Camera::SetLookAt(s_pMainPlayer->GetPos());
 	s_pMainPlayer->SetLimitPosX(m_vLimitPosX);
 	s_pMainPlayer->SetPixelDC(m_pixelDC);
 }

@@ -33,6 +33,7 @@ public:
 	const Vec2& GetMaxCameraPos() const { return m_vMaxCameraPos; }
 
 	static void Delete_DonDestroy();
+	void Set_PlayerPos(const Vec2& _vPos);
 private:
 	void createLayer();
 

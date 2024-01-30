@@ -8,6 +8,8 @@
 #include "ResourceMgr.h"
 #include "TotemBar.h"
 #include "TS_GameMgr.h"
+#include "Totem_Player.h"
+#include "TimerUI.h"
 
 Scene_Totem::Scene_Totem()
 {
@@ -23,9 +25,15 @@ void Scene_Totem::Initialize()
 	BackGround* pBG = Instantiate<BackGround>(eLayerType::LT_BACKGROUND);
 	pBG->SetBgTex(pBGTex);
 
-	Instantiate<TotemBar>(eLayerType::LT_UI);
-
 	TS_GameMgr* pMgr = Instantiate<TS_GameMgr>(eLayerType::LT_NONE);
+
+	Totem_Player* pPlayer = Instantiate<Totem_Player>(eLayerType::LT_OBJECT);
+	pPlayer->SetPos({ 427.f,  565.f });
+	pPlayer->Set_Manager(pMgr);
+	pPlayer->Set_TotemBar(Instantiate<TotemBar>(eLayerType::LT_UI));
+
+	TimerUI* pTimerUI = Instantiate<TimerUI>(eLayerType::LT_UI);
+	pTimerUI->SetTime(30.f);
 }
 
 void Scene_Totem::OnEnter()

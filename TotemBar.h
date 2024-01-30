@@ -15,6 +15,11 @@ public:
     void LateUpdate();
     void Render();
 
+    int  Check_Bar();
+    void Reset_Bar();
+
+    void Set_Start();
+    bool IsWait() { return m_bWait; }
 private:
     JoTexture* m_pBarTex = nullptr;
     JoTexture* m_pSwordTex = nullptr;
@@ -30,10 +35,14 @@ private:
     Vec2 m_vRightYellowGauge{};
     Vec2 m_vGaugeLimit{};
 
+    Vec2 m_vEffectOffset{};
+
     float m_fSwordSpeed = 0.f;
     float m_fDir = 0.f;
 
     float m_fRedGaugeScale = 0.f;
     float m_fYellowGaugeScale = 0.f;
+
+    bool m_bWait = false;
 };
 

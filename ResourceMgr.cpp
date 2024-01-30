@@ -84,6 +84,7 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"StunEffect", L"Resources/Effect/StunEffect.png");
 	ResourceMgr::Load<JoTexture>(L"Player", L"Resources/Player/Player.png");
 	ResourceMgr::Load<JoTexture>(L"Player_Swim", L"Resources/Player/Player_Swim.png");
+	ResourceMgr::Load<JoTexture>(L"Player_Totem", L"Resources/Player/Player_Totem.png");
 
 	ResourceMgr::Load<JoTexture>(L"Tomb", L"Resources/Obj/Tomb.png");
 
@@ -106,6 +107,14 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"뱀토템", L"Resources/Enemy/토템/뱀토템.png");
 	ResourceMgr::Load<JoTexture>(L"범토템", L"Resources/Enemy/토템/범토템.png");
 	ResourceMgr::Load<JoTexture>(L"원숭이토템", L"Resources/Enemy/토템/원숭이토템.png");
+	ResourceMgr::Load<JoTexture>(L"1격이펙트", L"Resources/Effect/TotemSlash/Single/1격이펙트.png");
+	ResourceMgr::Load<JoTexture>(L"2격이펙트", L"Resources/Effect/TotemSlash/Double/2격이펙트.png");
+	ResourceMgr::Load<JoTexture>(L"4격이펙트", L"Resources/Effect/TotemSlash/Triple/3격이펙트.png");
+	ResourceMgr::Load<JoTexture>(L"2Kill", L"Resources/Effect/TotemSlash/2Kill.png");
+	ResourceMgr::Load<JoTexture>(L"4Kill", L"Resources/Effect/TotemSlash/4Kill.png");
+	ResourceMgr::Load<JoTexture>(L"Good", L"Resources/Effect/TotemSlash/Good.png");
+	ResourceMgr::Load<JoTexture>(L"Great", L"Resources/Effect/TotemSlash/Great.png");
+	ResourceMgr::Load<JoTexture>(L"Perfect", L"Resources/Effect/TotemSlash/Perfect.png");
 
 
 	ResourceMgr::Load<JoTexture>(L"RhyTurtle_L", L"Resources/Enemy/RhyTurtle/Turtle_L.png");
@@ -149,6 +158,9 @@ void ResourceMgr::Initialize()
 	//ResourceMgr::Load<JoTexture>(L"Vellum_HpBar", L"Resources/UI/Boss/Vellum_HpBar.png");
 	//ResourceMgr::Load<JoTexture>(L"Boss_Hp", L"Resources/UI/Boss/bossHP.png");
 	//ResourceMgr::Load<JoTexture>(L"Breath_Text", L"Resources/UI/Boss/Breath_Text.png");
+
+	ResourceMgr::Load<JoTexture>(L"WhiteBuffer", L"Resources/WhiteScreen.png");
+	ResourceMgr::Load<JoTexture>(L"BlackBuffer", L"Resources/BlackScreen.png");
 }
 
 void ResourceMgr::Release()

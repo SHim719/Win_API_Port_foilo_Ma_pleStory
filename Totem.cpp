@@ -2,6 +2,7 @@
 #include "ResourceMgr.h"
 #include "RenderMgr.h"
 #include "Camera.h"
+#include "joObject.h"
 
 Totem::Totem()
 {
@@ -28,12 +29,17 @@ void Totem::Initialize()
 	}
 
 	m_pRigidbody = new Rigidbody;
+	m_pRigidbody->SetOwner(this);
 	m_pRigidbody->SetUseGravity(false);
+	m_pRigidbody->SetGravity(Vec2(0.f, 1000.f));
 }
 
 void Totem::Update()
 {
-
+	m_pRigidbody->Update();
+	
+	if (GetPos().y > 1200.f)
+		Destroy(this);
 }
 
 void Totem::Render()

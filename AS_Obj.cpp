@@ -8,6 +8,8 @@ AS_Obj::AS_Obj()
 	: m_fGap(0.f)
 	, m_fXOffset(0.f)
 	, m_pBottomAnimator(nullptr)
+	, m_fDuration(0.f)
+	, m_fNowTime(0.f)
 {
 }
 
@@ -50,7 +52,10 @@ void AS_Obj::Initialize()
 
 void AS_Obj::Update()
 {
-	if (m_pOwner->isChanneling() == false)
+	m_fNowTime += TimeMgr::DeltaTime();
+
+	if (m_pOwner->isChanneling() == false
+		|| m_fNowTime >= m_fDuration)
 	{
 		SoundMgr::Stop(L"AS_Loop");
 		Destroy(this);

@@ -81,6 +81,7 @@ void MainGame::Render()
 	SceneMgr::Render();
 	UIMgr::Render();
 	render_cursor();
+	Camera::Render();
 	RenderMgr::GetRenderTarget()->EndDraw();
 	TimeMgr::Render();
 }

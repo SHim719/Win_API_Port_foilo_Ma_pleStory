@@ -20,5 +20,5 @@ void Title_Button::Initialize()
 
 void Title_Button::Press_Button()
 {
-	SceneMgr::Reservation_ChangeScene(L"Scene_Rutabyss");
+	SceneMgr::Reservation_ChangeScene(L"Scene_Rutabyss", { 1141.f, 851.f });
 }

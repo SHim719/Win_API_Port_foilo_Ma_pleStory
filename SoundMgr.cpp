@@ -57,7 +57,12 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"Rhyno_Die", L"Resources/Enemy/RhyTurtle/Die.mp3");
 	
 	ResourceMgr::Load<Audio>(L"Aim_Shot", L"Resources/SFX/Shot.mp3");
-		
+
+	ResourceMgr::Load<Audio>(L"Slash1", L"Resources/Effect/TotemSlash/Single/Use.mp3");
+	ResourceMgr::Load<Audio>(L"Slash2", L"Resources/Effect/TotemSlash/Double/Use.mp3");
+	ResourceMgr::Load<Audio>(L"Slash4", L"Resources/Effect/TotemSlash/Triple/Use.mp3");
+	ResourceMgr::Load<Audio>(L"Perfect_SFX", L"Resources/SFX/Perfect.mp3");
+	ResourceMgr::Load<Audio>(L"Totem_Die_SFX", L"Resources/SFX/Totem_Die.mp3");
 }
 
 void SoundMgr::Play(const wstring& _sName)

@@ -20,9 +20,13 @@ public:
     void OnCollisionStay(Collider* other)   override;
     void OnCollisionExit(Collider* other)   override;
 
+    void SetDuration(float _fDuration) { m_fDuration = _fDuration; }
+
 private:
     float m_fGap;
     float m_fXOffset;
+    float m_fDuration;
+    float m_fNowTime;
 
     JoTexture* m_pBottomTex;
 

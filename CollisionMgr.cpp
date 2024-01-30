@@ -18,6 +18,9 @@ void CollisionMgr::Initialize()
 
 void CollisionMgr::Update()
 {
+	if (SceneMgr::IsChangingScene())
+		return;
+
 	Scene* curScene = SceneMgr::GetActiveScene();
 
 	for (UINT row = 0; row < LAYER_END; ++row)

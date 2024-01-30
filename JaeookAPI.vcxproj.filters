@@ -379,6 +379,33 @@
     <Filter Include="02. Contents\03. Scene\06. Scene_Totem\03. TS_GameMgr">
       <UniqueIdentifier>{6f0ca4f6-a8c3-4afd-9878-a6b1b550a2ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\04. Effect">
+      <UniqueIdentifier>{3b087114-8a4b-4045-9acf-fe29d59002a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect">
+      <UniqueIdentifier>{b030eb4b-4f0d-4a0b-a9e5-38258dd54afc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect\00. Perfect">
+      <UniqueIdentifier>{ea026e35-5c9c-485b-a543-6e4e1f74658d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect\01. Great">
+      <UniqueIdentifier>{3104928c-d2cf-45fd-abcc-9deda7175519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect\02. Good">
+      <UniqueIdentifier>{3fe578cc-7904-411a-a58a-9d3857481260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\04. Effect\02. KillEffect">
+      <UniqueIdentifier>{804938a6-5e99-45b3-a7b0-9a0d86b7aa95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\06. Scene_Totem\04. Effect\03. SlashEffect">
+      <UniqueIdentifier>{26e89850-cdf7-46a2-a22f-7722cc7ecf84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\12. OBJ_ETC\03. WhiteBuffer">
+      <UniqueIdentifier>{8e807fb9-07d1-4a82-aa58-07c4af01fbab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\3. Manager\10. QuestMgr">
+      <UniqueIdentifier>{9a1503d9-be02-446e-9e9a-f1e8ce88ef66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -753,6 +780,27 @@
     <ClInclude Include="TS_GameMgr.h">
       <Filter>02. Contents\03. Scene\06. Scene_Totem\03. TS_GameMgr</Filter>
     </ClInclude>
+    <ClInclude Include="PerfectEffect.h">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect\00. Perfect</Filter>
+    </ClInclude>
+    <ClInclude Include="GreatEffect.h">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect\01. Great</Filter>
+    </ClInclude>
+    <ClInclude Include="GoodEffect.h">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect\02. Good</Filter>
+    </ClInclude>
+    <ClInclude Include="KillEffect.h">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\02. KillEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="SlashEffect.h">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\03. SlashEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="WhiteBuffer.h">
+      <Filter>02. Contents\12. OBJ_ETC\03. WhiteBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestMgr.h">
+      <Filter>01. Core\3. Manager\10. QuestMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -1099,6 +1147,27 @@
     </ClCompile>
     <ClCompile Include="TS_GameMgr.cpp">
       <Filter>02. Contents\03. Scene\06. Scene_Totem\03. TS_GameMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectEffect.cpp">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect\00. Perfect</Filter>
+    </ClCompile>
+    <ClCompile Include="GreatEffect.cpp">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect\01. Great</Filter>
+    </ClCompile>
+    <ClCompile Include="GoodEffect.cpp">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\01. CatchEffect\02. Good</Filter>
+    </ClCompile>
+    <ClCompile Include="KillEffect.cpp">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\02. KillEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="SlashEffect.cpp">
+      <Filter>02. Contents\03. Scene\06. Scene_Totem\04. Effect\03. SlashEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="WhiteBuffer.cpp">
+      <Filter>02. Contents\12. OBJ_ETC\03. WhiteBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestMgr.cpp">
+      <Filter>01. Core\3. Manager\10. QuestMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,7 @@
 #include "TS_GameMgr.h"
 #include "Totem_Player.h"
 #include "TimerUI.h"
+#include "SoundMgr.h"
 
 Scene_Totem::Scene_Totem()
 {
@@ -41,10 +42,12 @@ void Scene_Totem::OnEnter()
 	Camera::Set_NoLimit(true);
 	Camera::SetTarget(nullptr);
 	Camera::SetLookAt(Vec2(1364.f * 0.5f, 768.f * 0.5f));
+	SoundMgr::Play(L"TotemBGM");
 }
 
 void Scene_Totem::OnExit()
 {
 	Camera::SetTarget(s_pMainPlayer);
 	Camera::Set_NoLimit(false);
+	SoundMgr::Stop(L"TotemBGM");
 }

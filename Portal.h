@@ -19,10 +19,10 @@ public:
 
 	void OnCollisionStay(Collider* other) override;
 
-private:
+protected:
 	void MoveTo(GameObject* _pObj);
 
-private:
+protected:
 	JoTexture*	m_pPortalTex;
 	Vec2		m_vMovePos;
 	wstring		m_wsSceneName;

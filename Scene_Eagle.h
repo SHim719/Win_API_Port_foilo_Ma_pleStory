@@ -11,7 +11,8 @@ public:
     Scene_Eagle();
     ~Scene_Eagle();
 
-    void Initialize() override;
+
+    void GameStart();
     void OnEnter()    override;
     void OnExit()     override;
 };

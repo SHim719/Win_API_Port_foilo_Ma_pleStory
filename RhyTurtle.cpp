@@ -7,6 +7,7 @@
 #include "AttackCollider.h"
 #include "Player.h"
 #include "DamageNum.h"
+#include "Meso_Obj.h"
 
 float RhyTurtle::m_fRespawnTime = 0.f;
 HDC RhyTurtle::m_Pixel = nullptr;
@@ -108,7 +109,7 @@ void RhyTurtle::Update()
 void RhyTurtle::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
 
 
@@ -238,6 +239,9 @@ void RhyTurtle::SetState_Attack()
 
 void RhyTurtle::SetState_Dead()
 {
+	if (m_eState == State::Dead)
+		return;
+	Enemy::SetState_Dead();
 	m_pRigidbody->SetVelocity(Vec2::Zero);
 	m_pAttackColl->SetCollisionOnOff(false);
 	m_pCollider->SetCollisionInactive();
@@ -249,17 +253,21 @@ void RhyTurtle::SetState_Dead()
 	else
 		m_pAnimator->PlayAnimation(L"Turtle_Dead_L", false);
 
+	Instantiate<Meso_Obj>(eLayerType::LT_ITEM)->SetPos(GetPos());
+
 	m_eState = State::Dead;
 }
 
 void RhyTurtle::SetState_Respawn()
 {
+	if (m_eState == State::Respawn)
+		return;
 	m_pAnimator->SetActiveAnim(nullptr);
 	m_eState = State::Respawn;
 }
 void RhyTurtle::Check_RightLeft()
 {
-	int iOffset = m_bRight ? 5 : -5;
+	int iOffset = m_bRight ? 1 : -1;
 	Vec2 vPos = GetPos();
 	COLORREF color = GetPixel(m_Pixel, (int)vPos.x + iOffset, (int)vPos.y);
 

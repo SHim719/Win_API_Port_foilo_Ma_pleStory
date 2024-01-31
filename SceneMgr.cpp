@@ -3,8 +3,11 @@
 #include "Scene_Rutabyss.h"
 #include "Scene_Boss.h"
 #include "Scene_Grandis.h"
+#include "Scene_Eagle_Prev.h"
 #include "Scene_Eagle.h"
 #include "Scene_Totem.h"
+#include "Scene_Rudy.h"
+#include "Scene_Rudy_End.h"
 #include "Camera.h"
 
 map<const wstring, Scene*> SceneMgr::m_mScenes = {};
@@ -30,8 +33,11 @@ void SceneMgr::Initialize()
 	SceneMgr::CreateScene<Scene_Rutabyss>(L"Scene_Rutabyss");
 	SceneMgr::CreateScene<Scene_Grandis>(L"Scene_Grandis");
 	SceneMgr::CreateScene<Scene_Boss>(L"Scene_Boss");
+	SceneMgr::CreateScene<Scene_Eagle_Prev>(L"Scene_Eagle_Prev");
 	SceneMgr::CreateScene<Scene_Eagle>(L"Scene_Eagle");
 	SceneMgr::CreateScene<Scene_Totem>(L"Scene_Totem");
+	SceneMgr::CreateScene<Scene_Rudy>(L"Scene_Rudy");
+	SceneMgr::CreateScene<Scene_Rudy_End>(L"Scene_RudyEnd");
 	
 	SceneMgr::LoadScene(L"Scene_Title");
 }

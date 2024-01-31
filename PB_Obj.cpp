@@ -119,7 +119,7 @@ void PB_Obj::LateUpdate()
 void PB_Obj::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
 
 void PB_Obj::Release()

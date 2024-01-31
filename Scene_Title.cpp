@@ -10,6 +10,7 @@
 #include "Enemy.h"
 #include "Title_Button.h"
 #include "MiniMap.h"
+#include "Meso_Obj.h"
 
 Scene_Title::Scene_Title()
 {
@@ -43,6 +44,8 @@ void Scene_Title::Initialize()
 	MiniMap::SetTarget(s_pMainPlayer);
 
 	Instantiate<Title_Button>(eLayerType::LT_UI)->SetPos({ 500.f, 450.f });
+
+	Meso_Obj::Set_MesoTex(ResourceMgr::Find<JoTexture>(L"Meso"));
 }
 
 void Scene_Title::OnEnter()

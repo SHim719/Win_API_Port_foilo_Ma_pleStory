@@ -131,7 +131,7 @@ void BT_Obj::Update()
 void BT_Obj::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
 
 void BT_Obj::Release()

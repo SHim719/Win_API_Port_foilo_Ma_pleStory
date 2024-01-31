@@ -30,7 +30,7 @@ QuickSlotUI::~QuickSlotUI()
 void QuickSlotUI::Initialize()
 {
 	m_pMainTex = ResourceMgr::Load<JoTexture>(L"QuickSlotUI", L"Resources/UI/QuickSlot/QuickSlotUI.png");
-	m_vPos = { 810.f, 695.f };
+	m_vPos = { 810.f, 675.f };
 
 	m_vecRenderPos.resize(SLOT_COUNT);
 	m_vecKeyTex.resize(SLOT_COUNT);

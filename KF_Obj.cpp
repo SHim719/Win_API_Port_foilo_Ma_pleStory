@@ -100,7 +100,7 @@ void KF_Obj::Update()
 void KF_Obj::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
 
 void KF_Obj::Release()

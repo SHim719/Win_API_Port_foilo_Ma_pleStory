@@ -118,7 +118,7 @@ void BS_Obj::Update()
 void BS_Obj::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
 
 void BS_Obj::Release()

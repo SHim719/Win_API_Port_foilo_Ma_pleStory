@@ -1,7 +1,7 @@
 #pragma once
 #include "UI.h"
 
-
+class Quest;
 
 class MyDialogBox :
     public UI
@@ -19,6 +19,8 @@ public:
     void Set_NpcNameTex(JoTexture* _pNpcNameTex) { m_pNpcNameTex = _pNpcNameTex; }
     void Set_NpcTex(JoTexture* _pNpcTex) { m_pNpcTex = _pNpcTex; }
     void Set_Dialog(vector<pair<wstring, int>>* _pVecDialog) { m_pVecDialog = _pVecDialog; }
+    void Set_Quest(Quest* const _pQuest) { m_pQuest = _pQuest; }
+    void Set_Function(function<void()> _pFunc) { m_pFunction = _pFunc; }
 
     void SetActive(const bool& _b) { m_bActive = _b; }
     const bool& IsActive() const { return m_bActive; }
@@ -41,6 +43,9 @@ private:
 
     float           m_fNowTime;
     float           m_fTextRenderGap;
+
+    Quest*          m_pQuest;
+    function<void()> m_pFunction;
 
     bool            m_bActive;
 };

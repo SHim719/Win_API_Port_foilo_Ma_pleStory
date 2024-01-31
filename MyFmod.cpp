@@ -10,9 +10,9 @@ void MyFmod::Initialize()
 	FMOD::Studio::System::create(&mSystem);
 
 	mSystem->getCoreSystem(&mCoreSystem);
-	mCoreSystem->setSoftwareFormat(0, FMOD_SPEAKERMODE_5POINT1, 0);
+	mCoreSystem->setSoftwareFormat(0, FMOD_SPEAKERMODE_MAX, 0);
 
-	mSystem->initialize(1024, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, extraDriverData);
+	mSystem->initialize(1024, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_CLIP_OUTPUT, extraDriverData);
 }
 
 bool MyFmod::CreateSound(const std::string& path, FMOD::Sound** sound)

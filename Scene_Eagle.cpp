@@ -12,6 +12,8 @@
 #include "TimerUI.h"
 #include "TimeMgr.h"
 #include "EG_GameMgr.h"
+#include "SoundMgr.h"
+#include "UIMgr.h"
 
 
 extern MainGame g_MainGame;
@@ -24,20 +26,19 @@ Scene_Eagle::~Scene_Eagle()
 {
 }
 
-void Scene_Eagle::Initialize()
+
+
+void Scene_Eagle::GameStart()
 {
 	JoTexture* pBGTex = ResourceMgr::Find<JoTexture>(L"BG_Eagle");
 	BackGround* pBG = Instantiate<BackGround>(eLayerType::LT_BACKGROUND);
 	pBG->SetBgTex(pBGTex);
-
-
 
 	for (int i = 0; i < 10; ++i)
 	{
 		Instantiate<BaldEagle>(eLayerType::LT_MONSTER);
 		Instantiate<Eagle>(eLayerType::LT_MONSTER);
 	}
-		
 
 	TimerUI* pTimerUI = Instantiate<TimerUI>(eLayerType::LT_UI);
 	pTimerUI->SetPos({ 406.f, 25.f });
@@ -56,8 +57,12 @@ void Scene_Eagle::OnEnter()
 	Camera::Set_NoLimit(true);
 	Camera::SetTarget(nullptr);
 	Camera::SetLookAt(Vec2(1024.f * 0.5f, 768.f * 0.5f));
+	UIMgr::SetCanUseUI(false);
 
 	CollisionMgr::SetCollisionEnabled(eLayerType::LT_MONSTER, eLayerType::LT_UI, true);
+	TimeMgr::SetTimeScale(0.f);
+
+	GameStart();
 	g_MainGame.SetCursorRender(false);
 }
 
@@ -67,4 +72,9 @@ void Scene_Eagle::OnExit()
 	g_MainGame.SetCursorRender(true);
 	Camera::SetTarget(s_pMainPlayer);
 	Camera::Set_NoLimit(false);
+	TimeMgr::SetTimeScale(1.f);
+	UIMgr::SetCanUseUI(true);
+
+	Scene::Release();
+	SoundMgr::Stop(L"Nautilus");
 }

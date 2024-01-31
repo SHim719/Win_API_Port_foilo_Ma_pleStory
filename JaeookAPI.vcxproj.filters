@@ -406,6 +406,60 @@
     <Filter Include="01. Core\3. Manager\10. QuestMgr">
       <UniqueIdentifier>{9a1503d9-be02-446e-9e9a-f1e8ce88ef66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\13. Quest">
+      <UniqueIdentifier>{25acaa66-f752-4afa-9ad8-60cb930b3248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\13. Quest\01. HuntQuest">
+      <UniqueIdentifier>{3763733b-9e12-40be-a2cf-75b7064e04e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\10. Portal\EventPortal">
+      <UniqueIdentifier>{7c92f70f-c306-4e30-bad4-ada7080654e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\07. Scene_Totem_Prev">
+      <UniqueIdentifier>{91752682-beed-4151-b3be-51a518bea782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\07. Npc\03. Frietto">
+      <UniqueIdentifier>{500e50b1-9cbf-494c-9799-2dc7fb642490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\08. Scene_Eagle_Prev">
+      <UniqueIdentifier>{6af7c5d1-44b8-4ac9-ade3-f62ba7ea01f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\13. Quest\02. ClearQuest">
+      <UniqueIdentifier>{949ca9c1-ca6b-4f9a-8b4c-5052601590e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\09. Scene_Rudy">
+      <UniqueIdentifier>{a4073246-634f-40e4-b27e-1a324bb24d4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\05. BackGround\AnimBG\뒤틀린시간의길">
+      <UniqueIdentifier>{50eebd46-512a-474b-9811-0e0684b8a332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\02. Enemy\04. DualPirate">
+      <UniqueIdentifier>{3347ba0c-dbf1-4676-9838-c9b351ae24ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\10. Portal\EventPortal2">
+      <UniqueIdentifier>{155e5945-a842-45f4-a4c5-f725b4550128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\03. Scene\10. Scene_Rudy_End">
+      <UniqueIdentifier>{da61e975-de03-4bc4-ada9-67958ffc74e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\07. Npc\04. Stone">
+      <UniqueIdentifier>{f13ebd0f-f82b-4bf2-9b43-f9d9f93b5ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\03. Etc">
+      <UniqueIdentifier>{bc3418ed-e250-4488-bc00-8e40370241da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\03. Etc\Token">
+      <UniqueIdentifier>{cb5f761c-a6fb-40a3-a390-adb1222f44b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\08. Item\00. Item_Obj\Meso_Obj">
+      <UniqueIdentifier>{4ec3afbe-0793-4944-8964-19eef382182f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\06. LevelUp">
+      <UniqueIdentifier>{8bbca6fb-6f00-487a-899c-a35eb8c7889d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\07. Npc\05. Esfesia">
+      <UniqueIdentifier>{da002679-bfa9-4e5f-87a9-68d9e7546270}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -801,6 +855,57 @@
     <ClInclude Include="QuestMgr.h">
       <Filter>01. Core\3. Manager\10. QuestMgr</Filter>
     </ClInclude>
+    <ClInclude Include="Quest.h">
+      <Filter>02. Contents\13. Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="HuntQuest.h">
+      <Filter>02. Contents\13. Quest\01. HuntQuest</Filter>
+    </ClInclude>
+    <ClInclude Include="EventPortal.h">
+      <Filter>02. Contents\10. Portal\EventPortal</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Totem_Prev.h">
+      <Filter>02. Contents\03. Scene\07. Scene_Totem_Prev</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Eagle_Prev.h">
+      <Filter>02. Contents\03. Scene\08. Scene_Eagle_Prev</Filter>
+    </ClInclude>
+    <ClInclude Include="Frieto.h">
+      <Filter>02. Contents\07. Npc\03. Frietto</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Rudy.h">
+      <Filter>02. Contents\03. Scene\09. Scene_Rudy</Filter>
+    </ClInclude>
+    <ClInclude Include="RudyBG.h">
+      <Filter>02. Contents\05. BackGround\AnimBG\뒤틀린시간의길</Filter>
+    </ClInclude>
+    <ClInclude Include="DualPirate.h">
+      <Filter>02. Contents\02. Enemy\04. DualPirate</Filter>
+    </ClInclude>
+    <ClInclude Include="EventPortal2.h">
+      <Filter>02. Contents\10. Portal\EventPortal2</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Rudy_End.h">
+      <Filter>02. Contents\03. Scene\10. Scene_Rudy_End</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone.h">
+      <Filter>02. Contents\07. Npc\04. Stone</Filter>
+    </ClInclude>
+    <ClInclude Include="Etc.h">
+      <Filter>02. Contents\08. Item\03. Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Token.h">
+      <Filter>02. Contents\08. Item\03. Etc\Token</Filter>
+    </ClInclude>
+    <ClInclude Include="Meso_Obj.h">
+      <Filter>02. Contents\08. Item\00. Item_Obj\Meso_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelUp.h">
+      <Filter>02. Contents\06. Skill\06. LevelUp</Filter>
+    </ClInclude>
+    <ClInclude Include="Esfesia.h">
+      <Filter>02. Contents\07. Npc\05. Esfesia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -1168,6 +1273,57 @@
     </ClCompile>
     <ClCompile Include="QuestMgr.cpp">
       <Filter>01. Core\3. Manager\10. QuestMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Quest.cpp">
+      <Filter>02. Contents\13. Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="HuntQuest.cpp">
+      <Filter>02. Contents\13. Quest\01. HuntQuest</Filter>
+    </ClCompile>
+    <ClCompile Include="EventPortal.cpp">
+      <Filter>02. Contents\10. Portal\EventPortal</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Totem_Prev.cpp">
+      <Filter>02. Contents\03. Scene\07. Scene_Totem_Prev</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Eagle_Prev.cpp">
+      <Filter>02. Contents\03. Scene\08. Scene_Eagle_Prev</Filter>
+    </ClCompile>
+    <ClCompile Include="Frieto.cpp">
+      <Filter>02. Contents\07. Npc\03. Frietto</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Rudy.cpp">
+      <Filter>02. Contents\03. Scene\09. Scene_Rudy</Filter>
+    </ClCompile>
+    <ClCompile Include="RudyBG.cpp">
+      <Filter>02. Contents\05. BackGround\AnimBG\뒤틀린시간의길</Filter>
+    </ClCompile>
+    <ClCompile Include="DualPirate.cpp">
+      <Filter>02. Contents\02. Enemy\04. DualPirate</Filter>
+    </ClCompile>
+    <ClCompile Include="EventPortal2.cpp">
+      <Filter>02. Contents\10. Portal\EventPortal2</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Rudy_End.cpp">
+      <Filter>02. Contents\03. Scene\10. Scene_Rudy_End</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone.cpp">
+      <Filter>02. Contents\07. Npc\04. Stone</Filter>
+    </ClCompile>
+    <ClCompile Include="Etc.cpp">
+      <Filter>02. Contents\08. Item\03. Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="Token.cpp">
+      <Filter>02. Contents\08. Item\03. Etc\Token</Filter>
+    </ClCompile>
+    <ClCompile Include="Meso_Obj.cpp">
+      <Filter>02. Contents\08. Item\00. Item_Obj\Meso_Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelUp.cpp">
+      <Filter>02. Contents\06. Skill\06. LevelUp</Filter>
+    </ClCompile>
+    <ClCompile Include="Esfesia.cpp">
+      <Filter>02. Contents\07. Npc\05. Esfesia</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -21,8 +21,8 @@ void AttackCollider::Update()
 
 void AttackCollider::Render()
 {
-	if (m_pCollider->IsCollisionOn())
-		m_pCollider->Render();
+	//if (m_pCollider->IsCollisionOn())
+		//m_pCollider->Render();
 }
 
 void AttackCollider::OnCollisionEnter(Collider* other)

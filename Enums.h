@@ -11,9 +11,10 @@ enum class eLayerType
 	LT_MONSTER_EFFECT,
 	LT_PLAYER,
 	LT_EFFECT,
+	LT_ITEM,
 
-	LT_UI = 8,
-	LT_END = 10
+	LT_UI = 10,
+	LT_END = 11
 };
 
 enum class eResourceType

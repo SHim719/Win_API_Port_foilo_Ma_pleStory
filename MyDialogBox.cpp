@@ -2,6 +2,7 @@
 #include "KeyMgr.h"
 #include "TimeMgr.h"
 #include "RenderMgr.h"
+#include "QuestMgr.h"
 
 MyDialogBox::MyDialogBox()
 	: m_pPlayerNameTex(nullptr)
@@ -19,6 +20,8 @@ MyDialogBox::MyDialogBox()
 	, m_vPlayerNameRenderPos{}
 	, m_vNpcRenderPos{}
 	, m_vNpcNameRenderPos{}
+	, m_pQuest(nullptr)
+	, m_pFunction(nullptr)
 {	 
 }	 
 
@@ -47,7 +50,7 @@ void MyDialogBox::Update()
 		return;
 
 	const wstring& wsOriginNowDial = (*m_pVecDialog)[m_iNowIdx].first;
-	if (KeyMgr::GetKeyDown(eKeyCode::Enter))
+	if (KeyMgr::GetKeyDown(eKeyCode::P))
 	{
 		if (wsOriginNowDial.size() == m_iRenderIdx)
 		{
@@ -58,6 +61,16 @@ void MyDialogBox::Update()
 				m_iRenderIdx = 0;
 				m_iNowIdx = 0;
 				m_bActive = false;
+				if (m_pQuest)
+				{
+					QuestMgr::Set_NowQuest(m_pQuest);
+					m_pQuest = nullptr;
+				}
+				if (m_pFunction)
+				{
+					m_pFunction();
+					m_pFunction = nullptr;
+				}
 				return;
 			}
 			else
@@ -68,7 +81,7 @@ void MyDialogBox::Update()
 		}	
 	}
 
-	if (wsOriginNowDial.size() == m_iRenderIdx)
+	if (wsOriginNowDial.size() <= m_iRenderIdx)
 		return;
 
 	m_fNowTime += TimeMgr::DeltaTime();

@@ -33,6 +33,8 @@ public:
 	virtual void OnInActive() {}
 	virtual void OnActive() {}
 	virtual bool KeyCheck() { return false; }
+
+	void SetPos(const Vec2& _vPos) { m_vPos = _vPos; }
 protected:
 	JoTexture*	m_pMainTex;
 	Vec2		m_vPos;

@@ -108,7 +108,7 @@ void CT_RhyTurtle::Update()
 void CT_RhyTurtle::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
 
 
@@ -238,6 +238,9 @@ void CT_RhyTurtle::SetState_Attack()
 
 void CT_RhyTurtle::SetState_Dead()
 {
+	if (m_eState == State::Dead)
+		return;
+	Enemy::SetState_Dead();
 	m_pRigidbody->SetVelocity(Vec2::Zero);
 	m_pAttackColl->SetCollisionOnOff(false);
 	m_pCollider->SetCollisionInactive();
@@ -254,12 +257,14 @@ void CT_RhyTurtle::SetState_Dead()
 
 void CT_RhyTurtle::SetState_Respawn()
 {
+	if (m_eState == State::Respawn)
+		return;
 	m_pAnimator->SetActiveAnim(nullptr);
 	m_eState = State::Respawn;
 }
 void CT_RhyTurtle::Check_RightLeft()
 {
-	int iOffset = m_bRight ? 5 : -5;
+	int iOffset = m_bRight ? 1 : -1;
 	Vec2 vPos = GetPos();
 	COLORREF color = GetPixel(m_Pixel, (int)vPos.x + iOffset, (int)vPos.y);
 

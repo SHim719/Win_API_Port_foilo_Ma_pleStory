@@ -62,6 +62,7 @@ public:
 
 	PlayerStats* GetPlayerStats() const { return m_pPlayerStats; }
 	SkillStats* GetSkillStats() const { return m_pSkillStats; }
+	Inventory* GetInventory() const { return m_pInventory; }
 
 	void SetState_Idle();
 	void SetState_Walk();
@@ -84,6 +85,9 @@ public:
 	void Revive();
 
 	bool IsInputJumping() const { return m_bInputJumping; }
+
+	void Add_Exp(const int& _iExp);
+	void Level_Up();
 private:
 	void Init_Anim();
 	void Init_FrameBind();
@@ -106,6 +110,7 @@ private:
 	void CheckYellowGround();
 	
 	void Invincible();
+	void LevelUpEffect();
 
 	void debug_check();
 private:

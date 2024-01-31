@@ -10,6 +10,7 @@
 #include "UIMgr.h"
 #include "ItemDatabase.h"
 #include "Camera.h"
+#include "QuestMgr.h"
 
 MainGame::MainGame()
 	: m_hwnd(nullptr)
@@ -68,6 +69,7 @@ void MainGame::Update()
 	Camera::Update();
 	CollisionMgr::Update();
 	UIMgr::Update();
+	QuestMgr::Update();
 }
 
 void MainGame::LateUpdate()

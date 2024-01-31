@@ -112,7 +112,7 @@ void AS_Obj::Render()
 {
 	m_pBottomAnimator->Render();
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
 
 void AS_Obj::Release()

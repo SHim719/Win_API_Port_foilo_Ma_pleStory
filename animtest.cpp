@@ -9,17 +9,17 @@ void animtest::Initialize()
 
 	//JoTexture* pTest = ResourceMgr::Load<JoTexture>(L"Test", L"Resources/Enemy/Vellum/Vellum_Breath_Loop.png");
 
-	JoTexture* pLeftTex = ResourceMgr::Find<JoTexture>(L"RhyTurtle_L");
-	JoTexture* pRightTex = ResourceMgr::Find<JoTexture>(L"RhyTurtle_R");
+	JoTexture* pLeftTex = ResourceMgr::Find<JoTexture>(L"DualPirate_L");
+	JoTexture* pRightTex = ResourceMgr::Find<JoTexture>(L"DualPirate_R");
 
-	m_pAnimator->CreateAnimation(L"TurTle_Idle_L", pLeftTex, Vec2(0.f, 0.f), Vec2(148.f, 82.f), Vec2::Zero, 6, 0.2f);
-	m_pAnimator->CreateAnimation(L"TurTle_Idle_R", pRightTex, Vec2(0.f, 0.f), Vec2(148.f, 82.f), Vec2::Zero, 6, 0.2f);
-	m_pAnimator->CreateAnimation(L"TurTle_Move_L", pLeftTex, Vec2(148.f * 6.f, 0.f), Vec2(148.f, 82.f), Vec2::Zero, 6, 0.2f);
-	m_pAnimator->CreateAnimation(L"TurTle_Move_R", pRightTex, Vec2(148.f * 6.f, 0.f), Vec2(148.f, 82.f), Vec2::Zero, 6, 0.2f);
-	m_pAnimator->CreateAnimation(L"TurTle_Attack_L", pLeftTex, Vec2(0.f, 82.f), Vec2(268.f, 137.f), Vec2::Zero, 11, 0.2f);
-	m_pAnimator->CreateAnimation(L"TurTle_Attack_R", pRightTex, Vec2(0.f, 82.f), Vec2(268.f, 137.f), Vec2::Zero, 11, 0.2f);
-	m_pAnimator->CreateAnimation(L"TurTle_Dead_L", pLeftTex, Vec2(0.f, 219.f), Vec2(272.f, 234.f), Vec2::Zero, 15, 0.1f);
-	m_pAnimator->CreateAnimation(L"TurTle_Dead_R", pRightTex, Vec2(0.f, 219.f), Vec2(272.f, 234.f), Vec2::Zero, 15, 0.1f);
+	m_pAnimator->CreateAnimation(L"DualPirate_Move_L", pLeftTex, Vec2(0.f, 0.f), Vec2(173.f, 190.f), Vec2::Zero, 6, 0.2f);
+	m_pAnimator->CreateAnimation(L"DualPirate_Move_R", pRightTex, Vec2(0.f, 0.f), Vec2(173.f, 190.f), Vec2::Zero, 6, 0.2f);
+	m_pAnimator->CreateAnimation(L"DualPirate_Idle_L", pLeftTex, Vec2(1038.f, 0.f), Vec2(176.f, 179.f), Vec2::Zero, 6, 0.2f);
+	m_pAnimator->CreateAnimation(L"DualPirate_Idle_R", pRightTex, Vec2(1038.f, 0.f), Vec2(176.f, 179.f), Vec2::Zero, 6, 0.2f);
+	m_pAnimator->CreateAnimation(L"DualPirate_Dead_L", pLeftTex, Vec2(2094.f, 0.f), Vec2(171.f, 174.f), Vec2::Zero, 14, 0.2f);
+	m_pAnimator->CreateAnimation(L"DualPirate_Dead_R", pRightTex, Vec2(2094.f, 0.f), Vec2(171.f, 174.f), Vec2::Zero, 14, 0.2f);
+	m_pAnimator->CreateAnimation(L"DualPirate_Attack_L", pLeftTex, Vec2(0.f, 190.f), Vec2(229.f, 191.f), Vec2::Zero, 23, 0.2f);
+	m_pAnimator->CreateAnimation(L"DualPirate_Attack_R", pRightTex, Vec2(0.f, 190.f), Vec2(229.f, 191.f), Vec2::Zero, 23, 0.2f);
 	
 	////m_pAnimator->CreateAnimation(L"Vellum_Move", pTest, Vec2::Zero, Vec2(412.f, 206.f), Vec2(0.f, 280.f), 10, 0.12f);
 	//
@@ -62,7 +62,7 @@ void animtest::Initialize()
 
 	//m_pAnimator->PlayAnimation(L"Vellum_Breath_Loop");
 
-	m_pAnimator->PlayAnimation(L"TurTle_Move_R");
+	m_pAnimator->PlayAnimation(L"DualPirate_Idle_L");
 }
 
 void animtest::Update()

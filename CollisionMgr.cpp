@@ -14,6 +14,7 @@ void CollisionMgr::Initialize()
 	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_OBJECT, true);
 	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_MONSTER, true);
 	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_MONSTER_EFFECT, true);
+	SetCollisionEnabled(eLayerType::LT_PLAYER, eLayerType::LT_ITEM, true);
 }
 
 void CollisionMgr::Update()

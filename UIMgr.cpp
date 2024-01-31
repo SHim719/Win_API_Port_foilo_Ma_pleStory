@@ -8,6 +8,7 @@
 #include "ShopUI.h"
 #include "MyDialogBox.h"
 #include "DeathUI.h"
+#include "QuestMgr.h"
 
 
 UI* UIMgr::m_arrUIs[] = {};
@@ -110,6 +111,11 @@ void UIMgr::Render()
 	m_arrUIs[(UINT)UI_Enums::UI_Shop]->Render();
 	m_arrUIs[(UINT)UI_Enums::UI_Dialog]->Render();
 	m_arrUIs[(UINT)UI_Enums::UI_Death]->Render();
+
+	Quest* pQuest = QuestMgr::Get_NowQuest();
+	if (pQuest)
+		pQuest->Render();
+	
 
 	for (UI* ui : m_ActiveUIList)
 		ui->Render();

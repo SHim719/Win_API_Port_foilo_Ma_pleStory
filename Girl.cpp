@@ -40,8 +40,8 @@ void Girl::Initialize()
 	m_tRect.top = LONG(GetPos().y - 114.f);
 	m_tRect.bottom = LONG(GetPos().y + 114.f);
 
-	m_vecDials.push_back({ L"하위 헬로 \n쥬신게임아카데미 143기 심재욱 테스트\n메아리 소리가 들려오는 계곡 속의 흐르는 물찾아 그 곳으로 여행을 떠나요" , 1 });
-	m_vecDials.push_back({ L"가나다라 마바사아자차\n카타파하 라라랄라\n후회하고있어요 우리 다투던 그 날 괜한 자존심 때문에 끝내자고 말을 해버린거야" , 0 });
+	//m_vecDials.push_back({ L"내가 주는 시련을 클리어하면 조각을 주" , 1 });
+	//m_vecDials.push_back({ L"가나다라 마바사아자차\n카타파하 라라랄라\n후회하고있어요 우리 다투던 그 날 괜한 자존심 때문에 끝내자고 말을 해버린거야" , 0 });
 
 }
 

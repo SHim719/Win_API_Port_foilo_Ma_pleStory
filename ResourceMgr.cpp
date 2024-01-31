@@ -6,14 +6,6 @@ map<wstring, JoResource*> ResourceMgr::m_resources{};
 void ResourceMgr::Initialize()
 {
 
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew10", L"Resources/Map/Chew/Chew10.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew11", L"Resources/Map/Chew/Chew11.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew12", L"Resources/Map/Chew/Chew12.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew13", L"Resources/Map/Chew/Chew13.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew14", L"Resources/Map/Chew/Chew14.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew15", L"Resources/Map/Chew/Chew15.png");
-	//ResourceMgr::Load<JoTexture>(L"BG_Chew16", L"Resources/Map/Chew/Chew16.png");
-
 	ResourceMgr::Load<JoTexture>(L"BG_GiantRoot1", L"Resources/Map/Rootabyss/GiantRoot/GiantRoot1.png");
 	ResourceMgr::Load<JoTexture>(L"BG_GiantRoot2", L"Resources/Map/Rootabyss/GiantRoot/GiantRoot2.png");
 	ResourceMgr::Load<JoTexture>(L"BG_GiantRoot3", L"Resources/Map/Rootabyss/GiantRoot/GiantRoot3.png");
@@ -40,13 +32,40 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"Chew_Minimap", L"Resources/Map/Chew/MiniMap_Chew.png");
 	ResourceMgr::Load<JoBmp>(L"Chew_Pixel", L"Resources/Map/Chew/Chew_Pixel.bmp");
 
+	ResourceMgr::Load<JoTexture>(L"BG_Rudy1", L"Resources/Map/Rudy/Rudy1.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Rudy2", L"Resources/Map/Rudy/Rudy2.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Rudy3", L"Resources/Map/Rudy/Rudy3.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Rudy4", L"Resources/Map/Rudy/Rudy4.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Rudy5", L"Resources/Map/Rudy/Rudy5.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Rudy6", L"Resources/Map/Rudy/Rudy6.png");
+	ResourceMgr::Load<JoTexture>(L"BG_Rudy7", L"Resources/Map/Rudy/Rudy7.png");
+	ResourceMgr::Load<JoTexture>(L"Rudy_Minimap", L"Resources/Map/Rudy/MiniMap_Rudy.png");
+	ResourceMgr::Load<JoBmp>(L"Rudy_Pixel", L"Resources/Map/Rudy/Rudy_Pixel.bmp");
+
 	ResourceMgr::Load<JoTexture>(L"BG_Eagle", L"Resources/Map/독수리사냥/독수리사냥.png");
+	ResourceMgr::Load<JoTexture>(L"BG_프리토", L"Resources/Map/독수리사냥/프리토맵.png");
+	ResourceMgr::Load<JoBmp>(L"BG_프리토_Pixel", L"Resources/Map/독수리사냥/프리토맵_Pixel.bmp");
+
 	ResourceMgr::Load<JoTexture>(L"BG_Totem", L"Resources/Map/토템슬래쉬/토템슬래쉬.png");
+	ResourceMgr::Load<JoBmp>(L"Totem_Pixel", L"Resources/Map/토템슬래쉬/토템슬래쉬_Pixel.bmp");
+
+	ResourceMgr::Load<JoTexture>(L"BG_RudyEnd", L"Resources/Map/Rudy_End/Rudy_End.png");
+	ResourceMgr::Load<JoBmp>(L"RudyEnd_Pixel", L"Resources/Map/Rudy_End/Rudy_End_Pixel.bmp");
 	
 	ResourceMgr::Load<JoTexture>(L"의문의 소녀", L"Resources/Npc/소녀.png");
 	ResourceMgr::Load<JoTexture>(L"의문의 소녀_이름", L"Resources/UI/Dialog/DialogName_Girl.png");
 	ResourceMgr::Load<JoTexture>(L"의문의 소녀_대화", L"Resources/UI/Dialog/Dialog_Girl.png");
 	ResourceMgr::Load<JoTexture>(L"오코", L"Resources/Npc/오코.png");
+
+	ResourceMgr::Load<JoTexture>(L"프리토", L"Resources/Npc/프리토.png");
+	ResourceMgr::Load<JoTexture>(L"프리토_이름", L"Resources/UI/Dialog/DialogName_프리토.png");
+	ResourceMgr::Load<JoTexture>(L"프리토_대화", L"Resources/UI/Dialog/Dialog_프리토.png");
+
+	ResourceMgr::Load<JoTexture>(L"에스페시아", L"Resources/Npc/에스페시아.png");
+	ResourceMgr::Load<JoTexture>(L"에스페시아_이름", L"Resources/UI/Dialog/DialogName_Esfesia.png");
+	ResourceMgr::Load<JoTexture>(L"에스페시아_대화", L"Resources/UI/Dialog/Dialog_Esfesia.png");
+
+	ResourceMgr::Load<JoTexture>(L"조형물", L"Resources/Npc/조형물.png");
 
 	ResourceMgr::Load<JoTexture>(L"PhantomBlow", L"Resources/Skill/PhantomBlow/phantomblow.png");
 	ResourceMgr::Load<JoTexture>(L"PB_Hit", L"Resources/Skill/PhantomBlow/phantomblow_hit.png");
@@ -99,7 +118,6 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"Count_Num", L"Resources/UI/Etc/Counting.png");
 	ResourceMgr::Load<JoTexture>(L"프리토대사", L"Resources/UI/Etc/프리토대사.png");
 
-
 	ResourceMgr::Load<JoTexture>(L"Totem_Bar", L"Resources/UI/Etc/TotemBar.png");
 	ResourceMgr::Load<JoTexture>(L"SwordIcon", L"Resources/UI/Etc/Sword.png");
 	ResourceMgr::Load<JoTexture>(L"Slash_RedGauge", L"Resources/UI/Etc/Slash_RedGauge.png");
@@ -116,11 +134,12 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"Great", L"Resources/Effect/TotemSlash/Great.png");
 	ResourceMgr::Load<JoTexture>(L"Perfect", L"Resources/Effect/TotemSlash/Perfect.png");
 
-
 	ResourceMgr::Load<JoTexture>(L"RhyTurtle_L", L"Resources/Enemy/RhyTurtle/Turtle_L.png");
 	ResourceMgr::Load<JoTexture>(L"RhyTurtle_R", L"Resources/Enemy/RhyTurtle/Turtle_R.png");
 	ResourceMgr::Load<JoTexture>(L"CT_RhyTurtle_L", L"Resources/Enemy/CT_RhyTurtle/CT_RhyTurtle_L.png");
 	ResourceMgr::Load<JoTexture>(L"CT_RhyTurtle_R", L"Resources/Enemy/CT_RhyTurtle/CT_RhyTurtle_R.png");
+	ResourceMgr::Load<JoTexture>(L"DualPirate_R", L"Resources/Enemy/DualPirate/DualPirate_R.png");
+	ResourceMgr::Load<JoTexture>(L"DualPirate_L", L"Resources/Enemy/DualPirate/DualPirate_L.png");
 
 	//ResourceMgr::Load<JoTexture>(L"Vellum_Appear_L", L"Resources/Enemy/Vellum/Vellum_Appear.png");
 	//ResourceMgr::Load<JoTexture>(L"Vellum_Appear_R", L"Resources/Enemy/Vellum/Vellum_Appear_R.png");
@@ -161,6 +180,13 @@ void ResourceMgr::Initialize()
 
 	ResourceMgr::Load<JoTexture>(L"WhiteBuffer", L"Resources/WhiteScreen.png");
 	ResourceMgr::Load<JoTexture>(L"BlackBuffer", L"Resources/BlackScreen.png");
+
+	ResourceMgr::Load<JoTexture>(L"Quest_Number", L"Resources/UI/Quest/Number.png");
+	ResourceMgr::Load<JoTexture>(L"Hunt_Quest", L"Resources/UI/Quest/Quest1.png");
+
+	ResourceMgr::Load<JoTexture>(L"Meso", L"Resources/Obj/Meso.png");
+
+	ResourceMgr::Load<JoTexture>(L"LevelUp", L"Resources/Effect/LevelUp.png");
 }
 
 void ResourceMgr::Release()

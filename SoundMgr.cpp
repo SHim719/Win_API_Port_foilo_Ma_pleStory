@@ -15,6 +15,11 @@ void SoundMgr::Intialize()
 	Audio* AbyssCave = ResourceMgr::Load<Audio>(L"AbyssCave", L"Resources/BGM/AbyssCave.mp3");
 	AbyssCave->SetLoop(true);
 	ResourceMgr::Load<Audio>(L"ChewChew", L"Resources/BGM/ChewChew WildWorld.mp3")->SetLoop(true);
+	ResourceMgr::Load<Audio>(L"Nautilus", L"Resources/BGM/Nautilus.mp3")->SetLoop(true);
+	ResourceMgr::Load<Audio>(L"TotemBGM", L"Resources/BGM/TotemBGM.mp3")->SetLoop(true);
+	ResourceMgr::Load<Audio>(L"HenesysBGM", L"Resources/BGM/Henesys.mp3")->SetLoop(true);
+	ResourceMgr::Load<Audio>(L"RudyBGM", L"Resources/BGM/RudyBGM.mp3")->SetLoop(true);
+	ResourceMgr::Load<Audio>(L"RudyEndBGM", L"Resources/BGM/RudyEndBGM.mp3")->SetLoop(true);
 	
 	ResourceMgr::Load<Audio>(L"PB_Use", L"Resources/Skill/PhantomBlow/Use.mp3");
 	ResourceMgr::Load<Audio>(L"PB_Hit_SFX", L"Resources/Skill/PhantomBlow/Hit.mp3");
@@ -38,6 +43,10 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"esc", L"Resources/UI/Sound/esc.MP3");
 	ResourceMgr::Load<Audio>(L"Use_Potion", L"Resources/UI/Sound/Use_Potion.mp3");
 	ResourceMgr::Load<Audio>(L"Portal_SFX", L"Resources/SFX/Portal.MP3");
+	ResourceMgr::Load<Audio>(L"Obtain_SFX", L"Resources/SFX/Obtain.mp3");
+	ResourceMgr::Load<Audio>(L"Release_Item", L"Resources/SFX/Release_Item.MP3");
+	ResourceMgr::Load<Audio>(L"Light", L"Resources/SFX/Light.mp3");
+	ResourceMgr::Load<Audio>(L"LevelUp_SFX", L"Resources/SFX/LevelUp.mp3");
 
 	ResourceMgr::Load<Audio>(L"Player_Jump", L"Resources/Player/Jump.mp3");
 	ResourceMgr::Load<Audio>(L"Player_Dead", L"Resources/SFX/Dead.MP3");
@@ -55,6 +64,9 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"Vellum_Die", L"Resources/Enemy/Vellum/Sound/Die.mp3");
 	ResourceMgr::Load<Audio>(L"Rhyno_Attack", L"Resources/Enemy/RhyTurtle/Attack.mp3");
 	ResourceMgr::Load<Audio>(L"Rhyno_Die", L"Resources/Enemy/RhyTurtle/Die.mp3");
+	ResourceMgr::Load<Audio>(L"Pirate_Attack", L"Resources/Enemy/DualPirate/Attack.mp3");
+	ResourceMgr::Load<Audio>(L"Pirate_Hit", L"Resources/Enemy/DualPirate/Damaged.mp3");
+	ResourceMgr::Load<Audio>(L"Pirate_Die", L"Resources/Enemy/DualPirate/Die.mp3");
 	
 	ResourceMgr::Load<Audio>(L"Aim_Shot", L"Resources/SFX/Shot.mp3");
 

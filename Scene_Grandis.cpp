@@ -11,6 +11,8 @@
 #include "YellowPortal.h"
 #include "MiniMap.h"
 #include "Portal.h"
+#include "EventPortal.h"
+#include "Item_Obj.h"
 
 Scene_Grandis::Scene_Grandis()
 {
@@ -57,6 +59,11 @@ void Scene_Grandis::Initialize()
 	pPortal->Set_MovePos( {500.f, 830.f });
 	pPortal->Set_SceneName(L"Scene_Rutabyss");
 
+	EventPortal* pEventPortal = Instantiate<EventPortal>(eLayerType::LT_OBJECT);
+	pEventPortal->SetPos({ 5624.f, 830.f });
+	pEventPortal->Set_MovePos({ 200.f, 400.f });
+	pEventPortal->Set_SceneName(L"Scene_Rudy");
+
 	Init_Monster();
 }
 
@@ -72,6 +79,8 @@ void Scene_Grandis::OnEnter()
 	Camera::SetLookAt(s_pMainPlayer->GetPos());
 	s_pMainPlayer->SetLimitPosX(m_vLimitPosX);
 	s_pMainPlayer->SetPixelDC(m_pixelDC);
+
+	Item_Obj::SetPixel(m_pixelDC);
 }
 
 void Scene_Grandis::OnExit()

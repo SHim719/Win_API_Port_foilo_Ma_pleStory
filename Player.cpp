@@ -26,6 +26,7 @@
 #include "DeathUI.h"
 #include "Tomb.h"
 #include "Camera.h"
+#include "LevelUp.h"
 
 Player::Player()
 	: m_bDownJumping(false)
@@ -71,6 +72,8 @@ void Player::Initialize()
 
 	m_pPlayerStats = new PlayerStats;
 	UIMgr::Get_UI_Instance<StatUI>(UI_Enums::UI_Stat)->SetPlayerStats(m_pPlayerStats);
+	m_pPlayerStats->Set_SkillStats(m_pSkillStats);
+	m_pPlayerStats->Set_Player(this);
 
 	m_pQuickStats = new QuickStats;
 	UIMgr::Get_UI_Instance<QuickSlotUI>(UI_Enums::UI_QuickSlot)->SetQuickStats(m_pQuickStats);
@@ -205,7 +208,7 @@ void Player::LateUpdate()
 void Player::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
 
 void Player::Release()
@@ -250,6 +253,16 @@ void Player::Revive()
 	SetState_Idle();
 	Camera::SetTarget(this);
 	m_bInvincible = true;
+}
+
+void Player::Add_Exp(const int& _iExp)
+{
+	m_pPlayerStats->Add_Exp(_iExp);
+}
+
+void Player::Level_Up()
+{
+	Instantiate<LevelUp>(eLayerType::LT_EFFECT)->SetOwner(this);
 }
 
 void Player::Init_Anim()
@@ -419,6 +432,7 @@ void Player::Rope_State()
 			&& m_ColorRope != GetPixel(m_pixelDC, (int)GetPos().x, int(GetPos().y - m_pCollider->GetSize().y * 0.5f - 1.f)))
 		{
 			m_pRigidbody->SetUseGravity(true);
+			//m_pRigidbody->SetGround(true);
 			SetState_Idle();
 		}
 	}
@@ -883,12 +897,16 @@ void Player::Invincible()
 		return;
 
 	fNowTime += TimeMgr::DeltaTime();
-	if (fNowTime >= 1.5f)
+	if (fNowTime >= 2.0f)
 	{
 		fNowTime = 0.f;
 		m_bInvincible = false;
 	}
 
+}
+
+void Player::LevelUpEffect()
+{
 }
 
 void Player::Skill_End()

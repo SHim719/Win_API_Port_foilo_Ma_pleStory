@@ -6,6 +6,7 @@
 #include "Shoes.h"
 #include "Weapon.h"
 #include "PowerEllixer.h"
+#include "Token.h"
 
 unordered_map<wstring, Item*> ItemDatabase::m_mapItemData{};
 
@@ -36,6 +37,9 @@ void ItemDatabase::Initialize()
 	powerEllixer->Initialize();
 	m_mapItemData.insert({ powerEllixer->GetName(), powerEllixer});
 
+	Token* token = new Token;
+	token->Initialize();
+	m_mapItemData.insert({ token->GetName(), token });
 	
 }
 

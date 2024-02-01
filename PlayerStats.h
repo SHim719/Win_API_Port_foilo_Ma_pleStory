@@ -47,6 +47,8 @@ public:
 	const int& Get_Exp() const { return m_iExp; }
 	const int& Get_MaxExp() const { return m_iMaxExp; }
 
+	const int& Get_Level() const { return m_iLevel; }
+
 	void Set_SkillStats(SkillStats* const _pStats) { m_pSkillStats = _pStats; }
 	void Set_Player(Player* const _pPlayer) { m_pPlayer = _pPlayer; }
 private:

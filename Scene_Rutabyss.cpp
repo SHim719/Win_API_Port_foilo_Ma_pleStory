@@ -44,6 +44,7 @@ void Scene_Rutabyss::Initialize()
 	pMiniMap->SetRealMapSize({ texWidth, texHeight });
 
 	Girl* pGirl = Instantiate<Girl>(eLayerType::LT_NPC);
+	pGirl->SetInventory(s_pMainPlayer->GetInventory());
 	ShopBoy* pShopBoy = Instantiate<ShopBoy>(eLayerType::LT_NPC);
 
 	Portal* pPortal1 = Instantiate<Portal>(eLayerType::LT_OBJECT);
@@ -53,17 +54,18 @@ void Scene_Rutabyss::Initialize()
 
 	Portal* pPortal2 = Instantiate<Portal>(eLayerType::LT_OBJECT);
 	pPortal2->SetPos(Vec2(982.f, 830.f));
-	pPortal2->Set_MovePos({ 137.f, 117.f });
+	pPortal2->Set_MovePos(Vec2(91.f, 590.f));
 	pPortal2->Set_SceneName(L"Scene_Eagle_Prev");
 
 	Portal* pPortal3 = Instantiate<Portal>(eLayerType::LT_OBJECT);
-	pPortal3->SetPos(Vec2(1980.f, 830.f));
-	pPortal3->Set_MovePos({ 86.f, 687.f });
-	pPortal3->Set_SceneName(L"Scene_Boss");
+	pPortal3->SetPos(Vec2(1502.f, 830.f));
+	pPortal3->Set_MovePos({ 158.f, 572.f });
+	pPortal3->Set_SceneName(L"Scene_Totem_Prev"); 
 
-	/*
 	Portal* pPortal4 = Instantiate<Portal>(eLayerType::LT_OBJECT);
-	*/
+	pPortal4->SetPos(Vec2(1980.f, 830.f));
+	pPortal4->Set_MovePos({ 86.f, 687.f });
+	pPortal4->Set_SceneName(L"Scene_Boss");
 }
 
 

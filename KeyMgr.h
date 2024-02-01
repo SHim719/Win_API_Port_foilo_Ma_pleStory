@@ -18,6 +18,7 @@ enum class eKeyCode
 	Left, Right, Down, Up,
 	Space, LButton, RButton,
 	LCtrl, LShift, NUMPAD0,
+	NUMPAD1,
 	One, Two, Three, Four,
 	Enter,
 	End,

@@ -13,7 +13,7 @@ class Quest :
 public:
     Quest();
     ~Quest();
-    
+   
     void Set_QuestNumber(const int& _iNum) { m_iQuestNumber = _iNum; }
     void Set_Satisfied(bool _b) { m_bSatisfied = _b; }
     void Set_Clear(bool _b) { m_bClear = _b; }

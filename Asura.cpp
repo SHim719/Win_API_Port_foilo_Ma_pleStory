@@ -20,7 +20,7 @@ void Asura::Initialize()
 	m_pSkillIconTex = ResourceMgr::Load<JoTexture>(L"Asura_Icon", L"Resources/UI/Skill/Asura/icon.png");
 	m_pSkillIconDisabledTex = ResourceMgr::Load<JoTexture>(L"Asura_Icon_Disabled", L"Resources/UI/Skill/Asura/iconDisabled.png");
 	m_pIconTex = m_pSkillIconDisabledTex;
-
+	m_iUseMp = 100;
 	m_fMaxDuration = 5.f;
 	m_fCooltime = 20.f;
 }
@@ -71,6 +71,7 @@ void Asura::Execution()
 
 	m_fNowTime = m_fCooltime;
 	m_fNowDuration = 0.f;
+	m_fMpCheckGap = 0.f;
 	m_bUsingSkill = true;
 
 	unsigned char restriction = 0;
@@ -97,6 +98,17 @@ void Asura::Execution_Loop()
 {
 	if (!m_pOwner->isChanneling())
 		return;
+
+	m_fMpCheckGap += TimeMgr::DeltaTime();
+	if (m_fMpCheckGap >= 1.f)
+	{
+		m_fMpCheckGap = 0.f;
+		if (m_pOwner->Check_Mp(m_iUseMp) == false)
+		{
+			Execution_End();
+			return;
+		}
+	}
 
 	m_fNowDuration += TimeMgr::DeltaTime();
 	if (m_fNowDuration >= m_fMaxDuration)

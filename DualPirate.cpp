@@ -26,7 +26,7 @@ DualPirate::~DualPirate()
 
 void DualPirate::Initialize()
 {
-	m_iMaxHp = 900000;
+	m_iMaxHp = 2000000;
 	m_iHp = m_iMaxHp;
 
 	m_pCollider = new Collider;

@@ -7,6 +7,9 @@
 #include "RenderMgr.h"
 #include "QuestMgr.h"
 #include "SceneMgr.h"
+#include "Item_Obj.h"
+#include "joObject.h"
+#include "ItemDatabase.h"
 
 Frieto::Frieto()
 	: m_pTexture(nullptr)
@@ -54,6 +57,9 @@ void Frieto::Initialize()
 
 	m_vecDials2.push_back({ L"다시 도전할게." , 0 });
 	m_vecDials2.push_back({ L"잘좀해봐!" , 1 });
+
+	m_vecDials3.push_back({ L"오호 너 좀 하는데? 약속대로 증표를 줄게.", 1});
+	m_vecDials3.push_back({ L"또 보자!", 1 });
 }
 
 void Frieto::Update()
@@ -73,7 +79,11 @@ void Frieto::Update()
 			if (_pQuest)
 			{
 				if (_pQuest->IsSatisfied())
-					m_eState = Frieto_State::End;
+				{
+					_pQuest->Set_Clear(true);
+					m_eState = Frieto_State::Third;
+				}
+					
 			}
 		}
 
@@ -92,7 +102,8 @@ void Frieto::Update()
 				case Frieto_State::Second:
 					Second(pDialBox);
 					break;
-				case Frieto_State::End:
+				case Frieto_State::Third:
+					Third(pDialBox);
 					break;
 				}
 			}
@@ -157,7 +168,23 @@ void Frieto::Second(MyDialogBox* _pBox)
 	_pBox->Set_Function(ChangeScene_ToGame);
 }
 
-void Frieto::End(MyDialogBox* _pBox)
+void Frieto::Third(MyDialogBox* _pBox)
 {
+	_pBox->SetActive(true);
+	_pBox->Set_Dialog(&m_vecDials3);
+	_pBox->Set_NpcTex(m_pDialTex);
+	_pBox->Set_NpcNameTex(m_pDialNameTex);
+	_pBox->Set_Function(bind(&Frieto::Drop_Item, this));
+}
+
+void Frieto::Drop_Item()
+{
+	Item* pItem = ItemDatabase::FindItemData(L"시련의 증표");
+	Item_Obj* pObj = Instantiate<Item_Obj>(eLayerType::LT_ITEM);
+	pObj->SetPos(GetPos());
+	pObj->SetItem(pItem);
+	pObj->SetCount(1);
+	SoundMgr::Play(L"Release_Item");
+	m_eState = Frieto_State::End;
 }
 

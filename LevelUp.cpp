@@ -25,7 +25,8 @@ void LevelUp::Initialize()
 
 void LevelUp::Update()
 {
-	SetPos(m_pOwner->GetPos());
+	Vec2 vPos = m_pOwner->GetPos();
+	SetPos(vPos + Vec2(0.f, -200.f));
 	if (m_pAnimator->GetNowFrame() == 16)
 		m_pCollider->SetCollisionActive();
 	else if (m_pAnimator->GetNowFrame() == 17)

@@ -13,6 +13,7 @@ enum UI_Enums
 	UI_Shop,
 	UI_Dialog,
 	UI_Death,
+	UI_DamageNum,
 	UI_End,
 };
 
@@ -35,6 +36,7 @@ public:
 	virtual bool KeyCheck() { return false; }
 
 	void SetPos(const Vec2& _vPos) { m_vPos = _vPos; }
+	void Set_MainTex(JoTexture* const _pTex) { m_pMainTex = _pTex; }
 protected:
 	JoTexture*	m_pMainTex;
 	Vec2		m_vPos;

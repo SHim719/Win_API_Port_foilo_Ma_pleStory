@@ -8,7 +8,7 @@ public:
     Scene_Totem();
     ~Scene_Totem();
 
-    void Initialize() override;
+    void OnGameStart();
     void OnEnter()    override;
     void OnExit()     override;
 };

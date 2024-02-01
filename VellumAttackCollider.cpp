@@ -10,13 +10,13 @@ void VellumAttackCollider::Initialize()
 }
 void VellumAttackCollider::Render()
 {
-	if (m_pCollider->IsCollisionOn())
-		m_pCollider->Render();
+	//if (m_pCollider->IsCollisionOn())
+	//	m_pCollider->Render();
 }
 
 void VellumAttackCollider::OnCollisionEnter(Collider* other)
 {
-	HitInfo tHitInfo = { 20000, 1 };
+	HitInfo tHitInfo = { iDamage, 1 };
 	static_cast<Player*>(other->GetOwner())->Hit(tHitInfo);
 }
 

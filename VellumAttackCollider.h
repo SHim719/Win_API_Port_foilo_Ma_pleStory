@@ -15,6 +15,8 @@ public:
 	void SetCollisionSize(const Vec2& _vSize);
 	void SetCollisionOffset(const Vec2& _vOffset);
 	void SetCollisionOnOff(const bool& _b);
+
+	void SetDamage(const int& _iDamage) { iDamage = _iDamage; }
 private:
 	int iDamage = 0;
 };

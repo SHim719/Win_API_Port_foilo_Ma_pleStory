@@ -87,14 +87,15 @@ void BS_Obj::Update()
 			continue;
 		}
 		attInfo.fNowTime += TimeMgr::DeltaTime();
-		if (attInfo.fNowTime >= 0.14f)
+		if (attInfo.fNowTime >= 0.12f)
 		{
 			attInfo.fNowTime = 0.f;
 			attInfo.iHitCount %= 15;
 
 			for (int i = 0; i < m_iPerHitCount; ++i)
 			{
-				HitInfo hitInfo = { 50000, attInfo.iHitCount, false };
+				int iDamage = generateRandomNumber(4, 6);
+				HitInfo hitInfo = { iDamage, attInfo.iHitCount, true };
 				attInfo.pHitObj->Hit(hitInfo);
 				attInfo.iHitCount++;
 			}

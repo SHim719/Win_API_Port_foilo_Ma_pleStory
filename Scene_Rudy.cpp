@@ -83,7 +83,6 @@ void Scene_Rudy::Init_Monster()
 {
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1329.f, 486.f });
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1730.f, 486.f });
-	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1360.f, 834.f });
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 397.f, 1330.f });
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 590.f, 1330.f });
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 690.f, 1330.f });
@@ -91,6 +90,7 @@ void Scene_Rudy::Init_Monster()
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1380.f, 1330.f });
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1500.f, 1330.f });
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1672.f, 1330.f });
+	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1472.f, 1330.f });
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1710.f, 1730.f });
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1330.f, 2115.f });
 	Instantiate<DualPirate>(eLayerType::LT_MONSTER)->SetRespawnPos({ 1558.f, 2115.f });

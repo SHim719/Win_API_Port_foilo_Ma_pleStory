@@ -9,6 +9,7 @@
 #include "MyDialogBox.h"
 #include "DeathUI.h"
 #include "QuestMgr.h"
+#include "DamageNumUI.h"
 
 
 UI* UIMgr::m_arrUIs[] = {};
@@ -60,10 +61,15 @@ void UIMgr::Initialize()
 	pDeathUI->Initialize();
 	m_arrUIs[(UINT)UI_Enums::UI_Death] = pDeathUI;
 
+	DamageNumUI* pDamageNumUI = new DamageNumUI;
+	pDamageNumUI->Initialize();
+	m_arrUIs[(UINT)UI_Enums::UI_DamageNum] = pDamageNumUI;
+
 	m_inActiveUIList.push_back(pSkillUI);
 	m_inActiveUIList.push_back(pInvenUI);
 	m_inActiveUIList.push_back(pEquipUI);
 	m_inActiveUIList.push_back(pStatUI);
+	m_inActiveUIList.push_back(pDamageNumUI);
 }
 
 void UIMgr::Update()

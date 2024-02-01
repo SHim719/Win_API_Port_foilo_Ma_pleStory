@@ -53,9 +53,12 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoBmp>(L"RudyEnd_Pixel", L"Resources/Map/Rudy_End/Rudy_End_Pixel.bmp");
 	
 	ResourceMgr::Load<JoTexture>(L"의문의 소녀", L"Resources/Npc/소녀.png");
+	ResourceMgr::Load<JoTexture>(L"의문의 소녀_Bar", L"Resources/Npc/의문의소녀_Bar.png");
 	ResourceMgr::Load<JoTexture>(L"의문의 소녀_이름", L"Resources/UI/Dialog/DialogName_Girl.png");
 	ResourceMgr::Load<JoTexture>(L"의문의 소녀_대화", L"Resources/UI/Dialog/Dialog_Girl.png");
+	
 	ResourceMgr::Load<JoTexture>(L"오코", L"Resources/Npc/오코.png");
+	ResourceMgr::Load<JoTexture>(L"오코_Bar", L"Resources/Npc/오코_Bar.png");
 
 	ResourceMgr::Load<JoTexture>(L"프리토", L"Resources/Npc/프리토.png");
 	ResourceMgr::Load<JoTexture>(L"프리토_이름", L"Resources/UI/Dialog/DialogName_프리토.png");
@@ -80,6 +83,9 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"Asura_Loop", L"Resources/Skill/Asura/Asura.png");
 	ResourceMgr::Load<JoTexture>(L"Asura_Bottom", L"Resources/Skill/Asura/AS_Bottom.png");
 	ResourceMgr::Load<JoTexture>(L"AS_Hit", L"Resources/Skill/Asura/AS_Hit.png");
+	ResourceMgr::Load<JoTexture>(L"SuddenRaid_Front", L"Resources/Skill/SuddenRaid/SuddenEff0.png");
+	ResourceMgr::Load<JoTexture>(L"SuddenRaid_Back", L"Resources/Skill/SuddenRaid/SuddenEff1.png");
+	ResourceMgr::Load<JoTexture>(L"SR_Hit", L"Resources/Skill/SuddenRaid/HitEffect.png");
 
 	ResourceMgr::Load<JoTexture>(L"FlashJump", L"Resources/Skill/FlashJump/FlashJump.png");
 
@@ -97,8 +103,13 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"YellowPortal", L"Resources/Map/Portal/YellowPortal.png");
 
 	ResourceMgr::Load<JoTexture>(L"Damage_Num", L"Resources/UI/DamageNum/damage_num.png");
+	ResourceMgr::Load<JoTexture>(L"Damage_Num_2", L"Resources/UI/DamageNum/damage_num_2.png");
+	ResourceMgr::Load<JoTexture>(L"Damage_Num_3", L"Resources/UI/DamageNum/damage_num_3.png");
 	ResourceMgr::Load<JoTexture>(L"Damage_Num_Critical", L"Resources/UI/DamageNum/damage_num_critical.png");
+	ResourceMgr::Load<JoTexture>(L"Damage_Num_Critical_2", L"Resources/UI/DamageNum/damage_num_critical_2.png");
+	ResourceMgr::Load<JoTexture>(L"Damage_Num_Critical_3", L"Resources/UI/DamageNum/damage_num_critical_3.png");
 	ResourceMgr::Load<JoTexture>(L"Damaged_Num", L"Resources/UI/DamageNum/damaged_num.png");
+	ResourceMgr::Load<JoTexture>(L"Damaged_Num_UI", L"Resources/UI/DamageNum/DamageNum_UI.png");
 
 	ResourceMgr::Load<JoTexture>(L"StunEffect", L"Resources/Effect/StunEffect.png");
 	ResourceMgr::Load<JoTexture>(L"Player", L"Resources/Player/Player.png");
@@ -141,48 +152,49 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"DualPirate_R", L"Resources/Enemy/DualPirate/DualPirate_R.png");
 	ResourceMgr::Load<JoTexture>(L"DualPirate_L", L"Resources/Enemy/DualPirate/DualPirate_L.png");
 
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Appear_L", L"Resources/Enemy/Vellum/Vellum_Appear.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Appear_R", L"Resources/Enemy/Vellum/Vellum_Appear_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Attack1_L", L"Resources/Enemy/Vellum/Vellum_Attack1.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Attack1_R", L"Resources/Enemy/Vellum/Vellum_Attack1_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Attack2_L", L"Resources/Enemy/Vellum/Vellum_Attack2.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Attack2_R", L"Resources/Enemy/Vellum/Vellum_Attack2_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Attack3_L", L"Resources/Enemy/Vellum/Vellum_Attack3.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Attack3_R", L"Resources/Enemy/Vellum/Vellum_Attack3_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Attack3_R", L"Resources/Enemy/Vellum/Vellum_Attack3_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Attack4_L", L"Resources/Enemy/Vellum/Vellum_Attack4.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Attack4_R", L"Resources/Enemy/Vellum/Vellum_Attack4_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Start_L", L"Resources/Enemy/Vellum/Vellum_Breath.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Start_R", L"Resources/Enemy/Vellum/Vellum_Breath_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Loop_L", L"Resources/Enemy/Vellum/Vellum_Breath_Loop.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Loop_R", L"Resources/Enemy/Vellum/Vellum_Breath_Loop_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Loop_End_L", L"Resources/Enemy/Vellum/Vellum_Breath_Loop_End.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Loop_End_R", L"Resources/Enemy/Vellum/Vellum_Breath_Loop_End_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Dig_L", L"Resources/Enemy/Vellum/Vellum_Dig.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Dig_R", L"Resources/Enemy/Vellum/Vellum_Dig_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_LowNeck_L", L"Resources/Enemy/Vellum/Vellum_LowNeck.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_LowNeck_R", L"Resources/Enemy/Vellum/Vellum_LowNeck_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Die_L", L"Resources/Enemy/Vellum/Vellum_Die.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Die_R", L"Resources/Enemy/Vellum/Vellum_Die_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Move", L"Resources/Enemy/Vellum/Vellum_Move.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Stone", L"Resources/Enemy/Vellum/Vellum_Stone.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Stone_End", L"Resources/Enemy/Vellum/Vellum_Stone_End.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_L", L"Resources/Enemy/Vellum/Breath_L.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_R", L"Resources/Enemy/Vellum/Breath_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_End_L", L"Resources/Enemy/Vellum/Breath_End_L.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Breath_End_R", L"Resources/Enemy/Vellum/Breath_End_R.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Tail_L", L"Resources/Enemy/Vellum/Vellum_Tail_L.png");
-	//ResourceMgr::Load<JoTexture>(L"Vellum_Tail_R", L"Resources/Enemy/Vellum/Vellum_Tail_R.png");
+	/*ResourceMgr::Load<JoTexture>(L"Vellum_Appear_L", L"Resources/Enemy/Vellum/Vellum_Appear.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Appear_R", L"Resources/Enemy/Vellum/Vellum_Appear_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Attack1_L", L"Resources/Enemy/Vellum/Vellum_Attack1.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Attack1_R", L"Resources/Enemy/Vellum/Vellum_Attack1_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Attack2_L", L"Resources/Enemy/Vellum/Vellum_Attack2.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Attack2_R", L"Resources/Enemy/Vellum/Vellum_Attack2_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Attack3_L", L"Resources/Enemy/Vellum/Vellum_Attack3.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Attack3_R", L"Resources/Enemy/Vellum/Vellum_Attack3_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Attack3_R", L"Resources/Enemy/Vellum/Vellum_Attack3_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Attack4_L", L"Resources/Enemy/Vellum/Vellum_Attack4.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Attack4_R", L"Resources/Enemy/Vellum/Vellum_Attack4_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Start_L", L"Resources/Enemy/Vellum/Vellum_Breath.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Start_R", L"Resources/Enemy/Vellum/Vellum_Breath_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Loop_L", L"Resources/Enemy/Vellum/Vellum_Breath_Loop.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Loop_R", L"Resources/Enemy/Vellum/Vellum_Breath_Loop_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Loop_End_L", L"Resources/Enemy/Vellum/Vellum_Breath_Loop_End.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_Loop_End_R", L"Resources/Enemy/Vellum/Vellum_Breath_Loop_End_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Dig_L", L"Resources/Enemy/Vellum/Vellum_Dig.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Dig_R", L"Resources/Enemy/Vellum/Vellum_Dig_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_LowNeck_L", L"Resources/Enemy/Vellum/Vellum_LowNeck.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_LowNeck_R", L"Resources/Enemy/Vellum/Vellum_LowNeck_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Die_L", L"Resources/Enemy/Vellum/Vellum_Die.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Die_R", L"Resources/Enemy/Vellum/Vellum_Die_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Move", L"Resources/Enemy/Vellum/Vellum_Move.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Stone", L"Resources/Enemy/Vellum/Vellum_Stone.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Stone_End", L"Resources/Enemy/Vellum/Vellum_Stone_End.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_L", L"Resources/Enemy/Vellum/Breath_L.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_R", L"Resources/Enemy/Vellum/Breath_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_End_L", L"Resources/Enemy/Vellum/Breath_End_L.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Breath_End_R", L"Resources/Enemy/Vellum/Breath_End_R.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Tail_L", L"Resources/Enemy/Vellum/Vellum_Tail_L.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Tail_R", L"Resources/Enemy/Vellum/Vellum_Tail_R.png");
 
-	//ResourceMgr::Load<JoTexture>(L"Vellum_HpBar", L"Resources/UI/Boss/Vellum_HpBar.png");
-	//ResourceMgr::Load<JoTexture>(L"Boss_Hp", L"Resources/UI/Boss/bossHP.png");
-	//ResourceMgr::Load<JoTexture>(L"Breath_Text", L"Resources/UI/Boss/Breath_Text.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_HpBar", L"Resources/UI/Boss/Vellum_HpBar.png");
+	ResourceMgr::Load<JoTexture>(L"Boss_Hp", L"Resources/UI/Boss/bossHP.png");
+	ResourceMgr::Load<JoTexture>(L"Breath_Text", L"Resources/UI/Boss/Breath_Text.png");*/
 
 	ResourceMgr::Load<JoTexture>(L"WhiteBuffer", L"Resources/WhiteScreen.png");
 	ResourceMgr::Load<JoTexture>(L"BlackBuffer", L"Resources/BlackScreen.png");
 
 	ResourceMgr::Load<JoTexture>(L"Quest_Number", L"Resources/UI/Quest/Number.png");
-	ResourceMgr::Load<JoTexture>(L"Hunt_Quest", L"Resources/UI/Quest/Quest1.png");
+	ResourceMgr::Load<JoTexture>(L"Hunt_Quest30", L"Resources/UI/Quest/30마리.png");
+	ResourceMgr::Load<JoTexture>(L"Hunt_Quest60", L"Resources/UI/Quest/60마리.png");
 
 	ResourceMgr::Load<JoTexture>(L"Meso", L"Resources/Obj/Meso.png");
 

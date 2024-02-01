@@ -21,10 +21,6 @@ void RapidStream::Initialize()
 	m_fAddVelocityX = 200.f;
 }
 
-void RapidStream::Render()
-{
-	m_pCollider->Render();
-}
 
 void RapidStream::OnCollisionEnter(Collider* _pOther)
 {

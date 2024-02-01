@@ -12,9 +12,8 @@
 #include "TimerUI.h"
 #include "TimeMgr.h"
 #include "EG_GameMgr.h"
-#include "SoundMgr.h"
 #include "UIMgr.h"
-
+#include "SoundMgr.h"
 
 extern MainGame g_MainGame;
 
@@ -25,8 +24,6 @@ Scene_Eagle::Scene_Eagle()
 Scene_Eagle::~Scene_Eagle()
 {
 }
-
-
 
 void Scene_Eagle::GameStart()
 {

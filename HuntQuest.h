@@ -7,7 +7,6 @@ class HuntQuest :
     public Quest
 {
 public:
-    void Initialize();
     void Render();
 
     void Set_Objectives(int _iObjective) { m_iObjectives = _iObjective; }

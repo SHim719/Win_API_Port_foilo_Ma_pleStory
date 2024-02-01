@@ -88,6 +88,7 @@ public:
 
 	void Add_Exp(const int& _iExp);
 	void Level_Up();
+	bool Check_Mp(const int& _iMp);
 private:
 	void Init_Anim();
 	void Init_FrameBind();

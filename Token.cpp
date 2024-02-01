@@ -3,6 +3,8 @@
 Token::Token()
 {
 	SetName(L"시련의 증표");
+	m_iMaxCount = 4;
+	m_iSellPrice = 999999;
 }
 
 Token::~Token()

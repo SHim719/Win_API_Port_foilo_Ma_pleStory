@@ -7,6 +7,8 @@
 #include "SoundMgr.h"
 #include "joObject.h"
 #include "Frieto.h"
+#include "Portal.h"
+#include "Item_Obj.h"
 
 Scene_Eagle_Prev::Scene_Eagle_Prev()
 {
@@ -33,6 +35,11 @@ void Scene_Eagle_Prev::Initialize()
 	CalcAndSetCameraArea(texWidth, texHeight, Vec2::Zero);
 
 	Frieto* pFrieto = Instantiate<Frieto>(eLayerType::LT_NPC);
+
+	Portal* pPortal = Instantiate<Portal>(eLayerType::LT_OBJECT);
+	pPortal->SetPos(Vec2(91.f, 590.f));
+	pPortal->Set_MovePos({ 982.f, 830.f });
+	pPortal->Set_SceneName(L"Scene_Rutabyss");
 }
 
 void Scene_Eagle_Prev::OnEnter()
@@ -47,6 +54,7 @@ void Scene_Eagle_Prev::OnEnter()
 	Camera::SetLookAt(s_pMainPlayer->GetPos());
 	s_pMainPlayer->SetLimitPosX(m_vLimitPosX);
 	s_pMainPlayer->SetPixelDC(m_pixelDC);
+	Item_Obj::SetPixel(m_pixelDC);
 }
 
 void Scene_Eagle_Prev::OnExit()

@@ -86,7 +86,10 @@ void AS_Obj::Update()
 
 			for (int i = 0; i < m_iPerHitCount; ++i)
 			{
-				HitInfo hitInfo = { 50000, attInfo.iHitCount, false };
+				int iDamage = generateRandomNumber(3, 6);
+				bool isCritical = Calc_Critical();
+				iDamage = isCritical ? int(float(iDamage) * 1.3f) : iDamage;
+				HitInfo hitInfo = { iDamage, attInfo.iHitCount, isCritical };
 				attInfo.pHitObj->Hit(hitInfo);
 				attInfo.iHitCount++;
 			}

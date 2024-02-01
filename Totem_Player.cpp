@@ -29,7 +29,7 @@ void Totem_Player::Initialize()
 
 void Totem_Player::Update()
 {
-	if (m_pTotemBar->IsWait() == false)
+	if (m_pTotemBar->IsWait() == false && m_pMgr->IsGameEnd() == false)
 	{
 		if (KeyMgr::GetKeyDown(eKeyCode::Space))
 		{

@@ -3,10 +3,16 @@
 
 class JoTexture;
 
+
+enum class Num_State
+{
+	Normal,
+	Physics,
+};
+
 class DamageNum :
     public GameObject
 {
-public:
 public:
 	DamageNum();
 	~DamageNum();
@@ -33,8 +39,17 @@ public:
 			return m_pPlayerDamageTex;
 	}
 
-
+	static void Init_DamageTex();
+	static void Select_DamageTex(const size_t _iIdx) { m_iIdx = _iIdx; }
+	static void Select_Option(const Num_State& _state) { m_eState = _state; };
 private:
+	static vector<JoTexture*> m_vecNormalDamageTex;
+	static vector<JoTexture*> m_vecCriDamageTex;
+	static size_t m_iIdx;
+	static Num_State m_eState;
+
+
+
 	JoTexture* m_pDamageTex;
 	JoTexture* m_pCriticalTex;
 	JoTexture* m_pPlayerDamageTex;

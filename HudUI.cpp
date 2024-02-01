@@ -20,6 +20,8 @@ HudUI::HudUI()
 	, m_fExpSpeed(0.f)
 	, m_vExpBarPos{}
 	, m_vLevelPos{}
+	, m_sNowLevel("")
+	, m_iNowLevel(0)
 {
 	SetName(L"HudUI");
 }
@@ -43,11 +45,11 @@ void HudUI::Initialize()
 
 	m_vExpBarPos = { 0.f, 758.f };
 	m_vLevelPos = { 42.f, 8.f };
-	//xoffset = 2;
 }
 
 void HudUI::Update()
 {
+
 	if (m_fNowHp != (float)m_pPlayerStats->Get_Hp())
 	{
 		m_fNowHp = (float)m_pPlayerStats->Get_Hp();
@@ -64,6 +66,12 @@ void HudUI::Update()
 	{
 		m_fNowExp = (float)m_pPlayerStats->Get_Exp();
 		m_fExpSpeed = fabs(m_fNowExp - m_fRenderExp) / 0.3f;
+	}
+
+	if (m_iNowLevel != m_pPlayerStats->Get_Level())
+	{
+		m_iNowLevel = m_pPlayerStats->Get_Level();
+		m_sNowLevel = to_string(m_iNowLevel);
 	}
 
 }
@@ -119,9 +127,8 @@ void HudUI::Render()
 	RenderMgr::RenderImage(m_pMainTex, m_vPos.x, m_vPos.y,
 		m_vPos.x + m_pMainTex->GetWidth(), m_vPos.y + m_pMainTex->GetHeight());
 
-
-	//RenderMgr::RenderImage(m)w
-
+	render_level();
+	
 	RenderMgr::RenderImage(m_pExpBarTex, m_vExpBarPos.x, m_vExpBarPos.y,
 		m_vExpBarPos.x + 1024.f, m_vExpBarPos.y + 10.f);
 
@@ -129,7 +136,6 @@ void HudUI::Render()
 		m_vExpBarPos.x + 15.f + (1009.f * fExpRatio), m_vExpBarPos.y + 9.f);
 
 	
-
 	render_level();
 }
 
@@ -139,4 +145,14 @@ void HudUI::Release()
 
 void HudUI::render_level()
 {
+	Vec2 vRenderPos = m_vPos + m_vLevelPos;
+	for (size_t i = 0; i < m_sNowLevel.size(); ++i)
+	{
+		RenderMgr::RenderFrame(m_pLevelTex
+			, vRenderPos.x, vRenderPos.y
+			, vRenderPos.x + 7.f, vRenderPos.y + 10.f
+			, (m_sNowLevel[i] - '0') * 7.f, 0.f
+			, (m_sNowLevel[i] - '0') * 7.f + 7.f, 10.f);
+		vRenderPos.x += 2.f;
+	}
 }

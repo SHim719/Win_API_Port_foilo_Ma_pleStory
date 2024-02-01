@@ -4,7 +4,7 @@ Slot Slot::empty_Slot = { nullptr, 0 };
 
 Inventory::Inventory()
 	: m_arrInventory{}
-	, m_iMeso(500000)
+	, m_iMeso(100000)
 {
 }
 
@@ -65,4 +65,23 @@ void Inventory::Swap_Slot(const ItemType& type, const UINT& iLeft, const UINT& i
 {
 	UINT iType = (UINT)type;
 	swap(m_arrInventory[iType][iLeft], m_arrInventory[iType][iRight]);
+}
+
+int Inventory::FindItem(Item* _pItem)
+{
+	if (_pItem == nullptr)
+		return 0;
+
+	UINT type = (UINT)_pItem->GetItemType();
+
+	for (Slot& slot : m_arrInventory[type])
+	{
+		if (slot.item == _pItem)
+		{
+			return slot.iCount;
+		}
+	}
+
+
+	return 0;
 }

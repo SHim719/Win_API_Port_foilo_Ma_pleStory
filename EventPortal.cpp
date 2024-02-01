@@ -10,7 +10,7 @@
 
 
 EventPortal::EventPortal()
-	: m_eState(PortalState::End)
+	: m_eState(PortalState::First)
 {
 	m_vecDials[0].push_back({L"주위의 몬스터들의 기운때문에 이동할 수 없다.", 0});
 	m_vecDials[0].push_back({ L"몬스터들을 한번 정리해야겠다.", 0 });
@@ -46,9 +46,9 @@ void EventPortal::First()
 	if (pQuest == nullptr)
 	{
 		pQuest = new HuntQuest;
-		static_cast<HuntQuest*>(pQuest)->Set_Objectives(100);
-		pQuest->Initialize();
+		static_cast<HuntQuest*>(pQuest)->Set_Objectives(60);
 		pQuest->Set_QuestNumber(1);
+		pQuest->Set_MainTex(ResourceMgr::Find<JoTexture>(L"Hunt_Quest60"));
 		pQuest->SetPos({ 0.f, 170.f });
 		pDialBox->Set_Quest(pQuest);
 	}

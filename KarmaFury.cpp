@@ -19,6 +19,8 @@ void KarmaFury::Initialize()
 	m_pIconTex = m_pSkillIconDisabledTex;
 
 	m_fCooltime = 10.f;
+
+	m_iUseMp = 300;
 }
 
 void KarmaFury::Render(const Vec2& vLeftTop)
@@ -58,6 +60,9 @@ void KarmaFury::Execution()
 	if (Player::PlayerState::Idle != m_pOwner->GetPlayerState()
 		&& Player::PlayerState::Walk != m_pOwner->GetPlayerState()
 		&& Player::PlayerState::Air != m_pOwner->GetPlayerState())
+		return;
+
+	if (m_pOwner->Check_Mp(m_iUseMp) == false)
 		return;
 
 	m_fNowTime = m_fCooltime;

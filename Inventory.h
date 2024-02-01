@@ -41,6 +41,8 @@ public:
 	const Slot& GetSlot(const ItemType& type, const UINT& idx) { return m_arrInventory[(UINT)type][idx]; }
 	Slot* GetSlotPtr(const ItemType & type, const UINT & idx)  { return &(m_arrInventory[(UINT)type][idx]); }
 
+	int FindItem(Item* _pItem);
+
 	void Add_Meso(const int& _iMeso) { m_iMeso += _iMeso; }
 	const int& Get_Meso() const { return m_iMeso; }
 

@@ -19,6 +19,8 @@ void PhantomBlow::Initialize()
 	m_pSkillIconTex = ResourceMgr::Load<JoTexture>(L"PhantomBlow_Icon", L"Resources/UI/Skill/PhantomBlow/icon.png");
 	m_pSkillIconDisabledTex = ResourceMgr::Load<JoTexture>(L"PhantomBlow_Icon_Disabled", L"Resources/UI/Skill/PhantomBlow/iconDisabled.png");
 	m_pIconTex = m_pSkillIconDisabledTex;
+
+	m_iUseMp = 100;
 }
 
 void PhantomBlow::Render(const Vec2& vLeftTop)
@@ -51,6 +53,10 @@ void PhantomBlow::Execution()
 	if (Player::PlayerState::Idle != m_pOwner->GetPlayerState()
 		&& Player::PlayerState::Walk != m_pOwner->GetPlayerState()
 		&& Player::PlayerState::Air != m_pOwner->GetPlayerState())
+		return;
+
+	
+	if (m_pOwner->Check_Mp(m_iUseMp) == false)
 		return;
 
 	unsigned char restriction = 1 | (1 << 1);

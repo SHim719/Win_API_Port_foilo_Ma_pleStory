@@ -48,8 +48,8 @@ void Tail::Update()
 void Tail::Render()
 {
 	m_pAnimator->Render();
-	if (m_pCollider->IsCollisionOn())
-		m_pCollider->Render();
+	/*if (m_pCollider->IsCollisionOn())
+		m_pCollider->Render();*/
 }
 
 void Tail::Hit(const HitInfo& _hitInfo)
@@ -69,7 +69,7 @@ void Tail::Hit(const HitInfo& _hitInfo)
 
 void Tail::OnCollisionEnter(Collider* _pOther)
 {
-	HitInfo hitInfo = { 2000, 1 };
+	HitInfo hitInfo = { 9999999, 1 };
 	
 	Player* pPlayer = dynamic_cast<Player*>(_pOther->GetOwner());
 	if (pPlayer)

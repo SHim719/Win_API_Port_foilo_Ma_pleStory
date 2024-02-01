@@ -19,7 +19,7 @@ enum class Skill_Enums
 struct SkillInfo
 {
 	UINT iPoint = 0;
-	UINT iMaxPoint = 5;
+	UINT iMaxPoint = 1;
 };
 
 class JoTexture;
@@ -49,6 +49,7 @@ protected:
 	float m_fNowTime;
 	float m_fCooltime;
 	bool m_bUsingSkill;
+	int m_iUseMp;
 
 	JoTexture* m_pSkillIconTex;
 	JoTexture* m_pSkillIconDisabledTex;

@@ -47,5 +47,5 @@ void VellumTrigger::Update()
 
 void VellumTrigger::Render()
 {
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }

@@ -91,12 +91,19 @@ void StatUI::Render()
 	if (m_pPlayerStats->Get_Extra_Luk() > 0)
 		wsLuk += L" (" + wsLuk + L"+ " + to_wstring(m_pPlayerStats->Get_Extra_Luk()) + L")";
 
+	wstring wsHp = to_wstring(m_pPlayerStats->Get_Hp()) + L" / " + to_wstring(m_pPlayerStats->Get_MaxHp());
+	wstring wsMp = to_wstring(m_pPlayerStats->Get_Mp()) + L" / " + to_wstring(m_pPlayerStats->Get_MaxMp());
+
+
 	// Info Render
 
-	//RenderMgr::RenderText(L"심재욱", m_vPos.x + 75.f, m_vPos.y + 29.f, m_vPos.x + 135.f, m_vPos.y + 45.f, 12.f, RGB(100, 100, 100));
-	//RenderMgr::RenderText(L"백수", m_vPos.x + 75.f, m_vPos.y + 48.f, m_vPos.x + 135.f, m_vPos.y + 62.f, 12.f, RGB(100, 100, 100));
-	//RenderMgr::RenderText(L"쥬신게임아카데미", m_vPos.x + 75.f, m_vPos.y + 66.f, m_vPos.x + 205.f, m_vPos.y + 80.f, 12.f, RGB(100, 100, 100));
-	//RenderMgr::RenderText(L"123456789", m_vPos.x + 75.f, m_vPos.y + 83.f, m_vPos.x + 205.f, m_vPos.y + 100.f, 12.f, RGB(100, 100, 100));
+	RenderMgr::RenderText(L"심재욱", m_vPos.x + 75.f, m_vPos.y + 29.f, m_vPos.x + 135.f, m_vPos.y + 45.f, 12.f, RGB(100, 100, 100));
+	RenderMgr::RenderText(L"백수", m_vPos.x + 75.f, m_vPos.y + 48.f, m_vPos.x + 135.f, m_vPos.y + 62.f, 12.f, RGB(100, 100, 100));
+	RenderMgr::RenderText(L"쥬신게임아카데미", m_vPos.x + 75.f, m_vPos.y + 66.f, m_vPos.x + 205.f, m_vPos.y + 80.f, 12.f, RGB(100, 100, 100));
+	RenderMgr::RenderText(L"123456789", m_vPos.x + 75.f, m_vPos.y + 83.f, m_vPos.x + 205.f, m_vPos.y + 100.f, 12.f, RGB(100, 100, 100));
+
+	RenderMgr::RenderText(wsHp, m_vPos.x + 75.f, m_vPos.y + 83.f + 17.f * 3.f + 3.f, m_vPos.x + 205.f, m_vPos.y + 83.f + 17.f * 4.f + 3.f, 12.f, RGB(100, 100, 100));
+	RenderMgr::RenderText(wsMp, m_vPos.x + 75.f, m_vPos.y + 83.f + 17.f * 4.f + 4.f, m_vPos.x + 205.f, m_vPos.y + 83.f + 17.f * 5.f + 4.f, 12.f, RGB(100, 100, 100));
 
 	RenderMgr::RenderText(wsStr, m_vPos.x + 75.f, m_vPos.y + 225.f, m_vPos.x + 180.f, m_vPos.y + 238.f, 12.f, RGB(100, 100, 100));
 	RenderMgr::RenderText(wsDex, m_vPos.x + 75.f, m_vPos.y + 244.f, m_vPos.x + 180.f, m_vPos.y + 257.f, 12.f, RGB(100, 100, 100));

@@ -44,6 +44,8 @@ void EG_GameMgr::Update()
 		EndGame();
 		break;
 	}
+
+
 }
 
 void EG_GameMgr::StartGame()

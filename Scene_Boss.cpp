@@ -11,6 +11,7 @@
 #include "DeepBreath.h"
 #include "Vellum_HpBar.h"
 #include "MiniMap.h"
+#include "Item_Obj.h"
 
 
 Scene_Boss::Scene_Boss()
@@ -69,9 +70,10 @@ void Scene_Boss::OnEnter()
 
 	AddObj(s_pMainPlayer, eLayerType::LT_PLAYER);
 	Camera::SetTarget(s_pMainPlayer);
+	Camera::SetLookAt(s_pMainPlayer->GetPos());
 	s_pMainPlayer->SetLimitPosX(m_vLimitPosX);
 	s_pMainPlayer->SetPixelDC(m_pixelDC);
-
+	Item_Obj::SetPixel(m_pixelDC);
 	//s_pMainPlayer->SetPos({ 1642.f, 400.f } );
 }
 

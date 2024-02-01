@@ -70,7 +70,8 @@ void KF_Obj::Update()
 
 			for (int i = 0; i < m_iPerHitCount; ++i)
 			{
-				HitInfo hitInfo = { 500000, attInfo.iHitCount, true };
+				int iDamage = generateRandomNumber(3, 6);
+				HitInfo hitInfo = { iDamage, attInfo.iHitCount, true };
 				attInfo.pHitObj->Hit(hitInfo);
 				attInfo.iHitCount++;
 			}

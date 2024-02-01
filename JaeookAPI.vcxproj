@@ -167,6 +167,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Counting.h" />
     <ClInclude Include="CT_RhyTurtle.h" />
     <ClInclude Include="DamageNum.h" />
+    <ClInclude Include="DamageNumUI.h" />
     <ClInclude Include="DeathUI.h" />
     <ClInclude Include="DeepBreath.h" />
     <ClInclude Include="DualPirate.h" />
@@ -259,11 +260,13 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="Skill_Obj.h" />
     <ClInclude Include="SlashEffect.h" />
     <ClInclude Include="SoundMgr.h" />
+    <ClInclude Include="SR_Obj.h" />
     <ClInclude Include="StatUI.h" />
     <ClInclude Include="Stone.h" />
     <ClInclude Include="StoneSpawner.h" />
     <ClInclude Include="StunEffect.h" />
     <ClInclude Include="Success.h" />
+    <ClInclude Include="SuddenRaid.h" />
     <ClInclude Include="Tail.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeMgr.h" />
@@ -316,6 +319,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Counting.cpp" />
     <ClCompile Include="CT_RhyTurtle.cpp" />
     <ClCompile Include="DamageNum.cpp" />
+    <ClCompile Include="DamageNumUI.cpp" />
     <ClCompile Include="DeathUI.cpp" />
     <ClCompile Include="DeepBreath.cpp" />
     <ClCompile Include="DualPirate.cpp" />
@@ -402,11 +406,13 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="Skill_Obj.cpp" />
     <ClCompile Include="SlashEffect.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
+    <ClCompile Include="SR_Obj.cpp" />
     <ClCompile Include="StatUI.cpp" />
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="StoneSpawner.cpp" />
     <ClCompile Include="StunEffect.cpp" />
     <ClCompile Include="Success.cpp" />
+    <ClCompile Include="SuddenRaid.cpp" />
     <ClCompile Include="Tail.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="TimerUI.cpp" />

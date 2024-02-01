@@ -10,6 +10,9 @@
 #include "Tail.h"
 #include "RenderMgr.h"
 #include "Camera.h"
+#include "WhiteBuffer.h"
+#include "ItemDatabase.h"
+#include "Item_Obj.h"
 
 
 Vellum::Vellum()
@@ -25,7 +28,7 @@ Vellum::~Vellum()
 
 void Vellum::Initialize()
 {
-	m_iMaxHp = 40000000;
+	m_iMaxHp = 20;
 	m_iHp = m_iMaxHp;
 
 	m_pCollider = new Collider;
@@ -40,6 +43,7 @@ void Vellum::Initialize()
 	m_fSpeed = 200.f;
 
 	m_pAttackCollider = Instantiate<VellumAttackCollider>(eLayerType::LT_MONSTER_EFFECT);
+	m_pAttackCollider->SetDamage(10000);
 
 	m_vecBreath.reserve(6);
 	for (int i = 0; i < 6; ++i)
@@ -54,6 +58,7 @@ void Vellum::Initialize()
 
 	m_pBreathText = ResourceMgr::Find<JoTexture>(L"Breath_Text");
 
+
 	Init_Anim();
 	Init_AnimKey();
 	Init_AnimBind();
@@ -61,8 +66,6 @@ void Vellum::Initialize()
 
 void Vellum::Update()
 {
-	debug_key();
-
 	Attack_Tail();
 
 	switch (m_eVellumState)
@@ -115,23 +118,6 @@ void Vellum::Hit(const HitInfo& _hitInfo)
 	vRenderPos.y -= float(pDamageTex->GetHeight()) * 0.5f * _hitInfo.iHitCount;
 
 	pDNum->SetPos(vRenderPos);
-}
-
-void Vellum::debug_key()
-{
-	if (KeyMgr::GetKeyDown(eKeyCode::W))
-	{
-		//SetState_Move();
-		//SetState_Appear();
-		// SetState_Attack1();
-		//SetState_LowNeck();
-		SetState_Breath();
-		//SetState_Attack4();
-	}
-	else if (KeyMgr::GetKeyDown(eKeyCode::R))
-	{
-		SetState_Attack4();
-	}
 }
 
 void Vellum::Play_Breath_Loop()
@@ -478,6 +464,7 @@ void Vellum::Breath_Attack()
 		m_pAttackCollider->SetCollisionSize({ 341.f, 810.f });
 		m_pAttackCollider->SetCollisionOffset({ fXOffset, 0.f });
 		m_pAttackCollider->SetCollisionOnOff(true);
+		m_pAttackCollider->SetDamage(9999999);
 	}
 }
 
@@ -665,15 +652,38 @@ void Vellum::Breath()
 			for (size_t i = 0; i < m_vecBreath.size(); ++i)
 				m_vecBreath[i]->Play_EndAnim(m_bRight);
 			AttackCollisionOff();
+			m_pAttackCollider->SetDamage(10000);
 		}
 	}
 }
 
 void Vellum::State_Dead()
 {
+	static float fTime = 0.f;
 	if (m_pAnimator->IsEndAnim())
 	{
 		// 템드롭, destroy 화이트 페이드 아웃인
+		if (fTime <= 0.f)
+		{
+			Instantiate<WhiteBuffer>(eLayerType::LT_UI)->Set_Fade(1.f, 0.5f, false);
+			Item_Obj* pObj = Instantiate<Item_Obj>(eLayerType::LT_ITEM);
+			pObj->SetPos(GetPos());
+			pObj->SetItem(ItemDatabase::FindItemData(L"시련의 증표"));
+			pObj->SetCount(1);
+			SoundMgr::Play(L"Release_Item");
+			TimeMgr::SetTimeScale(0.6f);
+		}
+		
+		fTime += TimeMgr::DeltaTime_NoScale();
+		if (fTime >= 2.f)
+		{
+			TimeMgr::SetTimeScale(1.f);
+		}
+
+		if (fTime >= 5.f)
+		{
+			SceneMgr::Reservation_ChangeScene(L"Scene_Rutabyss", Vec2(1980.f, 830.f));
+		}
 	}
 }
 

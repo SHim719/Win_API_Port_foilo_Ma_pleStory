@@ -34,6 +34,9 @@ private:
 	Vec2			m_vExpBarPos;
 	Vec2			m_vLevelPos;
 
+	int				m_iNowLevel;
+	string			m_sNowLevel;
+
 	float			m_fNowHp;
 	float			m_fNowMp;
 	float			m_fNowExp;
@@ -45,6 +48,5 @@ private:
 	float			m_fMpSpeed;
 	float			m_fExpSpeed;
 
-	string			m_sRenderLevel;
 };
 

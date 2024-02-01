@@ -11,6 +11,7 @@
 #include "Title_Button.h"
 #include "MiniMap.h"
 #include "Meso_Obj.h"
+#include "DamageNum.h"
 
 Scene_Title::Scene_Title()
 {
@@ -46,15 +47,21 @@ void Scene_Title::Initialize()
 	Instantiate<Title_Button>(eLayerType::LT_UI)->SetPos({ 500.f, 450.f });
 
 	Meso_Obj::Set_MesoTex(ResourceMgr::Find<JoTexture>(L"Meso"));
+
+	DamageNum::Init_DamageTex();
 }
 
 void Scene_Title::OnEnter()
 {
 	SoundMgr::Play(L"TitleBGM");
+	Camera::SetTarget(nullptr);
+	Camera::SetLookAt(Vec2(1024.f * 0.5f, 768.f * 0.5f));
+	Camera::Set_NoLimit(true);
+	UIMgr::SetCanUseUI(false);
 }
 
 void Scene_Title::OnExit()
 {
-	Release();
 	SoundMgr::Stop(L"TitleBGM");
+	Camera::Set_NoLimit(false);
 }

@@ -47,8 +47,6 @@ public:
 
 	bool IsDeadState() { return m_eVellumState == Vellum_State::Dead; }
 private:
-	void debug_key();
-
 	void Play_Breath_Loop();
 
 	void Init_Anim();

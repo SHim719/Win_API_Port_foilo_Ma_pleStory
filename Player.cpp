@@ -265,6 +265,15 @@ void Player::Level_Up()
 	Instantiate<LevelUp>(eLayerType::LT_EFFECT)->SetOwner(this);
 }
 
+bool Player::Check_Mp(const int& _iMp)
+{
+	if (m_pPlayerStats->Get_Mp() < _iMp)
+		return false;
+
+	m_pPlayerStats->Add_MP(-_iMp);
+	return true;
+}
+
 void Player::Init_Anim()
 {
 	JoTexture* playerTex = ResourceMgr::Find<JoTexture>(L"Player");
@@ -293,6 +302,8 @@ void Player::Init_Anim()
 	m_pAnimator->CreateAnimation(L"BladeStorm_R", playerTex, Vec2(0.f, 960.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.06f);
 	m_pAnimator->CreateAnimation(L"Asura_L", playerTex, Vec2(0.f, 320.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.07f);
 	m_pAnimator->CreateAnimation(L"Asura_R", playerTex, Vec2(0.f, 960.0f), Vec2(160.f, 160.f), Vec2::Zero, 10, 0.07f);
+	m_pAnimator->CreateAnimation(L"SuddenRaid_L", playerTex, Vec2(0.0f, 480.0f), Vec2(160.f, 160.f), Vec2::Zero, 1, 0.6f);
+	m_pAnimator->CreateAnimation(L"SuddenRaid_R", playerTex, Vec2(160.0f * 9.f, 640.0f), Vec2(160.f, 160.f), Vec2::Zero, 1, 0.6f);
 	m_pAnimator->CreateAnimation(L"Swim_L", pSwimTex, Vec2(0.f, 0.f), Vec2(200.f, 160.f), Vec2::Zero, 6, 0.2f);
 	m_pAnimator->CreateAnimation(L"Swim_R", pSwimTex, Vec2(0.f, 160.f), Vec2(200.f, 160.f), Vec2::Zero, 6, 0.2f);
 }
@@ -306,6 +317,9 @@ void Player::Init_FrameBind()
 	m_pAnimator->GetEvents(L"KarmaFury_R")->EndEvent = skillEnd;
 	m_pAnimator->GetEvents(L"BladeTornado_L")->EndEvent = skillEnd;
 	m_pAnimator->GetEvents(L"BladeTornado_R")->EndEvent = skillEnd;
+	m_pAnimator->GetEvents(L"SuddenRaid_L")->EndEvent = skillEnd;
+	m_pAnimator->GetEvents(L"SuddenRaid_R")->EndEvent = skillEnd;
+
 }
 
 void Player::Idle_State()
@@ -724,6 +738,8 @@ void Player::SetState_Swim(bool bStreamRight)
 		
 	m_bFirstDive = true;
 	m_pRigidbody->SetUseGravity(false);
+	float fSpeedY = min(m_pRigidbody->GetVelocity().y, 900.f);
+	m_pRigidbody->SetVelocityY(fSpeedY);
 
 	m_eState = PlayerState::Swim;
 }
@@ -772,7 +788,7 @@ void Player::FlashJump()
 	else fXDir = -1.f;
 
 	Vec2 vVelocity = m_pRigidbody->GetVelocity();
-	vVelocity.y -= 100.0f;
+	vVelocity.y -= 125.0f;
 	vVelocity.x = fXDir * (abs(vVelocity.x) + 400.0f);
 	m_pRigidbody->SetVelocity(vVelocity);
 }
@@ -897,7 +913,7 @@ void Player::Invincible()
 		return;
 
 	fNowTime += TimeMgr::DeltaTime();
-	if (fNowTime >= 2.0f)
+	if (fNowTime >= 3.0f)
 	{
 		fNowTime = 0.f;
 		m_bInvincible = false;
@@ -950,7 +966,6 @@ void Player::debug_check()
 		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"¿¡Å×¸£³Ú ½ÃÇÁÆÒÃ÷"), 1);
 		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"¾ÆÄÉÀÎ¼ÎÀÌµå ½ÃÇÁ½´Áî"), 1);
 		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"¸®¹ö½º Æä½ºÄ«Áî"), 1);*/
-		m_pInventory->Add_Meso(99999999);
 		m_pInventory->Insert_Item(ItemDatabase::FindItemData(L"ÆÄ¿ö ¿¤¸¯¼­"), 99);
 	}
 

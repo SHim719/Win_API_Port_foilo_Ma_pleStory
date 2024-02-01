@@ -40,7 +40,7 @@ void Scene_Grandis::Initialize()
 	MiniMap* pMiniMap = Instantiate<MiniMap>(eLayerType::LT_UI);
 	JoTexture* pMiniMapTex = ResourceMgr::Find<JoTexture>(L"Chew_Minimap");
 	pMiniMap->Set_MiniMapTex(pMiniMapTex);
-	pMiniMap->SetSize({ 365.f, 48.f });
+	pMiniMap->SetSize({ 350.f, 48.f });
 	pMiniMap->SetLeftTop({ 10.f, 61.f });
 	pMiniMap->SetRealMapSize({ texWidth, texHeight });
 
@@ -55,7 +55,7 @@ void Scene_Grandis::Initialize()
 	pYellowPortal->Set_MovePos({ 430.f, 852.f });
 
 	Portal* pPortal = Instantiate<Portal>(eLayerType::LT_OBJECT);
-	pPortal->SetPos(Vec2(120.f, 830.f));
+	pPortal->SetPos(Vec2(247.f, 825.f));
 	pPortal->Set_MovePos( {500.f, 830.f });
 	pPortal->Set_SceneName(L"Scene_Rutabyss");
 

@@ -18,7 +18,7 @@ void BladeTornado::Initialize()
 	m_pSkillIconDisabledTex = ResourceMgr::Load<JoTexture>(L"BladeTornado_Icon_Disabled", L"Resources/UI/Skill/BladeTornado/iconDisabled.png");
 	m_pIconTex = m_pSkillIconDisabledTex;
 
-	m_fCooltime = 8.f;
+	m_fCooltime = 7.f;
 }
 
 void BladeTornado::Render(const Vec2& vLeftTop)
@@ -57,6 +57,9 @@ void BladeTornado::Execution()
 	if (Player::PlayerState::Idle != m_pOwner->GetPlayerState()
 		&& Player::PlayerState::Walk != m_pOwner->GetPlayerState()
 		&& Player::PlayerState::Air != m_pOwner->GetPlayerState())
+		return;
+
+	if (m_pOwner->Check_Mp(m_iUseMp) == false)
 		return;
 
 	m_fNowTime = m_fCooltime;

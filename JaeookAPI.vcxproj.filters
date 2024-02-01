@@ -460,6 +460,15 @@
     <Filter Include="02. Contents\07. Npc\05. Esfesia">
       <UniqueIdentifier>{da002679-bfa9-4e5f-87a9-68d9e7546270}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Contents\04. UI\DamageNumUI">
+      <UniqueIdentifier>{6726913c-e9be-462c-8a43-83fe4c156645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\07. SuddenRaid">
+      <UniqueIdentifier>{12ab51d3-0e5d-465d-b154-f6289b0cb261}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents\06. Skill\07. SuddenRaid\SR_Obj">
+      <UniqueIdentifier>{e44e6646-d84e-4742-8d9a-0a3651f8736c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -906,6 +915,15 @@
     <ClInclude Include="Esfesia.h">
       <Filter>02. Contents\07. Npc\05. Esfesia</Filter>
     </ClInclude>
+    <ClInclude Include="DamageNumUI.h">
+      <Filter>02. Contents\04. UI\DamageNumUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SuddenRaid.h">
+      <Filter>02. Contents\06. Skill\07. SuddenRaid</Filter>
+    </ClInclude>
+    <ClInclude Include="SR_Obj.h">
+      <Filter>02. Contents\06. Skill\07. SuddenRaid\SR_Obj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JaeookAPI.cpp">
@@ -1324,6 +1342,15 @@
     </ClCompile>
     <ClCompile Include="Esfesia.cpp">
       <Filter>02. Contents\07. Npc\05. Esfesia</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageNumUI.cpp">
+      <Filter>02. Contents\04. UI\DamageNumUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SuddenRaid.cpp">
+      <Filter>02. Contents\06. Skill\07. SuddenRaid</Filter>
+    </ClCompile>
+    <ClCompile Include="SR_Obj.cpp">
+      <Filter>02. Contents\06. Skill\07. SuddenRaid\SR_Obj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

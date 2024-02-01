@@ -45,8 +45,6 @@ void SkillUI::Initialize()
 
 	Vec2 vGap = { 13.f, 6.f };
 
-	//SKillbox Å©±â 140 35
-	//xOffset 13.f yoffset 6.f;
 
 	for (UINT i = 0; i < SKILL_SLOT; ++i)
 	{
@@ -141,7 +139,7 @@ void SkillUI::Render()
 			+ Vec2((float)m_pInActiveButtonTex->GetWidth(), (float)m_pInActiveButtonTex->GetHeight());
 
 		JoTexture* pButtonTex = nullptr;
-		if (m_pSkillStats->GetRemainingPoint())
+		if (m_pSkillStats->GetRemainingPoint() && !vecSkills[i]->IsMaxPoint())
 			pButtonTex = m_pActiveButtonTex;
 		else
 			pButtonTex = m_pInActiveButtonTex;

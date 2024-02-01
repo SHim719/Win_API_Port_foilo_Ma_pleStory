@@ -52,9 +52,9 @@ void Eagle::Update()
 void Eagle::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
-
+ 
 void Eagle::Hit(const HitInfo& _hitInfo)
 {
 	m_bDie = true;

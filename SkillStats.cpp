@@ -5,9 +5,10 @@
 #include "BladeTornado.h"
 #include "BladeStorm.h"
 #include "Asura.h"
+#include "SuddenRaid.h"
 
 SkillStats::SkillStats()
-	: m_iRemainingPoint(10)
+	: m_iRemainingPoint(5)
 {
 	m_vecSkills.reserve((UINT)Skill_Enums::End);
 
@@ -30,6 +31,10 @@ SkillStats::SkillStats()
 	Skill* pAsura = new Asura;
 	pAsura->Initialize();
 	m_vecSkills.push_back(pAsura);
+
+	Skill* pSuddenRaid = new SuddenRaid;
+	pSuddenRaid->Initialize();
+	m_vecSkills.push_back(pSuddenRaid);
 }
 
 SkillStats::~SkillStats()

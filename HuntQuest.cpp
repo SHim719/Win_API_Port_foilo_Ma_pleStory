@@ -1,10 +1,6 @@
 #include "HuntQuest.h"
 #include "RenderMgr.h"
 
-void HuntQuest::Initialize()
-{
-	m_pMainTex = ResourceMgr::Find<JoTexture>(L"Hunt_Quest");
-}
 
 void HuntQuest::Render()
 {

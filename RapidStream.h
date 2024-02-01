@@ -10,7 +10,6 @@ public:
     ~RapidStream();
 
     void Initialize()   override;
-    void Render()       override;
 
     void OnCollisionEnter(Collider* _pOther)    override;
     void OnCollisionStay(Collider* _pOther)     override;

@@ -55,3 +55,29 @@ struct Timer
 {
 	float m_fNowTime = 0.f;
 };
+
+int generateRandomNumber(int firstDigit, int totalDigits)
+{
+    // 맨 앞자릿수는 1 이상 9 이하의 정수여야 합니다.
+    if (firstDigit < 1 || firstDigit > 9) {
+        throw std::invalid_argument("맨 앞자릿수는 1 이상 9 이하의 정수여야 합니다.");
+    }
+
+    // 총 자릿수는 1 이상이어야 합니다.
+    if (totalDigits < 1) {
+        throw std::invalid_argument("총 자릿수는 1 이상이어야 합니다.");
+    }
+
+    // 맨 앞자릿수를 제외한 나머지 자릿수를 랜덤하게 생성
+    int randomNumber = firstDigit * (int)pow(10, totalDigits - 1) + rand() % (int)pow(10, totalDigits - 1);
+
+    return randomNumber;
+}
+
+bool Calc_Critical()
+{
+    if (rand() % 10 < 2)
+        return true;
+    else
+        return false;
+}

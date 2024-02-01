@@ -26,7 +26,7 @@ CT_RhyTurtle::~CT_RhyTurtle()
 
 void CT_RhyTurtle::Initialize()
 {
-	m_iMaxHp = 500000;
+	m_iMaxHp = 2000000;
 	m_iHp = m_iMaxHp;
 
 	m_pCollider = new Collider;

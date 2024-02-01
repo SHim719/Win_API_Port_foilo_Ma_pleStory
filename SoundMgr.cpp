@@ -26,6 +26,8 @@ void SoundMgr::Intialize()
 	ResourceMgr::Load<Audio>(L"FJ_Use", L"Resources/Skill/FlashJump/Use.mp3");
 	ResourceMgr::Load<Audio>(L"KF_Use", L"Resources/Skill/KarmaFury/Use.mp3");
 	ResourceMgr::Load<Audio>(L"KF_Hit_SFX", L"Resources/Skill/KarmaFury/Hit.mp3");
+	ResourceMgr::Load<Audio>(L"SR_Use", L"Resources/Skill/SuddenRaid/Use.mp3");
+	ResourceMgr::Load<Audio>(L"SR_Hit_SFX", L"Resources/Skill/SuddenRaid/Hit.mp3");
 	ResourceMgr::Load<Audio>(L"BT_Use", L"Resources/Skill/BladeTornado/Use.mp3");
 	ResourceMgr::Load<Audio>(L"BT_Loop", L"Resources/Skill/BladeTornado/Loop.mp3");
 	ResourceMgr::Load<Audio>(L"BT_Hit_SFX", L"Resources/Skill/BladeTornado/Hit.mp3");

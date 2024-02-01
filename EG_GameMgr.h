@@ -29,8 +29,8 @@ public:
 	 void Minus_EagleCnt() { m_iEagleCnt--; }
 
 	 void SetTimerUI(TimerUI* _pTimerUI) { m_pTimerUI = _pTimerUI; }
-
 	 bool IsGameEnd() const { return m_eGameState == GameState::End; }
+
 private:
 	GameState m_eGameState = GameState::Start;
 

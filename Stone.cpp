@@ -137,7 +137,7 @@ void Stone::Second()
 
 	fNowTime += TimeMgr::DeltaTime();
 
-	if (fNowTime >= 3.f)
+	if (fNowTime >= 2.f)
 	{
 		WhiteBuffer* pBuffer = Instantiate<WhiteBuffer>(eLayerType::LT_UI);
 		pBuffer->Set_Fade(0.f, 0.3f, true, true);

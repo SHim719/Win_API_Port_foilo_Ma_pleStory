@@ -39,7 +39,6 @@ void YellowPortal::Update()
 void YellowPortal::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
 }
 
 void YellowPortal::OnCollisionStay(Collider* other)

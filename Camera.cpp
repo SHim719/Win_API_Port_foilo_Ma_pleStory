@@ -141,8 +141,6 @@ void Camera::Shaking()
 
 	if (m_pTarget != nullptr)
 	{
-		//m_vLookAt = m_pTarget->GetPos();
-
 		Vec2 vTargetPos = m_pTarget->GetPos();
 		m_vLookAt = Lerp(m_vLookAt, vTargetPos, 0.5f);
 	}

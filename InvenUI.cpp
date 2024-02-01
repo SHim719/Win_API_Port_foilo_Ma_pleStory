@@ -96,6 +96,7 @@ void InvenUI::Render()
 
 	render_InvenTab();
 	render_Slots();
+	render_Meso();
 	render_Picking();
 }
 
@@ -359,6 +360,17 @@ void InvenUI::render_Number(Vec2 vLeftTop, const UINT& iNum) const
 			vLeftTop.x += 8.f;
 	}
 	
+}
+
+void InvenUI::render_Meso() const
+{
+	wstring wsPlayerMesoText = to_wstring(m_pInventory->Get_Meso());
+	RenderMgr::RenderText_R(wsPlayerMesoText
+		, m_vPos.x + 50.f
+		, m_vPos.y + 269.f
+		, m_vPos.x + 127.f
+		, m_vPos.y + 281.f
+		, 12.f, RGB(60, 60, 60));
 }
 
 void InvenUI::Check_DoubleClick()

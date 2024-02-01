@@ -5,8 +5,19 @@
 #include "SlashEffect.h"
 #include "SoundMgr.h"
 #include "WhiteBuffer.h"
+#include "TimeMgr.h"
+#include "UIMgr.h"
+#include "Counting.h"
+#include "joObject.h"
+#include "Success.h"
+#include "Fail.h"
+#include "SoundMgr.h"
+#include "QuestMgr.h"
+#include "TimerUI.h"
+#include "Counting.h"
 
 TS_GameMgr::TS_GameMgr()
+	: m_pTimerUI(nullptr)
 {
 }
 
@@ -29,6 +40,8 @@ void TS_GameMgr::Initialize()
 
 	m_vKillRenderPos = Vec2(vPos.x + 200.f, 521.f - 280.f);
 	m_fFallSpeed = 3000.f;
+
+	Instantiate<Counting>(eLayerType::LT_UI)->SetPos({ 700.f, 400.f });
 }
 
 void TS_GameMgr::Update()
@@ -36,7 +49,11 @@ void TS_GameMgr::Update()
 	if (m_bKillingTotem)
 	{
 		if (m_TotemList.empty())
+		{
+			m_bKillingTotem = false;
 			return;
+		}
+			
 		if (m_TotemList.front()->GetPos().y >= m_vBottomPos.y)
 		{
 			for (auto it = m_TotemList.begin(); it != m_TotemList.end(); ++it)
@@ -46,7 +63,21 @@ void TS_GameMgr::Update()
 			m_bKillingTotem = false;
 		}
 	}
+
+	switch (m_eState)
+	{
+	case TS_GameMgr::GameState::Start:
+		StartGame();
+		break;
+	case TS_GameMgr::GameState::Loop:
+		LoopGame();
+		break;
+	case TS_GameMgr::GameState::End:
+		EndGame();
+		break;
+	}
 }
+
 
 void TS_GameMgr::Slash_Totem(const int& iVal)
 {
@@ -131,4 +162,51 @@ void TS_GameMgr::instantiate_Slash(const int& _iVal)
 	pSlashEffect->Set_GameMgr(this);
 	pSlashEffect->Initialize(_iVal, vSize, vOffset, iLength);
 	pSlashEffect->SetPos(m_vBottomPos);
+}
+void TS_GameMgr::StartGame()
+{
+	static float fNowTime = 0.f;
+
+	fNowTime += TimeMgr::DeltaTime_NoScale();
+
+	if (fNowTime >= 3.f)
+	{
+		fNowTime = 0.f;
+		TimeMgr::SetTimeScale(1.f);
+		m_eState = GameState::Loop;
+	}
+}
+
+
+void TS_GameMgr::LoopGame()
+{
+
+	if (m_TotemList.empty())
+	{
+		Instantiate<Success>(eLayerType::LT_UI)->SetPos({ 700.f, 350.f });
+		m_eState = GameState::End;
+		QuestMgr::Get_NowQuest()->Set_Satisfied(true);
+		return;
+	}
+
+	if (m_pTimerUI->GetTime() <= 0.f)
+	{
+		Instantiate<Fail>(eLayerType::LT_UI)->SetPos({ 700.f, 350.f });
+		m_eState = GameState::End;
+		return;
+	}
+}
+
+void TS_GameMgr::EndGame()
+{
+	static float fNowTime = 0.f;
+
+	fNowTime += TimeMgr::DeltaTime_NoScale();
+
+	if (fNowTime >= 3.f)
+	{
+		fNowTime = 0.f;
+		SceneMgr::Reservation_ChangeScene(L"Scene_Totem_Prev", Vec2(158.f, 552.f));
+	}
+
 }

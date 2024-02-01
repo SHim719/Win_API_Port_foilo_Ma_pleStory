@@ -47,12 +47,12 @@ void DeepBreath::Update()
 void DeepBreath::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
+	//m_pCollider->Render();
 }
 
 void DeepBreath::OnCollisionEnter(Collider* _pOther)
 {
-	HitInfo hitInfo = { 41412412, 1 };
+	HitInfo hitInfo = { 9999999, 1 };
 	static_cast<Player*>(_pOther->GetOwner())->Hit(hitInfo);
 }
 

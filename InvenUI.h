@@ -49,6 +49,7 @@ private:
 	void render_Slots() const;
 	void render_Picking() const;
 	void render_Number(Vec2 vLeftTop, const UINT& iNum) const;
+	void render_Meso() const;
 
 	void Check_DoubleClick();
 private:

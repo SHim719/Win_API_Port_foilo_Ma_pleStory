@@ -27,7 +27,7 @@ void Portal::Initialize()
 	m_pAnimator->SetOwner(this);
 
 	m_pAnimator->CreateAnimation(L"Portal", m_pPortalTex, Vec2(0.f, 0.f), Vec2(104.f, 142.f), Vec2::Zero,
-		8, 0.2f);
+		8, 0.1f);
 
 	m_pAnimator->PlayAnimation(L"Portal", true);
 
@@ -41,7 +41,6 @@ void Portal::Update()
 void Portal::Render()
 {
 	m_pAnimator->Render();
-	m_pCollider->Render();
 }
 
 void Portal::OnCollisionStay(Collider* other)

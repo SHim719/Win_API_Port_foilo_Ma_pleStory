@@ -152,7 +152,7 @@ void ResourceMgr::Initialize()
 	ResourceMgr::Load<JoTexture>(L"DualPirate_R", L"Resources/Enemy/DualPirate/DualPirate_R.png");
 	ResourceMgr::Load<JoTexture>(L"DualPirate_L", L"Resources/Enemy/DualPirate/DualPirate_L.png");
 
-	/*ResourceMgr::Load<JoTexture>(L"Vellum_Appear_L", L"Resources/Enemy/Vellum/Vellum_Appear.png");
+	ResourceMgr::Load<JoTexture>(L"Vellum_Appear_L", L"Resources/Enemy/Vellum/Vellum_Appear.png");
 	ResourceMgr::Load<JoTexture>(L"Vellum_Appear_R", L"Resources/Enemy/Vellum/Vellum_Appear_R.png");
 	ResourceMgr::Load<JoTexture>(L"Vellum_Attack1_L", L"Resources/Enemy/Vellum/Vellum_Attack1.png");
 	ResourceMgr::Load<JoTexture>(L"Vellum_Attack1_R", L"Resources/Enemy/Vellum/Vellum_Attack1_R.png");
@@ -187,7 +187,7 @@ void ResourceMgr::Initialize()
 
 	ResourceMgr::Load<JoTexture>(L"Vellum_HpBar", L"Resources/UI/Boss/Vellum_HpBar.png");
 	ResourceMgr::Load<JoTexture>(L"Boss_Hp", L"Resources/UI/Boss/bossHP.png");
-	ResourceMgr::Load<JoTexture>(L"Breath_Text", L"Resources/UI/Boss/Breath_Text.png");*/
+	ResourceMgr::Load<JoTexture>(L"Breath_Text", L"Resources/UI/Boss/Breath_Text.png");
 
 	ResourceMgr::Load<JoTexture>(L"WhiteBuffer", L"Resources/WhiteScreen.png");
 	ResourceMgr::Load<JoTexture>(L"BlackBuffer", L"Resources/BlackScreen.png");

@@ -18,7 +18,7 @@ Girl::Girl()
 	, m_pNameBarTex(nullptr)
 	, m_vecDials{}
 	, m_tRect{}
-	, m_eState(Girl_State::End)
+	, m_eState(Girl_State::First)
 	, m_pInventory(nullptr)
 	, m_pToken(nullptr)
 { 

@@ -8,7 +8,7 @@
 #include "SuddenRaid.h"
 
 SkillStats::SkillStats()
-	: m_iRemainingPoint(5)
+	: m_iRemainingPoint(6)
 {
 	m_vecSkills.reserve((UINT)Skill_Enums::End);
 

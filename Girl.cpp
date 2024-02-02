@@ -18,7 +18,7 @@ Girl::Girl()
 	, m_pNameBarTex(nullptr)
 	, m_vecDials{}
 	, m_tRect{}
-	, m_eState(Girl_State::First)
+	, m_eState(Girl_State::End)
 	, m_pInventory(nullptr)
 	, m_pToken(nullptr)
 { 
@@ -55,7 +55,8 @@ void Girl::Initialize()
 	m_vecDials.push_back({ L"저기..?", 0 });
 	m_vecDials.push_back({ L"넌 누구야? 여기에 어떻게 들어왔어?", 1 });
 	m_vecDials.push_back({ L"슬리피우드에서 길을 헤매다가 어떤 구멍에 빠졌는데 여기로 통하는 구멍이였어.", 0 });
-	m_vecDials.push_back({ L"그렇구나. 그런데 여기는 자력으로 나갈 수 없어.", 1 });
+	m_vecDials.push_back({ L"여기를 당장 나가고 싶은데 어떻게 나갈 수 있을까?", 0 });
+	m_vecDials.push_back({ L"여기는 마음대로 나갈 수 없어.", 1 });
 	m_vecDials.push_back({ L"뭐?", 0 });
 	m_vecDials.push_back({ L"여기는 나의 공간이야. 나의 마력을 이용해서 바깥으로 내보낼 수 있어.", 1 });
 	m_vecDials.push_back({ L"아 그래? 그럼 어서 나를 내보내줘.", 0 });

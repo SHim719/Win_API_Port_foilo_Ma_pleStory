@@ -4,7 +4,7 @@ Slot Slot::empty_Slot = { nullptr, 0 };
 
 Inventory::Inventory()
 	: m_arrInventory{}
-	, m_iMeso(100000)
+	, m_iMeso(500000)
 {
 }
 

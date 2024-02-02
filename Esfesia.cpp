@@ -52,7 +52,7 @@ void Esfesia::Initialize()
 
 	m_vecDials.push_back({ L"거기 너! 나 좀 도와주라!" , 1 });
 	m_vecDials.push_back({ L"뭔데?" , 0 });
-	m_vecDials.push_back({ L"지금 사원에 쌓인 토템들이 너무 많아.너가 좀 일손을보태줘." , 1 });
+	m_vecDials.push_back({ L"지금 사원에 쌓인 토템들이 너무 많아.너가 좀 일손을 보태줘." , 1 });
 	m_vecDials.push_back({ L"그래 알겠어." , 0 });
 	m_vecDials.push_back({ L"난 성격이 급해! 그러니까 30초 안으로 부탁할게." , 1 });
 	m_vecDials.push_back({ L"막무가내로군.." , 0 });

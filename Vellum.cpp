@@ -28,7 +28,7 @@ Vellum::~Vellum()
 
 void Vellum::Initialize()
 {
-	m_iMaxHp = 200000000;
+	m_iMaxHp = 150000000;
 	m_iHp = m_iMaxHp;
 
 	m_pCollider = new Collider;
@@ -799,7 +799,7 @@ void Vellum::SetState_Attack1()
 	}
 	m_eVellumState = Vellum_State::Attack1;
 
-	m_iTailCount = min(m_iTailCount + rand() % 4, m_iMaxTailCount);
+	m_iTailCount = min(m_iTailCount + rand() % 2, m_iMaxTailCount);
 
 	m_vDamagePos = GetPos();
 	m_vDamagePos.x = m_bRight == true ? m_vDamagePos.x + m_vStandDamageOffset.x + 60.f : m_vDamagePos.x - m_vStandDamageOffset.x;

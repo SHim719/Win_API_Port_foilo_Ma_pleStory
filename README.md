@@ -3,7 +3,6 @@
 # 메이플스토리 모작(WinApi, 개인 프로젝트)
 <img src="https://i.namu.wiki/i/NUzo8Y8CQrxIjuZF9SlDK1ciyYMegj3PRFRi4x6qd6ll4C-jY3BEk4sPPACnrYCwWvbIZDYM49XSqT6gkBaNmg.webp" alt="이미지" width="500">
 
-2024.01.20 ~ 2024.02.02(2주)
 </div>
 
 # 동영상

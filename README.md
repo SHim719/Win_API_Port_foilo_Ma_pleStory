@@ -1,7 +1,7 @@
 <div align="center">
   
 # 메이플스토리 모작(WinApi, 개인 프로젝트)
-<img src="https://i.namu.wiki/i/NUzo8Y8CQrxIjuZF9SlDK1ciyYMegj3PRFRi4x6qd6ll4C-jY3BEk4sPPACnrYCwWvbIZDYM49XSqT6gkBaNmg.webp" alt="이미지" width="500">
+<img src="https://github.com/SHim719/Image/blob/main/%EB%A9%94%EC%9D%B4%ED%94%8C%EC%8D%B8%EB%84%A4%EC%9D%BC.png" alt="이미지" width="500">
 
 </div>
 
